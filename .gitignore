@@ -1,0 +1,22 @@
+# Exportaciones generadas por markdown-pdf (yzane)
+README.pdf
+README.html
+*.pdf
+!upc-pre-202620-1asi0732-*.pdf
+
+# Archivos pesados que no van al repositorio (se suben a Blackboard / aula virtual)
+*.mp4
+*.mov
+*.zip
+*.fig
+*.psd
+*.xd
+
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.idea/
+*.swp
