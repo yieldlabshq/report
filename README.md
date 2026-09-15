@@ -512,14 +512,23 @@ _Pendiente de elaboración._
 
 # Capítulo III: Requirements Specification
 
-_Pendiente de elaboración: párrafo introductorio del capítulo._
+Tomando como base las conclusiones de las entrevistas, el proceso de Needfinding y los perfiles de usuario del capítulo previo, en este apartado se transforman dichos hallazgos en la definición técnica y funcional de las soluciones digitales de Vankoo. El recorrido comienza proyectando el contexto operativo futuro de cada actor por medio del To-Be Scenario Mapping, el cual resalta las mejoras y transformaciones que la plataforma aporta en contraste con la situación actual (As-Is). A partir de este punto, se despliegan las historias de usuario que estructuran las capacidades del sistema, el mapeo de impacto (Impact Mapping) que vincula las metas comerciales con los cambios de comportamiento esperados en cada perfil, y finalmente el Product Backlog, encargado de ordenar y jerarquizar los elementos de cara a la fase de construcción.
 
 ## 3.1. To-Be Scenario Mapping
 
-<!-- Un To-Be Scenario Map por cada User Persona, comparado contra el As-Is. -->
-<!-- Assets: ./assets/cap3-requirements-specification/to-be-scenario-mapping/ -->
+El diagrama de situación futura (To-Be Scenario Map), emplea idénticas etapas a las del modelo previo (As-Is) para cada perfil de usuario, evidenciando de qué manera Vankoo optimiza sus acciones, pensamientos y emociones en cada momento, mientras sintetiza en el lateral las mejoras prácticas que la herramienta introduce respecto al flujo tradicional.
 
-_Pendiente de elaboración._
+**To-Be Scenario Map - Empresario MYPE (Carlos)**
+
+El esquema ilustra una experiencia completamente favorable: gracias a Vankoo, Carlos deja atrás la larga espera de cobros y los créditos de altos intereses para obtener liquidez en un plazo inferior a dos días, respaldado por tarifas claras desde el primer instante.
+
+![To-Be-Scenario-Map-Carlos](assets/cap3-requirements-specification/to-be-scenario-mapping/to-be-scenario-map-carlos.jpg)
+
+**To-Be Scenario Map - Inversionista (Sofia)**
+
+El diagrama presenta una evolución totalmente favorable: mediante Vankoo, Sofía abandona las inversiones a ciegas en instrumentos rígidos para diversificar desde S/100 con riesgos claros y monitoreo en tiempo real.
+
+![To-Be-Scenario-Map-Sofia](assets/cap3-requirements-specification/to-be-scenario-mapping/to-be-scenario-map-sofia.jpg)
 
 <hr class="page-break">
 
@@ -562,7 +571,14 @@ _Pendiente de elaboración._
 <hr class="page-break">
 
 ## Capítulo IV: Product Design
+En esta sección se va poder abarcar diversos planteamientos para la propuesta del Software Architecture & Design, en las cuales se incluyen Domain-Driven Software, Object-Orientend Software Design, ademas del UX/UI Design para que se pueda tener una explicación de cada cosa que se evidencia en nuestra app web como móvil. Todo ello se basara del conjunto de User Stories identificados asi como el Impact Map.
 ### 4.1. Style Guidelines
+
+En esta sección, se sienta las bases para contar con un repositorio central y
+organizado de uso común para todo el proyecto, que incluye assets, fonts, etc. Esto con el
+fin de mantener una presentación consistente y enfocada. Se incluye secciones para poder diferenciar nuestro producto de otros competidores, explicando el porque hemos escogido cada segmento para el proyecto a realizar.
+
+
 #### 4.1.1. General Style Guidelines
 
 En este segmento se va a explicar acerca de la guia de estilos generales, en la cual se van a establecer los principios visuales fundamentales, las referencias de marcas y las diversas decisiones conceptuales para que Yield Labs tenga una identidad propia.
