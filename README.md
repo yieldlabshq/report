@@ -736,9 +736,93 @@ En esta sección se definen los **Diagramas de Componentes** del sistema, detall
 
 ### 4.4.1. Mobile Applications Wireframes
 
-<!-- Assets: ./assets/cap4-product-design/mobile-app/wireframes/ -->
+A continuación, se presentan todas las pantallas que conforman los wireframes de la aplicación móvil de **Vankoo** para la experiencia del usuario inversionista.
 
-_Pendiente de elaboración._
+#### **1. Autenticación y Gestión de Cuenta**
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/CreateAccount.png" alt="Crear Cuenta" width="240" /><br />
+      <sub><b>Crear Cuenta</b><br />Registro inicial de datos personales del usuario inversionista.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/RecoverAccount.png" alt="Recuperar Cuenta" width="240" /><br />
+      <sub><b>Recuperar Cuenta</b><br />Solicitud de restablecimiento de acceso mediante correo.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/NewPassword.png" alt="Nueva Contraseña" width="240" /><br />
+      <sub><b>Nueva Contraseña</b><br />Ingreso y confirmación de nuevas credenciales de acceso.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/States.png" alt="Estados de Verificación" width="240" /><br />
+      <sub><b>Estados / Validación</b><br />Notificaciones de error o rechazo en proceso de verificación.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+#### **2. Dashboard Principal y Secciones**
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/Home.png" alt="Inicio" width="240" /><br />
+      <sub><b>Inicio / Dashboard</b><br />Vista principal con saldo total, accesos rápidos y resumen de actividad.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/SeccionMarket.png" alt="Mercado" width="240" /><br />
+      <sub><b>Sección Mercado</b><br />Catálogo de facturas y oportunidades disponibles para fondear.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/SeccionInversions.png" alt="Inversiones" width="240" /><br />
+      <sub><b>Mis Inversiones</b><br />Listado y seguimiento del estado de las facturas fondeadas.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/SeccionWallet.png" alt="Billetera" width="240" /><br />
+      <sub><b>Billetera</b><br />Detalle de saldo disponible, retenido e historial transaccional.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+#### **3. Flujo de Subasta e Inversión**
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/DetailAuction.png" alt="Detalle de Subasta" width="240" /><br />
+      <sub><b>Detalle de Subasta</b><br />Información de la factura, tasa de retorno y empresa emisora.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/InsufficentFunds.png" alt="Saldo Insuficiente" width="240" /><br />
+      <sub><b>Saldo Insuficiente</b><br />Validación y aviso para recargar fondos antes de invertir.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/RefreshWallet.png" alt="Recarga de Billetera" width="240" /><br />
+      <sub><b>Recargar Billetera</b><br />Módulo para abonar dinero a la cuenta mediante transferencia/tarjeta.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+#### **4. Perfil y Ajustes**
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/Perfil.png" alt="Perfil del Usuario" width="240" /><br />
+      <sub><b>Perfil</b><br />Información general del usuario y estado de la cuenta.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/RechargeAndProfile.png" alt="Recarga y Perfil" width="240" /><br />
+      <sub><b>Configuración de Recarga/Perfil</b><br />Gestión de cuentas bancarias de retiro y ajustes.</sub>
+    </td>
+  </tr>
+</table>
 
 ### 4.4.2. Mobile Applications Wireflow Diagrams
 
