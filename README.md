@@ -634,9 +634,59 @@ La colección de recursos gráficos vectoriales emplea un diseño de trazos limp
 
 ### 4.1.2. Web Style Guidelines
 
-<!-- Estándares visuales y de interacción para responsive web interfaces. Material Design + PrimeVue. -->
+**Botones (Button Component)**
 
-_Pendiente de elaboración._
+Se contemplan botones principales destinados a operaciones esenciales como "Descontar Factura" o "Confirmar Inversión", además de variantes secundarias para funciones alternas, botones de tipo contorno (Ghost) y estados visuales para elementos inhabilitados.
+
+![Button](assets/cap4-product-design/style-guidelines/button.png)
+
+**Etiquetas de Estado (Badges & Chips)**
+
+Elementos visuales de formato reducido pensados para categorizar la situación de las transacciones (tales como "Aprobada", "En Subasta" o "Cobrada"), las escalas de calificación de riesgo crediticio y el distintivo especial de "Factoring Verde".
+
+![Etiquetas](assets/cap4-product-design/style-guidelines/badges.png)
+
+**Campos de Entrada (Input & Form Components)**
+
+Herramientas destinadas al registro de información del usuario: cajas de texto tradicionales y complementadas con iconos, menús desplegables de selección, validación instantánea y un módulo de arrastrar y soltar (drag-and-drop) enfocado en la carga y procesamiento de facturas electrónicas.
+
+![Campos](assets/cap4-product-design/style-guidelines/input.png)
+
+**Tarjetas e Indicadores (Cardas & KPI)**
+
+Paneles organizados para presentar datos financieros resumidos: fichas de facturas disponibles para subasta, síntesis del portafolio de inversiones y tarjetas con indicadores clave de rendimiento (KPI) que reflejan la economía de la MYPE.
+
+![Tarjetas](assets/cap4-product-design/style-guidelines/cards.png)
+
+**Navegación Web (Navigation Components)**
+
+Elementos de orientación orientados a guiar al usuario a través de la arquitectura de la plataforma y su página de presentación: cabecera o barra de navegación principal (Header/Navbar), panel lateral de opciones (Sidebar) y barras de pestañas (Tabs).
+
+![Navegación](assets/cap4-product-design/style-guidelines/navigation.png)
+
+**Controles de Selección (Controls)**
+
+Controles interactivos para selección y ajustes como interruptores de activación, casillas de verificación y botones de opción empleados en los filtros del mercado, las opciones de reinversión automática y la aceptación de normativas legales.
+
+![Controles](assets/cap4-product-design/style-guidelines/controls.png)
+
+**Tablas de Datos (DataTable Controls)**
+
+Componente de tabla tabular diseñado para procesar y mostrar amplios listados de facturas, registros de transacciones y estatus de cobranza, el cual cuenta con capacidades para ordenar columnas y navegar mediante paginación.
+
+![Tablas-Datos](assets/cap4-product-design/style-guidelines/data-table.png)
+
+**Estructuras de Layout (Shells Component)**
+
+Modelos estructurales de distribución que distribuyen las vistas de la aplicación web en secciones operativas permanentes como la barra superior, el menú de navegación lateral y el espacio central de contenidos.
+
+![Estructuras](assets/cap4-product-design/style-guidelines/shells.png)
+
+**Retroalimentación y Notificaciones (Feedback Components)**
+
+Mecanismos de aviso orientados a informar sobre el desenlace de los procedimientos o a orientar la navegación: cuadros flotantes de confirmación, notificaciones emergentes breves (Toast), indicadores de avance temporal y elementos visuales de espera giratorios (spinners).
+
+![Retroalimentacion](assets/cap4-product-design/style-guidelines/feedback.png)
 
 ### 4.1.3. Mobile Style Guidelines
 
