@@ -704,34 +704,117 @@ _Pendiente de elaboración._
 
 ## 4.2. Information Architecture
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
-<!-- Assets: ./assets/cap4-product-design/information-architecture/ -->
+En el presente apartado se detalla la arquitectura de información de la plataforma Vankoo, concebida para ordenar, clasificar y etiquetar los contenidos de forma que tanto los empresarios del segmento MYPE en busca de liquidez como los inversionistas orientados a la rentabilidad de su capital accedan sin fricciones a los datos financieros, técnicos y operativos. La finalidad central de este diseño consiste en disminuir la carga cognitiva por medio de una jerarquía rigurosa que optimice la toma de decisiones financieras y agilice la transformación de las cuentas por cobrar en efectivo disponible.
 
 ### 4.2.1. Organization Systems
 
-_Pendiente de elaboración._
+Para garantizar que el contenido de Yield Labs sea accesible y lógico, se han aplicado diversos sistemas de organización adaptados a la naturaleza de los datos financieros y al perfil de cada segmento de usuario:
+
+##### Visual Organization Systems (Sistemas de Organización Visual):
+* **Organización Jerárquica (Visual Hierarchy):** Se aplica de forma predominante en los dashboards de la plataforma web. La información más crítica, como la disponibilidad de efectivo desembolsable, el Score de Riesgo del Pagador generado por IA, el porcentaje de fondeo acumulado de la factura y el distintivo de Factoring Verde, ocupa el nivel superior de la jerarquía visual mediante tarjetas (*cards*) destacadas y componentes KPI. Esto permite que el empresario e inversionista evalúen oportunidades de un vistazo.
+* **Organización Secuencial (Step-by-step):** Este sistema es el eje central del flujo de descuento de facturas para la MYPE. El proceso se organiza como un flujo lineal guiado: Carga de factura PDF/XML → Lectura e extracción automática con IA (OCR+NLP) → Validación de constancia en SUNAT/CAVALI → Asignación de Score de Riesgo del Pagador → Publicación en el Marketplace.
+* **Organización Matricial:** Se utiliza en las secciones de analítica avanzada y gestión de portafolios. Permite cruzar variables complejas como la tasa de rendimiento esperado (TCEA) frente a los plazos de vencimiento (30, 60, 90 o 120 días) y la concentración por sector industrial, facilitando la comparación de múltiples facturas en una sola vista.
+
+##### Content Categorization Schemes (Esquemas de Categorización de Contenido):
+
+* **Según Audiencia (Grupos de Usuarios):** Es el esquema troncal de la plataforma. Los contenidos se dividen rigurosamente según el rol: los empresarios MYPE operan la administración de cuentas por cobrar, la subida de archivos y los paneles de rendimiento económico; los inversionistas minoristas emplean la puja de facturas, la cartera virtual, las opciones de reinversión automatizada y los criterios ESG/Verdes; mientras que los administradores controlan las funciones de validación de riesgos y el registro inalterable de eventos.
+* **Cronológico:** Destinado al monitoreo de cobranzas y la trazabilidad inalterable a través de *Event Sourcing*. Los títulos y operaciones se estructuran de acuerdo con su fecha de emisión, el plazo límite de pago y el orden temporal sucesivo (Registrada, Auditada por IA, Publicada, Fondeada, Desembolsada, Cobrada).
+* **Por Tópicos:** Implementado dentro del mercado de inversión (*Marketplace*), agrupa las facturas tomando en cuenta la calificación de riesgo del pagador (A+, A, B, C), el horizonte de retorno (30, 60, 90 días), la industria o rubro comercial y el distintivo de impacto socioambiental (*Factoring Verde*).
+* **Alfabético:** Este modelo funciona como recurso secundario dentro de los repertorios de entidades pagadoras corporativas, el directorio de compañías adquirentes y los inventarios de comprobantes tributarios.
 
 ### 4.2.2. Labeling Systems
 
-_Pendiente de elaboración._
+En esta sección se precisan los rótulos empleados en la interfaz para denotar conjuntos de datos económicos mediante denominaciones concisas, nítidas y explícitas. El propósito consiste en garantizar una asociación mental directa entre cada concepto y su respectiva utilidad práctica, previniendo confusiones operativas en la administración de fondos.
+
+* **Descontar Factura:** Principal botón de acción destinado al empresario del sector MYPE. Engloba el proceso de subida inteligente de comprobantes (en formatos PDF y XML), el análisis automatizado con inteligencia artificial y la petición de capital de trabajo en un plazo menor a dos días.
+* **Marketplace (u Oportunidades):** Espacio que agrupa el directorio de títulos valores negociables ofertados para financiamiento colaborativo por parte de los inversores.
+* **Score de Riesgo (Salud del Pagador):** Métrica que refleja la calificación de riesgo crediticio de la empresa adquirente, calculada a través de modelos predictivos avanzados para estimar la probabilidad real de cobro del documento.
+* **Factoring Verde:** Distintivo asignado a transacciones de organizaciones con prácticas ecológicas o de triple impacto, el cual otorga beneficios como tasas preferenciales (una rebaja del 0.25%) y una mayor agilidad en el fondeo.
+* **Billetera (Wallet):** Panel centralizador para el control del capital del inversor, donde se visualiza el saldo líquido, los intereses acumulados, las transferencias hacia cuentas bancarias y los parámetros de la "Billetera de Reinversión Automática".
+* **Trazabilidad (Ledger):** Módulo que posibilita la visualización en directo del registro inalterable fundamentado en *Event Sourcing*, habilitando la auditoría de cada modificación de estado de la factura.
+* **Salud Financiera:** Panel analítico diseñado para el segmento MYPE que expone estimaciones de flujo de caja, el ciclo de conversión de efectivo y el estatus de los comprobantes negociados ante CAVALI.
+* **Soporte (Ayuda):** Sección que compila la normativa del modelo de *crowdfactoring*, el simulador de tasas, los manuales de emisión electrónica y las vías oficiales de asistencia al cliente.
 
 ### 4.2.3. SEO Tags and Meta Tags
 
-<!-- Como mínimo: Title, Description, Keywords y Author, para Landing Page y Web Application. -->
+Para potenciar el posicionamiento del ecosistema Yield Labs / Vankoo en los buscadores web y resguardar la seguridad dentro de la plataforma transaccional, se han establecido las especificaciones de etiquetas SEO y metadatos tanto para la página de presentación (*Landing Page*) como para la aplicación web (*Web Application*).
 
-_Pendiente de elaboración._
+### Landing Page SEO Tags and Meta Tags
+La página de aterrizaje busca captar tanto a empresarios MYPE que necesitan liquidez como a inversores que persiguen rentabilidad.
 
-| Página | Title | Description | Keywords | Author |
-|--------|-------|-------------|----------|--------|
-|  |  |  |  |  |
+| Etiqueta | Contenido |
+| :--- | :--- |
+| **Title** | Vankoo - Crowdfactoring Inteligente y Liquidez Inmediata para MYPES |
+| **Meta Description** | Convierte tus facturas por cobrar en efectivo en menos de 48 horas sin deuda bancaria. Crowdfactoring impulsado por IA y Factoring Verde en Perú. |
+| **Meta Keywords** | crowdfactoring Perú, liquidez MYPES, descuento de facturas, factoring verde, inversión en facturas, capital de trabajo, Yield Labs, Vankoo |
+| **Meta Author** | Yield Labs Team |
+| **Meta Viewport** | width=device-width, initial-scale=1.0 |
+| **Meta Charset** | UTF-8 |
+| **Open Graph Title** | Yield Labs: Liquidez inmediata para MYPES y retorno atractivo para inversionistas |
+| **Open Graph Description** | Transforma tus facturas en liquidez de forma rápida, transparente y segura con nuestra plataforma inteligente. |
+| **Open Graph Image** | https://www.yieldlabs.pe/assets/images/yieldlabs-og-preview.png |
+| **Open Graph URL** | https://www.yieldlabs.pe |
+
+```html
+<title>Vankoo - Crowdfactoring Inteligente y Liquidez Inmediata para MYPES</title>
+<meta name="description" content="Convierte tus facturas por cobrar en efectivo en menos de 48 horas sin deuda bancaria. Crowdfactoring impulsado por IA y Factoring Verde en Perú.">
+<meta name="keywords" content="crowdfactoring Perú, liquidez MYPES, descuento de facturas, factoring verde, inversión en facturas, capital de trabajo, Yield Labs, Vankoo">
+<meta name="author" content="Yield Labs Team">
+<meta property="og:title" content="Yield Labs: Liquidez inmediata para MYPES y retorno atractivo para inversionistas">
+<meta property="og:description" content="Transforma tus facturas en liquidez de forma rápida, transparente y segura con nuestra plataforma inteligente.">
+<meta property="og:image" content="https://www.yieldlabs.pe/assets/images/yieldlabs-og-preview.png">
+<meta property="og:url" content="https://www.yieldlabs.pe">
+```
+**Web Application SEO Tags and Meta Tags**
+
+La aplicación web es un entorno transaccional (SPA) seguro accesible por usuarios autenticados. Se configura para restringir la indexación privada de datos financieros.
+
+| Etiqueta | Contenido |
+| :--- | :--- |
+| **Title** | Plataforma Vankoo - Gestión de Crowdfactoring y Portafolio |
+| **Meta Description** | Sistema de gestión de facturas, scoring predictivo de pagadores y mercado de inversión descentralizado para MYPES e inversionistas. |
+| **Meta Keywords** | dashboard factoring, scoring riesgo IA, mercado de facturas, billetera digital, trazabilidad event sourcing |
+| **Meta Robots** | noindex, nofollow (para proteger el acceso a datos financieros internos) |
+
+```html
+<title>Plataforma Vankoo - Gestión de Crowdfactoring y Portafolio</title>
+<meta name="description" content="Sistema de gestión de facturas, scoring predictivo de pagadores y mercado de inversión descentralizado para MYPES e inversionistas.">
+<meta name="robots" content="noindex, nofollow">
+```
 
 ### 4.2.4. Searching Systems
 
-_Pendiente de elaboración._
+Para prevenir la saturación de datos, los mecanismos de búsqueda dentro de la plataforma Vankoo —desarrollada por Yield Labs— han sido concebidos para que los distintos usuarios localicen con agilidad comprobantes concretos, examinen la solvencia de las empresas adquirentes y filtren alternativas de colocación de capital conforme a parámetros de riesgo y criterios sostenibles.
+
+##### Búsqueda en la Web App (Empresarios, Inversionistas y Administradores)
+
+* **Búsqueda Global y Predictiva:** Campo de localización incorporado en la sección superior de la interfaz provisto de sugerencias automáticas inmediatas. Al teclear el número de RUC o la denominación social del pagador, el código del comprobante (por ejemplo, F001-00234) o el RUC de la MYPE emisora, la plataforma despliega opciones al instante.
+* **Sistema de Filtros Avanzados:** Los inversores y gestores disponen de paneles especializados para afinar los catálogos de información:
+  * **Por Score de Riesgo:** Permite aislar los títulos según la categoría evaluada por los algoritmos predictivos (Niveles A+, A, B, C).
+  * **Por Impacto (Factoring Verde):** Facilita la selección exclusiva de operaciones que cuentan con el distintivo de sostenibilidad ambiental o social.
+  * **Por Plazo de Retorno:** Agrupa las transacciones tomando como referencia su fecha de expiración (intervalos de 1 a 30 días, 31 a 60 días, 61 a 90 días, o superiores a 90 días).
+  * **Por Rango de Monto de Entrada:** Posibilita la búsqueda de participaciones fraccionadas en facturas desde S/ 50 hasta volúmenes de carácter institucional.
+  * **Por Tasa de Rendimiento (TCEA):** Ordena las oportunidades según el porcentaje de retorno o descuento planteado.
+* **Visualización de Resultados:** Los registros se despliegan mediante dos modalidades alternables: un esquema de tarjetas (*Cards Grid*) enfocado en la revisión ágil de alternativas de inversión, y una estructura tabular (*DataTable*) orientada al manejo masivo, dotada de columnas configurables y realce visual de términos coincidentes.
 
 ### 4.2.5. Navigation Systems
 
-_Pendiente de elaboración._
+La arquitectura de orientación de Yield Labs conduce a los usuarios hacia sus metas principales: la exposición de la propuesta comercial (*Landing Page*), la administración del capital de trabajo para la MYPE y la colocación de fondos por parte de los inversores (*Web App*), empleando enfoques de desplazamiento que reducen al mínimo las acciones necesarias para operar.
+
+### Navegación en la Landing Page (Marketing y Captación)
+
+* **Desplazamiento Continuo (*Scrolling Navigation*):** Diseño fluido de página única (*One-Page*) que conduce al visitante de forma secuencial a través de la propuesta de valor, los retos financieros del sector MYPE, el mecanismo de *crowdfactoring* potenciado por inteligencia artificial, la herramienta interactiva de simulación de tasas y los casos de éxito.
+* **Menú Fijo (*Sticky Navigation*):** Cabecera superior persistente que acompaña el movimiento vertical de la pantalla, facilitando el acceso directo a los apartados de "Empresas", "Inversionistas", "Factoring Verde" y "Simulador", complementada con un botón principal de llamada a la acción (*CTA*) para "Descontar Mi Factura / Registrarse".
+
+##### Navegación en la Web App (Dashboard Transaccional)
+
+* **Barra Lateral Estática (*Side Navigation*):** Menú vertical anclado a la izquierda cuyo contenido varía según el perfil del usuario validado (empresario o inversor), posibilitando alternar con fluidez entre el panel principal (*Dashboard*), el mercado, la subida de documentos, la cartera virtual y los informes analíticos.
+* **Migas de Pan (*Breadcrumbs*):** Ruta de rastreo que ayuda a ubicar al usuario dentro de los niveles internos de la plataforma (por ejemplo: Mercado > Facturas de Servicios > Factura F001-9842 > Reporte de Riesgo IA).
+* **Navegación Contextual y Pestañas (*Tabs*):** Estructura interna dentro de la ficha de cada factura que permite alternar mediante solapas entre la "Información del Documento", el "Score del Pagador (IA)", el "Historial de Eventos (*Ledger*)" y los "Inversionistas Participantes".
+
+##### Navegación entre Ecosistemas (Inter-product Navigation)
+
+* **Alertas Dinámicas y Enlaces Directos (*Deep Linking*):** Avisos instantáneos dentro de la interfaz y correos electrónicos equipados con enlaces específicos que conducen directamente a comprobantes recién validados compatibles con las reglas de reinversión del inversor, o bien notificaciones de cierre cuando un título de la MYPE completa el total requerido para su respectivo desembolso.
 
 <hr class="page-break">
 
