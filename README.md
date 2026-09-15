@@ -567,7 +567,7 @@ _Pendiente de elaboración: párrafo introductorio del capítulo._
 
 ## 4.1. Style Guidelines
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En esta sección se establecen los lineamientos de diseño visual, estándares de interfaz y principios estéticos que rigen el producto. El objetivo de esta guía de estilo es garantizar la consistencia, usabilidad y coherencia visual en todas las plataformas y componentes del sistema, facilitando una experiencia de usuario fluida e intuitiva.
 
 ### 4.1.1. General Style Guidelines
 
