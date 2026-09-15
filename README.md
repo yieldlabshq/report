@@ -561,20 +561,60 @@ _Pendiente de elaboración._
 
 <hr class="page-break">
 
-# Capítulo IV: Product Design
+## Capítulo IV: Product Design
+### 4.1. Style Guidelines
+#### 4.1.1. General Style Guidelines
 
-_Pendiente de elaboración: párrafo introductorio del capítulo._
+En este segmento se va a explicar acerca de la guia de estilos generales, en la cual se van a establecer los principios visuales fundamentales, las referencias de marcas y las diversas decisiones conceptuales para que Yield Labs tenga una identidad propia.
 
-## 4.1. Style Guidelines
+##### Branding e Identidad de Marca
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En Vankoo hemos podido integrar la seguridad de la banca tradicional con la agilidad digital. En este caso el diseño de nuestro proyecto refleja la fluidez y dinamismo del mercado. Facilitando el crecimiento y convirtiendo tus facturas en liquidez al instante.
 
-### 4.1.1. General Style Guidelines
+![LogoTipoVankoo](assets/cap4-product-design/style-guidelines/logo-vankoo.png)
 
-<!-- Branding, Typography, Colors y Spacing; tono de comunicación y lenguaje aplicado. -->
-<!-- Assets: ./assets/cap4-product-design/style-guidelines/ -->
 
-_Pendiente de elaboración._
+##### Expresión y  Tono de Comunicación
+
+El tono de comunicación de Vankoo se fundamenta en cuatro pilares esenciales proyectados a brindar seguridad técnica, precisión financiera y empatía con los fundadores e inversionistas:
+
+* **Formal vs. Casual:** Orientado a un registro experto pero amigable, desterrando la opacidad y los tecnicismos excesivos de la banca convencional.
+* **Respetuoso vs. Irreverente:** Estrictamente prudente con el resguardo del patrimonio y transparente al detallar la exposición al riesgo.
+* **Entusiasta vs. Sereno:** Cálido y claro, priorizando la divulgación de métricas certeras, rendimientos reales y solidez económica.
+* **Divertido vs. Serio:** Impecable en la protección operativa y el seguimiento de activos, complementado con una experiencia digital actual y fluida.
+
+![Expression](assets/cap4-product-design/style-guidelines/Expression.png)
+
+##### Paleta de Colores
+
+El esquema de colores de Vankoo prioriza el confort visual y se complementa con acentos verdes vibrantes que representan la expansión financiera y el enfoque de **Factoring Verde**. Asimismo, contempla indicadores cromáticos intuitivos para la gestión de datos económicos (transacciones exitosas, alertas, riesgos y estados neutrales).
+
+![PaletaColor](assets/cap4-product-design/style-guidelines/paleta-color.png)
+
+##### Tipografía (Typography System)
+
+Esta tipografía de trazos limpios y geométricos ha sido especialmente diseñada para garantizar la máxima legibilidad en pantallas y facilitar la lectura rápida de cifras y métricas financieras. El sistema tipográfico establece niveles de jerarquía estructurados con precisión, distribuidos entre los títulos principales de los paneles de control, los encabezados de tarjetas informativas, los bloques de contenido general y las etiquetas de datos clave.
+
+![Tipografia](assets/cap4-product-design/style-guidelines/typography.png)
+
+##### Sistema de Espaciado y Bordes
+
+Para mantener alineación y ritmo visual consistente en todas las pantallas, se ha podido utilizar una grilla basada en múltiplos de 8px (8px Grid System) para márgenes y rellenos internos. Adicionalmente, el uso de radios de curvatura en los bordes aporta una estética fluida y ergonómica a los botones y contenedores de información.
+
+![Spacing-Radius](assets/cap4-product-design/style-guidelines/spacing-radius.png)
+
+##### Elevación y Sombras (Elevation & Depth)
+
+Para organizar la profundidad y el orden visual en el eje Z, se han implementado sombras sutiles que permiten distinguir con claridad los diferentes niveles de la interfaz, diferenciando el fondo, los contenedores principales, las tarjetas interactivas y los elementos flotantes como modales o menús desplegables.
+
+![Elevación](assets/cap4-product-design/style-guidelines/elevation.png)
+
+##### Iconografía (Icons System)
+
+La colección de recursos gráficos vectoriales emplea un diseño de trazos limpios y unificados de espesor uniforme. Esto favorece la decodificación inmediata de funciones esenciales, tales como la importación de archivos PDF o XML, las evaluaciones de riesgo, el seguimiento del estado de cobranzas y las alternativas de inversión.
+
+![Icons](assets/cap4-product-design/style-guidelines/icons.png)
+
 
 ### 4.1.2. Web Style Guidelines
 
