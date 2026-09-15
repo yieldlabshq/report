@@ -826,10 +826,119 @@ A continuación, se presentan todas las pantallas que conforman los wireframes d
 
 ### 4.4.2. Mobile Applications Wireflow Diagrams
 
-<!-- Herramienta: LucidChart / Overflow. -->
-<!-- Assets: ./assets/cap4-product-design/mobile-app/wireflow-diagrams/ -->
+A continuación, se presentan los diagramas de flujo de pantallas (*Wireflow Diagrams*) de la aplicación móvil de **Vankoo**, desplegados a tamaño completo para garantizar la máxima legibilidad de los componentes y las conexiones entre pantallas.
 
-_Pendiente de elaboración._
+---
+
+#### **1. Autenticación, Registro e Identidad**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/FrontPage.png" alt="Pantalla Inicial" width="750" /><br />
+  <b>01. Portada / Front Page</b><br />
+  <sub>Diagrama de inicio y flujo de bienvenida a la aplicación.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Access0.png" alt="Acceso 0" width="750" /><br />
+  <b>02. Acceso - Inicio de Sesión</b><br />
+  <sub>Flujo de autenticación con credenciales principales.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Access1.png" alt="Acceso 1" width="750" /><br />
+  <b>03. Acceso - Recuperación</b><br />
+  <sub>Ruta de recuperación de contraseña y enlaces de validación.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Access2.png" alt="Acceso 2" width="750" /><br />
+  <b>04. Acceso - Verificación</b><br />
+  <sub>Flujo de estados de error y confirmación de identidad.</sub>
+</p>
+
+---
+
+#### **2. Mercado de Oportunidades y Subastas**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Market0.png" alt="Mercado 0" width="750" /><br />
+  <b>05. Mercado - Exploración</b><br />
+  <sub>Navegación general por las facturas y oportunidades disponibles.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Market1.png" alt="Mercado 1" width="750" /><br />
+  <b>06. Mercado - Detalle de Subasta</b><br />
+  <sub>Flujo de consulta de detalles y simulación de inversión.</sub>
+</p>
+
+---
+
+#### **3. Gestión de Inversiones y Billetera**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Investments0.png" alt="Inversiones 0" width="750" /><br />
+  <b>07. Inversiones - Resumen</b><br />
+  <sub>Visualización general de operaciones en curso y fondeadas.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Investments1.png" alt="Inversiones 1" width="750" /><br />
+  <b>08. Inversiones - Detalle</b><br />
+  <sub>Flujo de seguimiento de retornos y estado de pagos.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/WalletRecharge0.png" alt="Billetera 0" width="750" /><br />
+  <b>09. Billetera - Recarga</b><br />
+  <sub>Navegación e ingreso del monto para abono de saldo.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/WalletRecharge1.png" alt="Billetera 1" width="750" /><br />
+  <b>10. Billetera - Confirmación</b><br />
+  <sub>Pasarela bancaria y manejo de estados de rechazo/éxito.</sub>
+</p>
+
+---
+
+#### **4. Perfil del Usuario y Configuración**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Profile0.png" alt="Perfil 0" width="750" /><br />
+  <b>11. Perfil - General</b><br />
+  <sub>Navegación por datos personales y estado de verificación.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Profile1.png" alt="Perfil 1" width="750" /><br />
+  <b>12. Perfil - Cuentas Bancarias</b><br />
+  <sub>Ajustes de cuentas para el retiro de fondos.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Profile2.png" alt="Perfil 2" width="750" /><br />
+  <b>13. Perfil - Seguridad y Ajustes</b><br />
+  <sub>Modificación de preferencias y seguridad de la cuenta.</sub>
+</p>
 
 ### 4.4.3. Mobile Applications Mock-ups
 
