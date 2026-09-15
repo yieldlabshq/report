@@ -1093,11 +1093,6 @@ El diagrama de componentes del **IAM Service** (Java / Spring Boot) se estructur
 
 * **Código fuente (Structurizr DSL):** [`iam-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/iam-service-components.dsl)
 
-<p align="center">
-  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/iam-service-components.png" alt="IAM Service Component Diagram" width="750" /><br />
-  <b>Figura: Diagrama de Componentes - IAM Service</b>
-</p>
-
 ---
 
 #### **2. Invoicing Service Component Diagram**
@@ -1114,11 +1109,6 @@ El diagrama de componentes del **Invoicing Service** (C# / .NET) organiza en och
 
 * **Código fuente (Structurizr DSL):** [`invoicing-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/invoicing-service-components.dsl)
 
-<p align="center">
-  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/invoicing-service-components.png" alt="Invoicing Service Component Diagram" width="750" /><br />
-  <b>Figura: Diagrama de Componentes - Invoicing Service</b>
-</p>
-
 ---
 
 #### **3. Investment Service Component Diagram**
@@ -1133,11 +1123,6 @@ El diagrama de componentes del **Investment Service** (Java / Spring Boot) está
 > *Nota:* La integración con la publicación del evento "Inversión Realizada" y el cálculo del scoring de riesgo se incorporarán en versiones posteriores, por lo que no forman parte de este diagrama.
 
 * **Código fuente (Structurizr DSL):** [`investment-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/investment-service-components.dsl)
-
-<p align="center">
-  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/investment-service-components.png" alt="Investment Service Component Diagram" width="750" /><br />
-  <b>Figura: Diagrama de Componentes - Investment Service</b>
-</p>
 
 ---
 
@@ -1156,11 +1141,6 @@ El diagrama de componentes del **Finance Service** (Java / Spring Boot con Axon 
 
 * **Código fuente (Structurizr DSL):** [`finance-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/finance-service-components.dsl)
 
-<p align="center">
-  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/finance-service-components.png" alt="Finance Service Component Diagram" width="750" /><br />
-  <b>Figura: Diagrama de Componentes - Finance Service</b>
-</p>
-
 ---
 
 #### **5. Profile Service Component Diagram**
@@ -1175,10 +1155,7 @@ El diagrama de componentes del **Profile Service** (TypeScript / NestJS) se divi
 
 * **Código fuente (Structurizr DSL):** [`profile-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/profile-service-components.dsl)
 
-<p align="center">
-  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/profile-service-components.png" alt="Profile Service Component Diagram" width="750" /><br />
-  <b>Figura: Diagrama de Componentes - Profile Service</b>
-</p>
+
 
 ## 4.9. Software Object-Oriented Design
 
