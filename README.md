@@ -584,7 +584,7 @@ _Pendiente de elaboración._
 
 ### 4.1.3. Mobile Style Guidelines
 
-1. General Specs & Grid System
+a. General Specs & Grid System
 
 * **Frame Base (Canvas Viewport):** Android / iOS (`390px × 844px`)
 * **Grid & Offsets:** Margen lateral de `16px` o `20px` según la densidad de la pantalla.
@@ -596,19 +596,19 @@ _Pendiente de elaboración._
 
 ---
 
-2. Color Palette & Tokens
+b). Color Palette & Tokens
 
-2.1. Brand / Primary
+* Brand / Primary
 * **Menta Vankoo (Action / Primary CTA):** `#00D09C` — Botones de acción principal, estados activos de menú y tasas destacadas.
 * **Azul Oscuro (Brand Header / Dark Base):** `#0B192C` — Cabecera de marca, fondo base en modo oscuro y tarjetas destacadas de saldo.
 
-2.2. Feedback & System States
+* Feedback & System States
 * **Error / Destructive (Dark Mode):** Fondo `#7F1D1D` o `#991B1B` con borde `#FF3B30` y texto blanco (`#FFFFFF`).
 * **Error / Destructive (Light Mode):** Fondo `#FEE2E2` con borde `#FCA5A5` y texto `#991B1B`.
 * **Rendimiento / Descuento (Pill Success):** Fondo `#D1FAE5` con texto verde oscuro `#065F46` (ej. *4.2% de descuento*).
 * **Alertas / Avisos:** Fondo beige/amarillo claro `#FEF3C7` con texto/borde ámbar `#B45309`.
 
-2.3. Neutrals & Surfaces
+* Neutrals & Surfaces
 * **Dark Mode Base Background:** `#0B192C` / `#0F172A`.
 * **Dark Mode Input / Card Background:** `#1E293B` o `#111827` con opacidad.
 * **Light Mode Base Background:** `#FFFFFF` (Default) / `#F3F4F6` (Gris claro para contenedor e inputs deshabilitados).
@@ -617,7 +617,7 @@ _Pendiente de elaboración._
 
 ---
 
-3. Typography Scale
+c) Typography Scale
 
 * **Header Brand Text (Logo Slogan):**
   * **Font Family:** Sans-serif (Inter / SF Pro / Roboto).
@@ -634,9 +634,9 @@ _Pendiente de elaboración._
 
 ---
 
-4. UI Components & Navigation
+d) UI Components & Navigation
 
-4.1. Header & Navigation Bar
+* Header & Navigation Bar
 * **Brand Header (Autenticación / Modales):** Fondo azul oscuro `#0B192C` con logo centrado, barra de estado nativa (`9:41`) y botón opcional de acción en esquina derecha (`[ Salir ]`).
 * **App Top Bar (Dashboard / Mercado):** Fondo blanco `#FFFFFF`, isotipo **vankoo** alineado a la izquierda e icono de notificaciones a la derecha.
 * **Bottom Navigation Bar (Tab Bar):**
@@ -645,17 +645,17 @@ _Pendiente de elaboración._
   * **Estado Activo:** Verde menta `#00D09C` con indicador circular.
   * **Estado Inactivo:** Gris neutro `#9CA3AF`.
 
-4.2. Form Inputs & Selectors
+* Form Inputs & Selectors
 * **Field Default:** Borde gris claro (`1px`), alto `48px` - `52px`, icono interactivo a la derecha (ej. visibilidad de contraseña).
 * **Field Error:** Borde rojo con banner/mensaje de ayuda en tipografía `11px - 12px`.
 * **Selection Chips / Montos Rápidos:** Chips horizontales (`S/ 1,000`, `S/ 3,000`, `S/ 5,000`) en `#F3F4F6` con indicador activo al seleccionar.
 
-4.3. Cards & Data Display
+* Cards & Data Display
 * **Balance Primary Card:** Fondo azul `#0B192C` (Radius `12px - 16px`), saldo principal en `28px - 32px` Bold blanco y botón Pill verde menta (*"Recargar"*).
 * **Inversión / Opportunity Cards:** Fondo blanco, borde `#E5E7EB`, título en `14px` SemiBold, monto en `14px` Bold y badges de grado/descuento (*• Grado A*, *5.8% de descuento*).
 * **Historial de Movimientos:** Filas con icono circular transaccional, título en `14px` SemiBold, ID en `12px` y montos destacados (+ Verde para ingresos / - Rojo/Oscuro para egresos).
 
-4.4. Buttons & CTA
+* Buttons & CTA
 * **Primary Button:** Ancho completo (*Full Width*), alto `48px`, color verde menta `#00D09C` con texto centrado (`Medium` / `SemiBold`).
 * **Disabled / Loading Button:** Opacidad al 50% con spinner o texto diferido (*"Ingresando..."*).
 * **Secondary / Text Link:** Botón tipo enlace (*"¿Olvidaste tu contraseña?"*, *"Usar otra tarjeta"*).
