@@ -1,0 +1,204 @@
+@startuml finance-database-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam linetype ortho
+
+!define table(x) entity x << (T,#438DD5) >>
+!define enum(x)  entity x << (E,#85BBF0) >>
+
+hide circle
+hide empty members
+
+title Vankoo Finance — Physical Database Diagram (PostgreSQL, Axon Server as Event Store)
+
+package "finance_read_model (CQRS query side)" {
+  table(deposit_views) {
+    * id                    : UUID <<PK>>
+    --
+    * deposit_id            : UUID <<UNIQUE>>
+    * account_id            : UUID <<ref Profile.investors/companies (via IAM.users.id)>>
+    * amount_minor          : BIGINT
+    * currency              : VARCHAR <<CHECK IN ('PEN','USD')>>
+    * provider              : VARCHAR <<CHECK IN ('STRIPE')>>
+    * provider_deposit_id   : VARCHAR
+    * status                : VARCHAR <<CHECK>>
+    * failure_reason        : VARCHAR <<CHECK>>
+    * action_url            : VARCHAR(2048)
+    * created_at            : TIMESTAMPTZ
+    * updated_at            : TIMESTAMPTZ
+    * last_event_id         : VARCHAR
+    * projection_version    : INTEGER
+  }
+
+  table(wallet_views) {
+    * id                    : UUID <<PK>>
+    --
+    * wallet_id             : UUID <<UNIQUE>>
+    * account_id            : UUID <<ref Profile.investors/companies (via IAM.users.id)>>
+    * currency              : VARCHAR <<CHECK IN ('PEN','USD')>>
+    * balance_minor         : BIGINT
+    * created_at            : TIMESTAMPTZ
+    * updated_at            : TIMESTAMPTZ
+    * last_event_id         : VARCHAR
+    * projection_version    : INTEGER
+  }
+
+  table(wallet_movements) {
+    * id                    : UUID <<PK>>
+    --
+    * event_id              : VARCHAR <<UNIQUE>>
+    * wallet_id             : UUID <<FK wallet_views.wallet_id>>
+    * account_id            : UUID
+    * currency              : VARCHAR <<CHECK IN ('PEN','USD')>>
+    * amount_minor          : BIGINT
+    * type                  : VARCHAR <<CHECK IN ('RECARGA','INVERSION','RETIRO','COMISION')>>
+    * direction             : VARCHAR <<CHECK IN ('CREDIT','DEBIT')>>
+    * source_deposit_id     : UUID
+    * occurred_at           : TIMESTAMPTZ
+  }
+}
+
+package "finance_ops (edge / idempotency, not a read model)" {
+  table(provider_webhook_inboxes) {
+    * id                    : UUID <<PK>>
+    --
+    * provider              : VARCHAR <<CHECK IN ('STRIPE')>>
+    * provider_event_id     : VARCHAR
+    * provider_deposit_id   : VARCHAR
+    * deposit_id            : UUID
+    * status                : VARCHAR <<CHECK IN ('RECEIVED','APPLIED','PARKED','DISCARDED')>>
+    * normalized_status     : VARCHAR <<CHECK>>
+    * payload_ref           : VARCHAR
+    * attempts              : INTEGER
+    * next_attempt_at       : TIMESTAMPTZ
+    * received_at           : TIMESTAMPTZ
+  }
+
+  table(deposit_provider_references) {
+    * id                    : UUID <<PK>>
+    --
+    * provider              : VARCHAR <<CHECK IN ('STRIPE')>>
+    * provider_deposit_id   : VARCHAR
+    * deposit_id            : UUID
+    * registered_at         : TIMESTAMPTZ
+  }
+
+  table(wallet_credited_deposits) {
+    * id                    : UUID <<PK>>
+    --
+    * wallet_id             : UUID
+    * deposit_id            : UUID
+    * credited_at           : TIMESTAMPTZ
+  }
+
+  table(deposit_command_idempotencies) {
+    * id                    : UUID <<PK>>
+    --
+    * account_id            : UUID
+    * idempotency_key       : VARCHAR
+    * deposit_id            : UUID
+    * request_hash          : VARCHAR(64)
+    * created_at            : TIMESTAMPTZ
+  }
+}
+
+package "Axon support tables (token store / saga store / DLQ — NOT the Event Store)" {
+  table(token_entries) {
+    * processor_name        : VARCHAR <<PK>>
+    * segment                : INTEGER <<PK>>
+    --
+    * owner                  : VARCHAR
+    * token                  : OID
+  }
+
+  table(saga_entries) {
+    * saga_id                : VARCHAR <<PK>>
+    --
+    * saga_type              : VARCHAR
+    * serialized_saga        : OID
+  }
+
+  table(association_value_entries) {
+    * id                     : BIGINT <<PK>>
+    --
+    * association_key        : VARCHAR
+    * association_value      : VARCHAR
+    * saga_id                : VARCHAR <<FK saga_entries.saga_id>>
+  }
+
+  table(dead_letter_entries) {
+    * dead_letter_id         : VARCHAR <<PK>>
+    --
+    * processing_group       : VARCHAR
+    * sequence_identifier    : VARCHAR
+    * sequence_index         : BIGINT
+    * event_identifier       : VARCHAR
+    * payload                : OID
+  }
+}
+
+wallet_views "1" -- "0..*" wallet_movements : wallet_id
+saga_entries "1" -- "0..*" association_value_entries : saga_id
+
+note bottom of deposit_views
+  Indexes:
+  - UNIQUE { deposit_id }
+  - INDEX  { account_id, created_at DESC } (idx_deposit_views_account_created)
+  Poblada por proyección @EventHandler (DepositProjection); nunca se lee
+  desde el agregado Deposit.
+end note
+
+note bottom of wallet_views
+  Indexes:
+  - UNIQUE { wallet_id }
+  - INDEX  { account_id, currency } (idx_wallet_views_account_currency)
+end note
+
+note bottom of wallet_movements
+  Indexes:
+  - UNIQUE { event_id } (dedup del EventMessage de Axon)
+  - INDEX  { wallet_id, occurred_at DESC } (idx_wallet_movements_wallet_occurred)
+  Append-only: insertado vía INSERT ... ON CONFLICT (event_id) DO NOTHING.
+end note
+
+note bottom of provider_webhook_inboxes
+  Indexes:
+  - UNIQUE { provider, provider_event_id }
+  - INDEX  { status, next_attempt_at } (idx_provider_webhook_inboxes_due)
+  El body crudo del webhook NUNCA se persiste: payload_ref es un
+  SHA-256 hex del payload.
+end note
+
+note bottom of deposit_provider_references
+  Indexes: UNIQUE { provider, provider_deposit_id }
+end note
+
+note bottom of wallet_credited_deposits
+  Indexes: UNIQUE { wallet_id, deposit_id }
+  Barrera de deduplicación: evita acreditar dos veces un mismo depósito
+  ante reentrega de DepositSucceededEvent.
+end note
+
+note bottom of deposit_command_idempotencies
+  Indexes: UNIQUE { account_id, idempotency_key }
+  Barrera de idempotencia de POST /v1/deposits.
+end note
+
+note bottom of dead_letter_entries
+  Indexes:
+  - UNIQUE { processing_group, sequence_identifier, sequence_index }
+  - INDEX  { processing_group, sequence_identifier }
+  - INDEX  { processing_group }
+end note
+
+legend bottom
+  El Event Store real (domain_event_entry / snapshot_event_entry) vive
+  en Axon Server, un producto externo — NO existe en este esquema
+  PostgreSQL (ADR-0001). Deposit y Wallet no tienen tabla propia; se
+  reconstruyen por replay de eventos. account_id / wallet holder son
+  referencias lógicas (<<ref>>) al UserId de IAM propagado a través de
+  Profile (companies.user_id / investors.user_id) — Finance no tiene una
+  tabla local de "accounts".
+end legend
+
+@enduml
