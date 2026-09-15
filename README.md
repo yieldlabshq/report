@@ -1012,10 +1012,29 @@ En esta sección se presenta el modelo físico de datos correspondiente a cada m
 
 ### 4.8.1. Software Architecture Context Diagram
 
-<!-- C4 Model - Nivel 1. Herramienta: Structurizr (o Structurizr DSL como Diagram-as-Code). -->
-<!-- Assets: ./assets/cap4-product-design/software-architecture/context-diagram/ -->
+En esta sección se presenta el **Diagrama de Contexto del Sistema (System Context View)** para **Vankoo**, el cual delimita las fronteras de la plataforma, identifica los tipos de usuarios principales y detalla sus interacciones con los servicios externos que complementan la arquitectura del software.
 
-_Pendiente de elaboración._
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/context-diagram/out/vankoo-context-diagram.png" alt="Diagrama de Contexto de Vankoo" width="750" /><br />
+  <b>Figura: Diagrama de Contexto del Sistema Vankoo</b>
+</p>
+
+---
+
+#### **Componentes y Elementos del Diagrama**
+
+1. **Usuarios del Sistema (Actores):**
+   * **MYPE:** Empresa que publica y gestiona facturas electrónicas en la plataforma para obtener liquidez inmediata.
+   * **Inversionista:** Usuario final que explora el mercado e invierte dinero en las facturas disponibles para obtener retornos por tasa de descuento.
+
+2. **Core del Sistema (Vankoo):**
+   * Núcleo del software que centraliza la lógica de negocio, procesamiento de subastas, administración de billeteras virtuales y orquestación de servicios.
+
+3. **Servicios e Integraciones Externas:**
+   * **Amazon S3:** Almacenamiento seguro en la nube para documentos y archivos adjuntos (facturas, DNI, sustentación legal).
+   * **Stripe API:** Pasarela bancaria externa para el procesamiento de cobros, recargas de saldo y retiros de dinero de los usuarios.
+   * **Firebase (FCM):** Servicio de notificaciones Push para el envío en tiempo real de alertas sobre el estado de subastas, recargas y operaciones.
+   * **Cloud OCR API:** Servicio externo de reconocimiento óptico de caracteres para la extracción e intepretación automática de datos relevantes a partir de la imagen de las facturas.
 
 ### 4.8.2. Software Architecture Container Diagrams
 
