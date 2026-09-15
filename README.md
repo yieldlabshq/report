@@ -1038,10 +1038,40 @@ En esta sección se presenta el **Diagrama de Contexto del Sistema (System Conte
 
 ### 4.8.2. Software Architecture Container Diagrams
 
-<!-- C4 Model - Nivel 2. -->
-<!-- Assets: ./assets/cap4-product-design/software-architecture/container-diagrams/ -->
+En esta sección se presenta el **Diagrama de Contenedores (Container View)** bajo el modelo C4 para la plataforma **Vankoo**. Este nivel muestra la distribución de las aplicaciones ejecutables, los servicios de backend y los almacenes de datos que conforman el ecosistema técnico, detallando sus responsabilidades principales y los protocolos de comunicación utilizados.
 
-_Pendiente de elaboración._
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/container-diagrams/out/vankoo-container-diagram.png" alt="Diagrama de Contenedores de Vankoo" width="850" /><br /><br />
+  <b>Figura: Diagrama de Contenedores de la Plataforma Vankoo</b>
+</p>
+
+---
+
+#### **Descripción de Contenedores y Componentes**
+
+1. **Aplicaciones de Cliente (Frontend):**
+   * **Web MYPE (SPA):** Aplicación web dirigida a las micro y pequeñas empresas para la carga de facturas, seguimiento del estado de subastas y consulta de liquidez disponible.
+   * **Mobile App Inversionista:** Aplicación móvil diseñada para que los inversionistas exploren el mercado de facturas, realicen pujas en tiempo real y gestionen su billetera virtual.
+
+2. **Punto de Entrada (API Gateway / BFF):**
+   * **API Gateway:** Enruta y gestiona el tráfico de peticiones entrantes vía HTTP/HTTPS, aplicando mecanismos de autenticación, autorización básica y limitación de tasa (*rate limiting*) hacia los microservicios correspondientes.
+
+3. **Microservicios de Dominio (Core Backend):**
+   * **IAM Service:** Gestiona la identidad, el registro, inicio de sesión y la emisión/validación de tokens de acceso (JWT).
+   * **Profile Service:** Administra los perfiles de usuario, la validación de identidad KYC (*Know Your Customer*) y la información corporativa o personal.
+   * **Invoicing Service:** Procesa la recepción de facturas electrónicas, extracción automática de datos mediante OCR y validación de reglas de emisión.
+   * **Investment Service:** Orquesta la lógica del mercado de subastas, registro de ordenes de inversión/pujas y adjudicación de facturas.
+   * **Finance Service:** Administra el estado de las billeteras digitales, procesamiento de movimientos financieros, recargas, retiros e historial de transacciones.
+
+4. **Persistencia de Datos y Axon Server:**
+   * **Bases de Datos Especializadas:** Almacenes independientes por microservicio (PostgreSQL para IAM y Profile; Oracle para Investment; MongoDB NoSQL para Invoicing).
+   * **Axon Server (Event Store):** Motor centralizado de eventos para el microservicio de Finance, facilitando una arquitectura guiada por eventos (*Event Sourcing* y *CQRS*).
+
+5. **Integraciones Externas:**
+   * **Stripe API:** Pasarela de pago para la gestión de fondos y transferencias.
+   * **Amazon S3:** Almacenamiento seguro de archivos digitales y documentos adjuntos.
+   * **Firebase FCM:** Envío de notificaciones Push en tiempo real a los dispositivos móviles.
+   * **Cloud OCR API:** Servicio de lectura e interpretación inteligente de documentos.
 
 ### 4.8.3. Software Architecture Components Diagrams
 
