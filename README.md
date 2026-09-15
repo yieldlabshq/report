@@ -1161,16 +1161,254 @@ El diagrama de componentes del **Profile Service** (TypeScript / NestJS) se divi
 
 ### 4.9.1. Class Diagrams
 
-<!-- UML. Herramienta: LucidChart o PlantUML (Diagram-as-Code). -->
-<!-- Assets: ./assets/cap4-product-design/class-diagrams/ -->
+Se presentan a continuación los cinco diagramas de clases de la capa de dominio, uno por cada *Bounded Context*, bajo la paleta de estereotipos DDD acordada para el proyecto: **`«AggregateRoot»`** (`#1168BD`), **`«Entity»`** (`#438DD5`), **`«ValueObject»`** (`#85BBF0`), **`«DomainEvent»`** (`#F28FAD`), **`«DomainService»`** (`#6BA3DC`) y **`«Exception»`** (`#CDA1A1`).
 
-_Pendiente de elaboración._
+---
+
+#### **1. IAM Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **IAM** modela únicamente los conceptos centrales del dominio, sin las capas de aplicación e infraestructura. 
+
+* El paquete `iam.domain.model.aggregates` contiene al Aggregate Root `User`.
+* `iam.domain.model.entities` contiene a la Entity `Role`.
+* `iam.domain.model.valueobjects` agrupa los Value Objects `UserId`, `Email`, `Password`, `RoleId` y el enumerado `RoleName`.
+* `iam.domain.model.events` encapsula el único Domain Event publicado (`UserCreatedEvent`).
+* `iam.domain.services` declara los Domain Services que orquestan el agregado.
+
+Las líneas continuas marcan composición y las punteadas, dependencias semánticas (eventos publicados, servicios que orquestan). IAM no define excepciones de dominio propias: sus invariantes lanzan `IllegalArgumentException` nativo.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/iam-domain-class-diagram.png" alt="IAM Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.1. Diagrama de clases del dominio del Bounded Context IAM.</b>
+</p>
+
+---
+
+#### **2. Profile Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Profile** modela dos Aggregate Roots independientes —`Company` (perfil de una Mype) e `Investor` (perfil de un inversionista)— y la Entity `BankAccount`, asociada opcionalmente a `Investor`. 
+
+* El paquete `profile.domain.model.valueobjects` agrupa los dieciséis Value Objects que describen ambos perfiles (identificadores, contacto, dirección y evidencias de KYC).
+* `profile.domain.services` declara los seis Domain Services que orquestan su creación, completado de perfil y verificación KYC. 
+
+Las líneas continuas marcan la composición de cada agregado con sus Value Objects. Profile no define eventos ni excepciones de dominio como clases: las validaciones lanzan `Error` nativo y la integración se publica como payloads planos.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/profile-domain-class-diagram.png" alt="Profile Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.2. Diagrama de clases del dominio del Bounded Context Profile.</b>
+</p>
+
+---
+
+#### **3. Finance Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Finance** modela dos Aggregate Roots *event-sourced* con Axon Framework —`Deposit` y `Wallet`—, reconstruidos por reproducción de eventos y sin tabla propia en la base de datos de consulta.
+
+* El paquete `finance.domain.model.valueobjects` agrupa los Value Objects del núcleo transaccional (`Money`, `Currency`, `DepositId`, `WalletId`, `DepositStatus`) y los del adaptador de proveedor de pagos.
+* `finance.domain.model.events` agrupa los diez Domain Events publicados.
+* `finance.domain.exceptions` agrupa las dieciséis excepciones de negocio, incluida la jerarquía sellada `PaymentProviderException`. 
+
+Las líneas punteadas marcan eventos y excepciones; los Domain Services despachan comandos hacia los agregados o resuelven consultas contra el *read model*.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/finance-domain-class-diagram.png" alt="Finance Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.3. Diagrama de clases del dominio del Bounded Context Finance.</b>
+</p>
+
+---
+
+#### **4. Investment Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Investment** modela al Aggregate Root `Auction` (subasta de financiamiento de una factura) y a la Entity `Partition`, la participación de un inversionista dentro de una subasta.
+
+* El paquete `investment.domain.model.valueobjects` agrupa los Value Objects monetarios y de estado (`Money`, `Percentage`, `RiskScore`, `AuctionStatus`, `PartitionStatus`).
+* `investment.domain.services` declara `AuctionCommandService` y `AuctionQueryService`.
+
+Las líneas continuas marcan la composición de `Auction` con sus particiones; las punteadas, los tres Domain Events publicados. Investment tampoco define excepciones de dominio propias: sus invariantes lanzan `IllegalStateException` o `IllegalArgumentException` nativos.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/investment-domain-class-diagram.png" alt="Investment Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.4. Diagrama de clases del dominio del Bounded Context Investment.</b>
+</p>
+
+---
+
+#### **5. Invoicing Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Invoicing** modela dos Aggregate Roots —`Invoice` (la factura y su ciclo de extracción OCR/validación) y `OcrTask` (la cola de procesamiento asíncrono)—, cada uno con colección e identidad propias en MongoDB pese a que `OcrTask` reside físicamente en `Domain/Entities/`.
+
+* El paquete `Invoicing.Domain.ValueObjects` agrupa los cerca de veinte Value Objects embebidos en `Invoice`.
+* `Invoicing.Domain.Exceptions` contiene la jerarquía de excepciones de negocio.
+* `Invoicing.Domain.Services` contiene el servicio `InvoiceConsistencyValidator`.
+
+De los seis Domain Events declarados en el código, solo dos están realmente cableados a un manejador; los restantes se omiten del diagrama por no reflejar comportamiento real.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/invoicing-domain-class-diagram.png" alt="Invoicing Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.5. Diagrama de clases del dominio del Bounded Context Invoicing.</b>
+</p>
+
 
 ### 4.9.2. Class Dictionary
 
-_Pendiente de elaboración._
+Se presenta a continuación el diccionario de clases de la capa de dominio organizado por *Bounded Context*, el cual especifica la responsabilidad, estereotipo DDD, atributos y métodos de negocio clave de cada elemento.
 
-<hr class="page-break">
+---
+
+#### **1. IAM Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `User` | `«AggregateRoot»` | Representa la cuenta de acceso (credenciales y roles asignados) del sistema. | `id: UserId`, `email: Email`, `password: Password`, `roles: Set<Role>`, `createdAt/updatedAt: Date` | `User(email, password)`, `addRole(role)`, `addRoles(roles)`, `registerUserCreatedEvent()` |
+| `Role` | `«Entity»` | Rol de autorización del catálogo fijo del sistema. | `id: RoleId`, `name: RoleName` | `getStringName()`, `getDefaultRole()` (static), `toRoleFromName(name)` (static), `validateRoleSet(roles)` (static) |
+| `UserId` | `«ValueObject»` | Identidad única del agregado `User`. | `id: UUID` (UUIDv7) | `UserId()` — genera un nuevo UUIDv7 |
+| `Email` | `«ValueObject»` | Dirección de correo validada por formato. | `email: String` | Validación por regex en el constructor compacto (`record`) |
+| `Password` | `«ValueObject»` | Contraseña del usuario (hash aplicado fuera del VO). | `password: String` | Validación de no-vacío en el constructor compacto |
+| `RoleId` | `«ValueObject»` | Identidad única de `Role`. | `id: UUID` (UUIDv7) | `RoleId()` — genera un nuevo UUIDv7 |
+| `RoleName` | `«ValueObject»` (enum) | Catálogo cerrado de roles: `ROLE_USER`, `ROLE_ADMIN`, `ROLE_MYPE`, `ROLE_INVESTOR`. | — | — |
+| `UserCreatedEvent` | `«DomainEvent»` | Notifica el alta de un `User`, propagado a otros Bounded Contexts vía Kafka (`vankoo.iam.events`). | `id: String`, `email: String`, `roles: List<String>` | — |
+| `UserCommandService` | `«DomainService»` (interfaz) | Orquesta el alta (*Sign Up*) y el inicio de sesión (*Sign In*). | — | `handle(SignUpCommand): Optional<User>`, `handle(SignInCommand): Optional<ImmutablePair<User,String>>` |
+| `UserQueryService` | `«DomainService»` (interfaz) | Resuelve la consulta de un usuario por email. | — | `handle(GetUserByEmailQuery): Optional<User>` |
+| `RoleCommandService` | `«DomainService»` (interfaz) | Siembra (*seed*) el catálogo fijo de roles al iniciar el sistema. | — | `handle(SeedRolesCommand): void` |
+
+> **Nota de fidelidad:** IAM no define excepciones de dominio propias; las invariantes de `Email`, `Password`, `RoleId` y `UserId` lanzan `IllegalArgumentException` nativo de Java.
+
+---
+
+#### **2. Profile Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Company` | `«AggregateRoot»` | Perfil de una empresa (Mype) emisora, con su ciclo de verificación KYC. | `id: CompanyId`, `userId: UserId`, `contactEmail: Email`, `rucNumber`, `businessName`, `industrySector`, `contactPhone`, `legalAddress`, `sustainabilityStatus`, `kycStatus`, `kycRejectionReason`, `logoUrl/rucDocumentUrl: DocumentUrl` | `completeProfile(...)`, `verifyKyc()`, `rejectKyc(reason)`, `uploadRucDocument(url)`, `updateLogo(url)` |
+| `Investor` | `«AggregateRoot»` | Perfil de un inversionista persona natural, con su ciclo de verificación KYC. | `id: InvestorId`, `userId: UserId`, `contactEmail: Email`, `dni`, `fullName`, `contactPhone`, `billingAddress`, `kycStatus`, `kycRejectionReason`, `photoUrl/dniDocumentUrl: DocumentUrl`, `bankAccount: BankAccount` | `completeProfile(...)`, `verifyKyc()`, `rejectKyc(reason)`, `updatePhoto(url)`, `updateDniDocument(url)` |
+| `BankAccount` | `«Entity»` | Cuenta bancaria asociada a un `Investor` para retiros y depósitos. | `id: BankAccountId`, `bankName: string`, `accountNumber: string` | `updateAccountDetails(newBankName, newAccountNumber)` |
+| `CompanyId` / `InvestorId` / `BankAccountId` | `«ValueObject»` | Identidad del agregado o entidad correspondiente (UUID como `string`). | `value: string` | Autogeneran `randomUUID()` si no se provee valor |
+| `UserId` | `«ValueObject»` | Referencia a la identidad del usuario en IAM. | `value: string` | Valida no-vacío |
+| `Email` | `«ValueObject»` | Correo de contacto. | `address: string` | `validate(email): boolean` |
+| `RucNumber` | `«ValueObject»` | RUC de la empresa. | `value: string` | Sin validación de formato |
+| `BusinessName` | `«ValueObject»` | Razón social. | `value: string` | — |
+| `IndustrySector` | `«ValueObject»` (enum) | Sector económico: `AGRICULTURE`, `MANUFACTURING`, `SERVICES`, `TECHNOLOGY`, `RETAIL`, `OTHER`. | — | — |
+| `PhoneNumber` | `«ValueObject»` | Teléfono de contacto. | `value: string` | — |
+| `Address` | `«ValueObject»` | Dirección postal (legal o de facturación). | `street`, `city`, `state`, `postalCode`, `country: string` | Valida `street`, `city` y `country` no vacíos |
+| `SustainabilityStatus` | `«ValueObject»` | Estado de certificación de sostenibilidad de una empresa. | `isGreen: boolean`, `verificationDate?: Date` | — |
+| `KycStatus` | `«ValueObject»` (enum) | Estado del proceso KYC: `PENDING`, `VERIFIED`, `REJECTED`. | — | — |
+| `KycRejectionReason` | `«ValueObject»` | Motivo de rechazo de un KYC. | `value: string` | Valida no-vacío |
+| `DocumentUrl` | `«ValueObject»` | URL de un documento subido (logo, RUC, DNI, foto). | `url: string` | Valida que inicie con `'http'` |
+| `DniNumber` | `«ValueObject»` | DNI del inversionista. | `value: string` | — |
+| `FullName` | `«ValueObject»` | Nombre completo del inversionista. | `firstName`, `lastName: string` | — |
+| `ICompanyCommandService` / `IInvestorCommandService` | `«DomainService»` (interfaz) | Orquestan alta, completado de perfil, KYC y carga de documentos. | — | `handleCreateX`, `handleCompleteProfile`, `handleVerifyKyc`, `handleRejectKyc`, `handleRequestXUploadUrl`, `handleUploadX` |
+| `ICompanyQueryService` / `IInvestorQueryService` | `«DomainService»` (interfaz) | Resuelven consultas por id. | — | `handleGetXById(query)` |
+| `IEventPublisherService` | `«DomainService»` (interfaz) | Puerto de publicación de eventos de integración hacia Kafka. | — | `publish(topic, payload): Promise<void>` |
+| `IFileStorageService` | `«DomainService»` (interfaz) | Puerto de generación de URLs prefirmadas para carga de archivos (S3/MinIO). | — | `generateUploadUrl(objectKey): Promise<UploadUrlResult>` |
+
+> **Nota de fidelidad:** Profile no define eventos ni excepciones de dominio tipados. Las validaciones lanzan `Error` nativo de TypeScript, y los eventos de integración (`ProfileCompleted`, `KycVerified`, `KycRejected`) son objetos planos publicados desde la capa de aplicación.
+
+---
+
+#### **3. Finance Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Deposit` | `«AggregateRoot»` | Ciclo de vida de un depósito de fondos vía Stripe; agregado Axon reconstruido por *event sourcing*. | `depositId`, `accountId: String`, `amountMinor: long`, `currency`, `provider`, `providerDepositId`, `status`, `failureReason` | `Deposit(InitiateDepositCommand)`, `handle(RegisterDepositProviderReferenceCommand)`, `handle(ApplyProviderDepositUpdateCommand)` |
+| `Wallet` | `«AggregateRoot»` | Saldo monetario de una cuenta en una moneda específica; agregado Axon con *snapshot* cada 100 eventos. | `walletId`, `accountId: String`, `currency`, `balanceMinor: long` | `Wallet(OpenWalletCommand)`, `handle(CreditWalletCommand)`, `handle(DebitWalletCommand)` |
+| `DepositId` | `«ValueObject»` | Identidad de `Deposit` (UUIDv7). | `value: UUID` | `newId()` |
+| `AccountId` | `«ValueObject»` | Identidad de cuenta, siempre originada fuera de Finance. | `value: UUID` | — |
+| `WalletId` | `«ValueObject»` | Identidad de `Wallet`, derivada de (`accountId`, `currency`). | `value: UUID` | `derive(accountId, currency)` — UUIDv5 determinístico |
+| `Money` | `«ValueObject»` | Monto monetario con su moneda. | `amountMinor: long`, `currency: Currency` | `add(other)`, `isPositive()` |
+| `Currency` | `«ValueObject»` (enum) | Monedas soportadas: `PEN`, `USD`. | — | `fromIsoCode(isoCode)` |
+| `Provider` | `«ValueObject»` (enum) | Proveedor de pagos: `STRIPE`. | — | — |
+| `ProviderDepositId` | `«ValueObject»` | Identificador opaco del depósito en el proveedor externo. | `value: String` | — |
+| `ProviderEventId` | `«ValueObject»` | Clave de deduplicación de eventos de webhook del proveedor. | `value: String` | — |
+| `IdempotencyKey` | `«ValueObject»` | Clave de idempotencia de la solicitud de depósito. | `value: String` | — |
+| `DepositStatus` | `«ValueObject»` (enum) | Estados de `Deposit`: `PENDING`, `ACTION_REQUIRED`, `PROCESSING`, `SUCCEEDED`, `FAILED`, `CANCELLED`. | — | `isTerminal()`, `canTransitionTo(target)` |
+| `NormalizedDepositStatus` | `«ValueObject»` (enum) | Taxonomía normalizada del adaptador de proveedor (sin `PENDING`). | — | — |
+| `FailureReason` | `«ValueObject»` (enum) | Motivo de falla: `DECLINED`, `EXPIRED`, `INVALID_PAYMENT_METHOD`, `PROVIDER_ERROR`, `UNKNOWN`. | — | — |
+| `MovementDirection` | `«ValueObject»` (enum) | Dirección de un movimiento de wallet: `CREDIT`, `DEBIT`. | — | — |
+| `WalletMovementType` | `«ValueObject»` (enum) | Motivos de débito del wallet: `INVERSION`, `RETIRO`, `COMISION`. | — | — |
+| `WalletMovementKind` | `«ValueObject»` (enum) | Vocabulario completo del *read model* de movimientos: `RECARGA`, `INVERSION`, `RETIRO`, `COMISION`. | — | — |
+| `ProviderDepositCreated` | `«ValueObject»` | Resultado de creación de un depósito en el proveedor externo. | `providerDepositId`, `actionUrl`, `status` | — |
+| `ProviderDepositStatus` | `«ValueObject»` | Estado observado de un depósito reportado por el proveedor. | `providerDepositId`, `status`, `observedAt`, `failureReason` | — |
+| `VerifiedProviderDepositUpdate` | `«ValueObject»` | Actualización de proveedor ya verificada (firma de webhook validada). | `provider`, `providerDepositId`, `providerEventId`, `status`, `observedAt`, `failureReason`, `cancellationReason` | — |
+| `DepositInitiatedEvent` … `DepositCancelledEvent` (7 eventos) | `«DomainEvent»` | Hitos del ciclo de vida de `Deposit` (iniciado, requiere acción, en proceso, exitoso, fallido, cancelado y registro de referencia del proveedor). | `depositId`, `accountId`, `amountMinor`, `currency`, `provider` + campos específicos | — |
+| `WalletOpenedEvent`, `WalletCreditedEvent`, `WalletDebitedEvent` | `«DomainEvent»` | Hitos del ciclo de vida de `Wallet` (apertura, abono, cargo). | `walletId`, `amountMinor`, `currency` + `sourceDepositId/reason` | — |
+| `InvalidDepositAmountException` | `«Exception»` | Monto de depósito $\le 0$. | `amountMinor: long` | — |
+| `UnsupportedCurrencyException` | `«Exception»` | Código ISO de moneda no soportado. | `isoCode: String` | — |
+| `ProviderReferenceMismatchException` | `«Exception»` | La referencia del proveedor no coincide con la ya registrada. | `message: String` | — |
+| `TerminalStateTransitionException` | `«Exception»` | Transición inválida desde un estado terminal de `Deposit`. | `message: String` | — |
+| `InvalidCreditAmountException` / `InvalidDebitAmountException` | `«Exception»` | Monto de abono o cargo $\le 0$ en `Wallet`. | `amountMinor: long` | — |
+| `InsufficientBalanceException` | `«Exception»` | Saldo insuficiente para un débito de `Wallet`. | `walletId`, `balanceMinor`, `requestedMinor` | — |
+| `IdempotencyKeyConflictException` | `«Exception»` | Conflicto de idempotencia en `POST /v1/deposits`. | `message: String` | — |
+| `IntegrationEventPublicationException` | `«Exception»` | Falla al publicar un evento de integración. | `message: String` | — |
+| `PaymentProviderException` (+ 5 subclases selladas, `RetryablePaymentProviderException`) | `«Exception»` | Jerarquía de errores del adaptador de proveedor de pagos (rechazo, timeout, no disponible, firma inválida, evento no soportado). | — | — |
+| `DepositCommandService` | `«DomainService»` (interfaz) | Orquesta la iniciación y actualización de depósitos. | — | `handle(InitiateDepositCommand): DepositId`, `handle(RegisterDepositProviderReferenceCommand)`, `handle(ApplyProviderDepositUpdateCommand)` |
+| `DepositQueryService` / `WalletQueryService` | `«DomainService»` (interfaz) | Resuelven consultas contra el *read model* (nunca contra el agregado). | — | `getDepositById`, `listDepositsByAccount`, `getWalletBalance`, `listWalletMovements` |
+| `WebhookInboxService` | `«DomainService»` (interfaz) | Admite y aplica actualizaciones de webhook de forma idempotente. | — | `accept(VerifiedProviderDepositUpdate): InboxAdmission`, `resolveAndApply()` |
+
+> **Nota de fidelidad:** `Deposit` y `Wallet` son agregados Axon 4 (*event-sourced*): no tienen tabla propia ni operación `save()`; se reconstruyen por reproducción de eventos desde Axon Server.
+
+---
+
+#### **4. Investment Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Auction` | `«AggregateRoot»` | Subasta de financiamiento de una factura (*invoice factoring*); administra sus particiones de inversión. | `id: AuctionId`, `invoiceId`, `mypeId: UserId`, `status`, `riskScore`, `invoiceAmount/netAmount/targetAmount/currentFunding: Money`, `discountRate/commissionRate: Percentage`, `greenCertified`, `partitions: List<Partition>` | `registerAuctionCreatedEvent(...)`, `calculateFinancials(discount, commission)`, `publish(expirationDate)`, `canAcceptPartition(amount)`, `addInvestment(investorId, amount, returnRate, transactionId)`, `isFunded()`, `close()`, `cancel()` |
+| `Partition` | `«Entity»` | Participación de un inversionista dentro de una `Auction`. | `id: PartitionId`, `auctionId`, `investorId: UserId`, `amount/expectedReturn/actualReturn: Money`, `percentage/returnRate: Percentage`, `status` | `calculateReturn()`, `markAsPaid(transactionId)`, `markAsDefaulted()`, `cancel()` |
+| `AuctionId` / `PartitionId` | `«ValueObject»` | Identidad del agregado o entidad correspondiente (UUID como `string`). | `uuid: String` | Autogeneran UUID si no se provee valor |
+| `InvoiceId` | `«ValueObject»` | Referencia a la factura de origen (Bounded Context Invoicing). | `uuid: String` | — |
+| `UserId` | `«ValueObject»` | Referencia a la identidad del emisor (Mype) o inversionista (Bounded Context Profile). | `uuid: String` | — |
+| `Money` | `«ValueObject»` | Monto monetario con su moneda. | `amount: BigDecimal`, `currency: Currency` | `add`, `subtract`, `multiply`, `isGreaterThan`, `isLessThan`, `requireSameCurrency` |
+| `Percentage` | `«ValueObject»` | Porcentaje de descuento, comisión o retorno. | `value: BigDecimal` | `of(money): Money` |
+| `RiskScore` | `«ValueObject»` | Calificación crediticia de una `Auction`. | `grade: ScoreGrade` | `pendingEvaluation()` (static), `isLowRisk()`, `isMediumRisk()`, `isHighRisk()` |
+| `InvestorParticipation` | `«ValueObject»` | Snapshot de datos de un inversionista sobre su participación. | `investorId`, `amount`, `percentage`, `investorName`, `investorRUC`, `investorEmail` | — |
+| `Currency` | `«ValueObject»` (enum) | Monedas soportadas: `PEN`, `USD`. | — | — |
+| `AuctionStatus` | `«ValueObject»` (enum) | Estados de `Auction`: `PENDING_VERIFICATION_RISK`, `DRAFT`, `PUBLISHED`, `FUNDING`, `FULLY_FUNDED`, `CLOSED`, `EXPIRED`, `CANCELLED`. | — | `marketplaceActiveStatuses()` (static) |
+| `PartitionStatus` | `«ValueObject»` (enum) | Estados de `Partition`: `ACTIVE`, `PAID`, `DEFAULTED`, `CANCELLED`. | — | — |
+| `ScoreGrade` | `«ValueObject»` (enum) | Grados de riesgo: `A`, `B`, `C`, `UNDER_EVALUATION`. | — | — |
+| `AuctionCreatedEvent` | `«DomainEvent»` | Notifica la creación de una subasta (incluye datos del pagador). | `auctionId`, `invoiceId`, `mypeId`, `payerRuc`, `payerName`, `invoiceAmount`, `currency`, `status`, `greenCertified` | — |
+| `PartitionAddedEvent` | `«DomainEvent»` | Notifica la incorporación de una nueva partición/inversión. | `auctionId`, `partitionId`, `addedAmount`, `newCurrentFunding` | — |
+| `AuctionFullyFundedEvent` | `«DomainEvent»` | Notifica que la subasta alcanzó su monto objetivo. | `auctionId` | — |
+| `AuctionCommandService` | `«DomainService»` (interfaz) | Orquesta la creación de subastas y la incorporación de particiones. | — | `handle(CreateAuctionCommand): Optional<AuctionId>`, `handle(AddPartitionCommand): Optional<PartitionId>` |
+| `AuctionQueryService` | `«DomainService»` (interfaz) | Resuelve consultas de subastas (detalle, activas, marketplace). | — | `handle(GetAuctionByIdQuery)`, `handle(GetAllActiveAuctionsQuery)`, `handle(GetMarketplaceAuctionsQuery)` |
+
+> **Nota de fidelidad:** Investment no define excepciones de dominio propias; `Auction.publish()` y `Auction.addInvestment()` lanzan `IllegalStateException` o `IllegalArgumentException` nativos.
+
+---
+
+#### **5. Invoicing Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Invoice` | `«AggregateRoot»` | Factura cargada por una Mype, su extracción OCR, validación de consistencia y elegibilidad para financiamiento. | `Id: InvoiceId`, `MypeId`, `Status`, `Document: InvoiceDocument`, `TotalAmount/SubtotalAmount/TaxAmount/DiscountAmount: Money`, `Items: IReadOnlyList<InvoiceLineItem>`, `ConsistencyResult`, `SunatValidation` | `Create(mypeId, document)` (static), `StartOcrProcessing()`, `SetOcrOperationId(id)`, `Reject(reason)`, `RegisterOcrResults(result, consistencyResult)`, `MarkIntegrationEventPublished()` |
+| `OcrTask` | `«AggregateRoot»` | Tarea de cola para el procesamiento OCR asíncrono de una factura, con reintentos y *lease*. | `Id: string`, `InvoiceId: string`, `Status`, `AttemptCount/MaxAttempts: int`, `NextRetryAtUtc`, `LockExpiresAtUtc` | `Create(invoiceId, maxAttempts=5)` (static), `MarkProcessing(leaseDuration)`, `MarkCompleted()`, `MarkFailure(error, retryDelay)` |
+| `InvoiceId` / `MypeId` / `OcrOperationId` | `«ValueObject»` | Identificadores de dominio (`string`). | `Value: string` | `NewId()`, `Of(value)` |
+| `RucNumber` | `«ValueObject»` | RUC peruano validado (11 dígitos, prefijo 10/15/20, módulo 11). | `Value: string` | `Of(value)`, `IsNaturalPerson()`, `IsLegalEntity()` |
+| `FileKey` | `«ValueObject»` | Clave de objeto en almacenamiento (S3/MinIO). | `Value: string` | `Generate()` (static) |
+| `Currency` | `«ValueObject»` (enum) | Monedas soportadas: `PEN=1`, `USD=2`. | — | — |
+| `Money` | `«ValueObject»` | Monto monetario con su moneda. | `Amount: decimal`, `Currency` | `Add`, `Subtract`, `Multiply`, `Divide` |
+| `IssuerData` / `PayerData` | `«ValueObject»` | Datos fiscales del emisor / pagador de la factura. | `Ruc: RucNumber`, `LegalName`, `TradeName?`, `Address?` | `Create(...)`, `GetDisplayName()` |
+| `InvoiceDocument` | `«ValueObject»` | Metadatos del archivo de factura cargado. | `Key: FileKey`, `OriginalName`, `ContentType`, `FileSizeBytes`, `ContentHash` | `Upload(...)` (static) |
+| `InvoiceMetadata` | `«ValueObject»` | Serie, número, fechas, moneda y confianza OCR extraídos. | `InvoiceSeries`, `InvoiceNumber`, `IssueDate`, `DueDate`, `Currency`, `OcrConfidence` | `GetFullInvoiceNumber()`, `IsExpired()`, `HasAcceptableConfidence(threshold)` |
+| `InvoiceLineItem` | `«ValueObject»` | Línea de detalle de la factura. | `Description`, `Quantity`, `UnitPrice/Subtotal: Money` | `Create(...)`, `CreateFromOcr(...)`, `CalculateTotal()` |
+| `InvoiceAmounts` | `«ValueObject»` | Conjunto de montos extraídos para validar consistencia. | `Subtotal/Tax/Discount/Total: Money` | `Create(...)`, `IsConsistent(tolerance)` |
+| `OcrFieldConfidence` | `«ValueObject»` | Confianza de extracción de un campo OCR individual. | `Field`, `Confidence: float`, `Critical: bool` | — |
+| `OcrExtractionResult` | `«ValueObject»` | Resultado íntegro de una extracción OCR. | `IssuerData`, `PayerData`, `Metadata`, `Amounts`, `Items`, `FieldConfidences`, `ExtractionWarnings` | `HasConsistentLineSubtotal(tolerance)` |
+| `InvoiceConsistencyResult` (`+ InvoiceValidationIssue`) | `«ValueObject»` | Resultado consolidado de las reglas de consistencia de una factura. | `Status`, `Issues: IReadOnlyList<InvoiceValidationIssue>`, `CheckedAt?` | `NotChecked()` (static), `FromIssues(issues, checkedAt)` (static) |
+| `RejectionReason` | `«ValueObject»` | Motivo de rechazo de una factura. | `Reason`, `RejectedAt`, `RejectedBy?` | `Create(...)` |
+| `SunatValidation` | `«ValueObject»` | Resultado de validación contra SUNAT. | `IsValid`, `ValidatedAt?`, `CdrUrl?`, `ResponseCode?` | `CreateValid(...)`, `CreateInvalid(...)`, `IsApproved()` |
+| `InvoiceStatus` / `OcrTaskStatus` / `SunatVerificationStatus` / `IntegrationEventPublicationStatus` | `«ValueObject»` (enum) | Máquinas de estado de factura, tarea OCR, verificación SUNAT y publicación. | — | — |
+| `InvoiceCreatedEvent` | `«DomainEvent»` | Notifica la creación de una factura (publicado vía `IMediator.Publish`). | `Invoice: Invoice` | — |
+| `InvoiceEligibleForFundingDomainEvent` | `«DomainEvent»` | Notifica que una factura es elegible para financiamiento. | `Invoice: Invoice` | — |
+| `DomainException` | `«Exception»` (abstracta) | Base de toda excepción de dominio con código de error. | `ErrorCode: string` | — |
+| `BusinessRuleViolationException` / `EntityNotFoundException` / `InvalidValueException` | `«Exception»` | Categorías base de excepción (violación de regla, no encontrado, valor inválido). | — | — |
+| `InvalidInvoiceStateException` | `«Exception»` | Transición de estado inválida sobre `Invoice`. | `CurrentStatus`, `ExpectedStatus?` | — |
+| `InvalidRucException` | `«Exception»` | RUC con formato o dígito verificador inválido. | `InvalidRuc: string` | — |
+| `InvoiceNotFoundException` | `«Exception»` | Factura no encontrada. | `InvoiceId: string` | — |
+| `LowOcrConfidenceException` | `«Exception»` | Confianza OCR bajo el umbral requerido. | `Confidence`, `MinimumRequired: float` | — |
+| `IncompleteOcrDataException` | `«Exception»` | Dato obligatorio ausente en la extracción OCR. | `InvoiceId`, `MissingField: string` | — |
+| `InvoiceConsistencyValidator` | `«DomainService»` | Valida la consistencia de una extracción OCR (emisor, pagador, fechas, montos, ítems, duplicados, confianza). | `MoneyTolerance=0.02`, `CriticalConfidenceThreshold=0.75` | `Validate(extraction, checkedAt, duplicateFiscalIdentity): InvoiceConsistencyResult` |
+
+> **Nota de fidelidad:** De los 6 eventos de dominio declarados en el código de Invoicing, solo `InvoiceCreatedEvent` e `InvoiceEligibleForFundingDomainEvent` implementan `INotification` y tienen un manejador asociado.
 
 ## 4.10. Database Design
 
