@@ -820,14 +820,61 @@ La arquitectura de orientación de Yield Labs conduce a los usuarios hacia sus m
 
 ## 4.3. Landing Page UI Design
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En este apartado se exhiben los prototipos visuales y maquetas (wireframes y mock-ups) correspondientes a la página de presentación (Landing Page) de la plataforma Vankoo, integrando los criterios de diseño, los componentes estéticos, las directrices de inclusión y la estructura de información planteados anteriormente.
 
 ### 4.3.1. Landing Page Wireframe
 
-<!-- Versiones Desktop Web Browser y Mobile Web Browser. Herramienta: Figma / Adobe XD. -->
-<!-- Assets: ./assets/cap4-product-design/landing-page/wireframes/ -->
+A continuación, se presentan los prototipos preliminares del sitio de presentación (Landing Page) orientados a navegadores de escritorio (Desktop) y dispositivos móviles (Mobile), desarrollados en Figma. Estas maquetas de mediana fidelidad reflejan la materialización de los lineamientos estilísticos, los componentes gráficos, las pautas de accesibilidad universal y la organización de contenidos, garantizando así una vivencia de usuario armónica y sin barreras.
 
-_Pendiente de elaboración._
+**Hero**
+
+Encabezado principal con un mensaje claro y conciso que comunica la propuesta de valor de la plataforma Vankoo. Se incluyen elementos visuales atractivos y un llamado a la acción destacado.
+
+![Hero-Wireframe](assets/cap4-product-design/landing-page/wireframes/hero-wireframe.png)
+![Hero-Wireframe-Mobile](assets/cap4-product-design/landing-page/wireframes/hero-wireframe-mobile.png)
+
+**Flujo del Proceso**
+
+Se detallan los cinco hitos por los que pasa cada factura, especificando mediante etiquetas qué acciones realiza el usuario y cuáles ejecuta el sistema de forma automatizada (lectura OCR, validación con SUNAT y scoring). En la parte inferior se transparentan los estados de excepción y rechazo para brindar claridad operativa.
+
+![Flow-Process](assets/cap4-product-design/landing-page/wireframes/flow-process.png)
+![Flow-Process-Mobile](assets/cap4-product-design/landing-page/wireframes/flow-process-mobile.png)
+
+**Simulador de Costos**
+
+Herramienta interactiva de cotización que permite al usuario seleccionar moneda, ajustar el monto mediante un control deslizante, elegir el plazo y asignar el nivel de riesgo. Al lado, una tarjeta desglosa el cálculo en tiempo real mostrando el monto a recibir, el costo financiero, la tasa mensual y la TCEA.
+
+![Cost-Simulator](assets/cap4-product-design/landing-page/wireframes/cost-simulator.png)
+![Cost-Simulator-Mobile](assets/cap4-product-design/landing-page/wireframes/cost-simulator-mobile.png)
+
+**Propuesta de valor por segmento**
+
+Presenta los beneficios clave mediante un selector de rol (Para tu MYPE / Para invertir). Para las empresas, enfatiza la eliminación de brechas de crédito comercial a través de una cuadrícula de características con soporte visual que refuerza la trazabilidad y la agilidad de cobro.
+
+![Value-Proposition](assets/cap4-product-design/landing-page/wireframes/value-proposition.png)
+![Value-Proposition-Mobile](assets/cap4-product-design/landing-page/wireframes/value-proposition-mobile.png)
+
+**Clasificación de riesgo**
+
+Explica el sistema de scoring estandarizado mediante tres tarjetas comparativas (A, B y C). Cada bloque describe el perfil del deudor, el comportamiento de pago y el nivel de rentabilidad asociado, permitiendo que tanto emisores como inversionistas comprendan los criterios de evaluación.
+
+![Risk-Classification](assets/cap4-product-design/landing-page/wireframes/risk-classification.png)
+![Risk-Classification-Mobile](assets/cap4-product-design/landing-page/wireframes/risk-classification-mobile.png)
+
+**Preguntas Frecuentes (FAQ)**
+
+Estructura en acordeón desplegable que agrupa las dudas operativas y financieras más críticas (concepto de crowdfactoring, gestión de impagos, monedas admitidas y tiempos de respuesta) para resolver objeciones antes del registro
+
+![FAQ](assets/cap4-product-design/landing-page/wireframes/faq.png)
+![FAQ](assets/cap4-product-design/landing-page/wireframes/faq-mobile.png)
+
+**Llamado a la acción Final y Footer**
+
+Módulo de cierre que sintetiza la promesa de liquidez con accesos directos a registro e inicio de sesión. Finaliza con un pie de página corporativo que organiza la navegación secundaria, enlaces a políticas legales y el aviso regulatorio correspondiente.
+
+![CTA](assets/cap4-product-design/landing-page/wireframes/cta-footer.png)
+![CTA-Mobile](assets/cap4-product-design/landing-page/wireframes/cta-footer-mobile.png)
+
 
 ### 4.3.2. Landing Page Mock-up
 
