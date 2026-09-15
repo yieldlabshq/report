@@ -1075,12 +1075,110 @@ En esta sección se presenta el **Diagrama de Contenedores (Container View)** ba
 
 ### 4.8.3. Software Architecture Components Diagrams
 
-<!-- C4 Model - Nivel 3. -->
-<!-- Assets: ./assets/cap4-product-design/software-architecture/components-diagrams/ -->
+Los diagramas de componentes (C4 Nivel 3) profundizan en la organización interna y la estructura de módulos de cada *bounded context* de **Vankoo**. Fueron elaborados en **Structurizr** tomando como referencia el código fuente y la arquitectura de capas de cada microservicio. 
 
-_Pendiente de elaboración._
+Actualmente, se han desarrollado los cinco *bounded contexts* implementados en el sistema —**IAM**, **Invoicing**, **Investment**, **Finance** y **Profile**—, siguiendo la convención de capas *Interface*, *Application*, *Domain* e *Infrastructure*, junto con adaptadores tipo *Anti-Corruption Layer (ACL)* para las integraciones con servicios externos (OCR, almacenamiento en la nube y pasarelas de pago).
 
-<hr class="page-break">
+---
+
+#### **1. IAM Service Component Diagram**
+
+El diagrama de componentes del **IAM Service** (Java / Spring Boot) se estructura en seis componentes principales:
+* **IAM Interface Layer:** Compuesta por `AuthenticationController` y `UsersController`, actúa como punto de entrada REST expuesto al API Gateway.
+* **IAM Application Layer:** Orquesta la lógica de registro de usuarios, inicio de sesión y gestión de credenciales.
+* **IAM Domain Layer:** Modela las entidades centrales del dominio, compuestas por el agregado `User` y la entidad `Role`.
+* **IAM Security Infrastructure:** Provee los mecanismos de cifrado (`BCrypt`) y gestión de tokens de autenticación (`JWT`).
+* **IAM Persistence Infrastructure:** Administra la capa ORM (JPA) hacia la base de datos relacional `IAM Database` en PostgreSQL.
+* **IAM Messaging Infrastructure:** Publica el evento `UserCreatedEvent` hacia el Message Broker tras la confirmación de la transacción.
+
+* **Código fuente (Structurizr DSL):** [`iam-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/iam-service-components.dsl)
+
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/iam-service-components.png" alt="IAM Service Component Diagram" width="750" /><br />
+  <b>Figura: Diagrama de Componentes - IAM Service</b>
+</p>
+
+---
+
+#### **2. Invoicing Service Component Diagram**
+
+El diagrama de componentes del **Invoicing Service** (C# / .NET) organiza en ocho componentes el flujo de carga, procesamiento y validación de facturas utilizando el patrón MediatR/CQRS:
+* **Invoicing Interface Layer:** Recibe las peticiones REST para la carga, consulta y descarga de archivos de facturas.
+* **Invoicing Application Layer:** Coordina la ejecución de los *Command Handlers* y *Query Handlers*.
+* **Invoicing Domain Layer:** Define el agregado `Invoice` como una máquina de estados y contiene el servicio de dominio `InvoiceConsistencyValidator`.
+* **OCR Background Worker:** Proceso asíncrono en segundo plano que reclama tareas de facturas pendientes de procesamiento.
+* **OCR ACL Adapter:** Adaptador de integración con la API externa **Azure Document Intelligence** para la extracción de datos de la factura.
+* **Storage ACL Adapter:** Adaptador para la carga e integración directa con **Amazon S3**.
+* **Invoicing Persistence Infrastructure:** Gestiona la persistencia de documentos en **MongoDB**.
+* **Invoicing Messaging Infrastructure:** Publica el evento de integración `InvoiceEligibleForFundingIntegrationEvent` hacia el Message Broker.
+
+* **Código fuente (Structurizr DSL):** [`invoicing-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/invoicing-service-components.dsl)
+
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/invoicing-service-components.png" alt="Invoicing Service Component Diagram" width="750" /><br />
+  <b>Figura: Diagrama de Componentes - Invoicing Service</b>
+</p>
+
+---
+
+#### **3. Investment Service Component Diagram**
+
+El diagrama de componentes del **Investment Service** (Java / Spring Boot) está estructurado en cinco componentes encargados de soportar el mercado de subastas:
+* **Investment Interface Layer:** Modulo controller (`AuctionsController`) que expone endpoints para publicar subastas, realizar inversiones por fracciones y listar el catálogo del mercado.
+* **Investment Application Layer:** Orquesta la ejecución de pujas y compras sobre el agregado `Auction` y sus particiones (`Partition`).
+* **Investment Domain Layer:** Modela las entidades de negocio de las subastas y reglas de fraccionamiento.
+* **Investment Persistence Infrastructure:** Gestiona las transacciones y la actualización de proyecciones de lectura (CQRS) sobre la base de datos **Oracle XE**.
+* **Investment Messaging Infrastructure:** Consume el evento de facturas elegibles enviado por el Invoicing Service y lo transforma internamente en el comando `CreateAuctionCommand`.
+
+> *Nota:* La integración con la publicación del evento "Inversión Realizada" y el cálculo del scoring de riesgo se incorporarán en versiones posteriores, por lo que no forman parte de este diagrama.
+
+* **Código fuente (Structurizr DSL):** [`investment-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/investment-service-components.dsl)
+
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/investment-service-components.png" alt="Investment Service Component Diagram" width="750" /><br />
+  <b>Figura: Diagrama de Componentes - Investment Service</b>
+</p>
+
+---
+
+#### **4. Finance Service Component Diagram**
+
+El diagrama de componentes del **Finance Service** (Java / Spring Boot con Axon Framework) implementa el patrón **Event Sourcing / CQRS** dividido en nueve componentes:
+* **Finance Command Application Layer:** Recibe y despacha comandos sobre los agregados `Wallet` y `Deposit` mediante el `CommandGateway` de Axon.
+* **Finance Domain Layer:** Modela los agregados y reglas del dominio financiero.
+* **Finance Event Store:** Motor **Axon Server** que almacena la secuencia inmutable de eventos de dominio.
+* **Finance Event Reactors (Sagas):** Componente reactivo encargado de orquestar transacciones distribuidas para el saldo y coordinar cobros.
+* **Stripe ACL Adapter:** Adaptador de integración con **Stripe API** para el procesamiento de pagos, recargas y retiros.
+* **Finance Query / Projection Layer:** Proyecta y actualiza la información en tiempo real hacia el *Read Model*.
+* **Finance Read Persistence Infrastructure:** Almacena el modelo de lectura de consultas (`finance_read_model`) en **PostgreSQL**.
+* **Finance Operational Persistence Infrastructure:** Almacena registros de auditoría, control de idempotencia e *inbox* (`finance_ops`) en **PostgreSQL**.
+* **Finance Integration Event Publisher:** Notifica los eventos financieros procesados hacia el Message Broker.
+
+* **Código fuente (Structurizr DSL):** [`finance-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/finance-service-components.dsl)
+
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/finance-service-components.png" alt="Finance Service Component Diagram" width="750" /><br />
+  <b>Figura: Diagrama de Componentes - Finance Service</b>
+</p>
+
+---
+
+#### **5. Profile Service Component Diagram**
+
+El diagrama de componentes del **Profile Service** (TypeScript / NestJS) se divide en seis componentes para la gestión de usuarios y procesos KYC:
+* **Profile Interface Layer:** Expone servicios REST para actualización de datos, carga de documentos de identidad y respuesta del estado del KYC.
+* **Profile Application Layer:** Orquesta los flujos de negocio sobre los agregados `Company` (MYPE) y `Investor` (Inversionista).
+* **Profile Domain Layer:** Contiene los agregados y la máquina de estados asociada a la verificación de identidad (KYC).
+* **Storage ACL Adapter:** Encargado de generar URLs prefirmadas para la carga segura de archivos (DNI, RUC, logos) hacia **Amazon S3**.
+* **Profile Messaging Infrastructure:** Escucha eventos de creación de usuarios publicados por el IAM Service para generar el perfil base, y emite los eventos `ProfileCompleted`, `KycVerified` y `KycRejected` hacia el Message Broker.
+* **Profile Persistence Infrastructure:** Administra el acceso y persistencia de perfiles en la base de datos PostgreSQL.
+
+* **Código fuente (Structurizr DSL):** [`profile-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/profile-service-components.dsl)
+
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/components-diagrams/out/profile-service-components.png" alt="Profile Service Component Diagram" width="750" /><br />
+  <b>Figura: Diagrama de Componentes - Profile Service</b>
+</p>
 
 ## 4.9. Software Object-Oriented Design
 
