@@ -1,0 +1,137 @@
+@startuml iam-domain-class-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 30
+skinparam ranksep 55
+hide empty members
+
+skinparam class {
+  BackgroundColor<<AggregateRoot>>     #1168BD
+  FontColor<<AggregateRoot>>           #FFFFFF
+  BorderColor<<AggregateRoot>>         #0B4884
+  BackgroundColor<<Entity>>            #438DD5
+  FontColor<<Entity>>                  #FFFFFF
+  BorderColor<<Entity>>                #2E6295
+  BackgroundColor<<ValueObject>>       #85BBF0
+  FontColor<<ValueObject>>             #000000
+  BorderColor<<ValueObject>>           #438DD5
+  BackgroundColor<<DomainEvent>>       #F28FAD
+  FontColor<<DomainEvent>>             #000000
+  BorderColor<<DomainEvent>>           #B56580
+  BackgroundColor<<DomainService>>     #6BA3DC
+  FontColor<<DomainService>>           #000000
+  BorderColor<<DomainService>>         #438DD5
+  BackgroundColor<<Exception>>         #CDA1A1
+  FontColor<<Exception>>               #000000
+  BorderColor<<Exception>>             #8F6262
+}
+
+title Vankoo IAM — Domain Layer Class Diagram
+
+package "iam.domain.model.aggregates" {
+  class User <<AggregateRoot>> {
+    - id: UserId
+    - email: Email
+    - password: Password
+    - roles: Set<Role>
+    - createdAt: Date
+    - updatedAt: Date
+    --
+    + User(email: Email, password: Password)
+    + User(email: Email, password: Password, roles: List<Role>)
+    + addRole(role: Role): User
+    + addRoles(roles: List<Role>): User
+    + registerUserCreatedEvent(): void
+    + isNew(): boolean
+  }
+}
+
+package "iam.domain.model.entities" {
+  class Role <<Entity>> {
+    - id: RoleId
+    - name: RoleName
+    --
+    + Role(name: RoleName)
+    + getStringName(): String
+    + {static} getDefaultRole(): Role
+    + {static} toRoleFromName(name: String): Role
+    + {static} validateRoleSet(roles: List<Role>): List<Role>
+  }
+}
+
+package "iam.domain.model.valueobjects" {
+  class UserId <<ValueObject>> {
+    - id: UUID
+    --
+    + UserId()
+  }
+  class Email <<ValueObject>> {
+    - email: String
+  }
+  class Password <<ValueObject>> {
+    - password: String
+  }
+  class RoleId <<ValueObject>> {
+    - id: UUID
+    --
+    + RoleId()
+  }
+  class RoleName <<ValueObject>> {
+    ROLE_USER
+    ROLE_ADMIN
+    ROLE_MYPE
+    ROLE_INVESTOR
+  }
+}
+
+package "iam.domain.model.events" {
+  class UserCreatedEvent <<DomainEvent>> {
+    + id: String
+    + email: String
+    + roles: List<String>
+  }
+}
+
+package "iam.domain.services" {
+  interface UserCommandService <<DomainService>> {
+    + handle(command: SignUpCommand): Optional<User>
+    + handle(command: SignInCommand): Optional<ImmutablePair<User, String>>
+  }
+  interface UserQueryService <<DomainService>> {
+    + handle(query: GetUserByEmailQuery): Optional<User>
+  }
+  interface RoleCommandService <<DomainService>> {
+    + handle(command: SeedRolesCommand): void
+  }
+}
+
+' Composition: aggregate/entity own their identity and value objects
+User "1" *-- "1" UserId : identified by >
+User "1" *-- "1" Email : has >
+User "1" *-- "1" Password : has >
+Role "1" *-- "1" RoleId : identified by >
+Role "1" *-- "1" RoleName : has >
+
+' Association: Role is seeded/managed independently of any single User
+User "0..*" -- "1..*" Role : grants >
+
+' Domain events published by the aggregate
+User ..> UserCreatedEvent : publishes
+
+' Domain services orchestrate commands/queries against the aggregate
+UserCommandService ..> User : creates / authenticates >
+UserQueryService ..> User : resolves >
+RoleCommandService ..> Role : seeds >
+
+note bottom of User
+  IAM no define excepciones de dominio propias: no existe el paquete
+  domain/exceptions. Las invariantes de Email, Password, RoleId y UserId
+  lanzan java.lang.IllegalArgumentException nativo desde el constructor
+  compacto de cada record.
+end note
+
+@enduml
