@@ -732,7 +732,7 @@ _Pendiente de elaboración._
 
 ## 4.4. Mobile Applications UX/UI Design
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En esta sección se definen los **Diagramas de Componentes** del sistema, detallando la arquitectura interna, módulos principales y la organización lógica de los elementos de software que conforman la plataforma **Vankoo**. Se ilustran las relaciones de dependencia, interfaces requeridas y provistas, así como la integración entre los servicios del backend, la capa de persistencia de datos y los clientes de interfaz (*Web MYPE* y *App Mobile Inversionista*), garantizando una estructura modular, escalable y mantenible.
 
 ### 4.4.1. Mobile Applications Wireframes
 
