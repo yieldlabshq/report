@@ -888,7 +888,33 @@ El mapa evidencia un recorrido que inicia positivo por la motivación de hacer c
 
 | Término (EN) | Término (ES) | Definición |
 |--------------|--------------|------------|
-|  |  |  |
+| **MYPE** | Micro y Pequeña Empresa | Empresa de pequeña escala que utiliza la plataforma para obtener liquidez mediante el adelanto o financiamiento de sus facturas por cobrar. |
+| **Investor** | Inversionista | Persona natural que aporta capital para financiar una o varias facturas con el objetivo de obtener un rendimiento en un plazo determinado. |
+| **Invoice** | Factura | Comprobante de pago emitido por una MYPE a un cliente por la venta de un bien o servicio, que representa un derecho de cobro futuro. |
+| **Negotiable Invoice** | Factura Negociable | Factura que puede ser transferida a un tercero para obtener liquidez antes de su fecha de vencimiento. |
+| **Payer** | Pagador | Empresa o entidad obligada a realizar el pago de una factura en la fecha establecida. |
+| **Invoice Assignment** | Cesión de Factura | Proceso mediante el cual los derechos de cobro de una factura son transferidos para obtener financiamiento. |
+| **Factoring** | Factoring | Operación financiera mediante la cual una empresa obtiene liquidez anticipada a cambio de ceder sus facturas por cobrar. |
+| **Crowdfactoring** | Crowdfactoring | Modalidad de financiamiento participativo en la que varios inversionistas aportan capital para financiar una factura o parte de ella. |
+| **Funding** | Fondeo | Proceso mediante el cual una factura recibe los recursos necesarios por parte de uno o varios inversionistas hasta alcanzar el monto requerido. |
+| **Risk Score** | Puntaje de Riesgo | Indicador generado a partir del análisis de información financiera y comercial para estimar el nivel de riesgo asociado a una operación. |
+| **AI Risk Scoring** | Scoring de Riesgo mediante IA | Evaluación automatizada que utiliza inteligencia artificial para estimar la probabilidad de pago de una factura, considerando principalmente las características del pagador. |
+| **Invoice Fraction** | Fracción de Factura | Parte de una factura que puede ser financiada individualmente por un inversionista, permitiendo reducir el monto mínimo de participación. |
+| **Tokenization** | Tokenización | Mecanismo mediante el cual una factura puede representarse y dividirse digitalmente en participaciones de menor valor para facilitar su financiamiento colectivo. |
+| **Funding Marketplace** | Marketplace de Financiamiento | Espacio digital donde se publican facturas disponibles para financiamiento y los inversionistas pueden seleccionar las operaciones en las que desean participar. |
+| **Investment** | Inversión | Capital aportado por un inversionista para financiar una factura, con la expectativa de recuperar el monto aportado más el rendimiento correspondiente. |
+| **Return** | Retorno | Monto que recibe el inversionista al finalizar una operación, incluyendo el capital invertido y el rendimiento generado según las condiciones establecidas. |
+| **Maturity Date** | Fecha de Vencimiento | Fecha límite establecida para que el pagador cumpla con el pago de la factura. |
+| **Liquidity** | Liquidez | Disponibilidad de dinero en efectivo que permite a una empresa cubrir sus obligaciones y continuar con sus operaciones. |
+| **Early Payment** | Adelanto de Factura | Obtención anticipada del dinero correspondiente a una factura antes de su fecha de vencimiento. |
+| **Traceability** | Trazabilidad | Capacidad de consultar y seguir el estado y los eventos asociados a una factura desde su registro hasta su pago. |
+| **Event Sourcing** | Registro de Eventos | Arquitectura que conserva los eventos generados durante el ciclo de vida de una operación, permitiendo reconstruir y consultar su historial. |
+| **Green Factoring** | Factoring Verde | Modalidad que incorpora criterios de sostenibilidad para identificar operaciones relacionadas con empresas o actividades que generan un impacto ambiental positivo. |
+| **Digital Signature** | Firma Digital | Mecanismo electrónico utilizado para validar la identidad y expresar la aceptación de un usuario en una operación dentro de la plataforma. |
+| **CAVALI** | CAVALI | Institución encargada de administrar el registro, compensación y liquidación de valores y otros instrumentos financieros, incluyendo procesos relacionados con facturas negociables. |
+| **SUNAT** | SUNAT | Entidad encargada de la administración tributaria en el Perú, cuya información y sistemas intervienen en la emisión y validación de comprobantes electrónicos. |
+| **Settlement** | Liquidación | Proceso mediante el cual se completa la transferencia de los fondos correspondientes a una operación de financiamiento. |
+| **Default** | Incumplimiento | Situación en la que el pagador no cumple con el pago de la factura dentro del plazo establecido. |
 
 <hr class="page-break">
 
