@@ -1,0 +1,94 @@
+@startuml profile-database-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam linetype ortho
+
+!define table(x) entity x << (T,#438DD5) >>
+!define enum(x)  entity x << (E,#85BBF0) >>
+
+hide circle
+hide empty members
+
+title Vankoo Profile — Physical Database Diagram (PostgreSQL)
+
+table(companies) {
+  * id                          : UUID <<PK>>
+  --
+  * user_id                     : UUID <<ref IAM.users.id>>
+  * ruc_number                  : VARCHAR(11) <<UNIQUE>>
+  * business_name               : VARCHAR
+  * industry_sector             : VARCHAR
+  * contact_email               : VARCHAR
+  * contact_phone               : VARCHAR
+  * legal_address_street        : VARCHAR
+  * legal_address_city          : VARCHAR
+  * legal_address_state         : VARCHAR
+  * legal_address_postal_code   : VARCHAR
+  * legal_address_country       : VARCHAR
+  * sustainability_is_green     : BOOLEAN
+  * sustainability_verification_date : TIMESTAMP
+  * kyc_status                  : VARCHAR
+  * kyc_rejection_reason        : VARCHAR
+  * logo_url                    : VARCHAR
+  * ruc_document_url            : VARCHAR
+}
+
+table(investors) {
+  * id                          : UUID <<PK>>
+  --
+  * user_id                     : UUID <<ref IAM.users.id>>
+  * dni_number                  : VARCHAR(8) <<UNIQUE>>
+  * first_name                  : VARCHAR
+  * last_name                   : VARCHAR
+  * contact_email               : VARCHAR
+  * contact_phone               : VARCHAR
+  * billing_address_street      : VARCHAR
+  * billing_address_city        : VARCHAR
+  * billing_address_state       : VARCHAR
+  * billing_address_postal_code : VARCHAR
+  * billing_address_country     : VARCHAR
+  * kyc_status                  : VARCHAR
+  * kyc_rejection_reason        : VARCHAR
+  * photo_url                   : VARCHAR
+  * dni_document_url            : VARCHAR
+}
+
+table(bank_accounts) {
+  * id            : UUID <<PK>>
+  --
+  * bank_name     : VARCHAR
+  * account_number : VARCHAR
+  * investor_id   : UUID <<FK>>
+}
+
+investors "1" -- "0..1" bank_accounts : investor_id
+
+note bottom of companies
+  Indexes:
+  - UNIQUE { ruc_number }
+  Embeddeds (VOs) aplanados como columnas con prefijo:
+  legal_address_*, sustainability_*.
+  Esquema con synchronize:true (TypeORM) — sin carpeta migrations/.
+end note
+
+note bottom of investors
+  Indexes:
+  - UNIQUE { dni_number }
+  Relación 1-1 con bank_accounts (bank_accounts es dueña de la FK,
+  cascade: true, eager: true desde el lado Investor).
+end note
+
+note bottom of bank_accounts
+  FK investor_id -> investors.id, ON DELETE CASCADE.
+  Sin índices adicionales declarados.
+end note
+
+legend bottom
+  companies.user_id e investors.user_id son referencias lógicas (sin FK
+  física) al agregado User de IAM (users.id), propagadas por el evento
+  UserCreatedEvent. investment.auctions.mype_id e
+  investment.partitions.investor_id referencian, a su vez, estos mismos
+  registros de companies/investors por su user_id de origen.
+end legend
+
+@enduml

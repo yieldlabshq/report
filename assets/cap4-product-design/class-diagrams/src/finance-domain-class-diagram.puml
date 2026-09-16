@@ -1,0 +1,351 @@
+@startuml finance-domain-class-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 25
+skinparam ranksep 60
+hide empty members
+
+skinparam class {
+  BackgroundColor<<AggregateRoot>>     #1168BD
+  FontColor<<AggregateRoot>>           #FFFFFF
+  BorderColor<<AggregateRoot>>         #0B4884
+  BackgroundColor<<Entity>>            #438DD5
+  FontColor<<Entity>>                  #FFFFFF
+  BorderColor<<Entity>>                #2E6295
+  BackgroundColor<<ValueObject>>       #85BBF0
+  FontColor<<ValueObject>>             #000000
+  BorderColor<<ValueObject>>           #438DD5
+  BackgroundColor<<DomainEvent>>       #F28FAD
+  FontColor<<DomainEvent>>             #000000
+  BorderColor<<DomainEvent>>           #B56580
+  BackgroundColor<<DomainService>>     #6BA3DC
+  FontColor<<DomainService>>           #000000
+  BorderColor<<DomainService>>         #438DD5
+  BackgroundColor<<Exception>>         #CDA1A1
+  FontColor<<Exception>>               #000000
+  BorderColor<<Exception>>             #8F6262
+}
+
+title Vankoo Finance — Domain Layer Class Diagram (Axon Event-Sourced Aggregates)
+
+package "finance.domain.model.aggregates" {
+  class Deposit <<AggregateRoot>> {
+    - depositId: String
+    - accountId: String
+    - amountMinor: long
+    - currency: Currency
+    - provider: Provider
+    - providerDepositId: String
+    - status: DepositStatus
+    - failureReason: FailureReason
+    --
+    + Deposit(command: InitiateDepositCommand)
+    + handle(command: RegisterDepositProviderReferenceCommand): void
+    + handle(command: ApplyProviderDepositUpdateCommand): void
+    + on(event: DepositInitiatedEvent): void
+    + on(event: DepositSucceededEvent): void
+    + on(event: DepositFailedEvent): void
+    - {static} isTerminal(status: DepositStatus): boolean
+  }
+
+  class Wallet <<AggregateRoot>> {
+    - walletId: String
+    - accountId: String
+    - currency: Currency
+    - balanceMinor: long
+    --
+    + Wallet(command: OpenWalletCommand)
+    + handle(command: CreditWalletCommand): void
+    + handle(command: DebitWalletCommand): void
+    + on(event: WalletOpenedEvent): void
+    + on(event: WalletCreditedEvent): void
+    + on(event: WalletDebitedEvent): void
+  }
+}
+
+package "finance.domain.model.valueobjects" {
+  class DepositId <<ValueObject>> {
+    - value: UUID
+    --
+    + {static} newId(): DepositId
+  }
+  class AccountId <<ValueObject>> {
+    - value: UUID
+  }
+  class WalletId <<ValueObject>> {
+    - value: UUID
+    --
+    + {static} derive(accountId: AccountId, currency: Currency): WalletId
+  }
+  class Money <<ValueObject>> {
+    - amountMinor: long
+    - currency: Currency
+    --
+    + add(other: Money): Money
+    + isPositive(): boolean
+  }
+  class Currency <<ValueObject>> {
+    PEN
+    USD
+    --
+    + {static} fromIsoCode(isoCode: String): Currency
+  }
+  class Provider <<ValueObject>> {
+    STRIPE
+  }
+  class ProviderDepositId <<ValueObject>> {
+    - value: String
+  }
+  class ProviderEventId <<ValueObject>> {
+    - value: String
+  }
+  class IdempotencyKey <<ValueObject>> {
+    - value: String
+  }
+  class DepositStatus <<ValueObject>> {
+    PENDING
+    ACTION_REQUIRED
+    PROCESSING
+    SUCCEEDED
+    FAILED
+    CANCELLED
+    --
+    + isTerminal(): boolean
+    + canTransitionTo(target: DepositStatus): boolean
+  }
+  class NormalizedDepositStatus <<ValueObject>> {
+    ACTION_REQUIRED
+    PROCESSING
+    SUCCEEDED
+    FAILED
+    CANCELLED
+  }
+  class FailureReason <<ValueObject>> {
+    DECLINED
+    EXPIRED
+    INVALID_PAYMENT_METHOD
+    PROVIDER_ERROR
+    UNKNOWN
+  }
+  class MovementDirection <<ValueObject>> {
+    CREDIT
+    DEBIT
+  }
+  class WalletMovementType <<ValueObject>> {
+    INVERSION
+    RETIRO
+    COMISION
+  }
+  class WalletMovementKind <<ValueObject>> {
+    RECARGA
+    INVERSION
+    RETIRO
+    COMISION
+  }
+  class ProviderDepositCreated <<ValueObject>> {
+    - providerDepositId: ProviderDepositId
+    - actionUrl: String
+    - status: NormalizedDepositStatus
+  }
+  class ProviderDepositStatus <<ValueObject>> {
+    - providerDepositId: ProviderDepositId
+    - status: NormalizedDepositStatus
+    - observedAt: Instant
+    - failureReason: FailureReason
+  }
+  class VerifiedProviderDepositUpdate <<ValueObject>> {
+    - provider: Provider
+    - providerDepositId: ProviderDepositId
+    - providerEventId: ProviderEventId
+    - status: NormalizedDepositStatus
+    - observedAt: Instant
+    - failureReason: FailureReason
+    - cancellationReason: String
+  }
+}
+
+package "finance.domain.model.events" {
+  class DepositInitiatedEvent <<DomainEvent>> {
+    + depositId: String
+    + accountId: String
+    + amountMinor: long
+    + currency: String
+    + provider: String
+  }
+  class DepositActionRequiredEvent <<DomainEvent>> {
+    + depositId: String
+    + provider: String
+  }
+  class DepositProcessingStartedEvent <<DomainEvent>> {
+    + depositId: String
+    + provider: String
+  }
+  class DepositSucceededEvent <<DomainEvent>> {
+    + depositId: String
+    + accountId: String
+    + amountMinor: long
+    + currency: String
+  }
+  class DepositFailedEvent <<DomainEvent>> {
+    + depositId: String
+    + failureReason: String
+  }
+  class DepositCancelledEvent <<DomainEvent>> {
+    + depositId: String
+    + cancellationReason: String
+  }
+  class WalletOpenedEvent <<DomainEvent>> {
+    + walletId: String
+    + accountId: String
+    + currency: String
+  }
+  class WalletCreditedEvent <<DomainEvent>> {
+    + walletId: String
+    + amountMinor: long
+    + sourceDepositId: String
+  }
+  class WalletDebitedEvent <<DomainEvent>> {
+    + walletId: String
+    + amountMinor: long
+    + reason: String
+  }
+}
+
+package "finance.domain.exceptions" {
+  class InvalidDepositAmountException <<Exception>> {
+    + InvalidDepositAmountException(amountMinor: long)
+  }
+  class UnsupportedCurrencyException <<Exception>> {
+    + UnsupportedCurrencyException(isoCode: String)
+  }
+  class ProviderReferenceMismatchException <<Exception>> {
+    + ProviderReferenceMismatchException(message: String)
+  }
+  class TerminalStateTransitionException <<Exception>> {
+    + TerminalStateTransitionException(message: String)
+  }
+  class InvalidCreditAmountException <<Exception>> {
+    + InvalidCreditAmountException(amountMinor: long)
+  }
+  class InvalidDebitAmountException <<Exception>> {
+    + InvalidDebitAmountException(amountMinor: long)
+  }
+  class InsufficientBalanceException <<Exception>> {
+    + InsufficientBalanceException(walletId, balanceMinor, requestedMinor)
+  }
+  class IdempotencyKeyConflictException <<Exception>> {
+    + IdempotencyKeyConflictException(message: String)
+  }
+  class IntegrationEventPublicationException <<Exception>> {
+    + IntegrationEventPublicationException(message: String)
+  }
+  abstract class PaymentProviderException <<Exception>> {
+    {abstract}
+  }
+  interface RetryablePaymentProviderException <<Exception>> {
+    ' marker interface, sin métodos
+  }
+  class PaymentProviderRejectedException <<Exception>>
+  class PaymentProviderTimeoutException <<Exception>>
+  class PaymentProviderUnavailableException <<Exception>>
+  class InvalidWebhookSignatureException <<Exception>>
+  class UnsupportedProviderEventException <<Exception>>
+
+  PaymentProviderException <|-- PaymentProviderRejectedException
+  PaymentProviderException <|-- PaymentProviderTimeoutException
+  PaymentProviderException <|-- PaymentProviderUnavailableException
+  PaymentProviderException <|-- InvalidWebhookSignatureException
+  PaymentProviderException <|-- UnsupportedProviderEventException
+  RetryablePaymentProviderException <|.. PaymentProviderTimeoutException
+  RetryablePaymentProviderException <|.. PaymentProviderUnavailableException
+}
+
+package "finance.domain.services" {
+  interface DepositCommandService <<DomainService>> {
+    + handle(command: InitiateDepositCommand): DepositId
+    + handle(command: RegisterDepositProviderReferenceCommand): void
+    + handle(command: ApplyProviderDepositUpdateCommand): void
+  }
+  interface DepositQueryService <<DomainService>> {
+    + getDepositById(query: GetDepositByIdQuery): DepositSummary
+    + listDepositsByAccount(query: ListDepositsByAccountQuery): List<DepositSummary>
+  }
+  interface WalletQueryService <<DomainService>> {
+    + getWalletBalance(query): WalletSummary
+    + listWalletMovements(query): List<WalletMovementSummary>
+  }
+  interface WebhookInboxService <<DomainService>> {
+    + accept(update: VerifiedProviderDepositUpdate): InboxAdmission
+    + resolveAndApply(): void
+  }
+}
+
+' Value objects composed by the aggregates
+Deposit "1" *-- "1" DepositId : identified by >
+Deposit "1" *-- "1" AccountId : credits >
+Deposit "1" *-- "1" Provider : settled through >
+Deposit "1" *-- "0..1" ProviderDepositId : references >
+Deposit "1" *-- "1" DepositStatus : has >
+Deposit "1" *-- "0..1" FailureReason : records >
+Deposit "1" *-- "1" Currency : denominated in >
+
+Wallet "1" *-- "1" WalletId : identified by >
+Wallet "1" *-- "1" AccountId : belongs to >
+Wallet "1" *-- "1" Currency : denominated in >
+
+Money "1" *-- "1" Currency : denominated in >
+WalletId ..> AccountId : derived from >
+WalletId ..> Currency : derived from >
+
+' Domain events emitted
+Deposit ..> DepositInitiatedEvent : publishes >
+Deposit ..> DepositActionRequiredEvent : publishes >
+Deposit ..> DepositProcessingStartedEvent : publishes >
+Deposit ..> DepositSucceededEvent : publishes >
+Deposit ..> DepositFailedEvent : publishes >
+Deposit ..> DepositCancelledEvent : publishes >
+Wallet ..> WalletOpenedEvent : publishes >
+Wallet ..> WalletCreditedEvent : publishes >
+Wallet ..> WalletDebitedEvent : publishes >
+Wallet ..> DepositSucceededEvent : consumes >
+
+' Business rule violations
+Deposit ..> InvalidDepositAmountException : throws >
+Deposit ..> ProviderReferenceMismatchException : throws >
+Deposit ..> TerminalStateTransitionException : throws >
+Currency ..> UnsupportedCurrencyException : throws >
+Wallet ..> InvalidCreditAmountException : throws >
+Wallet ..> InvalidDebitAmountException : throws >
+Wallet ..> InsufficientBalanceException : throws >
+WebhookInboxService ..> IdempotencyKeyConflictException : throws >
+WebhookInboxService ..> PaymentProviderException : throws >
+WebhookInboxService ..> IntegrationEventPublicationException : throws >
+
+' Domain services dispatch to the aggregates / read model
+DepositCommandService ..> Deposit : dispatches to >
+DepositQueryService ..> DepositId : filters by >
+WalletQueryService ..> WalletId : filters by >
+WebhookInboxService ..> VerifiedProviderDepositUpdate : consumes >
+WebhookInboxService ..> ProviderDepositCreated : produces >
+WebhookInboxService ..> ProviderDepositStatus : produces >
+
+note bottom of Deposit
+  Deposit y Wallet son agregados Axon 4 (@Aggregate), reconstruidos por
+  replay del Event Store (Axon Server) — no tienen tabla propia y no
+  existe Deposit.save()/Wallet.save(). Los @EventSourcingHandler solo
+  asignan estado, nunca validan (ver ADR-0002).
+end note
+
+note bottom of WebhookInboxService
+  NormalizedDepositStatus, MovementDirection, WalletMovementKind,
+  ProviderDepositCreated, ProviderDepositStatus y
+  VerifiedProviderDepositUpdate son value objects del adaptador de
+  proveedor de pagos (borde de webhooks/idempotencia), no del núcleo
+  transaccional de los agregados.
+end note
+
+@enduml

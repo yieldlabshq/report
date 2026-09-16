@@ -567,7 +567,7 @@ _Pendiente de elaboración: párrafo introductorio del capítulo._
 
 ## 4.1. Style Guidelines
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En esta sección se establecen los lineamientos de diseño visual, estándares de interfaz y principios estéticos que rigen el producto. El objetivo de esta guía de estilo es garantizar la consistencia, usabilidad y coherencia visual en todas las plataformas y componentes del sistema, facilitando una experiencia de usuario fluida e intuitiva.
 
 ### 4.1.1. General Style Guidelines
 
@@ -584,17 +584,98 @@ _Pendiente de elaboración._
 
 ### 4.1.3. Mobile Style Guidelines
 
-_Pendiente de elaboración._
+a. General Specs & Grid System
 
+* **Frame Base (Canvas Viewport):** Android / iOS (`390px × 844px`)
+* **Grid & Offsets:** Margen lateral de `16px` o `20px` según la densidad de la pantalla.
+* **Border Radius:**
+  * **Inputs / Fields:** `8px` - `12px` (Borde de `1px`).
+  * **Botones Primarios:** `8px` o tipo *Pill/Capsule* según la variante.
+  * **Cards & Containers:** `12px` - `16px`.
+  * **Banners & Alertas:** `8px` - `12px`.
+
+---
+
+b). Color Palette & Tokens
+
+* Brand / Primary
+* **Menta Vankoo (Action / Primary CTA):** `#00D09C` — Botones de acción principal, estados activos de menú y tasas destacadas.
+* **Azul Oscuro (Brand Header / Dark Base):** `#0B192C` — Cabecera de marca, fondo base en modo oscuro y tarjetas destacadas de saldo.
+
+* Feedback & System States
+* **Error / Destructive (Dark Mode):** Fondo `#7F1D1D` o `#991B1B` con borde `#FF3B30` y texto blanco (`#FFFFFF`).
+* **Error / Destructive (Light Mode):** Fondo `#FEE2E2` con borde `#FCA5A5` y texto `#991B1B`.
+* **Rendimiento / Descuento (Pill Success):** Fondo `#D1FAE5` con texto verde oscuro `#065F46` (ej. *4.2% de descuento*).
+* **Alertas / Avisos:** Fondo beige/amarillo claro `#FEF3C7` con texto/borde ámbar `#B45309`.
+
+* Neutrals & Surfaces
+* **Dark Mode Base Background:** `#0B192C` / `#0F172A`.
+* **Dark Mode Input / Card Background:** `#1E293B` o `#111827` con opacidad.
+* **Light Mode Base Background:** `#FFFFFF` (Default) / `#F3F4F6` (Gris claro para contenedor e inputs deshabilitados).
+* **Dark Text (Headings Light):** `#111827` — Titulares y textos principales.
+* **Muted Text / Secondary:** `#6B7280` (Light) / `#94A3B8` (Dark) — Subtítulos, textos de ayuda y placeholders.
+
+---
+
+c) Typography Scale
+
+* **Header Brand Text (Logo Slogan):**
+  * **Font Family:** Sans-serif (Inter / SF Pro / Roboto).
+  * **Size:** `28px` - `32px` Bold (Marca) / `14px` Regular (*"Tu liquidez, hoy."*).
+* **Screen Titles (H1):**
+  * **Size:** `22px` - `24px` | **Weight:** SemiBold / Bold | **Color:** `#111827` (Light) / `#FFFFFF` (Dark).
+* **Section Headers (Form Groups & Cards):**
+  * **Size:** `14px` - `16px` | **Weight:** SemiBold / Bold.
+* **Body & Subtitles:**
+  * **Body Regular:** `14px` | **Weight:** Regular | **Color:** `#6B7280` / `#94A3B8`.
+  * **Field Labels:** `12px` - `14px` | **Weight:** Medium / SemiBold.
+* **Microcopy & Captions:**
+  * **Helper / Error Text:** `11px` - `12px` | **Weight:** Regular (*"Mínimo 8 caracteres"*, *"Correo o contraseña incorrectos"*).
+
+---
+
+d) UI Components & Navigation
+
+* Header & Navigation Bar
+* **Brand Header (Autenticación / Modales):** Fondo azul oscuro `#0B192C` con logo centrado, barra de estado nativa (`9:41`) y botón opcional de acción en esquina derecha (`[ Salir ]`).
+* **App Top Bar (Dashboard / Mercado):** Fondo blanco `#FFFFFF`, isotipo **vankoo** alineado a la izquierda e icono de notificaciones a la derecha.
+* **Bottom Navigation Bar (Tab Bar):**
+  * **Altura:** `64px` - `72px`.
+  * **Íconos:** *Inicio*, *Mercado*, *Mis Operaciones*, *Perfil*.
+  * **Estado Activo:** Verde menta `#00D09C` con indicador circular.
+  * **Estado Inactivo:** Gris neutro `#9CA3AF`.
+
+* Form Inputs & Selectors
+* **Field Default:** Borde gris claro (`1px`), alto `48px` - `52px`, icono interactivo a la derecha (ej. visibilidad de contraseña).
+* **Field Error:** Borde rojo con banner/mensaje de ayuda en tipografía `11px - 12px`.
+* **Selection Chips / Montos Rápidos:** Chips horizontales (`S/ 1,000`, `S/ 3,000`, `S/ 5,000`) en `#F3F4F6` con indicador activo al seleccionar.
+
+* Cards & Data Display
+* **Balance Primary Card:** Fondo azul `#0B192C` (Radius `12px - 16px`), saldo principal en `28px - 32px` Bold blanco y botón Pill verde menta (*"Recargar"*).
+* **Inversión / Opportunity Cards:** Fondo blanco, borde `#E5E7EB`, título en `14px` SemiBold, monto en `14px` Bold y badges de grado/descuento (*• Grado A*, *5.8% de descuento*).
+* **Historial de Movimientos:** Filas con icono circular transaccional, título en `14px` SemiBold, ID en `12px` y montos destacados (+ Verde para ingresos / - Rojo/Oscuro para egresos).
+
+* Buttons & CTA
+* **Primary Button:** Ancho completo (*Full Width*), alto `48px`, color verde menta `#00D09C` con texto centrado (`Medium` / `SemiBold`).
+* **Disabled / Loading Button:** Opacidad al 50% con spinner o texto diferido (*"Ingresando..."*).
+* **Secondary / Text Link:** Botón tipo enlace (*"¿Olvidaste tu contraseña?"*, *"Usar otra tarjeta"*).
+  
 #### 4.1.3.1. iOS Mobile Style Guidelines
 
-_Pendiente de elaboración._
+* **Estrategia de UI:** Diseño unificado basado en los tokens generales de Vankoo.
+* **Tipografía Nativa (Fallback):** SF Pro Display / SF Pro Text.
+* **Consideraciones de Pantalla:**
+  * Implementación de *Safe Area Insets* en Top Bar y Bottom Tab Bar.
+  * Respeto del indicador de inicio nativo (*Home Indicator*) en pantallas completas.
 
 #### 4.1.3.2. Android Mobile Style Guidelines
 
-_Pendiente de elaboración._
+* **Estrategia de UI:** Identica a la versión de iOS para garantizar paridad visual en ambas tiendas.
+* **Tipografía Nativa (Fallback):** Roboto / Inter.
+* **Consideraciones de Pantalla:**
+  * Soporte para barra de navegación por gestos y por 3 botones.
+  * Renderizado de la barra de estado (*Status Bar*) transparente o con fondo `#0B192C` en modales de marca.
 
-<hr class="page-break">
 
 ## 4.2. Information Architecture
 
@@ -651,34 +732,333 @@ _Pendiente de elaboración._
 
 ## 4.4. Mobile Applications UX/UI Design
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En esta sección se definen los **Diagramas de Componentes** del sistema, detallando la arquitectura interna, módulos principales y la organización lógica de los elementos de software que conforman la plataforma **Vankoo**. Se ilustran las relaciones de dependencia, interfaces requeridas y provistas, así como la integración entre los servicios del backend, la capa de persistencia de datos y los clientes de interfaz (*Web MYPE* y *App Mobile Inversionista*), garantizando una estructura modular, escalable y mantenible.
 
 ### 4.4.1. Mobile Applications Wireframes
 
-<!-- Assets: ./assets/cap4-product-design/mobile-app/wireframes/ -->
+A continuación, se presentan todas las pantallas que conforman los wireframes de la aplicación móvil de **Vankoo** para la experiencia del usuario inversionista.
 
-_Pendiente de elaboración._
+#### **1. Autenticación y Gestión de Cuenta**
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/CreateAccount.png" alt="Crear Cuenta" width="240" /><br />
+      <sub><b>Crear Cuenta</b><br />Registro inicial de datos personales del usuario inversionista.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/RecoverAccount.png" alt="Recuperar Cuenta" width="240" /><br />
+      <sub><b>Recuperar Cuenta</b><br />Solicitud de restablecimiento de acceso mediante correo.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/NewPassword.png" alt="Nueva Contraseña" width="240" /><br />
+      <sub><b>Nueva Contraseña</b><br />Ingreso y confirmación de nuevas credenciales de acceso.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/States.png" alt="Estados de Verificación" width="240" /><br />
+      <sub><b>Estados / Validación</b><br />Notificaciones de error o rechazo en proceso de verificación.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+#### **2. Dashboard Principal y Secciones**
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/Home.png" alt="Inicio" width="240" /><br />
+      <sub><b>Inicio / Dashboard</b><br />Vista principal con saldo total, accesos rápidos y resumen de actividad.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/SeccionMarket.png" alt="Mercado" width="240" /><br />
+      <sub><b>Sección Mercado</b><br />Catálogo de facturas y oportunidades disponibles para fondear.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/SeccionInversions.png" alt="Inversiones" width="240" /><br />
+      <sub><b>Mis Inversiones</b><br />Listado y seguimiento del estado de las facturas fondeadas.</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/SeccionWallet.png" alt="Billetera" width="240" /><br />
+      <sub><b>Billetera</b><br />Detalle de saldo disponible, retenido e historial transaccional.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+#### **3. Flujo de Subasta e Inversión**
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/DetailAuction.png" alt="Detalle de Subasta" width="240" /><br />
+      <sub><b>Detalle de Subasta</b><br />Información de la factura, tasa de retorno y empresa emisora.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/InsufficentFunds.png" alt="Saldo Insuficiente" width="240" /><br />
+      <sub><b>Saldo Insuficiente</b><br />Validación y aviso para recargar fondos antes de invertir.</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/RefreshWallet.png" alt="Recarga de Billetera" width="240" /><br />
+      <sub><b>Recargar Billetera</b><br />Módulo para abonar dinero a la cuenta mediante transferencia/tarjeta.</sub>
+    </td>
+  </tr>
+</table>
+
+---
+
+#### **4. Perfil y Ajustes**
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/Perfil.png" alt="Perfil del Usuario" width="240" /><br />
+      <sub><b>Perfil</b><br />Información general del usuario y estado de la cuenta.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="./assets/cap4-product-design/mobile-app/wireframes/RechargeAndProfile.png" alt="Recarga y Perfil" width="240" /><br />
+      <sub><b>Configuración de Recarga/Perfil</b><br />Gestión de cuentas bancarias de retiro y ajustes.</sub>
+    </td>
+  </tr>
+</table>
 
 ### 4.4.2. Mobile Applications Wireflow Diagrams
 
-<!-- Herramienta: LucidChart / Overflow. -->
-<!-- Assets: ./assets/cap4-product-design/mobile-app/wireflow-diagrams/ -->
+A continuación, se presentan los diagramas de flujo de pantallas (*Wireflow Diagrams*) de la aplicación móvil de **Vankoo**, desplegados a tamaño completo para garantizar la máxima legibilidad de los componentes y las conexiones entre pantallas.
 
-_Pendiente de elaboración._
+---
+
+#### **1. Autenticación, Registro e Identidad**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/FrontPage.png" alt="Pantalla Inicial" width="750" /><br />
+  <b>01. Portada / Front Page</b><br />
+  <sub>Diagrama de inicio y flujo de bienvenida a la aplicación.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Access0.png" alt="Acceso 0" width="750" /><br />
+  <b>02. Acceso - Inicio de Sesión</b><br />
+  <sub>Flujo de autenticación con credenciales principales.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Access1.png" alt="Acceso 1" width="750" /><br />
+  <b>03. Acceso - Recuperación</b><br />
+  <sub>Ruta de recuperación de contraseña y enlaces de validación.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Access2.png" alt="Acceso 2" width="750" /><br />
+  <b>04. Acceso - Verificación</b><br />
+  <sub>Flujo de estados de error y confirmación de identidad.</sub>
+</p>
+
+---
+
+#### **2. Mercado de Oportunidades y Subastas**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Market0.png" alt="Mercado 0" width="750" /><br />
+  <b>05. Mercado - Exploración</b><br />
+  <sub>Navegación general por las facturas y oportunidades disponibles.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Market1.png" alt="Mercado 1" width="750" /><br />
+  <b>06. Mercado - Detalle de Subasta</b><br />
+  <sub>Flujo de consulta de detalles y simulación de inversión.</sub>
+</p>
+
+---
+
+#### **3. Gestión de Inversiones y Billetera**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Investments0.png" alt="Inversiones 0" width="750" /><br />
+  <b>07. Inversiones - Resumen</b><br />
+  <sub>Visualización general de operaciones en curso y fondeadas.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Investments1.png" alt="Inversiones 1" width="750" /><br />
+  <b>08. Inversiones - Detalle</b><br />
+  <sub>Flujo de seguimiento de retornos y estado de pagos.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/WalletRecharge0.png" alt="Billetera 0" width="750" /><br />
+  <b>09. Billetera - Recarga</b><br />
+  <sub>Navegación e ingreso del monto para abono de saldo.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/WalletRecharge1.png" alt="Billetera 1" width="750" /><br />
+  <b>10. Billetera - Confirmación</b><br />
+  <sub>Pasarela bancaria y manejo de estados de rechazo/éxito.</sub>
+</p>
+
+---
+
+#### **4. Perfil del Usuario y Configuración**
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Profile0.png" alt="Perfil 0" width="750" /><br />
+  <b>11. Perfil - General</b><br />
+  <sub>Navegación por datos personales y estado de verificación.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Profile1.png" alt="Perfil 1" width="750" /><br />
+  <b>12. Perfil - Cuentas Bancarias</b><br />
+  <sub>Ajustes de cuentas para el retiro de fondos.</sub>
+</p>
+
+<br />
+
+<p align="center">
+  <img src="./assets/cap4-product-design/mobile-app/wireflow-diagrams/Profile2.png" alt="Perfil 2" width="750" /><br />
+  <b>13. Perfil - Seguridad y Ajustes</b><br />
+  <sub>Modificación de preferencias y seguridad de la cuenta.</sub>
+</p>
 
 ### 4.4.3. Mobile Applications Mock-ups
 
-<!-- Assets: ./assets/cap4-product-design/mobile-app/mockups/ -->
+Esta sección presenta las pantallas de la aplicación móvil de Vankoo organizadas por flujos de usuario y capacidades principales de la plataforma.
 
-_Pendiente de elaboración._
+##### Autenticación e Inicios de Sesión (Login)
+
+![Login 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login0.png)
+*Figura 4.4.3.1. Pantalla de inicio / bienvenida.*
+
+![Login 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login1.png)
+*Figura 4.4.3.2. Formulario de inicio de sesión.*
+
+![Login 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login2.png)
+*Figura 4.4.3.3. Selección de tipo de perfil / credenciales.*
+
+![Login 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login3.png)
+*Figura 4.4.3.4. Confirmación de acceso / verificación.*
+
+![Login 4](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login4.png)
+*Figura 4.4.3.5. Recuperación y validación de seguridad.*
+
+---
+
+##### Pantalla Principal (Home) y Mercado (Marketplace)
+
+![Home 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Home0.png)
+*Figura 4.4.3.6. Dashboard principal de la aplicación.*
+
+![Market 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market0.png)
+*Figura 4.4.3.7. Vista general del Mercado de Oportunidades.*
+
+![Market 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market1.png)
+*Figura 4.4.3.8. Detalle de subasta e inversión.*
+
+---
+
+##### Mis Inversiones y Billetera (Wallet)
+
+![My Investments](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/MyInvestments.png)
+*Figura 4.4.3.9. Portafolio de inversiones activas y rendimiento.*
+
+![Wallet 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet0.png)
+*Figura 4.4.3.10. Saldo de la billetera y resumen transaccional.*
+
+![Wallet 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet1.png)
+*Figura 4.4.3.11. Opciones de depósito y retiro de fondos.*
+
+---
+
+##### Perfil de Usuario y Deltas
+
+![Profile 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile0.png)
+*Figura 4.4.3.12. Información general del perfil de usuario.*
+
+![Profile 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile1.png)
+*Figura 4.4.3.13. Ajustes de la cuenta y preferencias.*
+
+![Deltas](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Deltas.png)
+*Figura 4.4.3.14. Comparativa de variaciones y métricas del sistema (Deltas).*
+
+---
+
+##### Mantenimiento y Tema Oscuro (Night Mode)
+
+![Night Mode 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode0.png)
+*Figura 4.4.3.15. Vista principal en Modo Oscuro.*
+
+![Night Mode 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode1.png)
+*Figura 4.4.3.16. Mercado de Oportunidades en Modo Oscuro.*
+
+![Night Mode 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode2.png)
+*Figura 4.4.3.17. Vista del portafolio/billetera en Modo Oscuro.*
+
+![Night Mode 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode3.png)
+*Figura 4.4.3.18. Ajustes y perfil en Modo Oscuro.*
 
 ### 4.4.4. Mobile Applications User Flow Diagrams
 
-<!-- Assets: ./assets/cap4-product-design/mobile-app/user-flow-diagrams/ -->
+Esta sección presenta los diagramas de flujo de usuario (User Flows) para la aplicación móvil de Vankoo, los cuales detallan los recorridos y la navegación paso a paso a través de las diferentes funcionalidades de la plataforma.
 
-_Pendiente de elaboración._
+##### Flujo de Portada e Inicio (Front Page)
 
-<hr class="page-break">
+![Front Page User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/FrontPage.png)
+*Figura 4.4.4.1. Diagrama de flujo de la pantalla de bienvenida e inicio de la aplicación.*
+
+---
+
+##### Flujo de Autenticación y Acceso (Access)
+
+![Access User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Access.png)
+*Figura 4.4.4.2. Diagrama de flujo para el registro, inicio de sesión y recuperación de credenciales.*
+
+---
+
+##### Flujo de Registro de Perfil y Verificación KYC (Profile KYC)
+
+![Profile KYC User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/ProfileKYC.png)
+*Figura 4.4.4.3. Diagrama de flujo para el completado de perfil y el proceso de validación de identidad KYC.*
+
+---
+
+##### Flujo de Recarga de Billetera (Recharge Wallet)
+
+![Recharge Wallet User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/RechargeWallet.png)
+*Figura 4.4.4.4. Diagrama de flujo para la recarga de fondos y gestión del saldo en la billetera.*
+
+---
+
+##### Flujo de Exploración del Mercado (Marketplace)
+
+![Marketplace User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Marketplace.png)
+*Figura 4.4.4.5. Diagrama de flujo para la navegación y búsqueda de subastas en el mercado de oportunidades.*
+
+---
+
+##### Flujo de Gestión de Inversiones (Investments)
+
+![Investments User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Investments.png)
+*Figura 4.4.4.6. Diagrama de flujo para la ejecución de inversiones y seguimiento del portafolio.*
 
 ## 4.5. Mobile Applications Prototyping
 
@@ -734,49 +1114,463 @@ _Pendiente de elaboración._
 
 ## 4.8. Domain-Driven Software Architecture
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En esta sección se presenta el modelo físico de datos correspondiente a cada microservicio mediante sus respectivos diagramas entidad-relación (ERD). Se contemplan cuatro contextos relacionales (IAM y Profile en PostgreSQL, Finance mediante un read model en PostgreSQL sobre Axon Server Event Store, e Investment en Oracle) y un esquema de documentos NoSQL en MongoDB para el contexto de Invoicing. Cada diagrama refleja de forma fidedigna el estado real de la base de datos a partir de sus entidades (JPA/TypeORM/EF-Mongo) y scripts de migración. Destaca el caso particular de Finance, el cual aplica el patrón Axon Event Sourcing: los agregados de dominio no se mapean en tablas dedicadas, limitando el esquema de PostgreSQL a las tablas del modelo de lectura y a las estructuras de soporte operativo (idempotencia, inbox de webhooks y el token/saga store de Axon)
 
 ### 4.8.1. Software Architecture Context Diagram
 
-<!-- C4 Model - Nivel 1. Herramienta: Structurizr (o Structurizr DSL como Diagram-as-Code). -->
-<!-- Assets: ./assets/cap4-product-design/software-architecture/context-diagram/ -->
+En esta sección se presenta el **Diagrama de Contexto del Sistema (System Context View)** para **Vankoo**, el cual delimita las fronteras de la plataforma, identifica los tipos de usuarios principales y detalla sus interacciones con los servicios externos que complementan la arquitectura del software.
 
-_Pendiente de elaboración._
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/context-diagram/out/vankoo-context-diagram.png" alt="Diagrama de Contexto de Vankoo" width="750" /><br />
+  <b>Figura: Diagrama de Contexto del Sistema Vankoo</b>
+</p>
+
+---
+
+#### **Componentes y Elementos del Diagrama**
+
+1. **Usuarios del Sistema (Actores):**
+   * **MYPE:** Empresa que publica y gestiona facturas electrónicas en la plataforma para obtener liquidez inmediata.
+   * **Inversionista:** Usuario final que explora el mercado e invierte dinero en las facturas disponibles para obtener retornos por tasa de descuento.
+
+2. **Core del Sistema (Vankoo):**
+   * Núcleo del software que centraliza la lógica de negocio, procesamiento de subastas, administración de billeteras virtuales y orquestación de servicios.
+
+3. **Servicios e Integraciones Externas:**
+   * **Amazon S3:** Almacenamiento seguro en la nube para documentos y archivos adjuntos (facturas, DNI, sustentación legal).
+   * **Stripe API:** Pasarela bancaria externa para el procesamiento de cobros, recargas de saldo y retiros de dinero de los usuarios.
+   * **Firebase (FCM):** Servicio de notificaciones Push para el envío en tiempo real de alertas sobre el estado de subastas, recargas y operaciones.
+   * **Cloud OCR API:** Servicio externo de reconocimiento óptico de caracteres para la extracción e intepretación automática de datos relevantes a partir de la imagen de las facturas.
 
 ### 4.8.2. Software Architecture Container Diagrams
 
-<!-- C4 Model - Nivel 2. -->
-<!-- Assets: ./assets/cap4-product-design/software-architecture/container-diagrams/ -->
+En esta sección se presenta el **Diagrama de Contenedores (Container View)** bajo el modelo C4 para la plataforma **Vankoo**. Este nivel muestra la distribución de las aplicaciones ejecutables, los servicios de backend y los almacenes de datos que conforman el ecosistema técnico, detallando sus responsabilidades principales y los protocolos de comunicación utilizados.
 
-_Pendiente de elaboración._
+<p align="center">
+  <img src="./assets/cap4-product-design/software-architecture/container-diagrams/out/vankoo-container-diagram.png" alt="Diagrama de Contenedores de Vankoo" width="850" /><br /><br />
+  <b>Figura: Diagrama de Contenedores de la Plataforma Vankoo</b>
+</p>
+
+---
+
+#### **Descripción de Contenedores y Componentes**
+
+1. **Aplicaciones de Cliente (Frontend):**
+   * **Web MYPE (SPA):** Aplicación web dirigida a las micro y pequeñas empresas para la carga de facturas, seguimiento del estado de subastas y consulta de liquidez disponible.
+   * **Mobile App Inversionista:** Aplicación móvil diseñada para que los inversionistas exploren el mercado de facturas, realicen pujas en tiempo real y gestionen su billetera virtual.
+
+2. **Punto de Entrada (API Gateway / BFF):**
+   * **API Gateway:** Enruta y gestiona el tráfico de peticiones entrantes vía HTTP/HTTPS, aplicando mecanismos de autenticación, autorización básica y limitación de tasa (*rate limiting*) hacia los microservicios correspondientes.
+
+3. **Microservicios de Dominio (Core Backend):**
+   * **IAM Service:** Gestiona la identidad, el registro, inicio de sesión y la emisión/validación de tokens de acceso (JWT).
+   * **Profile Service:** Administra los perfiles de usuario, la validación de identidad KYC (*Know Your Customer*) y la información corporativa o personal.
+   * **Invoicing Service:** Procesa la recepción de facturas electrónicas, extracción automática de datos mediante OCR y validación de reglas de emisión.
+   * **Investment Service:** Orquesta la lógica del mercado de subastas, registro de ordenes de inversión/pujas y adjudicación de facturas.
+   * **Finance Service:** Administra el estado de las billeteras digitales, procesamiento de movimientos financieros, recargas, retiros e historial de transacciones.
+
+4. **Persistencia de Datos y Axon Server:**
+   * **Bases de Datos Especializadas:** Almacenes independientes por microservicio (PostgreSQL para IAM y Profile; Oracle para Investment; MongoDB NoSQL para Invoicing).
+   * **Axon Server (Event Store):** Motor centralizado de eventos para el microservicio de Finance, facilitando una arquitectura guiada por eventos (*Event Sourcing* y *CQRS*).
+
+5. **Integraciones Externas:**
+   * **Stripe API:** Pasarela de pago para la gestión de fondos y transferencias.
+   * **Amazon S3:** Almacenamiento seguro de archivos digitales y documentos adjuntos.
+   * **Firebase FCM:** Envío de notificaciones Push en tiempo real a los dispositivos móviles.
+   * **Cloud OCR API:** Servicio de lectura e interpretación inteligente de documentos.
 
 ### 4.8.3. Software Architecture Components Diagrams
 
-<!-- C4 Model - Nivel 3. -->
-<!-- Assets: ./assets/cap4-product-design/software-architecture/components-diagrams/ -->
+Los diagramas de componentes (C4 Nivel 3) profundizan en la organización interna y la estructura de módulos de cada *bounded context* de **Vankoo**. Fueron elaborados en **Structurizr** tomando como referencia el código fuente y la arquitectura de capas de cada microservicio. 
 
-_Pendiente de elaboración._
+Actualmente, se han desarrollado los cinco *bounded contexts* implementados en el sistema —**IAM**, **Invoicing**, **Investment**, **Finance** y **Profile**—, siguiendo la convención de capas *Interface*, *Application*, *Domain* e *Infrastructure*, junto con adaptadores tipo *Anti-Corruption Layer (ACL)* para las integraciones con servicios externos (OCR, almacenamiento en la nube y pasarelas de pago).
 
-<hr class="page-break">
+---
+
+#### **1. IAM Service Component Diagram**
+
+El diagrama de componentes del **IAM Service** (Java / Spring Boot) se estructura en seis componentes principales:
+* **IAM Interface Layer:** Compuesta por `AuthenticationController` y `UsersController`, actúa como punto de entrada REST expuesto al API Gateway.
+* **IAM Application Layer:** Orquesta la lógica de registro de usuarios, inicio de sesión y gestión de credenciales.
+* **IAM Domain Layer:** Modela las entidades centrales del dominio, compuestas por el agregado `User` y la entidad `Role`.
+* **IAM Security Infrastructure:** Provee los mecanismos de cifrado (`BCrypt`) y gestión de tokens de autenticación (`JWT`).
+* **IAM Persistence Infrastructure:** Administra la capa ORM (JPA) hacia la base de datos relacional `IAM Database` en PostgreSQL.
+* **IAM Messaging Infrastructure:** Publica el evento `UserCreatedEvent` hacia el Message Broker tras la confirmación de la transacción.
+
+* **Código fuente (Structurizr DSL):** [`iam-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/iam-service-components.dsl)
+
+---
+
+#### **2. Invoicing Service Component Diagram**
+
+El diagrama de componentes del **Invoicing Service** (C# / .NET) organiza en ocho componentes el flujo de carga, procesamiento y validación de facturas utilizando el patrón MediatR/CQRS:
+* **Invoicing Interface Layer:** Recibe las peticiones REST para la carga, consulta y descarga de archivos de facturas.
+* **Invoicing Application Layer:** Coordina la ejecución de los *Command Handlers* y *Query Handlers*.
+* **Invoicing Domain Layer:** Define el agregado `Invoice` como una máquina de estados y contiene el servicio de dominio `InvoiceConsistencyValidator`.
+* **OCR Background Worker:** Proceso asíncrono en segundo plano que reclama tareas de facturas pendientes de procesamiento.
+* **OCR ACL Adapter:** Adaptador de integración con la API externa **Azure Document Intelligence** para la extracción de datos de la factura.
+* **Storage ACL Adapter:** Adaptador para la carga e integración directa con **Amazon S3**.
+* **Invoicing Persistence Infrastructure:** Gestiona la persistencia de documentos en **MongoDB**.
+* **Invoicing Messaging Infrastructure:** Publica el evento de integración `InvoiceEligibleForFundingIntegrationEvent` hacia el Message Broker.
+
+* **Código fuente (Structurizr DSL):** [`invoicing-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/invoicing-service-components.dsl)
+
+---
+
+#### **3. Investment Service Component Diagram**
+
+El diagrama de componentes del **Investment Service** (Java / Spring Boot) está estructurado en cinco componentes encargados de soportar el mercado de subastas:
+* **Investment Interface Layer:** Modulo controller (`AuctionsController`) que expone endpoints para publicar subastas, realizar inversiones por fracciones y listar el catálogo del mercado.
+* **Investment Application Layer:** Orquesta la ejecución de pujas y compras sobre el agregado `Auction` y sus particiones (`Partition`).
+* **Investment Domain Layer:** Modela las entidades de negocio de las subastas y reglas de fraccionamiento.
+* **Investment Persistence Infrastructure:** Gestiona las transacciones y la actualización de proyecciones de lectura (CQRS) sobre la base de datos **Oracle XE**.
+* **Investment Messaging Infrastructure:** Consume el evento de facturas elegibles enviado por el Invoicing Service y lo transforma internamente en el comando `CreateAuctionCommand`.
+
+> *Nota:* La integración con la publicación del evento "Inversión Realizada" y el cálculo del scoring de riesgo se incorporarán en versiones posteriores, por lo que no forman parte de este diagrama.
+
+* **Código fuente (Structurizr DSL):** [`investment-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/investment-service-components.dsl)
+
+---
+
+#### **4. Finance Service Component Diagram**
+
+El diagrama de componentes del **Finance Service** (Java / Spring Boot con Axon Framework) implementa el patrón **Event Sourcing / CQRS** dividido en nueve componentes:
+* **Finance Command Application Layer:** Recibe y despacha comandos sobre los agregados `Wallet` y `Deposit` mediante el `CommandGateway` de Axon.
+* **Finance Domain Layer:** Modela los agregados y reglas del dominio financiero.
+* **Finance Event Store:** Motor **Axon Server** que almacena la secuencia inmutable de eventos de dominio.
+* **Finance Event Reactors (Sagas):** Componente reactivo encargado de orquestar transacciones distribuidas para el saldo y coordinar cobros.
+* **Stripe ACL Adapter:** Adaptador de integración con **Stripe API** para el procesamiento de pagos, recargas y retiros.
+* **Finance Query / Projection Layer:** Proyecta y actualiza la información en tiempo real hacia el *Read Model*.
+* **Finance Read Persistence Infrastructure:** Almacena el modelo de lectura de consultas (`finance_read_model`) en **PostgreSQL**.
+* **Finance Operational Persistence Infrastructure:** Almacena registros de auditoría, control de idempotencia e *inbox* (`finance_ops`) en **PostgreSQL**.
+* **Finance Integration Event Publisher:** Notifica los eventos financieros procesados hacia el Message Broker.
+
+* **Código fuente (Structurizr DSL):** [`finance-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/finance-service-components.dsl)
+
+---
+
+#### **5. Profile Service Component Diagram**
+
+El diagrama de componentes del **Profile Service** (TypeScript / NestJS) se divide en seis componentes para la gestión de usuarios y procesos KYC:
+* **Profile Interface Layer:** Expone servicios REST para actualización de datos, carga de documentos de identidad y respuesta del estado del KYC.
+* **Profile Application Layer:** Orquesta los flujos de negocio sobre los agregados `Company` (MYPE) y `Investor` (Inversionista).
+* **Profile Domain Layer:** Contiene los agregados y la máquina de estados asociada a la verificación de identidad (KYC).
+* **Storage ACL Adapter:** Encargado de generar URLs prefirmadas para la carga segura de archivos (DNI, RUC, logos) hacia **Amazon S3**.
+* **Profile Messaging Infrastructure:** Escucha eventos de creación de usuarios publicados por el IAM Service para generar el perfil base, y emite los eventos `ProfileCompleted`, `KycVerified` y `KycRejected` hacia el Message Broker.
+* **Profile Persistence Infrastructure:** Administra el acceso y persistencia de perfiles en la base de datos PostgreSQL.
+
+* **Código fuente (Structurizr DSL):** [`profile-service-components.dsl`](./assets/cap4-product-design/software-architecture/components-diagrams/src/profile-service-components.dsl)
+
+
 
 ## 4.9. Software Object-Oriented Design
 
 ### 4.9.1. Class Diagrams
 
-<!-- UML. Herramienta: LucidChart o PlantUML (Diagram-as-Code). -->
-<!-- Assets: ./assets/cap4-product-design/class-diagrams/ -->
+Se presentan a continuación los cinco diagramas de clases de la capa de dominio, uno por cada *Bounded Context*, bajo la paleta de estereotipos DDD acordada para el proyecto: **`«AggregateRoot»`** (`#1168BD`), **`«Entity»`** (`#438DD5`), **`«ValueObject»`** (`#85BBF0`), **`«DomainEvent»`** (`#F28FAD`), **`«DomainService»`** (`#6BA3DC`) y **`«Exception»`** (`#CDA1A1`).
 
-_Pendiente de elaboración._
+---
+
+#### **1. IAM Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **IAM** modela únicamente los conceptos centrales del dominio, sin las capas de aplicación e infraestructura. 
+
+* El paquete `iam.domain.model.aggregates` contiene al Aggregate Root `User`.
+* `iam.domain.model.entities` contiene a la Entity `Role`.
+* `iam.domain.model.valueobjects` agrupa los Value Objects `UserId`, `Email`, `Password`, `RoleId` y el enumerado `RoleName`.
+* `iam.domain.model.events` encapsula el único Domain Event publicado (`UserCreatedEvent`).
+* `iam.domain.services` declara los Domain Services que orquestan el agregado.
+
+Las líneas continuas marcan composición y las punteadas, dependencias semánticas (eventos publicados, servicios que orquestan). IAM no define excepciones de dominio propias: sus invariantes lanzan `IllegalArgumentException` nativo.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/iam-domain-class-diagram.png" alt="IAM Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.1. Diagrama de clases del dominio del Bounded Context IAM.</b>
+</p>
+
+---
+
+#### **2. Profile Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Profile** modela dos Aggregate Roots independientes —`Company` (perfil de una Mype) e `Investor` (perfil de un inversionista)— y la Entity `BankAccount`, asociada opcionalmente a `Investor`. 
+
+* El paquete `profile.domain.model.valueobjects` agrupa los dieciséis Value Objects que describen ambos perfiles (identificadores, contacto, dirección y evidencias de KYC).
+* `profile.domain.services` declara los seis Domain Services que orquestan su creación, completado de perfil y verificación KYC. 
+
+Las líneas continuas marcan la composición de cada agregado con sus Value Objects. Profile no define eventos ni excepciones de dominio como clases: las validaciones lanzan `Error` nativo y la integración se publica como payloads planos.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/profile-domain-class-diagram.png" alt="Profile Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.2. Diagrama de clases del dominio del Bounded Context Profile.</b>
+</p>
+
+---
+
+#### **3. Finance Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Finance** modela dos Aggregate Roots *event-sourced* con Axon Framework —`Deposit` y `Wallet`—, reconstruidos por reproducción de eventos y sin tabla propia en la base de datos de consulta.
+
+* El paquete `finance.domain.model.valueobjects` agrupa los Value Objects del núcleo transaccional (`Money`, `Currency`, `DepositId`, `WalletId`, `DepositStatus`) y los del adaptador de proveedor de pagos.
+* `finance.domain.model.events` agrupa los diez Domain Events publicados.
+* `finance.domain.exceptions` agrupa las dieciséis excepciones de negocio, incluida la jerarquía sellada `PaymentProviderException`. 
+
+Las líneas punteadas marcan eventos y excepciones; los Domain Services despachan comandos hacia los agregados o resuelven consultas contra el *read model*.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/finance-domain-class-diagram.png" alt="Finance Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.3. Diagrama de clases del dominio del Bounded Context Finance.</b>
+</p>
+
+---
+
+#### **4. Investment Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Investment** modela al Aggregate Root `Auction` (subasta de financiamiento de una factura) y a la Entity `Partition`, la participación de un inversionista dentro de una subasta.
+
+* El paquete `investment.domain.model.valueobjects` agrupa los Value Objects monetarios y de estado (`Money`, `Percentage`, `RiskScore`, `AuctionStatus`, `PartitionStatus`).
+* `investment.domain.services` declara `AuctionCommandService` y `AuctionQueryService`.
+
+Las líneas continuas marcan la composición de `Auction` con sus particiones; las punteadas, los tres Domain Events publicados. Investment tampoco define excepciones de dominio propias: sus invariantes lanzan `IllegalStateException` o `IllegalArgumentException` nativos.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/investment-domain-class-diagram.png" alt="Investment Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.4. Diagrama de clases del dominio del Bounded Context Investment.</b>
+</p>
+
+---
+
+#### **5. Invoicing Bounded Context**
+
+El diagrama de clases del *Domain Layer* del *Bounded Context* **Invoicing** modela dos Aggregate Roots —`Invoice` (la factura y su ciclo de extracción OCR/validación) y `OcrTask` (la cola de procesamiento asíncrono)—, cada uno con colección e identidad propias en MongoDB pese a que `OcrTask` reside físicamente en `Domain/Entities/`.
+
+* El paquete `Invoicing.Domain.ValueObjects` agrupa los cerca de veinte Value Objects embebidos en `Invoice`.
+* `Invoicing.Domain.Exceptions` contiene la jerarquía de excepciones de negocio.
+* `Invoicing.Domain.Services` contiene el servicio `InvoiceConsistencyValidator`.
+
+De los seis Domain Events declarados en el código, solo dos están realmente cableados a un manejador; los restantes se omiten del diagrama por no reflejar comportamiento real.
+
+<p align="center">
+  <img src="./assets/cap4-product-design/class-diagrams/out/invoicing-domain-class-diagram.png" alt="Invoicing Bounded Context Domain Class Diagram" width="850" /><br />
+  <b>Figura 4.9.1.5. Diagrama de clases del dominio del Bounded Context Invoicing.</b>
+</p>
+
 
 ### 4.9.2. Class Dictionary
 
-_Pendiente de elaboración._
+Se presenta a continuación el diccionario de clases de la capa de dominio organizado por *Bounded Context*, el cual especifica la responsabilidad, estereotipo DDD, atributos y métodos de negocio clave de cada elemento.
 
-<hr class="page-break">
+---
+
+#### **1. IAM Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `User` | `«AggregateRoot»` | Representa la cuenta de acceso (credenciales y roles asignados) del sistema. | `id: UserId`, `email: Email`, `password: Password`, `roles: Set<Role>`, `createdAt/updatedAt: Date` | `User(email, password)`, `addRole(role)`, `addRoles(roles)`, `registerUserCreatedEvent()` |
+| `Role` | `«Entity»` | Rol de autorización del catálogo fijo del sistema. | `id: RoleId`, `name: RoleName` | `getStringName()`, `getDefaultRole()` (static), `toRoleFromName(name)` (static), `validateRoleSet(roles)` (static) |
+| `UserId` | `«ValueObject»` | Identidad única del agregado `User`. | `id: UUID` (UUIDv7) | `UserId()` — genera un nuevo UUIDv7 |
+| `Email` | `«ValueObject»` | Dirección de correo validada por formato. | `email: String` | Validación por regex en el constructor compacto (`record`) |
+| `Password` | `«ValueObject»` | Contraseña del usuario (hash aplicado fuera del VO). | `password: String` | Validación de no-vacío en el constructor compacto |
+| `RoleId` | `«ValueObject»` | Identidad única de `Role`. | `id: UUID` (UUIDv7) | `RoleId()` — genera un nuevo UUIDv7 |
+| `RoleName` | `«ValueObject»` (enum) | Catálogo cerrado de roles: `ROLE_USER`, `ROLE_ADMIN`, `ROLE_MYPE`, `ROLE_INVESTOR`. | — | — |
+| `UserCreatedEvent` | `«DomainEvent»` | Notifica el alta de un `User`, propagado a otros Bounded Contexts vía Kafka (`vankoo.iam.events`). | `id: String`, `email: String`, `roles: List<String>` | — |
+| `UserCommandService` | `«DomainService»` (interfaz) | Orquesta el alta (*Sign Up*) y el inicio de sesión (*Sign In*). | — | `handle(SignUpCommand): Optional<User>`, `handle(SignInCommand): Optional<ImmutablePair<User,String>>` |
+| `UserQueryService` | `«DomainService»` (interfaz) | Resuelve la consulta de un usuario por email. | — | `handle(GetUserByEmailQuery): Optional<User>` |
+| `RoleCommandService` | `«DomainService»` (interfaz) | Siembra (*seed*) el catálogo fijo de roles al iniciar el sistema. | — | `handle(SeedRolesCommand): void` |
+
+> **Nota de fidelidad:** IAM no define excepciones de dominio propias; las invariantes de `Email`, `Password`, `RoleId` y `UserId` lanzan `IllegalArgumentException` nativo de Java.
+
+---
+
+#### **2. Profile Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Company` | `«AggregateRoot»` | Perfil de una empresa (Mype) emisora, con su ciclo de verificación KYC. | `id: CompanyId`, `userId: UserId`, `contactEmail: Email`, `rucNumber`, `businessName`, `industrySector`, `contactPhone`, `legalAddress`, `sustainabilityStatus`, `kycStatus`, `kycRejectionReason`, `logoUrl/rucDocumentUrl: DocumentUrl` | `completeProfile(...)`, `verifyKyc()`, `rejectKyc(reason)`, `uploadRucDocument(url)`, `updateLogo(url)` |
+| `Investor` | `«AggregateRoot»` | Perfil de un inversionista persona natural, con su ciclo de verificación KYC. | `id: InvestorId`, `userId: UserId`, `contactEmail: Email`, `dni`, `fullName`, `contactPhone`, `billingAddress`, `kycStatus`, `kycRejectionReason`, `photoUrl/dniDocumentUrl: DocumentUrl`, `bankAccount: BankAccount` | `completeProfile(...)`, `verifyKyc()`, `rejectKyc(reason)`, `updatePhoto(url)`, `updateDniDocument(url)` |
+| `BankAccount` | `«Entity»` | Cuenta bancaria asociada a un `Investor` para retiros y depósitos. | `id: BankAccountId`, `bankName: string`, `accountNumber: string` | `updateAccountDetails(newBankName, newAccountNumber)` |
+| `CompanyId` / `InvestorId` / `BankAccountId` | `«ValueObject»` | Identidad del agregado o entidad correspondiente (UUID como `string`). | `value: string` | Autogeneran `randomUUID()` si no se provee valor |
+| `UserId` | `«ValueObject»` | Referencia a la identidad del usuario en IAM. | `value: string` | Valida no-vacío |
+| `Email` | `«ValueObject»` | Correo de contacto. | `address: string` | `validate(email): boolean` |
+| `RucNumber` | `«ValueObject»` | RUC de la empresa. | `value: string` | Sin validación de formato |
+| `BusinessName` | `«ValueObject»` | Razón social. | `value: string` | — |
+| `IndustrySector` | `«ValueObject»` (enum) | Sector económico: `AGRICULTURE`, `MANUFACTURING`, `SERVICES`, `TECHNOLOGY`, `RETAIL`, `OTHER`. | — | — |
+| `PhoneNumber` | `«ValueObject»` | Teléfono de contacto. | `value: string` | — |
+| `Address` | `«ValueObject»` | Dirección postal (legal o de facturación). | `street`, `city`, `state`, `postalCode`, `country: string` | Valida `street`, `city` y `country` no vacíos |
+| `SustainabilityStatus` | `«ValueObject»` | Estado de certificación de sostenibilidad de una empresa. | `isGreen: boolean`, `verificationDate?: Date` | — |
+| `KycStatus` | `«ValueObject»` (enum) | Estado del proceso KYC: `PENDING`, `VERIFIED`, `REJECTED`. | — | — |
+| `KycRejectionReason` | `«ValueObject»` | Motivo de rechazo de un KYC. | `value: string` | Valida no-vacío |
+| `DocumentUrl` | `«ValueObject»` | URL de un documento subido (logo, RUC, DNI, foto). | `url: string` | Valida que inicie con `'http'` |
+| `DniNumber` | `«ValueObject»` | DNI del inversionista. | `value: string` | — |
+| `FullName` | `«ValueObject»` | Nombre completo del inversionista. | `firstName`, `lastName: string` | — |
+| `ICompanyCommandService` / `IInvestorCommandService` | `«DomainService»` (interfaz) | Orquestan alta, completado de perfil, KYC y carga de documentos. | — | `handleCreateX`, `handleCompleteProfile`, `handleVerifyKyc`, `handleRejectKyc`, `handleRequestXUploadUrl`, `handleUploadX` |
+| `ICompanyQueryService` / `IInvestorQueryService` | `«DomainService»` (interfaz) | Resuelven consultas por id. | — | `handleGetXById(query)` |
+| `IEventPublisherService` | `«DomainService»` (interfaz) | Puerto de publicación de eventos de integración hacia Kafka. | — | `publish(topic, payload): Promise<void>` |
+| `IFileStorageService` | `«DomainService»` (interfaz) | Puerto de generación de URLs prefirmadas para carga de archivos (S3/MinIO). | — | `generateUploadUrl(objectKey): Promise<UploadUrlResult>` |
+
+> **Nota de fidelidad:** Profile no define eventos ni excepciones de dominio tipados. Las validaciones lanzan `Error` nativo de TypeScript, y los eventos de integración (`ProfileCompleted`, `KycVerified`, `KycRejected`) son objetos planos publicados desde la capa de aplicación.
+
+---
+
+#### **3. Finance Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Deposit` | `«AggregateRoot»` | Ciclo de vida de un depósito de fondos vía Stripe; agregado Axon reconstruido por *event sourcing*. | `depositId`, `accountId: String`, `amountMinor: long`, `currency`, `provider`, `providerDepositId`, `status`, `failureReason` | `Deposit(InitiateDepositCommand)`, `handle(RegisterDepositProviderReferenceCommand)`, `handle(ApplyProviderDepositUpdateCommand)` |
+| `Wallet` | `«AggregateRoot»` | Saldo monetario de una cuenta en una moneda específica; agregado Axon con *snapshot* cada 100 eventos. | `walletId`, `accountId: String`, `currency`, `balanceMinor: long` | `Wallet(OpenWalletCommand)`, `handle(CreditWalletCommand)`, `handle(DebitWalletCommand)` |
+| `DepositId` | `«ValueObject»` | Identidad de `Deposit` (UUIDv7). | `value: UUID` | `newId()` |
+| `AccountId` | `«ValueObject»` | Identidad de cuenta, siempre originada fuera de Finance. | `value: UUID` | — |
+| `WalletId` | `«ValueObject»` | Identidad de `Wallet`, derivada de (`accountId`, `currency`). | `value: UUID` | `derive(accountId, currency)` — UUIDv5 determinístico |
+| `Money` | `«ValueObject»` | Monto monetario con su moneda. | `amountMinor: long`, `currency: Currency` | `add(other)`, `isPositive()` |
+| `Currency` | `«ValueObject»` (enum) | Monedas soportadas: `PEN`, `USD`. | — | `fromIsoCode(isoCode)` |
+| `Provider` | `«ValueObject»` (enum) | Proveedor de pagos: `STRIPE`. | — | — |
+| `ProviderDepositId` | `«ValueObject»` | Identificador opaco del depósito en el proveedor externo. | `value: String` | — |
+| `ProviderEventId` | `«ValueObject»` | Clave de deduplicación de eventos de webhook del proveedor. | `value: String` | — |
+| `IdempotencyKey` | `«ValueObject»` | Clave de idempotencia de la solicitud de depósito. | `value: String` | — |
+| `DepositStatus` | `«ValueObject»` (enum) | Estados de `Deposit`: `PENDING`, `ACTION_REQUIRED`, `PROCESSING`, `SUCCEEDED`, `FAILED`, `CANCELLED`. | — | `isTerminal()`, `canTransitionTo(target)` |
+| `NormalizedDepositStatus` | `«ValueObject»` (enum) | Taxonomía normalizada del adaptador de proveedor (sin `PENDING`). | — | — |
+| `FailureReason` | `«ValueObject»` (enum) | Motivo de falla: `DECLINED`, `EXPIRED`, `INVALID_PAYMENT_METHOD`, `PROVIDER_ERROR`, `UNKNOWN`. | — | — |
+| `MovementDirection` | `«ValueObject»` (enum) | Dirección de un movimiento de wallet: `CREDIT`, `DEBIT`. | — | — |
+| `WalletMovementType` | `«ValueObject»` (enum) | Motivos de débito del wallet: `INVERSION`, `RETIRO`, `COMISION`. | — | — |
+| `WalletMovementKind` | `«ValueObject»` (enum) | Vocabulario completo del *read model* de movimientos: `RECARGA`, `INVERSION`, `RETIRO`, `COMISION`. | — | — |
+| `ProviderDepositCreated` | `«ValueObject»` | Resultado de creación de un depósito en el proveedor externo. | `providerDepositId`, `actionUrl`, `status` | — |
+| `ProviderDepositStatus` | `«ValueObject»` | Estado observado de un depósito reportado por el proveedor. | `providerDepositId`, `status`, `observedAt`, `failureReason` | — |
+| `VerifiedProviderDepositUpdate` | `«ValueObject»` | Actualización de proveedor ya verificada (firma de webhook validada). | `provider`, `providerDepositId`, `providerEventId`, `status`, `observedAt`, `failureReason`, `cancellationReason` | — |
+| `DepositInitiatedEvent` … `DepositCancelledEvent` (7 eventos) | `«DomainEvent»` | Hitos del ciclo de vida de `Deposit` (iniciado, requiere acción, en proceso, exitoso, fallido, cancelado y registro de referencia del proveedor). | `depositId`, `accountId`, `amountMinor`, `currency`, `provider` + campos específicos | — |
+| `WalletOpenedEvent`, `WalletCreditedEvent`, `WalletDebitedEvent` | `«DomainEvent»` | Hitos del ciclo de vida de `Wallet` (apertura, abono, cargo). | `walletId`, `amountMinor`, `currency` + `sourceDepositId/reason` | — |
+| `InvalidDepositAmountException` | `«Exception»` | Monto de depósito $\le 0$. | `amountMinor: long` | — |
+| `UnsupportedCurrencyException` | `«Exception»` | Código ISO de moneda no soportado. | `isoCode: String` | — |
+| `ProviderReferenceMismatchException` | `«Exception»` | La referencia del proveedor no coincide con la ya registrada. | `message: String` | — |
+| `TerminalStateTransitionException` | `«Exception»` | Transición inválida desde un estado terminal de `Deposit`. | `message: String` | — |
+| `InvalidCreditAmountException` / `InvalidDebitAmountException` | `«Exception»` | Monto de abono o cargo $\le 0$ en `Wallet`. | `amountMinor: long` | — |
+| `InsufficientBalanceException` | `«Exception»` | Saldo insuficiente para un débito de `Wallet`. | `walletId`, `balanceMinor`, `requestedMinor` | — |
+| `IdempotencyKeyConflictException` | `«Exception»` | Conflicto de idempotencia en `POST /v1/deposits`. | `message: String` | — |
+| `IntegrationEventPublicationException` | `«Exception»` | Falla al publicar un evento de integración. | `message: String` | — |
+| `PaymentProviderException` (+ 5 subclases selladas, `RetryablePaymentProviderException`) | `«Exception»` | Jerarquía de errores del adaptador de proveedor de pagos (rechazo, timeout, no disponible, firma inválida, evento no soportado). | — | — |
+| `DepositCommandService` | `«DomainService»` (interfaz) | Orquesta la iniciación y actualización de depósitos. | — | `handle(InitiateDepositCommand): DepositId`, `handle(RegisterDepositProviderReferenceCommand)`, `handle(ApplyProviderDepositUpdateCommand)` |
+| `DepositQueryService` / `WalletQueryService` | `«DomainService»` (interfaz) | Resuelven consultas contra el *read model* (nunca contra el agregado). | — | `getDepositById`, `listDepositsByAccount`, `getWalletBalance`, `listWalletMovements` |
+| `WebhookInboxService` | `«DomainService»` (interfaz) | Admite y aplica actualizaciones de webhook de forma idempotente. | — | `accept(VerifiedProviderDepositUpdate): InboxAdmission`, `resolveAndApply()` |
+
+> **Nota de fidelidad:** `Deposit` y `Wallet` son agregados Axon 4 (*event-sourced*): no tienen tabla propia ni operación `save()`; se reconstruyen por reproducción de eventos desde Axon Server.
+
+---
+
+#### **4. Investment Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Auction` | `«AggregateRoot»` | Subasta de financiamiento de una factura (*invoice factoring*); administra sus particiones de inversión. | `id: AuctionId`, `invoiceId`, `mypeId: UserId`, `status`, `riskScore`, `invoiceAmount/netAmount/targetAmount/currentFunding: Money`, `discountRate/commissionRate: Percentage`, `greenCertified`, `partitions: List<Partition>` | `registerAuctionCreatedEvent(...)`, `calculateFinancials(discount, commission)`, `publish(expirationDate)`, `canAcceptPartition(amount)`, `addInvestment(investorId, amount, returnRate, transactionId)`, `isFunded()`, `close()`, `cancel()` |
+| `Partition` | `«Entity»` | Participación de un inversionista dentro de una `Auction`. | `id: PartitionId`, `auctionId`, `investorId: UserId`, `amount/expectedReturn/actualReturn: Money`, `percentage/returnRate: Percentage`, `status` | `calculateReturn()`, `markAsPaid(transactionId)`, `markAsDefaulted()`, `cancel()` |
+| `AuctionId` / `PartitionId` | `«ValueObject»` | Identidad del agregado o entidad correspondiente (UUID como `string`). | `uuid: String` | Autogeneran UUID si no se provee valor |
+| `InvoiceId` | `«ValueObject»` | Referencia a la factura de origen (Bounded Context Invoicing). | `uuid: String` | — |
+| `UserId` | `«ValueObject»` | Referencia a la identidad del emisor (Mype) o inversionista (Bounded Context Profile). | `uuid: String` | — |
+| `Money` | `«ValueObject»` | Monto monetario con su moneda. | `amount: BigDecimal`, `currency: Currency` | `add`, `subtract`, `multiply`, `isGreaterThan`, `isLessThan`, `requireSameCurrency` |
+| `Percentage` | `«ValueObject»` | Porcentaje de descuento, comisión o retorno. | `value: BigDecimal` | `of(money): Money` |
+| `RiskScore` | `«ValueObject»` | Calificación crediticia de una `Auction`. | `grade: ScoreGrade` | `pendingEvaluation()` (static), `isLowRisk()`, `isMediumRisk()`, `isHighRisk()` |
+| `InvestorParticipation` | `«ValueObject»` | Snapshot de datos de un inversionista sobre su participación. | `investorId`, `amount`, `percentage`, `investorName`, `investorRUC`, `investorEmail` | — |
+| `Currency` | `«ValueObject»` (enum) | Monedas soportadas: `PEN`, `USD`. | — | — |
+| `AuctionStatus` | `«ValueObject»` (enum) | Estados de `Auction`: `PENDING_VERIFICATION_RISK`, `DRAFT`, `PUBLISHED`, `FUNDING`, `FULLY_FUNDED`, `CLOSED`, `EXPIRED`, `CANCELLED`. | — | `marketplaceActiveStatuses()` (static) |
+| `PartitionStatus` | `«ValueObject»` (enum) | Estados de `Partition`: `ACTIVE`, `PAID`, `DEFAULTED`, `CANCELLED`. | — | — |
+| `ScoreGrade` | `«ValueObject»` (enum) | Grados de riesgo: `A`, `B`, `C`, `UNDER_EVALUATION`. | — | — |
+| `AuctionCreatedEvent` | `«DomainEvent»` | Notifica la creación de una subasta (incluye datos del pagador). | `auctionId`, `invoiceId`, `mypeId`, `payerRuc`, `payerName`, `invoiceAmount`, `currency`, `status`, `greenCertified` | — |
+| `PartitionAddedEvent` | `«DomainEvent»` | Notifica la incorporación de una nueva partición/inversión. | `auctionId`, `partitionId`, `addedAmount`, `newCurrentFunding` | — |
+| `AuctionFullyFundedEvent` | `«DomainEvent»` | Notifica que la subasta alcanzó su monto objetivo. | `auctionId` | — |
+| `AuctionCommandService` | `«DomainService»` (interfaz) | Orquesta la creación de subastas y la incorporación de particiones. | — | `handle(CreateAuctionCommand): Optional<AuctionId>`, `handle(AddPartitionCommand): Optional<PartitionId>` |
+| `AuctionQueryService` | `«DomainService»` (interfaz) | Resuelve consultas de subastas (detalle, activas, marketplace). | — | `handle(GetAuctionByIdQuery)`, `handle(GetAllActiveAuctionsQuery)`, `handle(GetMarketplaceAuctionsQuery)` |
+
+> **Nota de fidelidad:** Investment no define excepciones de dominio propias; `Auction.publish()` y `Auction.addInvestment()` lanzan `IllegalStateException` o `IllegalArgumentException` nativos.
+
+---
+
+#### **5. Invoicing Bounded Context**
+
+| Clase / Elemento | Estereotipo DDD | Responsabilidad / Descripción | Atributos Principales | Métodos de Negocio Clave |
+| :--- | :--- | :--- | :--- | :--- |
+| `Invoice` | `«AggregateRoot»` | Factura cargada por una Mype, su extracción OCR, validación de consistencia y elegibilidad para financiamiento. | `Id: InvoiceId`, `MypeId`, `Status`, `Document: InvoiceDocument`, `TotalAmount/SubtotalAmount/TaxAmount/DiscountAmount: Money`, `Items: IReadOnlyList<InvoiceLineItem>`, `ConsistencyResult`, `SunatValidation` | `Create(mypeId, document)` (static), `StartOcrProcessing()`, `SetOcrOperationId(id)`, `Reject(reason)`, `RegisterOcrResults(result, consistencyResult)`, `MarkIntegrationEventPublished()` |
+| `OcrTask` | `«AggregateRoot»` | Tarea de cola para el procesamiento OCR asíncrono de una factura, con reintentos y *lease*. | `Id: string`, `InvoiceId: string`, `Status`, `AttemptCount/MaxAttempts: int`, `NextRetryAtUtc`, `LockExpiresAtUtc` | `Create(invoiceId, maxAttempts=5)` (static), `MarkProcessing(leaseDuration)`, `MarkCompleted()`, `MarkFailure(error, retryDelay)` |
+| `InvoiceId` / `MypeId` / `OcrOperationId` | `«ValueObject»` | Identificadores de dominio (`string`). | `Value: string` | `NewId()`, `Of(value)` |
+| `RucNumber` | `«ValueObject»` | RUC peruano validado (11 dígitos, prefijo 10/15/20, módulo 11). | `Value: string` | `Of(value)`, `IsNaturalPerson()`, `IsLegalEntity()` |
+| `FileKey` | `«ValueObject»` | Clave de objeto en almacenamiento (S3/MinIO). | `Value: string` | `Generate()` (static) |
+| `Currency` | `«ValueObject»` (enum) | Monedas soportadas: `PEN=1`, `USD=2`. | — | — |
+| `Money` | `«ValueObject»` | Monto monetario con su moneda. | `Amount: decimal`, `Currency` | `Add`, `Subtract`, `Multiply`, `Divide` |
+| `IssuerData` / `PayerData` | `«ValueObject»` | Datos fiscales del emisor / pagador de la factura. | `Ruc: RucNumber`, `LegalName`, `TradeName?`, `Address?` | `Create(...)`, `GetDisplayName()` |
+| `InvoiceDocument` | `«ValueObject»` | Metadatos del archivo de factura cargado. | `Key: FileKey`, `OriginalName`, `ContentType`, `FileSizeBytes`, `ContentHash` | `Upload(...)` (static) |
+| `InvoiceMetadata` | `«ValueObject»` | Serie, número, fechas, moneda y confianza OCR extraídos. | `InvoiceSeries`, `InvoiceNumber`, `IssueDate`, `DueDate`, `Currency`, `OcrConfidence` | `GetFullInvoiceNumber()`, `IsExpired()`, `HasAcceptableConfidence(threshold)` |
+| `InvoiceLineItem` | `«ValueObject»` | Línea de detalle de la factura. | `Description`, `Quantity`, `UnitPrice/Subtotal: Money` | `Create(...)`, `CreateFromOcr(...)`, `CalculateTotal()` |
+| `InvoiceAmounts` | `«ValueObject»` | Conjunto de montos extraídos para validar consistencia. | `Subtotal/Tax/Discount/Total: Money` | `Create(...)`, `IsConsistent(tolerance)` |
+| `OcrFieldConfidence` | `«ValueObject»` | Confianza de extracción de un campo OCR individual. | `Field`, `Confidence: float`, `Critical: bool` | — |
+| `OcrExtractionResult` | `«ValueObject»` | Resultado íntegro de una extracción OCR. | `IssuerData`, `PayerData`, `Metadata`, `Amounts`, `Items`, `FieldConfidences`, `ExtractionWarnings` | `HasConsistentLineSubtotal(tolerance)` |
+| `InvoiceConsistencyResult` (`+ InvoiceValidationIssue`) | `«ValueObject»` | Resultado consolidado de las reglas de consistencia de una factura. | `Status`, `Issues: IReadOnlyList<InvoiceValidationIssue>`, `CheckedAt?` | `NotChecked()` (static), `FromIssues(issues, checkedAt)` (static) |
+| `RejectionReason` | `«ValueObject»` | Motivo de rechazo de una factura. | `Reason`, `RejectedAt`, `RejectedBy?` | `Create(...)` |
+| `SunatValidation` | `«ValueObject»` | Resultado de validación contra SUNAT. | `IsValid`, `ValidatedAt?`, `CdrUrl?`, `ResponseCode?` | `CreateValid(...)`, `CreateInvalid(...)`, `IsApproved()` |
+| `InvoiceStatus` / `OcrTaskStatus` / `SunatVerificationStatus` / `IntegrationEventPublicationStatus` | `«ValueObject»` (enum) | Máquinas de estado de factura, tarea OCR, verificación SUNAT y publicación. | — | — |
+| `InvoiceCreatedEvent` | `«DomainEvent»` | Notifica la creación de una factura (publicado vía `IMediator.Publish`). | `Invoice: Invoice` | — |
+| `InvoiceEligibleForFundingDomainEvent` | `«DomainEvent»` | Notifica que una factura es elegible para financiamiento. | `Invoice: Invoice` | — |
+| `DomainException` | `«Exception»` (abstracta) | Base de toda excepción de dominio con código de error. | `ErrorCode: string` | — |
+| `BusinessRuleViolationException` / `EntityNotFoundException` / `InvalidValueException` | `«Exception»` | Categorías base de excepción (violación de regla, no encontrado, valor inválido). | — | — |
+| `InvalidInvoiceStateException` | `«Exception»` | Transición de estado inválida sobre `Invoice`. | `CurrentStatus`, `ExpectedStatus?` | — |
+| `InvalidRucException` | `«Exception»` | RUC con formato o dígito verificador inválido. | `InvalidRuc: string` | — |
+| `InvoiceNotFoundException` | `«Exception»` | Factura no encontrada. | `InvoiceId: string` | — |
+| `LowOcrConfidenceException` | `«Exception»` | Confianza OCR bajo el umbral requerido. | `Confidence`, `MinimumRequired: float` | — |
+| `IncompleteOcrDataException` | `«Exception»` | Dato obligatorio ausente en la extracción OCR. | `InvoiceId`, `MissingField: string` | — |
+| `InvoiceConsistencyValidator` | `«DomainService»` | Valida la consistencia de una extracción OCR (emisor, pagador, fechas, montos, ítems, duplicados, confianza). | `MoneyTolerance=0.02`, `CriticalConfidenceThreshold=0.75` | `Validate(extraction, checkedAt, duplicateFiscalIdentity): InvoiceConsistencyResult` |
+
+> **Nota de fidelidad:** De los 6 eventos de dominio declarados en el código de Invoicing, solo `InvoiceCreatedEvent` e `InvoiceEligibleForFundingDomainEvent` implementan `INotification` y tienen un manejador asociado.
 
 ## 4.10. Database Design
 
-### 4.10.1. Relational/Non-Relational Database Diagram
+Esta sección documenta el modelo físico de datos de cada microservicio: modelos entidad-relación (ERD) para los cuatro contextos relacionales (IAM y Profile sobre PostgreSQL, Finance sobre PostgreSQL como read model de un Event Store en Axon Server, Investment sobre Oracle) y un modelo de documentos en MongoDB para el contexto NoSQL (Invoicing). Los diagramas se construyeron a partir de las entidades JPA/TypeORM/EF-Mongo y las migraciones o configuraciones de persistencia realmente presentes en cada repositorio, no de un diseño ideal; en particular, Finance despliega un modelo poco convencional (Axon Event Sourcing) en el que los agregados de dominio no poseen tabla propia y el esquema PostgreSQL solo contiene el read model de consulta y las tablas operativas de soporte (idempotencia, inbox de webhooks, token/saga store de Axon).
+
+#### 4.10.1. Database Diagram
+
+##### IAM
+
+El esquema físico del Bounded Context IAM (PostgreSQL) consta de la tabla `users` (credenciales y auditoría), la tabla de catálogo `roles` y la tabla de unión `user_roles` que materializa la relación N:M entre ambas. El único índice adicional es la restricción de unicidad sobre `email`; el esquema se genera automáticamente vía Hibernate, sin migraciones versionadas. IAM es el Bounded Context raíz de identidad: no declara referencias hacia otros contextos, sino que su clave `users.id` es la que Profile e Investment referencian lógicamente a través del evento `UserCreatedEvent`.
+
+![Vankoo — IAM Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/iam-database-diagram.png)
+
+*Figura 4.10.1.1. Diagrama entidad-relación del Bounded Context IAM.*
+
+---
+
+##### Profile
+
+El esquema físico del Bounded Context Profile (PostgreSQL) consta de las tablas `companies` e `investors` —con sus Value Objects de dirección y sostenibilidad aplanados como columnas con prefijo— y de `bank_accounts`, en relación 1 a 1 con `investors` mediante una foreign key con `ON DELETE CASCADE`. Ambas tablas principales declaran unicidad sobre su identificador fiscal (`ruc_number`, `dni_number`) y una referencia lógica, sin FK física, hacia `users.id` de IAM. El esquema se sincroniza automáticamente desde las entidades TypeORM, sin carpeta de migraciones.
+
+![Vankoo — Profile Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/profile-database-diagram.png)
+
+*Figura 4.10.1.2. Diagrama entidad-relación del Bounded Context Profile.*
+
+---
+
+##### Finance
+
+El esquema físico del Bounded Context Finance (PostgreSQL) no almacena los agregados `Deposit` y `Wallet` como tablas: al ser event-sourced con Axon Framework, el Event Store real reside en Axon Server, un producto externo. PostgreSQL solo contiene el read model de consulta (`finance_read_model`), las tablas operativas de idempotencia y borde (`finance_ops`) y las tablas de soporte propias de Axon (token store, saga store y dead-letter queue). Todas las referencias a cuentas son lógicas hacia el `UserId` de IAM propagado a través de Profile, ya que Finance no mantiene una tabla local de cuentas.
+
+![Vankoo — Finance Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/finance-database-diagram.png)
+
+*Figura 4.10.1.3. Diagrama entidad-relación del Bounded Context Finance.*
+
+---
+
+##### Investment
+
+El esquema físico del Bounded Context Investment reside en Oracle (no PostgreSQL) y consta de las tablas `auctions` y `partitions` —en relación 1 a N mediante una foreign key gestionada desde el lado padre— más la vista de lectura `auction_marketplace_view_entities`, poblada de forma asíncrona por el evento `AuctionCreatedEvent` para servir el marketplace bajo CQRS sin tocar el agregado transaccional. El esquema se genera vía Hibernate, sin migraciones ni índices adicionales; `mype_id`, `investor_id` e `invoice_id` son referencias lógicas hacia Profile e Invoicing.
+
+![Vankoo — Investment Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/investment-database-diagram.png)
+
+*Figura 4.10.1.4. Diagrama entidad-relación del Bounded Context Investment.*
+
+---
+
+##### Invoicing
+
+El modelo de datos del Bounded Context Invoicing es documental (MongoDB) y consta de dos colecciones: `Invoices`, donde el propio agregado de dominio se persiste como documento —sin un modelo de persistencia separado— con sus Value Objects embebidos; y `OcrTasks`, la cola de reintentos de OCR, que la referencia por un identificador simple (`InvoiceId`), sin unión física entre colecciones. Ninguna de las dos define Shard Key ni índices TTL; `Invoices` no tiene ningún índice secundario declarado, mientras que `OcrTasks` sí declara tres, incluido el que soporta su patrón de cola con lease.
+
+![Vankoo — Invoicing Bounded Context Document Data Model](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/invoicing-database-diagram.png)
+
+*Figura 4.10.1.5. Diagrama del modelo de datos documental del Bounded Context Invoicing.*
+
+### 4.10.2. Relational/Non-Relational Database Diagram
 
 <!-- Herramienta: LucidChart / Vertabelo. -->
 <!-- Assets: ./assets/cap4-product-design/database-design/ -->

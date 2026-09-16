@@ -1,0 +1,244 @@
+@startuml investment-domain-class-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 25
+skinparam ranksep 60
+hide empty members
+
+skinparam class {
+  BackgroundColor<<AggregateRoot>>     #1168BD
+  FontColor<<AggregateRoot>>           #FFFFFF
+  BorderColor<<AggregateRoot>>         #0B4884
+  BackgroundColor<<Entity>>            #438DD5
+  FontColor<<Entity>>                  #FFFFFF
+  BorderColor<<Entity>>                #2E6295
+  BackgroundColor<<ValueObject>>       #85BBF0
+  FontColor<<ValueObject>>             #000000
+  BorderColor<<ValueObject>>           #438DD5
+  BackgroundColor<<DomainEvent>>       #F28FAD
+  FontColor<<DomainEvent>>             #000000
+  BorderColor<<DomainEvent>>           #B56580
+  BackgroundColor<<DomainService>>     #6BA3DC
+  FontColor<<DomainService>>           #000000
+  BorderColor<<DomainService>>         #438DD5
+  BackgroundColor<<Exception>>         #CDA1A1
+  FontColor<<Exception>>               #000000
+  BorderColor<<Exception>>             #8F6262
+}
+
+title Vankoo Investment — Domain Layer Class Diagram
+
+package "investment.domain.model.aggregates" {
+  class Auction <<AggregateRoot>> {
+    - id: AuctionId
+    - invoiceId: InvoiceId
+    - mypeId: UserId
+    - status: AuctionStatus
+    - riskScore: RiskScore
+    - invoiceAmount: Money
+    - discountRate: Percentage
+    - netAmount: Money
+    - commissionRate: Percentage
+    - targetAmount: Money
+    - currentFunding: Money
+    - greenCertified: boolean
+    - dueDate: LocalDateTime
+    - publishedAt: LocalDateTime
+    - expiresAt: LocalDateTime
+    - closedAt: LocalDateTime
+    - partitions: List<Partition>
+    --
+    + Auction(invoiceId, mypeId, invoiceAmount, riskScore, greenCertified, dueDate)
+    + registerAuctionCreatedEvent(payerRuc: String, payerName: String): void
+    + calculateFinancials(discount: Percentage, commission: Percentage): void
+    + publish(expirationDate: LocalDateTime): void
+    + canAcceptPartition(amount: Money): boolean
+    + addInvestment(investorId: UserId, amount: Money, returnRate: Percentage, transactionId: String): Partition
+    + isFunded(): boolean
+    + close(): void
+    + cancel(): void
+    - calculateParticipationPercentage(investmentAmount: Money): Percentage
+  }
+}
+
+package "investment.domain.model.entities" {
+  class Partition <<Entity>> {
+    - id: PartitionId
+    - auctionId: AuctionId
+    - investorId: UserId
+    - amount: Money
+    - percentage: Percentage
+    - purchasedAt: LocalDateTime
+    - status: PartitionStatus
+    - expectedReturn: Money
+    - returnRate: Percentage
+    - actualReturn: Money
+    - paidAt: LocalDateTime
+    - investmentTransactionId: String
+    - paymentTransactionId: String
+    --
+    + Partition(auctionId, investorId, amount, percentage, returnRate, transactionId)
+    + calculateReturn(): Money
+    + markAsPaid(transactionId: String): void
+    + markAsDefaulted(): void
+    + cancel(): void
+  }
+}
+
+package "investment.domain.model.valueobjects" {
+  class AuctionId <<ValueObject>> {
+    - uuid: String
+  }
+  class InvoiceId <<ValueObject>> {
+    - uuid: String
+  }
+  class PartitionId <<ValueObject>> {
+    - uuid: String
+  }
+  class UserId <<ValueObject>> {
+    - uuid: String
+  }
+  class Money <<ValueObject>> {
+    - amount: BigDecimal
+    - currency: Currency
+    --
+    + add(other: Money): Money
+    + subtract(other: Money): Money
+    + multiply(factor: BigDecimal): Money
+    + isGreaterThan(other: Money): boolean
+    + isLessThan(other: Money): boolean
+  }
+  class Percentage <<ValueObject>> {
+    - value: BigDecimal
+    --
+    + of(money: Money): Money
+  }
+  class RiskScore <<ValueObject>> {
+    - grade: ScoreGrade
+    --
+    + {static} pendingEvaluation(): RiskScore
+    + isLowRisk(): boolean
+    + isMediumRisk(): boolean
+    + isHighRisk(): boolean
+  }
+  class InvestorParticipation <<ValueObject>> {
+    - investorId: UserId
+    - amount: Money
+    - percentage: Percentage
+    - investorName: String
+    - investorRUC: String
+    - investorEmail: String
+  }
+  class Currency <<ValueObject>> {
+    PEN
+    USD
+  }
+  class AuctionStatus <<ValueObject>> {
+    PENDING_VERIFICATION_RISK
+    DRAFT
+    PUBLISHED
+    FUNDING
+    FULLY_FUNDED
+    CLOSED
+    EXPIRED
+    CANCELLED
+    --
+    + {static} marketplaceActiveStatuses(): List<AuctionStatus>
+  }
+  class PartitionStatus <<ValueObject>> {
+    ACTIVE
+    PAID
+    DEFAULTED
+    CANCELLED
+  }
+  class ScoreGrade <<ValueObject>> {
+    A
+    B
+    C
+    UNDER_EVALUATION
+  }
+}
+
+package "investment.domain.model.events" {
+  class AuctionCreatedEvent <<DomainEvent>> {
+    + auctionId: String
+    + invoiceId: String
+    + mypeId: String
+    + payerRuc: String
+    + payerName: String
+    + invoiceAmount: BigDecimal
+    + currency: String
+    + status: AuctionStatus
+    + greenCertified: boolean
+  }
+  class PartitionAddedEvent <<DomainEvent>> {
+    + auctionId: String
+    + partitionId: String
+    + addedAmount: BigDecimal
+    + newCurrentFunding: BigDecimal
+  }
+  class AuctionFullyFundedEvent <<DomainEvent>> {
+    + auctionId: String
+  }
+}
+
+package "investment.domain.services" {
+  interface AuctionCommandService <<DomainService>> {
+    + handle(command: CreateAuctionCommand): Optional<AuctionId>
+    + handle(command: AddPartitionCommand): Optional<PartitionId>
+  }
+  interface AuctionQueryService <<DomainService>> {
+    + handle(query: GetAuctionByIdQuery): Optional<Auction>
+    + handle(query: GetAllActiveAuctionsQuery): List<Auction>
+    + handle(query: GetMarketplaceAuctionsQuery): List<AuctionMarketplaceView>
+  }
+}
+
+' Composition: Auction owns its identity/value objects and its Partitions
+Auction "1" *-- "1" AuctionId : identified by >
+Auction "1" *-- "1" InvoiceId : originates from >
+Auction "1" *-- "1" UserId : issued by (mype) >
+Auction "1" *-- "1" AuctionStatus : has >
+Auction "1" *-- "1" RiskScore : rated by >
+Auction "1" *-- "3" Money : invoiceAmount / netAmount / targetAmount >
+Auction "1" *-- "1" Money : currentFunding >
+Auction "1" *-- "2" Percentage : discountRate / commissionRate >
+Auction "1" *-- "0..*" Partition : funds through >
+
+Partition "1" *-- "1" PartitionId : identified by >
+Partition "1" *-- "1" UserId : held by (investor) >
+Partition "1" *-- "3" Money : amount / expectedReturn / actualReturn >
+Partition "1" *-- "2" Percentage : percentage / returnRate >
+Partition "1" *-- "1" PartitionStatus : has >
+
+RiskScore "1" *-- "1" ScoreGrade : graded as >
+Money "1" *-- "1" Currency : denominated in >
+
+' Domain events published by the aggregate
+Auction ..> AuctionCreatedEvent : publishes >
+Auction ..> PartitionAddedEvent : publishes >
+Auction ..> AuctionFullyFundedEvent : publishes >
+
+' Domain services orchestrate the aggregate
+AuctionCommandService ..> Auction : creates / adds partitions to >
+AuctionQueryService ..> Auction : resolves >
+
+note bottom of Auction
+  Investment no define excepciones de dominio propias (no existe el
+  paquete domain/exceptions). Auction.publish() e Auction.addInvestment()
+  lanzan java.lang.IllegalStateException / IllegalArgumentException
+  nativos, traducidos a HTTP 400 en el GlobalExceptionHandler de la
+  capa de interfaces.
+end note
+
+note bottom of InvestorParticipation
+  Value object declarado en el código pero sin ninguna referencia activa
+  desde Auction/Partition (no integrado aún al agregado). Se documenta
+  por fidelidad al código fuente, no por uso real.
+end note
+
+@enduml

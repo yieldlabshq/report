@@ -1,0 +1,167 @@
+@startuml invoicing-database-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam linetype ortho
+
+!define collection(x) entity x << (C,#438DD5) Collection >>
+!define embedded(x)   entity x << (E,#85BBF0) Embedded >>
+!define enum(x)       entity x << (N,#B8C4CE) Enum >>
+
+hide circle
+hide empty members
+
+title Vankoo Invoicing — Document Data Model (MongoDB)
+
+collection(Invoices) {
+  * _id                       : ObjectId (InvoiceId VO) <<PK>>
+  --
+  * MypeId                    : STRING <<ref IAM.users.id (via Profile.companies)>>
+  * Status                    : STRING (InvoiceStatus)
+  * IssuerData                : EMBEDDED (IssuerData)
+  * PayerData                 : EMBEDDED (PayerData)
+  * Document                  : EMBEDDED (InvoiceDocument)
+  * Metadata                  : EMBEDDED (InvoiceMetadata)
+  * SunatValidation           : EMBEDDED (SunatValidation)
+  * SunatVerificationStatus   : STRING
+  * ConsistencyResult         : EMBEDDED (InvoiceConsistencyResult)
+  * IntegrationEventPublicationStatus : STRING
+  * Items                     : ARRAY<InvoiceLineItem>
+  * TotalAmount                : EMBEDDED (Money)
+  * SubtotalAmount             : EMBEDDED (Money)
+  * TaxAmount                  : EMBEDDED (Money)
+  * DiscountAmount             : EMBEDDED (Money)
+  * RejectionReason           : EMBEDDED (RejectionReason)
+  * OcrOperationId             : STRING
+  * CreatedAt / UpdatedAt      : ISODate
+}
+
+collection(OcrTasks) {
+  * _id                       : STRING (OcrTask.Id, GUID plano) <<PK>>
+  --
+  * InvoiceId                 : STRING <<UNIQUE>>
+  * Status                    : STRING (OcrTaskStatus)
+  * AttemptCount               : INT32
+  * MaxAttempts                : INT32
+  * NextRetryAtUtc             : ISODate
+  * LockExpiresAtUtc           : ISODate (nullable)
+  * LastError                  : STRING (nullable)
+  * CreatedAtUtc / UpdatedAtUtc : ISODate
+}
+
+embedded(IssuerData) {
+  * Ruc          : STRING (RucNumber)
+  * LegalName    : STRING
+  * TradeName    : STRING
+  * Address      : STRING
+}
+
+embedded(PayerData) {
+  * Ruc          : STRING (RucNumber)
+  * LegalName    : STRING
+  * TradeName    : STRING
+  * Address      : STRING
+}
+
+embedded(InvoiceDocument) {
+  * Key            : STRING (FileKey)
+  * OriginalName   : STRING
+  * ContentType    : STRING
+  * FileSizeBytes  : INT64
+  * ContentHash    : STRING
+}
+
+embedded(InvoiceMetadata) {
+  * InvoiceSeries  : STRING
+  * InvoiceNumber  : STRING
+  * IssueDate      : ISODate
+  * DueDate        : ISODate
+  * Currency       : STRING
+  * OcrConfidence  : DOUBLE
+}
+
+embedded(SunatValidation) {
+  * IsValid        : BOOLEAN
+  * ValidatedAt    : ISODate (nullable)
+  * CdrUrl         : STRING (nullable)
+  * ResponseCode   : STRING (nullable)
+}
+
+embedded(InvoiceConsistencyResult) {
+  * Status       : STRING
+  * Issues       : ARRAY<InvoiceValidationIssue>
+  * CheckedAt    : ISODate (nullable)
+}
+
+embedded(InvoiceValidationIssue) {
+  * Code       : STRING
+  * Severity   : STRING
+  * Message    : STRING
+}
+
+embedded(RejectionReason) {
+  * Reason       : STRING
+  * RejectedAt   : ISODate
+  * RejectedBy   : STRING (nullable)
+}
+
+embedded(InvoiceLineItem) {
+  * Description  : STRING
+  * Quantity     : DECIMAL128
+  * UnitPrice    : EMBEDDED (Money)
+  * Subtotal     : EMBEDDED (Money)
+}
+
+embedded(Money) {
+  * Amount     : DECIMAL128
+  * Currency   : STRING
+}
+
+Invoices ||--o| IssuerData : embeds
+Invoices ||--o| PayerData : embeds
+Invoices ||--|| InvoiceDocument : embeds
+Invoices ||--o| InvoiceMetadata : embeds
+Invoices ||--o| SunatValidation : embeds
+Invoices ||--|| InvoiceConsistencyResult : embeds
+InvoiceConsistencyResult ||--o{ InvoiceValidationIssue : embeds
+Invoices ||--o| RejectionReason : embeds
+Invoices ||--o{ InvoiceLineItem : embeds
+Invoices ||--o{ Money : "embeds (Total/Subtotal/Tax/Discount)"
+InvoiceLineItem ||--o{ Money : "embeds (UnitPrice/Subtotal)"
+
+OcrTasks }o..o{ Invoices : "references by InvoiceId (string, misma BD, colección distinta)"
+
+note bottom of Invoices
+  Índices secundarios: NINGUNO definido en el código (hallazgo real,
+  no omisión del reporte) — ni siquiera sobre Document.ContentHash o
+  IssuerData.Ruc + Metadata.InvoiceSeries/InvoiceNumber, pese a usarse
+  en ExistsByContentHashAsync/ExistsByFiscalIdentityAsync.
+  Shard Key / Partition Key: no definida (sin shardCollection en el
+  código ni en scripts de infraestructura revisados).
+  TTL index: no definido.
+  El documento persistido ES la clase de dominio Invoice (sin
+  BsonElement/BsonClassMap ni modelo de persistencia separado); el
+  driver de Mongo mapea por convención de nombre de propiedad C#.
+end note
+
+note bottom of OcrTasks
+  Índices secundarios:
+  - { Status: 1, NextRetryAtUtc: 1 } ("byStatusAndRetry")
+  - { LockExpiresAtUtc: 1 } ("byLockExpire")
+  - UNIQUE { InvoiceId: 1 } ("uniqueByInvoice")
+  Shard Key / Partition Key: no definida.
+  TTL index: no definido.
+  Cola de reintentos con lease: ClaimNextAsync usa
+  FindOneAndUpdateAsync atómico sobre tareas Pending vencidas o
+  Processing con lock expirado.
+end note
+
+legend bottom
+  Invoices.MypeId referencia lógicamente (sin FK/ref físico de Mongo)
+  al UserId de IAM propagado a través de companies.user_id en Profile.
+  La integración con otros Bounded Contexts (Investment, Risk,
+  Notification, Audit) ocurre vía Integration Events sobre Kafka
+  (topic invoicing.invoice-eligible-for-funding), no vía referencias
+  embebidas ni joins de Mongo.
+end legend
+
+@enduml
