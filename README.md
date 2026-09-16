@@ -1516,9 +1516,23 @@ _Pendiente de elaboración._
 
 ### 5.2.2. Implemented Landing Page Evidence
 
-<!-- Assets: ./assets/cap5-product-implementation/landing-page-evidence/ — incluir URL de despliegue. -->
+En este apartado se va a poder evidenciar la landing page realizada, en la cual se van a mostrar diversos funcionamientos acerca del proyecto.
+A continuación las evidencias:
 
-_Pendiente de elaboración._
+![Landing-Page-Evidence1](assets/cap5-product-implementation/landing-page-evidence/landing-page-evidence.png)
+
+![Landing-Page-Evidence2](assets/cap5-product-implementation/landing-page-evidence/landing-page-evidence2.png)
+
+![Landing-Page-Evidence3](assets/cap5-product-implementation/landing-page-evidence/landing-page-evidence3.png)
+
+![Landing-Page-Evidence4](assets/cap5-product-implementation/landing-page-evidence/landing-page-evidence4.png)
+
+![Landing-Page-Evidence5](assets/cap5-product-implementation/landing-page-evidence/landing-page-evidence5.png)
+
+
+Enlace a landing page del equipo: https://vankoo-landing-page.netlify.app
+
+Enlace al video demostrativo de landing page:[Enlace Video](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202314898_upc_edu_pe/IQBlPSSaIUvkQ7e5EzI-LYk8AdsSo6qTEpX8WajnAgcPELA?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=YUPgVh)
 
 ### 5.2.3. Implemented Frontend-Web Application Evidence
 
