@@ -579,10 +579,9 @@ _Pendiente de elaboración._
 
 ## 3.4. Impact Mapping
 
-<!-- Business Goals con criterios SMART, Actors/Personas, Impacts, Deliverables y User Stories. Herramienta: UXPressia. -->
-<!-- Assets: ./assets/cap3-requirements-specification/impact-mapping/ -->
+El Impact Mapping, elaborado en UXPressia, parte del objetivo de negocio de lograr que el 90% de las facturas se fondeen en menos de 24 horas y reducir el error manual al 15%, desglosándolo en los impactos esperados sobre Carlos y Sofía, sus entregables y las historias de usuario asociadas.
 
-_Pendiente de elaboración._
+![Impact Mapping Vankoo](./assets/cap3-requirements-specification/impact-mapping/impact-map-vankoo.png)
 
 <hr class="page-break">
 
@@ -814,37 +813,247 @@ _Pendiente de elaboración._
 
 ## 5.1. Software Configuration Management
 
-_Pendiente de elaboración: párrafo introductorio de la sección._
+En esta sección el equipo establece las decisiones y convenciones que permiten mantener la consistencia del código y la documentación durante el ciclo de vida de Vankoo: los productos de software utilizados en cada actividad del proyecto, el esquema de control de versiones sobre GitHub y las convenciones de estilo de código adoptadas para cada lenguaje de la solución.
 
 ### 5.1.1. Software Development Environment Configuration
 
-<!-- Assets: ./assets/cap5-product-implementation/configuration-management/ -->
+A continuación se detallan los productos de software utilizados por el equipo en cada actividad del ciclo de vida de Vankoo, indicando su propósito y el enlace de acceso (para herramientas SaaS) o de descarga (para software instalado localmente).
 
-_Pendiente de elaboración._
+| Categoría | Producto | Propósito de uso | Ruta de referencia / descarga |
+|---|---|---|---|
+| Project Management | Trello | Gestión ágil del Product Backlog y seguimiento de tareas del equipo mediante tableros Kanban. | [https://trello.com](https://trello.com) |
+| Requirements Management | UXPressia | Elaboración de los Empathy Maps y el Impact Mapping. | [https://uxpressia.com](https://uxpressia.com) |
+| Requirements Management | Miro | Elaboración del Lean UX Canvas y los As-Is / To-Be Scenario Mapping. | [https://miro.com](https://miro.com) |
+| Product UX/UI Design | Figma | Diseño de wireframes, mockups y prototipos interactivos de alta fidelidad de la landing page y las aplicaciones web. | [https://figma.com](https://figma.com) |
+| Software Architecture Design | Structurizr | Elaboración de los diagramas C4 (contexto, contenedores y componentes) mediante un modelo DSL versionado. | [https://structurizr.com](https://structurizr.com) |
+| Software Architecture Design | PlantUML | Elaboración de los diagramas de clases de dominio y de base de datos mediante Diagrams-as-Code. | [https://plantuml.com](https://plantuml.com) |
+| Software Development | JetBrains IntelliJ IDEA | Desarrollo de los microservicios Java / Spring Boot: IAM, Finance, Investment, API Gateway y Discovery Server. | [https://www.jetbrains.com/idea](https://www.jetbrains.com/idea) |
+| Software Development | JetBrains WebStorm | Desarrollo de la Landing Page, del Web SPA de la Mype (React) y del servicio Profile (NestJS / TypeScript). | [https://www.jetbrains.com/webstorm](https://www.jetbrains.com/webstorm) |
+| Software Development | JetBrains Rider | Desarrollo del servicio Invoicing (.NET / C#). | [https://www.jetbrains.com/rider](https://www.jetbrains.com/rider) |
+| Software Development | Android Studio | Desarrollo de la aplicación móvil del Inversionista (Kotlin Multiplatform + Jetpack Compose). | [https://developer.android.com/studio](https://developer.android.com/studio) |
+| Software Development | Docker & Docker Compose | Contenerización y orquestación local de los microservicios, sus bases de datos, Kafka y MinIO para el entorno de desarrollo. | [https://www.docker.com](https://www.docker.com) |
+| Software Testing | JUnit 5, Mockito, AssertJ | Pruebas unitarias de los microservicios Java / Spring Boot. | [https://junit.org/junit5](https://junit.org/junit5) |
+| Software Testing | Testcontainers | Pruebas de integración contra Kafka y Axon Server reales, usadas en el servicio Finance. | [https://testcontainers.com](https://testcontainers.com) |
+| Software Testing | Jest & Supertest | Pruebas unitarias y end-to-end del servicio Profile (NestJS). | [https://jestjs.io](https://jestjs.io) |
+| Software Testing | xUnit.net | Pruebas unitarias del servicio Invoicing (.NET). | [https://xunit.net](https://xunit.net) |
+| Software Deployment |  |  |  |
+| Software Documentation | Markdown | Lenguaje de marcado ligero usado para todo el informe y la documentación técnica del proyecto. | [https://www.markdownguide.org](https://www.markdownguide.org) |
+| Software Documentation | Scalar (sobre OpenAPI) | Documentación interactiva autogenerada de los endpoints REST de cada microservicio. | [https://scalar.com](https://scalar.com) |
+| Software Documentation | Visual Studio Code | Edición y previsualización del informe en Markdown. | [https://code.visualstudio.com](https://code.visualstudio.com) |
 
-| Producto | Herramienta | Propósito | Enlace |
-|----------|-------------|-----------|--------|
-|  |  |  |  |
 
 ### 5.1.2. Source Code Management
 
-<!-- GitFlow Workflow, Conventional Commits y Semantic Versioning. Incluir URLs de los repositorios del producto. -->
+El equipo utiliza **GitHub** como plataforma de alojamiento y **Git** como sistema de control de versiones para todos los repositorios del proyecto, aplicando **GitFlow** (Vincent Driessen, *"A successful Git branching model"*) como workflow de ramificación, **Semantic Versioning 2.0.0** para nombrar los releases y **Conventional Commits** para los mensajes de commit.
 
-_Pendiente de elaboración._
+| Producto | Repositorio                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+|---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Landing Page | [yieldlabs/vankoo-landing-page](https://github.com/yieldlabs/vankoo-landing-page)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Frontend Web Application | [yieldlabs/vankoo-mype-web](https://github.com/yieldlabs/vankoo-mype-web)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Frontend Mobile Application | [yieldlabs/vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Web Services | [yieldlabs/vankoo-iam-service](https://github.com/yieldlabs/vankoo-iam-service)<br>[yieldlabs/vankoo-profile-service](https://github.com/yieldlabs/vankoo-profile-service)<br>[yieldlabs/vankoo-finance-service](https://github.com/yieldlabs/vankoo-finance-service)<br>[yieldlabs/vankoo-investment-service](https://github.com/yieldlabs/vankoo-investment-service)<br>[yieldlabs/vankoo-invoicing-service](https://github.com/yieldlabs/vankoo-invoicing-service)<br>[yieldlabs/vankoo-api-gateway](https://github.com/yieldlabs/vankoo-api-gateway) |
+| Informe del proyecto | [yieldlabs/report](https://github.com/yieldlabs/report)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
-| Repositorio | Producto | URL |
-|-------------|----------|-----|
-|  |  |  |
+**GitFlow Workflow**
+
+![gitflow](assets/cap5-product-implementation/configuration-management/gitflow-workflow-diagram.png)
+
+Se sigue el modelo propuesto por Vincent Driessen, con dos ramas permanentes:
+
+- **main**: contiene únicamente las versiones estables ya liberadas.
+- **develop**: rama de integración donde convergen las nuevas funcionalidades antes de pasar a producción.
+
+Sobre estas ramas permanentes se crean ramas temporales según el tipo de trabajo:
+
+| Tipo de rama | Propósito | Convención de nombres | Ejemplo real del proyecto |
+|---|---|---|---|
+| **feature** | Desarrollo de una nueva funcionalidad; nace de `develop` y se integra de vuelta a `develop` mediante Pull Request. | `feature/<nombre-descriptivo>` | `feature/deposit-aggregate`, `feature/amazon-s3-integration` |
+| **release** | Estabilización de una nueva versión antes de publicarla; nace de `develop` y se integra a `main` y `develop`. | `release/vX.Y.Z` | `release/v1.0.0` |
+| **hotfix** | Corrección urgente sobre una versión ya en producción; nace de `main` y se integra a `main` y `develop`. | `hotfix/<problema>` | `hotfix/fix-webhook-signature-validation` |
+
+
+**Semantic Versioning 2.0.0**
+
+Los releases se nombran siguiendo el esquema `vMAJOR.MINOR.PATCH`:
+
+- **MAJOR**: cambios incompatibles con versiones anteriores de la API o el contrato del servicio.
+- **MINOR**: nuevas funcionalidades compatibles con versiones anteriores.
+- **PATCH**: correcciones de errores o mejoras menores retrocompatibles.
+
+**Conventional Commits**
+
+Todos los mensajes de commit siguen el formato `<tipo>(<scope-opcional>): <descripción breve>`, ya adoptado de forma consistente en los repositorios del proyecto (por ejemplo, `feat(kyc): ...`, `fix(storage): ...`, `docs(finance): ...`, `test(finance): ...`). Los tipos utilizados son:
+
+- `feat`: una nueva funcionalidad.
+- `fix`: corrección de un error.
+- `docs`: cambios exclusivamente de documentación.
+- `style`: cambios de formato que no afectan la lógica (espacios, punto y coma, etc.).
+- `refactor`: cambios de código que no corrigen errores ni agregan funcionalidades.
+- `test`: se agregan o corrigen pruebas.
+- `chore`: tareas de mantenimiento que no modifican código de producción ni pruebas.
 
 ### 5.1.3. Source Code Style Guide & Conventions
 
-_Pendiente de elaboración._
+Para asegurar un código legible, mantenible y coherente entre los distintos lenguajes y servicios de Vankoo, el equipo adopta las siguientes convenciones de estilo. En todos los lenguajes, la nomenclatura de variables, funciones, clases, archivos y comentarios se escribe en **inglés**.
+
+**HTML & CSS**
+
+Basado en el *Google HTML/CSS Style Guide* y la documentación de HTML/CSS de MDN, aplicado en la Landing Page:
+
+- Atributos en minúsculas y comillas dobles (`class="hero-section"`).
+- Nombres de clases CSS en **kebab-case** (`hero-section`, `pricing-card`).
+- Sangría de 2 espacios; una declaración por línea.
+- Estructura semántica (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`) en lugar de `<div>` genéricos.
+- Estilos construidos con **Tailwind CSS**, agrupando utilidades por orden lógico (layout → espaciado → color → tipografía).
+
+**JavaScript & TypeScript (Landing Page y Web SPA de la Mype)**
+
+Basado en el *Google TypeScript Style Guide*, aplicado sobre React:
+
+- **camelCase** para variables, funciones y parámetros; **PascalCase** para clases, tipos, interfaces y componentes React.
+- Constantes globales en `UPPER_CASE_WITH_UNDERSCORES`.
+- Preferir `const` sobre `let`; nunca `var`.
+- Imports explícitos, agrupados primero externos y luego internos.
+- Un componente React por archivo, nombrado igual que el componente (`InvoiceCard.tsx`).
+- Tipado estricto: evitar `any`; preferir tipos e interfaces explícitos.
+
+**TypeScript & NestJS (Profile Service)**
+
+Basado en el *Angular coding style guide*, cuyas convenciones de organización adopta NestJS (módulos, controladores y proveedores inyectables mediante decoradores, al estilo Angular):
+
+- Sufijos por responsabilidad en el nombre de archivo: `*.controller.ts`, `*.service.ts`, `*.module.ts`, `*.entity.ts`, `*.aggregate.ts`.
+- **PascalCase** para clases decoradas (`@Controller`, `@Injectable`, `@Entity`); **camelCase** para sus miembros.
+- Inyección de dependencias por constructor, nunca por propiedad.
+- Un archivo por clase; carpetas organizadas por capa DDD (`domain`, `application`, `infrastructure`, `interfaces`), consistente con el diseño de dominio del servicio.
+
+**Java & Spring Boot (IAM, Finance, Investment, API Gateway, Discovery Server)**
+
+Basado en el *Google Java Style Guide* y en *Spring Boot Features* (documentación oficial de Spring):
+
+- **camelCase** para variables, métodos y parámetros; **PascalCase** para clases e interfaces.
+- Paquetes en minúsculas, separados por puntos, reflejando la capa DDD (`com.liquilabs.vankoo.<contexto>.domain.model.aggregates`).
+- Constantes en `UPPER_CASE_WITH_UNDERSCORES`.
+- Value Objects implementados como `record` de Java, con validación de invariantes en el constructor compacto.
+- Inyección de dependencias por constructor; anotaciones de Spring (`@Service`, `@RestController`, `@Repository`) para declarar responsabilidades.
+- Manejo centralizado de errores mediante `@ControllerAdvice` / `@ExceptionHandler`.
+- Documentación de la API REST autogenerada con springdoc-openapi y expuesta mediante Scalar.
+
+**C# & .NET (Invoicing Service)**
+
+Basado en las *C# Coding Conventions* de Microsoft:
+
+- **PascalCase** para clases, métodos y propiedades públicas; **camelCase** para variables locales y parámetros.
+- Value Objects implementados como `sealed record`, inmutables, con validación en factory methods estáticos (`Of(...)`, `Create(...)`).
+- Un archivo por clase, organizado por capa (`Domain`, `Application`, `Infrastructure`, `Interfaces`) según Clean Architecture.
+- Comandos y queries bajo el patrón CQRS con MediatR, un handler por caso de uso.
+- Documentación de la API con OpenAPI nativo de ASP.NET Core y UI Scalar.
+
+**Kotlin & Jetpack Compose (Investor Mobile App)**
+
+Basado en las *Kotlin Coding Conventions* oficiales y las *Jetpack Compose API Guidelines*:
+
+- **camelCase** para variables y funciones; **PascalCase** para clases, objetos y funciones `@Composable`.
+- Paquetes en minúsculas, separados por puntos.
+- Funciones `@Composable` en PascalCase, cortas y enfocadas en un solo elemento de UI.
+- Estado elevado a un `ViewModel`; los composables no contienen lógica de negocio.
+
+**Gherkin**
+
+Basado en las convenciones de Gherkin de Cucumber, adoptadas para cuando el equipo incorpore especificaciones ejecutables sobre los criterios de aceptación de las User Stories (al cierre de este informe, los repositorios de Vankoo aún no contienen archivos `.feature`):
+
+- Archivos `.feature` en inglés, uno por funcionalidad.
+- Estructura `Given-When-Then`, con un escenario por comportamiento observable.
+- Nombres de features y escenarios descriptivos, en modo indicativo (`Given the deposit is pending`).
 
 ### 5.1.4. Software Deployment Configuration
 
-_Pendiente de elaboración._
+Se utilizarán las siguientes plataformas para el despliegue de los diferentes productos del proyecto:
 
-<hr class="page-break">
+| **Producto** | **Plataforma de Despliegue** | **Propósito** | **Enlace / Ruta de Acceso** |
+|---|---|---|---|
+| **Landing Page** | **Netlify** | Plataforma utilizada para el despliegue automático y continuo de la landing page estática. | [https://www.netlify.com](https://www.netlify.com) |
+| **Frontend Web Application** | **Netlify** | Alojamiento y despliegue continuo de la aplicación web cliente, con soporte para rutas y variables de entorno. | [https://www.netlify.com](https://www.netlify.com) |
+| **Microservices** | **Microsoft Azure (Azure Container Instances / ACR)** | Ejecución de microservicios contenedorizados sin servidor (serverless containers), alimentados desde imágenes privadas en Azure Container Registry. | [https://portal.azure.com](https://portal.azure.com) |
+| **Discovery Server** | **Microsoft Azure (Dapr / Azure Container Apps)** | Descubrimiento de servicios y resolución dinámica de nombres entre componentes mediante la integración de Dapr en Azure. | [https://dapr.io](https://dapr.io) |
+| **Message Broker** | **Microsoft Azure (Azure Event Hubs)** | Plataforma de transmisión masiva de datos y desacoplamiento de eventos asíncronos en tiempo real entre microservicios. | [https://azure.microsoft.com/services/event-hubs](https://azure.microsoft.com/services/event-hubs) |
+| **Kotlin Multiplatform Mobile App (Android)** | **Google Play Console** | Publicación, gestión de versiones y distribución del artefacto Android generado desde la base de código compartida. | [https://play.google.com/console](https://play.google.com/console) |
+
+**Netlify (Landing Page & Frontend Web Application)**
+
+Netlify es una plataforma de nube especializada en la automatización del ciclo de vida de aplicaciones frontend y sitios web modernos. Ofrece integración nativa con repositorios Git, facilitando la integración continua (CI/CD) mediante webhooks que ejecutan pipelines de build y publicación instantánea con invalidación automática de caché en su CDN global.
+
+Para configurar el despliegue tanto de la Landing Page como del Frontend Web Application en Netlify, se siguen los siguientes pasos:
+1. Iniciar sesión en [Netlify](https://www.netlify.com) y conectar la cuenta de GitHub de la organización o proyecto.
+2. Seleccionar la opción **"Add new site" > "Import an existing project"** y vincular el repositorio correspondiente.
+3. Especificar la rama de producción (`main`) o de pruebas (`develop`) según el entorno a configurar.
+4. Definir los parámetros de compilación:
+  - **Build command:** Por ejemplo, `npm run build` o `pnpm build`.
+  - **Publish directory:** El directorio generado por el empaquetador (por ejemplo, `dist/` o `build/`).
+5. Configurar las variables de entorno necesarias (API Gateway URLs, tokens públicos de autenticación) en la sección **Site configuration > Environment variables**.
+6. Añadir las reglas de redirección en un archivo `_redirects` o `netlify.toml` para asegurar el correcto enrutamiento SPA (*Single Page Application*).
+7. Desplegar el sitio y verificar la generación del subdominio provisto por Netlify o la configuración de un dominio personalizado con certificado SSL automático.
+
+
+
+**Microsoft Azure (Ecosistema Backend y Mensajería)**
+
+Microsoft Azure centraliza la infraestructura de backend del proyecto, garantizando alta disponibilidad, seguridad por aislamiento y escalabilidad mediante soluciones gestionadas y serverless.
+
+Los microservicios son empaquetados como imágenes Docker y gestionados mediante dos servicios complementarios:
+* **Azure Container Registry (ACR):** Repositorio privado y seguro administrado en la nube donde se compilan y almacenan las imágenes de cada microservicio a través de pipelines de CI/CD.
+* **Azure Container Instances (ACI):** Entorno de ejecución serverless que permite inicializar contenedores de forma aislada, rápida y sin necesidad de gestionar la infraestructura de un clúster de máquinas virtuales subyacente.
+
+**Flujo de despliegue:**
+1. Crear un recurso de Azure Container Registry en el grupo de recursos del proyecto.
+2. Construir la imagen Docker de cada microservicio y publicarla (`docker push`) en ACR utilizando credenciales administradas o un Service Principal.
+3. Crear y configurar instancias en Azure Container Instances vinculando la imagen correspondiente desde ACR.
+4. Definir las variables de entorno (cadenas de conexión a bases de datos, perfiles de entorno) y especificaciones de cómputo (CPU y memoria).
+5. Asignar redes virtuales (VNet) o puertos públicos para permitir la comunicación entre servicios.
+
+**Discovery Server (Azure con Dapr)**
+Para la orquestación, resolución de endpoints y comunicación directa service-to-service, se utiliza **Dapr (Distributed Application Runtime)** integrado en el entorno de Azure (Azure Container Apps / ACI con sidecars).
+* Dapr actúa como capa de abstracción desacoplada, permitiendo que cada microservicio descubra y consuma a otros componentes mediante llamadas seguras gRPC/HTTP utilizando identificadores lógicos (`app-id`), eliminando el acoplamiento a direcciones IP o puertos dinámicos.
+* Proporciona resiliencia automática mediante políticas de reintento, balanceo de carga en el lado del cliente y cifrado mutuo TLS (mTLS).
+
+**Message Broker (Azure Event Hubs)**
+Azure Event Hubs es el motor de ingesta y mensajería distribuida de baja latencia utilizado para habilitar una arquitectura orientada a eventos (Event-Driven Architecture):
+* Permite el desacoplamiento asíncrono entre productores y consumidores de eventos del dominio.
+* Cuenta con particionamiento de datos para procesamiento paralelo concurrente y compatibilidad nativa con el protocolo AMQP y la API de Apache Kafka.
+* Se aprovisiona un espacio de nombres (*Event Hubs Namespace*) donde se crean los temas/hubs requeridos por los distintos flujos de negocio del proyecto.
+
+
+
+**Google Play Console (Kotlin Multiplatform - Android)**
+
+Google Play Console es la consola oficial para publicar y gestionar el artefacto Android generado a partir de la lógica compartida y la interfaz de Kotlin Multiplatform.
+
+Para publicar la versión de Android en Google Play Console, se siguen los siguientes pasos:
+1. Acceder a la cuenta de desarrollador en [Google Play Console](https://play.google.com/console).
+2. Crear una nueva aplicación ingresando el nombre oficial, idioma predeterminado y tipo de distribución (gratuita o de pago).
+3. Generar el paquete firmado en formato Android App Bundle (`.aab`) mediante Gradle en el proyecto (`./gradlew :composeApp:bundleRelease`).
+4. Crear un lanzamiento en el canal de pruebas internas o producción y cargar el archivo `.aab`.
+5. Completar la ficha de Play Store (descripción breve y completa, capturas de pantalla de la app en móvil y tablet, e icono en alta resolución).
+6. Configurar la clasificación de contenido, la política de privacidad y la declaración de permisos de la app.
+7. Enviar la versión a revisión para su posterior publicación en Google Play Store.
+
+
+
+**Apple App Store Connect (Kotlin Multiplatform - iOS)**
+
+Apple App Store Connect administra el ciclo de vida, distribución de compilaciones y publicación de la versión para iOS generada a partir del proyecto Kotlin Multiplatform.
+
+Para publicar la versión de iOS en Apple App Store Connect, se siguen los siguientes pasos:
+1. Iniciar sesión con la cuenta de desarrollador en [Apple App Store Connect](https://appstoreconnect.apple.com).
+2. Crear un nuevo registro de aplicación asociándolo al Bundle ID registrado previamente en el Apple Developer Portal.
+3. Compilar el target de iOS desde el entorno de desarrollo y generar el archivo binario empaquetado (`.ipa`) con los perfiles de aprovisionamiento correspondientes.
+4. Subir la compilación a App Store Connect utilizando Xcode Cloud, la herramienta Transporter o pipelines de CI/CD automatizados (Fastlane/GitHub Actions).
+5. (Opcional) Distribuir la versión a través de TestFlight para validaciones de pruebas internas y beta testers externos.
+6. Completar la ficha de la App Store: metadatos, palabras clave de búsqueda, URLs de soporte y capturas de pantalla para los tamaños de pantalla requeridos.
+7. Enviar la compilación final al equipo de revisión de Apple (App Review).
+
+> **Nota:**  La publicación en Apple App Store está considerada fuera del alcance de este proyecto debido a limitaciones de recursos.
+
+<hr class="page-break"
 
 ## 5.2. Product Implementation & Deployment
 
