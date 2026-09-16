@@ -1018,11 +1018,47 @@ Esta sección presenta las pantallas de la aplicación móvil de Vankoo organiza
 
 ### 4.4.4. Mobile Applications User Flow Diagrams
 
-<!-- Assets: ./assets/cap4-product-design/mobile-app/user-flow-diagrams/ -->
+Esta sección presenta los diagramas de flujo de usuario (User Flows) para la aplicación móvil de Vankoo, los cuales detallan los recorridos y la navegación paso a paso a través de las diferentes funcionalidades de la plataforma.
 
-_Pendiente de elaboración._
+##### Flujo de Portada e Inicio (Front Page)
 
-<hr class="page-break">
+![Front Page User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/FrontPage.png)
+*Figura 4.4.4.1. Diagrama de flujo de la pantalla de bienvenida e inicio de la aplicación.*
+
+---
+
+##### Flujo de Autenticación y Acceso (Access)
+
+![Access User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Access.png)
+*Figura 4.4.4.2. Diagrama de flujo para el registro, inicio de sesión y recuperación de credenciales.*
+
+---
+
+##### Flujo de Registro de Perfil y Verificación KYC (Profile KYC)
+
+![Profile KYC User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/ProfileKYC.png)
+*Figura 4.4.4.3. Diagrama de flujo para el completado de perfil y el proceso de validación de identidad KYC.*
+
+---
+
+##### Flujo de Recarga de Billetera (Recharge Wallet)
+
+![Recharge Wallet User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/RechargeWallet.png)
+*Figura 4.4.4.4. Diagrama de flujo para la recarga de fondos y gestión del saldo en la billetera.*
+
+---
+
+##### Flujo de Exploración del Mercado (Marketplace)
+
+![Marketplace User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Marketplace.png)
+*Figura 4.4.4.5. Diagrama de flujo para la navegación y búsqueda de subastas en el mercado de oportunidades.*
+
+---
+
+##### Flujo de Gestión de Inversiones (Investments)
+
+![Investments User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Investments.png)
+*Figura 4.4.4.6. Diagrama de flujo para la ejecución de inversiones y seguimiento del portafolio.*
 
 ## 4.5. Mobile Applications Prototyping
 
