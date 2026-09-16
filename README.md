@@ -624,95 +624,101 @@ A continuación se presenta el guión de preguntas elaborado para cada segmento 
 <!-- De 3 a 5 entrevistas por segmento. Por cada una: nombres, apellidos, edad, distrito, screenshot del video, URL del video en Microsoft Stream / Clipchamp, timing de inicio, duración y resumen. -->
 <!-- Assets: ./assets/cap2-requirements-elicitation/entrevistas/ -->
 
-#### Segmento A: &lt;nombre del segmento&gt;
+#### Segmento 1: Empresarios de Micro y Pequeñas Empresas (MYPES)
 
-#### Entrevista 1:
+**Entrevista 1**
 
-| Atributo | Detalle |
-| :---: | :--- |
-| Nombre | Jorge Retuerto |
-| Edad | 20 años |
-| Distrito | La Victoria |
-| Ocupación | Estudiante |
-| Fecha de entrevista | 15 de abril del 2026 |
-| Timing | 5:13 |
-| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:f:/g/personal/u20221g044_upc_edu_pe/IgA0-fbBN0_9RYPf_IwX4Ow1ActGMcNR2dDxP1jXcOMP96c?e=fB4axV) |
-| Captura de pantalla de la grabación | ![Entrevista 1](./assets/cap2-requirements-elicitation/entrevistas/sa-entrevista-01.png) |
-| Resumen | Jorge comenta que vive como estudiante foráneo en Lima junto a su hermano y cuenta con un presupuesto mensual limitado para los gastos del hogar, lo que lo obliga a ser muy metódico y buscar siempre el establecimiento que le permita ahorrar. Su mayor molestia es la pérdida de tiempo que implica preguntar precios en múltiples puestos de manera presencial. Al comprar, prioriza la calidad sobre el precio y no tiene lealtad a marcas específicas, optando usualmente por productos genéricos, a menos que una marca ofrezca un valor único. Actualmente, no utiliza ninguna herramienta digital más allá de una aplicación de notas básica y señala que le gustaría recibir ofertas directamente a través de sus redes sociales. Para Jorge, sería indispensable que una aplicación incluya métricas sobre la calidad de los productos, ya sea mediante reseñas de otros usuarios o indicadores de confianza del establecimiento, para reducir la incertidumbre al momento de elegir dónde comprar. |
+| Atributo | Detalle                                                                                  |
+| :---: |:-----------------------------------------------------------------------------------------|
+| Nombre | Irving Vergara                                                                           |
+| Edad | 22                                                                                       |
+| Distrito | San Juan de Lurigancho                                                                   |
+| Ocupación | Dueño de Metalmecanica                                                                   |
+| Fecha de entrevista | 08/09/2026                                                                               |
+| Timing de inicio | 00:00 - 8:58                                                                             |
+| Duración | 8:58 minutos                                                                             |
+| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=WJmOfj&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MC42OX19)                                                            |
+| Captura de pantalla de la grabación | ![Entrevista 1](./assets/cap2-requirements-elicitation/entrevistas/s1-entrevista-01.png) |
+| Resumen |  Empresario del sector metalmecánico a cargo de la gestión comercial y operativa de su taller, donde equilibra proyectos al contado con contratos pagados a crédito. Identifica como principal limitación la brecha de liquidez que generan los plazos de cobranza de 30 a 60 días o más, impidiéndole comprar materia prima de forma inmediata para cerrar nuevos contratos y afectando el cumplimiento con trabajadores y proveedores. Valora de forma muy positiva un mecanismo ágil de anticipo de cobro con procesamiento automatizado de facturas electrónicas, condicionado a contar con claridad absoluta sobre el costo total de la operación, respaldo de seguridad institucional y trazabilidad transparente sobre el estado de aprobación y desembolso de los fondos.                                                                                        |
 
-#### Entrevista 2:
+**Entrevista 2**
 
-| Atributo | Detalle |
-| :---: | :--- |
-| Nombre |  |
-| Edad |  |
-| Distrito |  |
-| Ocupación |  |
-| Fecha de entrevista |  |
-| Timing |  |
-| Enlace a la grabación | [*Ver en Microsoft Stream*]() |
-| Captura de pantalla de la grabación | ![Entrevista 2](./assets/cap2-requirements-elicitation/entrevistas/sa-entrevista-02.png) |
-| Resumen |  |
+| Atributo | Detalle                                                                                  |
+| :---: |:-----------------------------------------------------------------------------------------|
+| Nombre | Diego Melendez                                                                           |
+| Edad | 26                                                                                       |
+| Distrito | San Miguel                                                                               |
+| Ocupación | Dueño de TechnoRed                                                                       |
+| Fecha de entrevista | 08/09/2026                                                                               |
+| Timing de inicio | 8:58 - 17:30                                                                             |
+| Duración | 8:32                                                                                     |
+| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=Guig5U&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6NTM5LjF9fQ%3D%3D)                                                            |
+| Captura de pantalla de la grabación | ![Entrevista 2](./assets/cap2-requirements-elicitation/entrevistas/s1-entrevista-02.png) |
+| Resumen | Empresario y técnico en redes con cuatro años administrando su propia empresa de servicios tecnológicos, cuyo volumen de ventas se divide entre pagos al contado y facturas a crédito. Su principal obstáculo radica en el desfase del flujo de caja originado por clientes que extienden sus pagos entre 45 y 60 días, lo que le impide asumir nuevos proyectos o cubrir planillas y proveedores a tiempo, forzándolo a recurrir a financiamientos inmediatos pero costosos como las tarjetas de crédito. Valora de forma muy positiva una alternativa de liquidez en menos de 48 horas basada en la lectura automática de facturas electrónicas, siempre que la plataforma ofrezca total transparencia en comisiones netas, tiempos de desembolso y un seguimiento visual en tiempo real de cada etapa del proceso.                                                                                         |
 
-#### Entrevista 3:
+**Entrevista 3**
 
-| Atributo | Detalle |
-| :---: | :--- |
-| Nombre |  |
-| Edad |  |
-| Distrito |  |
-| Ocupación |  |
-| Fecha de entrevista |  |
-| Timing |  |
-| Enlace a la grabación | [*Ver en Microsoft Stream*]() |
-| Captura de pantalla de la grabación | ![Entrevista 3](./assets/cap2-requirements-elicitation/entrevistas/sa-entrevista-03.png) |
-| Resumen |  |
+| Atributo | Detalle                                                                                  |
+| :---: |:-----------------------------------------------------------------------------------------|
+| Nombre | Thomas Bernardo                                                                          |
+| Edad | 20                                                                                       |
+| Distrito | Chorrillos                                                                               |
+| Ocupación | Socio de empresa de servicio tecnico                                                     |
+| Fecha de entrevista | 08/09/2026                                                                               |
+| Timing de inicio | 17:30 - 27:30                                                                            |
+| Duración | 9:58                                                                                     |
+| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=RYPQOg&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTA1MS40M319)                                                            |
+| Captura de pantalla de la grabación | ![Entrevista 3](./assets/cap2-requirements-elicitation/entrevistas/s1-entrevista-03.png) |
+| Resumen |  Socio y administrador de una microempresa de soporte técnico para laptops, computadoras y celulares, a cargo de dos colaboradores y con un margen de ingresos mensual modesto de entre 2,000 y 4,000 soles. Gestiona el registro contable y las cuentas pendientes mediante hojas de cálculo manuales en Excel, enfrentando como principal obstáculo los desfases de liquidez derivados de clientes que demoran entre 15 y 30 días en liquidar sus servicios. Esta falta de caja inmediata lo ha obligado a recurrir a soluciones de emergencia poco convenientes, como microcréditos digitales con intereses cercanos al 20%, un costo financiero desproporcionado que además descarta la opción de adquirir deudas bancarias tradicionales de mayor escala. Valora de forma muy positiva la posibilidad de incorporar el factoring para anticipar el cobro de sus facturas a cambio de una comisión transparente y acotada, señalando que adoptaría esta solución si la plataforma demuestra procesos nítidos, directos y sin costos ocultos frente a las alternativas de endeudamiento rápido.                                                                                        |
 
 <hr class="page-break">
 
-#### Segmento B: &lt;nombre del segmento&gt;
+#### Segmento 2: Inversionistas Minoristas (Personas Naturales)
 
-#### Entrevista 4:
+**Entrevista 4**
 
-| Atributo | Detalle |
-| :---: | :--- |
-| Nombre |  |
-| Edad |  |
-| Distrito |  |
-| Ocupación |  |
-| Fecha de entrevista |  |
-| Timing |  |
-| Enlace a la grabación | [*Ver en Microsoft Stream*]() |
-| Captura de pantalla de la grabación | ![Entrevista 4](./assets/cap2-requirements-elicitation/entrevistas/sb-entrevista-04.png) |
-| Resumen |  |
+| Atributo | Detalle                                                                                  |
+| :---: |:-----------------------------------------------------------------------------------------|
+| Nombre | Alessandro Hesse                                                                         |
+| Edad | 22                                                                                       |
+| Distrito | Surquillo                                                                                |
+| Ocupación | Estudiante                                                                               |
+| Fecha de entrevista | 08/09/2026                                                                               |
+| Timing de inicio | 27:30 - 40:15                                                                            |
+| Duración | 12:45                                                                                    |
+| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=0XdsHP&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTY1MC40OX19)                                                            |
+| Captura de pantalla de la grabación | ![Entrevista 4](./assets/cap2-requirements-elicitation/entrevistas/s2-entrevista-04.png) |
+| Resumen | Estudiante universitario de Ciencias de la Computación y aficionado a los mercados financieros, habituado a colocar tickets de entre 1,000 y 1,500 soles en vehículos tradicionales como depósitos a plazo fijo. Identifica como principal limitación el bajo rendimiento de la banca convencional frente a la rigidez de mantener su dinero inmovilizado por largos periodos, sumado a la desconfianza generada por experiencias negativas previas en fondos mutuos debido a la volatilidad imprevista. Considera que un rendimiento en torno al 8% anual justificaría la búsqueda de nuevos instrumentos. Valora de forma muy positiva incursionar en el factoring mediante la compra fraccionada de facturas por cobrar, siempre y cuando la plataforma tecnológica ofrezca respaldo institucional verificable, reglas claras sobre la gestión del riesgo de cobro y una estricta transparencia operativa que garantice el retorno puntual de los rendimientos pactados.                                                                                         |
 
-#### Entrevista 5:
+**Entrevista 5**
 
-| Atributo | Detalle |
-| :---: | :--- |
-| Nombre |  |
-| Edad |  |
-| Distrito |  |
-| Ocupación |  |
-| Fecha de entrevista |  |
-| Timing |  |
-| Enlace a la grabación | [*Ver en Microsoft Stream*]() |
-| Captura de pantalla de la grabación | ![Entrevista 5](./assets/cap2-requirements-elicitation/entrevistas/sb-entrevista-05.png) |
-| Resumen |  |
+| Atributo | Detalle                                                                                  |
+| :---: |:-----------------------------------------------------------------------------------------|
+| Nombre | Leicy Cahuana                                                                            |
+| Edad | 22                                                                                       |
+| Distrito | San Juan de Lurigancho                                                                   |
+| Ocupación | Estudiante                                                                               |
+| Fecha de entrevista | 07/09/2026                                                                               |
+| Timing de inicio | 40:15 - 55:19                                                                            |
+| Duración | 15:04                                                                                    |
+| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=FHk57K&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MjQxNS45OX19)                                                            |
+| Captura de pantalla de la grabación | ![Entrevista 5](./assets/cap2-requirements-elicitation/entrevistas/s2-entrevista-05.png) |
+| Resumen |  Estudiante y administradora de un negocio del rubro de snacks, con un perfil de inversión orientado a la colocación directa de préstamos personales de envergadura relevante (de 30,000 a 150,000 soles) entre su red de contactos. Descarta las alternativas bancarias tradicionales por considerarlas poco rentables y tras haber enfrentado la incomodidad de mantener su capital retenido en depósitos a plazo sin suficiente flexibilidad; no obstante, reconoce que prestar a conocidos demanda un proceso de evaluación manual, largo y desgastante para mitigar el riesgo de impago. Constantemente informada a través de medios digitales especializados como podcasts y YouTube, valora de forma muy positiva la transición hacia una plataforma de factoring que fundamente la seguridad crediticia con evidencia técnica, ofrezca asignación automatizada de fondos para diversificar el riesgo de su cartera y demuestre transparencia rigurosa ante retrasos en la cobranza, respaldada por protocolos de solución claros y estructurados.                                                                                        |
 
-#### Entrevista 6:
+**Entrevista 6**
 
-| Atributo | Detalle |
-| :---: | :--- |
-| Nombre |  |
-| Edad |  |
-| Distrito |  |
-| Ocupación |  |
-| Fecha de entrevista |  |
-| Timing |  |
-| Enlace a la grabación | [*Ver en Microsoft Stream*]() |
-| Captura de pantalla de la grabación | ![Entrevista 6](./assets/cap2-requirements-elicitation/entrevistas/sb-entrevista-06.png) |
-| Resumen |  |
+| Atributo | Detalle                                                                                  |
+| :---: |:-----------------------------------------------------------------------------------------|
+| Nombre | Kalet Esteban                                                                            |
+| Edad | 20                                                                                       |
+| Distrito | Ate                                                                                      |
+| Ocupación | Estudiante                                                                               |
+| Fecha de entrevista | 07/09/2026                                                                               |
+| Timing de inicio | 55:19 - 1:06:47                                                                          |
+| Duración | 11:28                                                                                    |
+| Enlace a la grabación | [*Ver en Microsoft Stream*](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=i6G1cy&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MzMyMC43NX19)                                                            |
+| Captura de pantalla de la grabación | ![Entrevista 6](./assets/cap2-requirements-elicitation/entrevistas/s2-entrevista-06.png) |
+| Resumen |  Estudiante de Ingeniería de Software y practicante que se encuentra dando sus primeros pasos en el ámbito de las inversiones con montos de entrada pequeños mediante fondos mutuos de banca tradicional. Señala como principal barrera la complejidad del lenguaje financiero técnico y la falta de claridad respecto al destino exacto y nivel de riesgo de su capital, lo que le genera desconfianza ante plataformas o instrumentos no regulados como el factoring. Valora de forma muy positiva la posibilidad de invertir desde montos mínimos accesibles con diversificación asistida, exigiendo trazabilidad continua del estado de las facturas, protocolos nítidos ante retrasos o impagos y una rentabilidad superior a la de una cuenta de ahorros que justifique el riesgo asumido.                                                                                        |
 
 <hr class="page-break">
 
