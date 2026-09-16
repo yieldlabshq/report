@@ -1389,9 +1389,9 @@ El retiro es la última milla del producto para la MYPE: el dinero ya cobrado sa
 
 ## 4.7. Web Applications Prototyping
 
-<!-- Assets: ./assets/cap4-product-design/web-app/prototyping/ — incluir enlace público al prototipo en Figma. -->
+En esta sección se presentan los prototipos de alta fidelidad de las aplicaciones web de la plataforma Vankoo, junto con enlaces a los videos demostrativos y capturas de pantalla representativas.
 
-_Pendiente de elaboración._
+![Application-Prototyping](assets/cap4-product-design/web-app/prototyping/applications-prototyping.png)
 
 <hr class="page-break">
 
