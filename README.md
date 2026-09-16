@@ -1143,14 +1143,6 @@ _Pendiente de elaboración._
 
 _Pendiente de elaboración._
 
-**Video App Validation**
-
-_Pendiente de elaboración._
-
-**Video About-the-Team**
-
-_Pendiente de elaboración._
-
 <hr class="page-break">
 
 # Bibliografía
