@@ -307,6 +307,8 @@ _Pendiente de elaboración._
 
 # Capítulo II: Requirements Elicitation & Analysis
 
+En este capítulo se presenta el trabajo realizado por el equipo de YieldLabs para identificar y analizar los requerimientos que orientan el desarrollo de Vankoo. Como punto de partida, se realiza una evaluación de las principales soluciones existentes en el mercado peruano de factoring y crowdfactoring, comparándolas con Vankoo para reconocer oportunidades de diferenciación y establecer cómo responder ante las fortalezas y limitaciones de sus competidores. Posteriormente, se lleva a cabo una etapa de needfinding mediante entrevistas semiestructuradas dirigidas a los dos grupos de usuarios considerados como público objetivo: empresarios MYPE e inversionistas minoristas. La información recopilada permite construir diferentes herramientas de análisis y representación de usuarios, entre ellas las user personas, user task matrix, user journey mapping, empathy mapping y as-is scenario mapping. En conjunto, los hallazgos obtenidos durante este proceso proporcionan el sustento necesario para definir y especificar los requisitos que serán desarrollados en el Capítulo III.
+
 ## 2.1. Competidores
 
 <!-- Identificar y describir mínimo 3 competidores directos. -->
