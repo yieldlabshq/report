@@ -942,9 +942,79 @@ A continuación, se presentan los diagramas de flujo de pantallas (*Wireflow Dia
 
 ### 4.4.3. Mobile Applications Mock-ups
 
-<!-- Assets: ./assets/cap4-product-design/mobile-app/mockups/ -->
+Esta sección presenta las pantallas de la aplicación móvil de Vankoo organizadas por flujos de usuario y capacidades principales de la plataforma.
 
-_Pendiente de elaboración._
+##### Autenticación e Inicios de Sesión (Login)
+
+![Login 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login0.png)
+*Figura 4.4.3.1. Pantalla de inicio / bienvenida.*
+
+![Login 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login1.png)
+*Figura 4.4.3.2. Formulario de inicio de sesión.*
+
+![Login 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login2.png)
+*Figura 4.4.3.3. Selección de tipo de perfil / credenciales.*
+
+![Login 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login3.png)
+*Figura 4.4.3.4. Confirmación de acceso / verificación.*
+
+![Login 4](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login4.png)
+*Figura 4.4.3.5. Recuperación y validación de seguridad.*
+
+---
+
+##### Pantalla Principal (Home) y Mercado (Marketplace)
+
+![Home 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Home0.png)
+*Figura 4.4.3.6. Dashboard principal de la aplicación.*
+
+![Market 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market0.png)
+*Figura 4.4.3.7. Vista general del Mercado de Oportunidades.*
+
+![Market 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market1.png)
+*Figura 4.4.3.8. Detalle de subasta e inversión.*
+
+---
+
+##### Mis Inversiones y Billetera (Wallet)
+
+![My Investments](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/MyInvestments.png)
+*Figura 4.4.3.9. Portafolio de inversiones activas y rendimiento.*
+
+![Wallet 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet0.png)
+*Figura 4.4.3.10. Saldo de la billetera y resumen transaccional.*
+
+![Wallet 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet1.png)
+*Figura 4.4.3.11. Opciones de depósito y retiro de fondos.*
+
+---
+
+##### Perfil de Usuario y Deltas
+
+![Profile 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile0.png)
+*Figura 4.4.3.12. Información general del perfil de usuario.*
+
+![Profile 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile1.png)
+*Figura 4.4.3.13. Ajustes de la cuenta y preferencias.*
+
+![Deltas](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Deltas.png)
+*Figura 4.4.3.14. Comparativa de variaciones y métricas del sistema (Deltas).*
+
+---
+
+##### Mantenimiento y Tema Oscuro (Night Mode)
+
+![Night Mode 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode0.png)
+*Figura 4.4.3.15. Vista principal en Modo Oscuro.*
+
+![Night Mode 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode1.png)
+*Figura 4.4.3.16. Mercado de Oportunidades en Modo Oscuro.*
+
+![Night Mode 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode2.png)
+*Figura 4.4.3.17. Vista del portafolio/billetera en Modo Oscuro.*
+
+![Night Mode 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode3.png)
+*Figura 4.4.3.18. Ajustes y perfil en Modo Oscuro.*
 
 ### 4.4.4. Mobile Applications User Flow Diagrams
 
