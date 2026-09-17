@@ -975,17 +975,142 @@ El diagrama presenta una evolución totalmente favorable: mediante Vankoo, Sofí
 
 <!-- Un cuadro para todo el conjunto de Epics / User Stories. Incluir Technical Stories (rol Developer) y Spike Stories. Acceptance Criteria en formato Gherkin (Given-When-Then). -->
 
-_Pendiente de elaboración._
+A partir de los segmentos objetivo, los User Personas (Carlos, el empresario MYPE; Sofía, la inversionista) y el To-Be Scenario Mapping, se especificaron los requisitos de Vankoo como un conjunto de Epics y User Stories. Las Epics agrupan las historias por producto y bounded context: Landing Page (visitante), gestión de acceso (IAM), gestión de facturas y publicación en subasta (aplicación web de la MYPE), billetera y mercado (aplicación móvil del inversionista), y las Technical Stories del backend de microservicios (rol Developer). El alcance de esta entrega corresponde al flujo mínimo usable de extremo a extremo: la MYPE inicia sesión, sube una factura, revisa su detalle y la publica en subasta; el inversionista inicia sesión, recarga su saldo, explora el mercado e invierte. Cada historia incluye sus criterios de aceptación en formato Gherkin (Given-When-Then), redactados en tiempo presente y sin referencia a detalles de interfaz.
 
 | Story ID | User | Priority | Epic |
 |----------|------|----------|------|
-| EP01 | | | |
-| **Title** | | | |
-| | | | |
-| **Description** | | | |
-| | | | |
-| **Acceptance Criteria** | | | |
-| | | | |
+| **EP01** | Visitante | Alta | Landing Page |
+| **Title** | Presentación de Vankoo a MYPES e inversionistas | | |
+| **Description** | Como visitante, deseo conocer qué es Vankoo, cómo funciona y a quién está dirigido, para decidir si registrarme como empresario MYPE o como inversionista. | | |
+| **Acceptance Criteria** | Se satisface cuando se cumplen los criterios de las User Stories que la componen. | | |
+| **EP02** | Empresario MYPE / Inversionista | Alta | Gestión de acceso (IAM) |
+| **Title** | Registro, inicio de sesión y recuperación de contraseña | | |
+| **Description** | Como usuario de Vankoo, deseo crear una cuenta, iniciar sesión y recuperar mi contraseña, para acceder de forma segura a la aplicación que corresponde a mi rol. | | |
+| **Acceptance Criteria** | Se satisface cuando se cumplen los criterios de las User Stories que la componen. | | |
+| **EP03** | Empresario MYPE | Alta | Gestión de facturas (Invoicing) |
+| **Title** | Carga y seguimiento de facturas electrónicas | | |
+| **Description** | Como empresario MYPE, deseo subir mis facturas electrónicas y seguir su proceso de validación, para saber cuáles pueden salir a financiamiento. | | |
+| **Acceptance Criteria** | Se satisface cuando se cumplen los criterios de las User Stories que la componen. | | |
+| **EP04** | Empresario MYPE | Alta | Publicación en subasta (Investment) |
+| **Title** | Oferta de financiamiento y publicación de la factura | | |
+| **Description** | Como empresario MYPE, deseo revisar la oferta de financiamiento de una factura aprobada y aceptarla, para publicarla en el mercado y obtener liquidez. | | |
+| **Acceptance Criteria** | Se satisface cuando se cumplen los criterios de las User Stories que la componen. | | |
+| **EP05** | Inversionista | Alta | Billetera (Finance) |
+| **Title** | Saldo y recargas del inversionista | | |
+| **Description** | Como inversionista, deseo consultar mi saldo y recargarlo con tarjeta, para contar con fondos disponibles al momento de invertir. | | |
+| **Acceptance Criteria** | Se satisface cuando se cumplen los criterios de las User Stories que la componen. | | |
+| **EP06** | Inversionista | Alta | Mercado e inversión (Investment) |
+| **Title** | Exploración del mercado e inversión en facturas | | |
+| **Description** | Como inversionista, deseo explorar las facturas en subasta, entender su rendimiento y riesgo, e invertir en ellas, para rentabilizar mi capital a corto plazo. | | |
+| **Acceptance Criteria** | Se satisface cuando se cumplen los criterios de las User Stories que la componen. | | |
+| **EP07** | Developer | Alta | Plataforma y servicios (Technical Stories) |
+| **Title** | Backend de microservicios, gateway y documentación | | |
+| **Description** | Como developer, deseo contar con servicios RESTful documentados, un punto de entrada único y una infraestructura reproducible, para que las aplicaciones web y móvil consuman la plataforma de forma segura y consistente. | | |
+| **Acceptance Criteria** | Se satisface cuando se cumplen los criterios de las User Stories que la componen. | | |
+| **US01** | Visitante | Alta | EP01 – Landing Page |
+| **Title** | Conocer la propuesta de valor de Vankoo | | |
+| **Description** | Como visitante, deseo ver en la página principal qué es Vankoo y qué beneficio ofrece a cada segmento, para entender rápidamente si la plataforma resuelve mi necesidad. | | |
+| **Acceptance Criteria** | **Escenario 1: Sección principal**<br>Given el visitante ingresa a la landing page<br>When carga la página<br>Then visualiza el mensaje principal de la propuesta de valor y una llamada a la acción para registrarse<br><br>**Escenario 2: Contenido por audiencia**<br>Given el visitante se encuentra en la sección de audiencias<br>When selecciona la pestaña de MYPE o de Inversionista<br>Then visualiza los beneficios y el flujo específico para ese segmento | | |
+| **US02** | Visitante | Alta | EP01 – Landing Page |
+| **Title** | Entender cómo funciona el financiamiento de facturas | | |
+| **Description** | Como visitante, deseo ver los pasos del proceso (subir factura, validación, subasta, fondeo y cobro) y las preguntas frecuentes, para comprender cómo opera Vankoo antes de registrarme. | | |
+| **Acceptance Criteria** | **Escenario 1: Pasos del proceso**<br>Given el visitante navega a la sección "Cómo funciona"<br>When recorre la sección<br>Then visualiza los pasos del proceso en orden, con una descripción breve de cada uno<br><br>**Escenario 2: Preguntas frecuentes**<br>Given el visitante se encuentra en la sección de preguntas frecuentes<br>When selecciona una pregunta<br>Then se muestra la respuesta correspondiente sin abandonar la página | | |
+| **US03** | Visitante | Media | EP01 – Landing Page |
+| **Title** | Simular el adelanto de una factura | | |
+| **Description** | Como visitante del segmento MYPE, deseo ingresar el monto y plazo de una factura en la calculadora, para estimar cuánto recibiría y cuál sería el costo del financiamiento. | | |
+| **Acceptance Criteria** | **Escenario 1: Cálculo del adelanto**<br>Given el visitante se encuentra en la calculadora<br>When ingresa el monto de la factura y el plazo<br>Then se muestra el monto estimado a recibir, el costo y la tasa efectiva anual (TCEA) del adelanto<br><br>**Escenario 2: Actualización inmediata**<br>Given el visitante ya realizó una simulación<br>When modifica el monto o el plazo<br>Then los resultados se recalculan sin recargar la página | | |
+| **US04** | Visitante | Media | EP01 – Landing Page |
+| **Title** | Navegar la landing page en mi idioma y desde cualquier dispositivo | | |
+| **Description** | Como visitante, deseo cambiar el idioma entre español e inglés y navegar desde el móvil o escritorio, para consultar la información con comodidad. | | |
+| **Acceptance Criteria** | **Escenario 1: Cambio de idioma**<br>Given el visitante se encuentra en cualquier sección de la landing page<br>When selecciona el idioma inglés<br>Then todo el contenido se muestra en inglés y la URL refleja el idioma seleccionado<br><br>**Escenario 2: Navegación responsive**<br>Given el visitante accede desde un dispositivo móvil<br>When abre el menú de navegación<br>Then puede desplazarse a cada sección de la página y el contenido se adapta al ancho de pantalla | | |
+| **US05** | Empresario MYPE | Alta | EP02 – Gestión de acceso (IAM) |
+| **Title** | Registrarme en la aplicación web | | |
+| **Description** | Como empresario MYPE, deseo crear una cuenta con mi correo y contraseña, para acceder a la gestión de mis facturas. | | |
+| **Acceptance Criteria** | **Escenario 1: Registro exitoso**<br>Given el empresario se encuentra en la pantalla de registro<br>When ingresa un correo válido no registrado y una contraseña que cumple la política<br>Then el sistema crea la cuenta con el rol MYPE e inicia la sesión automáticamente<br><br>**Escenario 2: Correo ya registrado**<br>Given el empresario se encuentra en la pantalla de registro<br>When ingresa un correo que ya existe<br>Then el sistema informa que el correo ya está en uso y no crea la cuenta | | |
+| **US06** | Empresario MYPE | Alta | EP02 – Gestión de acceso (IAM) |
+| **Title** | Iniciar sesión en la aplicación web | | |
+| **Description** | Como empresario MYPE, deseo iniciar sesión con mi correo y contraseña, para acceder a mis facturas de forma segura. | | |
+| **Acceptance Criteria** | **Escenario 1: Credenciales válidas**<br>Given el empresario tiene una cuenta activa<br>When ingresa su correo y contraseña correctos<br>Then el sistema inicia la sesión, emite un token de acceso y lo lleva a su bandeja de facturas<br><br>**Escenario 2: Credenciales inválidas**<br>Given el empresario se encuentra en la pantalla de inicio de sesión<br>When ingresa una contraseña incorrecta<br>Then el sistema muestra un mensaje de error y no inicia la sesión<br><br>**Escenario 3: Acceso protegido**<br>Given el empresario no tiene una sesión activa<br>When intenta abrir una ruta interna de la aplicación<br>Then el sistema lo redirige a la pantalla de inicio de sesión | | |
+| **US08** | Inversionista | Alta | EP02 – Gestión de acceso (IAM) |
+| **Title** | Registrarme en la aplicación móvil | | |
+| **Description** | Como inversionista, deseo crear una cuenta desde mi celular, para empezar a invertir en facturas. | | |
+| **Acceptance Criteria** | **Escenario 1: Registro exitoso**<br>Given el inversionista se encuentra en la pantalla de registro<br>When ingresa un correo válido no registrado y una contraseña que cumple la política<br>Then el sistema crea la cuenta con el rol Inversionista, inicia la sesión y lo lleva a la pantalla de inicio<br><br>**Escenario 2: Datos inválidos**<br>Given el inversionista se encuentra en la pantalla de registro<br>When ingresa un correo con formato inválido o una contraseña débil<br>Then el sistema señala el campo con error y no envía la solicitud | | |
+| **US09** | Inversionista | Alta | EP02 – Gestión de acceso (IAM) |
+| **Title** | Iniciar sesión en la aplicación móvil | | |
+| **Description** | Como inversionista, deseo iniciar sesión con mi correo y contraseña, para acceder a mi billetera y al mercado. | | |
+| **Acceptance Criteria** | **Escenario 1: Credenciales válidas**<br>Given el inversionista tiene una cuenta activa<br>When ingresa su correo y contraseña correctos<br>Then el sistema inicia la sesión, conserva el token en el dispositivo y muestra la pantalla de inicio<br><br>**Escenario 2: Sesión persistente**<br>Given el inversionista inició sesión previamente y no cerró sesión<br>When vuelve a abrir la aplicación<br>Then el sistema restaura la sesión sin pedir credenciales<br><br>**Escenario 3: Cerrar sesión**<br>Given el inversionista tiene una sesión activa<br>When selecciona cerrar sesión<br>Then el sistema elimina el token del dispositivo y vuelve a la pantalla de inicio de sesión | | |
+| **US11** | Empresario MYPE | Alta | EP03 – Gestión de facturas (Invoicing) |
+| **Title** | Subir una factura electrónica | | |
+| **Description** | Como empresario MYPE, deseo subir el PDF de una factura electrónica emitida en SUNAT, para que Vankoo extraiga sus datos sin que yo tenga que digitarlos. | | |
+| **Acceptance Criteria** | **Escenario 1: Carga exitosa**<br>Given el empresario tiene una sesión activa y se encuentra en la pantalla de carga<br>When selecciona o arrastra un archivo PDF de factura y confirma la carga<br>Then el sistema registra la factura en estado Recibida, inicia la lectura automática de datos y muestra el progreso del proceso<br><br>**Escenario 2: Archivo no válido**<br>Given el empresario se encuentra en la pantalla de carga<br>When selecciona un archivo que no es PDF<br>Then el sistema rechaza el archivo e indica el formato aceptado<br><br>**Escenario 3: Lectura de datos**<br>Given una factura fue recibida<br>When el proceso de lectura automática finaliza<br>Then la factura pasa al estado Validando con SUNAT y sus datos extraídos quedan disponibles en el detalle | | |
+| **US12** | Empresario MYPE | Alta | EP03 – Gestión de facturas (Invoicing) |
+| **Title** | Ver mis facturas | | |
+| **Description** | Como empresario MYPE, deseo ver el listado de las facturas que subí con su estado actual, para hacer seguimiento a cada una. | | |
+| **Acceptance Criteria** | **Escenario 1: Listado de facturas**<br>Given el empresario tiene facturas registradas<br>When abre la bandeja de facturas<br>Then el sistema muestra cada factura con su número, pagador, importe, fecha de vencimiento y estado<br><br>**Escenario 2: Sin facturas**<br>Given el empresario no ha subido ninguna factura<br>When abre la bandeja de facturas<br>Then el sistema muestra un estado vacío con la opción de subir la primera factura<br><br>**Escenario 3: Acceso al detalle**<br>Given el empresario se encuentra en la bandeja de facturas<br>When selecciona una factura<br>Then el sistema abre el detalle de esa factura | | |
+| **US13** | Empresario MYPE | Alta | EP03 – Gestión de facturas (Invoicing) |
+| **Title** | Ver el detalle y el progreso de una factura | | |
+| **Description** | Como empresario MYPE, deseo ver los datos leídos de una factura, sus ítems y en qué paso del proceso se encuentra, para saber si necesita mi intervención. | | |
+| **Acceptance Criteria** | **Escenario 1: Datos extraídos**<br>Given una factura ya fue leída<br>When el empresario abre su detalle<br>Then el sistema muestra emisor, RUC, pagador, fechas, moneda, importe, ítems y totales extraídos, y permite ver el PDF original<br><br>**Escenario 2: Progreso del proceso**<br>Given el empresario se encuentra en el detalle de una factura<br>When consulta el indicador de progreso<br>Then el sistema muestra el paso actual entre Recibida, Leyendo datos, Validando con SUNAT, Aprobada y En subasta, con una explicación de si avanza automáticamente o requiere acción<br><br>**Escenario 3: Factura observada**<br>Given una factura quedó en estado Requiere revisión o No elegible<br>When el empresario abre su detalle<br>Then el sistema muestra el motivo de la observación y la factura no continúa el proceso automáticamente | | |
+| **US14** | Empresario MYPE | Alta | EP04 – Publicación en subasta (Investment) |
+| **Title** | Revisar la oferta de financiamiento de una factura aprobada | | |
+| **Description** | Como empresario MYPE, deseo ver la oferta de financiamiento generada para una factura aprobada, para conocer cuánto recibiría y en qué condiciones antes de publicarla. | | |
+| **Acceptance Criteria** | **Escenario 1: Oferta disponible**<br>Given una factura fue aprobada y su subasta se encuentra en borrador<br>When el empresario abre el detalle de la factura<br>Then el sistema muestra la oferta vigente con importe de la factura, porcentaje de descuento, comisión de Vankoo, neto a recibir, TCEA, plazo y fecha de validez<br><br>**Escenario 2: Evaluación en curso**<br>Given una factura fue aprobada pero su evaluación de riesgo aún no concluye<br>When el empresario abre el detalle de la factura<br>Then el sistema indica que la oferta está en preparación y la actualiza automáticamente cuando queda disponible<br><br>**Escenario 3: Oferta vencida**<br>Given la oferta mostrada dejó de estar vigente<br>When el empresario intenta aceptarla<br>Then el sistema informa que la oferta ya no está vigente y muestra la oferta actual | | |
+| **US15** | Empresario MYPE | Alta | EP04 – Publicación en subasta (Investment) |
+| **Title** | Aceptar la oferta y publicar la factura en subasta | | |
+| **Description** | Como empresario MYPE, deseo aceptar la oferta de financiamiento, para que mi factura se publique en el mercado y los inversionistas puedan fondearla. | | |
+| **Acceptance Criteria** | **Escenario 1: Confirmación de publicación**<br>Given el empresario tiene una oferta vigente para una factura<br>When selecciona aceptar la oferta<br>Then el sistema solicita confirmación indicando el monto que recibirá en su billetera cuando la subasta se financie<br><br>**Escenario 2: Publicación exitosa**<br>Given el empresario confirmó la aceptación de la oferta<br>When el sistema procesa la aceptación<br>Then la subasta pasa al estado Publicada, la factura se muestra como En subasta con su fecha de publicación y el avance del fondeo<br><br>**Escenario 3: Factura próxima a vencer**<br>Given la factura vence en un plazo menor al mínimo permitido<br>When el empresario intenta publicarla<br>Then el sistema informa que la factura vence demasiado pronto para abrir una subasta y no la publica | | |
+| **US16** | Inversionista | Alta | EP05 – Billetera (Finance) |
+| **Title** | Ver el saldo y los movimientos de mi billetera | | |
+| **Description** | Como inversionista, deseo ver cuánto saldo tengo disponible para invertir y el historial de movimientos, para controlar mis fondos. | | |
+| **Acceptance Criteria** | **Escenario 1: Saldo disponible**<br>Given el inversionista tiene una sesión activa<br>When abre la pestaña Billetera<br>Then el sistema muestra el saldo disponible para invertir en soles y el listado de movimientos más recientes<br><br>**Escenario 2: Historial de movimientos**<br>Given el inversionista tiene más movimientos de los que se muestran<br>When selecciona ver más movimientos<br>Then el sistema carga los siguientes movimientos indicando tipo (recarga, inversión, retiro, comisión), monto y fecha<br><br>**Escenario 3: Billetera vacía**<br>Given el inversionista no tiene saldo ni movimientos<br>When abre la pestaña Billetera<br>Then el sistema indica que debe recargar para empezar y el monto mínimo de inversión por factura | | |
+| **US17** | Inversionista | Alta | EP05 – Billetera (Finance) |
+| **Title** | Recargar saldo con tarjeta | | |
+| **Description** | Como inversionista, deseo recargar mi billetera pagando con tarjeta a través de un proveedor de pagos seguro, para disponer de fondos e invertir. | | |
+| **Acceptance Criteria** | **Escenario 1: Inicio de recarga**<br>Given el inversionista se encuentra en la pantalla de recarga<br>When ingresa un monto válido y confirma<br>Then el sistema crea un depósito pendiente y abre la página de pago segura del proveedor (Stripe) en el navegador<br><br>**Escenario 2: Pago confirmado**<br>Given el inversionista completó el pago en la página del proveedor<br>When el proveedor notifica el pago exitoso<br>Then el sistema acredita el monto en la billetera, registra el movimiento como Recarga y actualiza el saldo mostrado<br><br>**Escenario 3: Pago no completado o rechazado**<br>Given el inversionista abandonó la página de pago o el pago fue rechazado<br>When vuelve a la aplicación<br>Then el sistema informa que el saldo no cambió, explica el motivo cuando existe y permite reintentar o volver a la billetera | | |
+| **US18** | Inversionista | Alta | EP06 – Mercado e inversión (Investment) |
+| **Title** | Explorar el mercado de facturas en subasta | | |
+| **Description** | Como inversionista, deseo ver las facturas publicadas en subasta con su rendimiento, plazo y nivel de riesgo, para elegir en cuál invertir. | | |
+| **Acceptance Criteria** | **Escenario 1: Listado del mercado**<br>Given existen subastas publicadas<br>When el inversionista abre la pestaña Mercado<br>Then el sistema muestra cada subasta con el pagador, importe objetivo, porcentaje fondeado, TEA, plazo, grado de riesgo y si es factura verde<br><br>**Escenario 2: Filtros**<br>Given el inversionista se encuentra en el mercado<br>When aplica el filtro Verdes o Vencen pronto<br>Then el sistema muestra únicamente las subastas que cumplen el criterio seleccionado<br><br>**Escenario 3: Mercado vacío**<br>Given no existen subastas publicadas<br>When el inversionista abre la pestaña Mercado<br>Then el sistema indica que ninguna factura está buscando financiación en ese momento | | |
+| **US19** | Inversionista | Alta | EP06 – Mercado e inversión (Investment) |
+| **Title** | Ver el detalle de una subasta | | |
+| **Description** | Como inversionista, deseo ver el detalle de una subasta con cómo se reparte el importe, el rendimiento esperado y los datos de la factura, para evaluar la oportunidad. | | |
+| **Acceptance Criteria** | **Escenario 1: Detalle de la subasta**<br>Given el inversionista se encuentra en el mercado<br>When selecciona una subasta<br>Then el sistema muestra el objetivo, lo fondeado, lo que falta por fondear, el reparto (importe, descuento, neto para la MYPE, comisión), el rendimiento esperado, el RUC del pagador y la fecha de vencimiento<br><br>**Escenario 2: Subasta ya no disponible**<br>Given la subasta fue fondeada por completo, vencida o cancelada<br>When el inversionista abre su detalle<br>Then el sistema informa el estado y ofrece volver al mercado sin permitir invertir | | |
+| **US20** | Inversionista | Alta | EP06 – Mercado e inversión (Investment) |
+| **Title** | Invertir en una subasta | | |
+| **Description** | Como inversionista, deseo indicar el monto a invertir y confirmar la inversión, para que se descuente de mi billetera y participe en el fondeo de la factura. | | |
+| **Acceptance Criteria** | **Escenario 1: Inversión exitosa**<br>Given el inversionista tiene saldo suficiente y la subasta está publicada<br>When ingresa un monto mayor o igual al mínimo, menor o igual al restante por fondear, y confirma<br>Then el sistema debita el monto de la billetera, registra la inversión en la subasta, actualiza el porcentaje fondeado y muestra la participación y la devolución esperada<br><br>**Escenario 2: Saldo insuficiente**<br>Given el inversionista tiene un saldo menor al monto ingresado<br>When intenta confirmar la inversión<br>Then el sistema informa cuánto le falta y no realiza la inversión<br><br>**Escenario 3: Monto fuera de rango**<br>Given el inversionista se encuentra en la pantalla de confirmación<br>When ingresa un monto menor al mínimo o mayor a lo que falta por fondear<br>Then el sistema señala el límite correspondiente y no habilita la confirmación<br><br>**Escenario 4: Reintento seguro**<br>Given una inversión se envió y la respuesta no llegó<br>When el inversionista vuelve a confirmar la misma inversión<br>Then el sistema no duplica el débito ni la inversión gracias a la clave de idempotencia | | |
+| **TS01** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Registro y descubrimiento de servicios | | |
+| **Description** | Como developer, deseo que cada microservicio se registre en un Discovery Server, para que el API Gateway los ubique dinámicamente sin direcciones fijas. | | |
+| **Acceptance Criteria** | **Escenario 1: Registro de instancias**<br>Given el Discovery Server está en ejecución<br>When un microservicio arranca<br>Then se registra con su nombre lógico y aparece en el listado de instancias del Discovery Server<br><br>**Escenario 2: Resolución por nombre**<br>Given un servicio está registrado<br>When el API Gateway enruta una petición hacia ese servicio<br>Then resuelve la instancia por su nombre lógico y balancea entre las instancias disponibles | | |
+| **TS02** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Punto de entrada único con validación de JWT | | |
+| **Description** | Como developer, deseo un API Gateway que enrute las peticiones por prefijo y valide el token JWT, para que los servicios internos confíen en la identidad inyectada. | | |
+| **Acceptance Criteria** | **Escenario 1: Enrutamiento por prefijo**<br>Given el gateway está en ejecución<br>When recibe una petición con prefijo /iam, /invoicing, /investment o /finance<br>Then elimina el prefijo y reenvía la petición al servicio correspondiente<br><br>**Escenario 2: Ruta protegida sin token**<br>Given una ruta requiere autenticación<br>When llega una petición sin token o con token inválido<br>Then el gateway responde 401 con un cuerpo problem+json y no reenvía la petición<br><br>**Escenario 3: Identidad inyectada**<br>Given llega una petición con un token válido a una ruta protegida<br>When el gateway la reenvía<br>Then agrega las cabeceras X-User-Id, X-User-Email y X-User-Roles para el servicio destino | | |
+| **TS03** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Servicio de identidad y acceso (IAM) | | |
+| **Description** | Como developer, deseo endpoints de registro, inicio de sesión, recuperación y restablecimiento de contraseña que emitan tokens JWT, para autenticar a los usuarios de la web y del móvil. | | |
+| **Acceptance Criteria** | **Escenario 1: Emisión de token**<br>Given existe un usuario registrado<br>When se invoca sign-in con credenciales válidas<br>Then el servicio responde con un JWT firmado que incluye el identificador, correo y roles del usuario<br><br>**Escenario 2: Roles permitidos**<br>Given se invoca sign-up<br>When la solicitud indica un rol distinto de MYPE o Inversionista<br>Then el servicio rechaza la solicitud<br><br>**Escenario 3: Recuperación de contraseña**<br>Given se invoca forgot-password con un correo registrado<br>When el servicio procesa la solicitud<br>Then envía un correo con un enlace de restablecimiento con expiración configurable | | |
+| **TS04** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Servicio de facturación con lectura automática (Invoicing) | | |
+| **Description** | Como developer, deseo un servicio que reciba el PDF de la factura, extraiga sus datos mediante OCR, valide su consistencia y publique eventos de integración, para que otros servicios reaccionen a las facturas aprobadas. | | |
+| **Acceptance Criteria** | **Escenario 1: Carga y OCR**<br>Given se recibe un PDF válido para una MYPE identificada por X-User-Id<br>When el servicio lo procesa<br>Then almacena el archivo, extrae los datos de la factura y registra el avance de estado (Subida, Leyendo datos, Validando, Aprobada)<br><br>**Escenario 2: Evento de integración**<br>Given una factura alcanza el estado Aprobada<br>When el servicio confirma el cambio de estado<br>Then publica un evento de integración en el broker de mensajería con los datos de la factura<br><br>**Escenario 3: Consulta por MYPE**<br>Given se invoca el listado de facturas con un X-User-Id<br>When el servicio responde<br>Then devuelve únicamente las facturas de esa MYPE, con paginación | | |
+| **TS05** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Servicio de subastas e inversiones (Investment) | | |
+| **Description** | Como developer, deseo un servicio que cree subastas a partir de facturas aprobadas, genere cotizaciones, exponga el marketplace y registre inversiones, para soportar los flujos de la MYPE y del inversionista. | | |
+| **Acceptance Criteria** | **Escenario 1: Creación de subasta por evento**<br>Given llega el evento de factura aprobada<br>When el servicio lo consume<br>Then crea una subasta en estado Pendiente de verificación de riesgo asociada a la factura y a la MYPE<br><br>**Escenario 2: Cotización y publicación**<br>Given una subasta está en borrador<br>When la MYPE solicita y acepta la cotización activa<br>Then la subasta pasa a Publicada y aparece en el marketplace<br><br>**Escenario 3: Registro de inversión**<br>Given una subasta está publicada<br>When un inversionista registra una inversión con su identificador de transacción<br>Then el servicio valida el monto contra el mínimo y el restante, actualiza el fondeo y responde con la inversión creada | | |
+| **TS06** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Servicio de billetera y pagos (Finance) | | |
+| **Description** | Como developer, deseo un servicio de billetera basado en eventos que gestione depósitos vía proveedor de pagos y débitos idempotentes, para respaldar las recargas e inversiones del inversionista. | | |
+| **Acceptance Criteria** | **Escenario 1: Depósito vía proveedor**<br>Given se solicita iniciar un depósito para una cuenta<br>When el servicio lo procesa<br>Then crea el depósito, genera una sesión de pago en el proveedor y devuelve la URL de checkout<br><br>**Escenario 2: Confirmación por webhook**<br>Given el proveedor envía un webhook firmado de pago exitoso<br>When el servicio verifica la firma<br>Then acredita el saldo en la billetera y registra el movimiento de recarga<br><br>**Escenario 3: Débito idempotente**<br>Given se solicita un débito con una clave de idempotencia ya procesada<br>When el servicio recibe la solicitud<br>Then responde con el resultado original sin volver a descontar saldo | | |
+| **TS07** | Developer | Media | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Documentación OpenAPI agregada | | |
+| **Description** | Como developer, deseo que cada servicio exponga su especificación OpenAPI y que el gateway las agregue en una única interfaz Scalar, para consultar y probar todos los endpoints desde un solo lugar. | | |
+| **Acceptance Criteria** | **Escenario 1: Especificación por servicio**<br>Given un servicio está en ejecución<br>When se consulta su ruta de OpenAPI<br>Then devuelve la especificación con todos sus endpoints, parámetros y esquemas<br><br>**Escenario 2: Vista agregada**<br>Given el gateway está en ejecución<br>When se abre la interfaz de documentación<br>Then permite seleccionar cada servicio y ejecutar peticiones de prueba a través del gateway | | |
+| **TS08** | Developer | Media | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Entorno local reproducible | | |
+| **Description** | Como developer, deseo levantar toda la plataforma con Docker Compose, para desarrollar y probar los flujos completos sin configuración manual. | | |
+| **Acceptance Criteria** | **Escenario 1: Arranque completo**<br>Given se cuenta con los repositorios clonados y el archivo de variables de entorno<br>When se ejecuta el comando de arranque<br>Then se construyen y levantan los servicios, sus bases de datos, el broker de mensajería y el event store, con verificaciones de salud<br><br>**Escenario 2: Arranque parcial**<br>Given se indica un subconjunto de servicios<br>When se ejecuta el comando de arranque<br>Then se levantan únicamente esos servicios y sus dependencias | | |
 
 <hr class="page-break">
 
@@ -994,11 +1119,43 @@ _Pendiente de elaboración._
 <!-- Orden determinado por el valor para el negocio. Incluir captura y URL pública del backlog en la herramienta indicada. -->
 <!-- Assets: ./assets/cap3-requirements-specification/product-backlog/ -->
 
-_Pendiente de elaboración._
+El Product Backlog ordena las User Stories según su valor para el negocio. Se priorizan primero las historias que completan el flujo mínimo de la MYPE (iniciar sesión, subir factura, revisar su detalle y publicarla) y del inversionista (iniciar sesión, recargar saldo, explorar el mercado e invertir), seguidas de las Technical Stories que las soportan y, finalmente, las historias de la Landing Page y las de soporte (recuperación de contraseña, documentación, infraestructura). La estimación se realizó en Story Points con la escala 1 / 2 / 3 / 5 / 8, considerando complejidad técnica, incertidumbre y esfuerzo relativo.
+
+El backlog se gestiona en Trello: _Pendiente: enlace público y captura del tablero._
+
 
 | # Orden | User Story Id | Título | Descripción | Story Points (1 / 2 / 3 / 5 / 8) |
 |---------|---------------|--------|-------------|----------------------------------|
-| 1 | US01 | | Como… deseo… para… | |
+| 1 | US06 | Iniciar sesión en la aplicación web | Como empresario MYPE, deseo iniciar sesión con mi correo y contraseña, para acceder a mis facturas de forma segura. | 3 |
+| 2 | US11 | Subir una factura electrónica | Como empresario MYPE, deseo subir el PDF de una factura electrónica emitida en SUNAT, para que Vankoo extraiga sus datos sin que yo tenga que digitarlos. | 8 |
+| 3 | US13 | Ver el detalle y el progreso de una factura | Como empresario MYPE, deseo ver los datos leídos de una factura, sus ítems y en qué paso del proceso se encuentra, para saber si necesita mi intervención. | 5 |
+| 4 | US14 | Revisar la oferta de financiamiento de una factura aprobada | Como empresario MYPE, deseo ver la oferta de financiamiento generada para una factura aprobada, para conocer cuánto recibiría y en qué condiciones antes de publicarla. | 5 |
+| 5 | US15 | Aceptar la oferta y publicar la factura en subasta | Como empresario MYPE, deseo aceptar la oferta de financiamiento, para que mi factura se publique en el mercado y los inversionistas puedan fondearla. | 5 |
+| 6 | US09 | Iniciar sesión en la aplicación móvil | Como inversionista, deseo iniciar sesión con mi correo y contraseña, para acceder a mi billetera y al mercado. | 3 |
+| 7 | US17 | Recargar saldo con tarjeta | Como inversionista, deseo recargar mi billetera pagando con tarjeta a través de un proveedor de pagos seguro, para disponer de fondos e invertir. | 8 |
+| 8 | US18 | Explorar el mercado de facturas en subasta | Como inversionista, deseo ver las facturas publicadas en subasta con su rendimiento, plazo y nivel de riesgo, para elegir en cuál invertir. | 5 |
+| 9 | US19 | Ver el detalle de una subasta | Como inversionista, deseo ver el detalle de una subasta con cómo se reparte el importe, el rendimiento esperado y los datos de la factura, para evaluar la oportunidad. | 3 |
+| 10 | US20 | Invertir en una subasta | Como inversionista, deseo indicar el monto a invertir y confirmar la inversión, para que se descuente de mi billetera y participe en el fondeo de la factura. | 8 |
+| 11 | TS03 | Servicio de identidad y acceso (IAM) | Como developer, deseo endpoints de registro, inicio de sesión, recuperación y restablecimiento de contraseña que emitan tokens JWT, para autenticar a los usuarios de la web y del móvil. | 5 |
+| 12 | TS02 | Punto de entrada único con validación de JWT | Como developer, deseo un API Gateway que enrute las peticiones por prefijo y valide el token JWT, para que los servicios internos confíen en la identidad inyectada. | 5 |
+| 13 | TS04 | Servicio de facturación con lectura automática (Invoicing) | Como developer, deseo un servicio que reciba el PDF de la factura, extraiga sus datos mediante OCR, valide su consistencia y publique eventos de integración, para que otros servicios reaccionen a las facturas aprobadas. | 8 |
+| 14 | TS05 | Servicio de subastas e inversiones (Investment) | Como developer, deseo un servicio que cree subastas a partir de facturas aprobadas, genere cotizaciones, exponga el marketplace y registre inversiones, para soportar los flujos de la MYPE y del inversionista. | 8 |
+| 15 | TS06 | Servicio de billetera y pagos (Finance) | Como developer, deseo un servicio de billetera basado en eventos que gestione depósitos vía proveedor de pagos y débitos idempotentes, para respaldar las recargas e inversiones del inversionista. | 8 |
+| 16 | TS01 | Registro y descubrimiento de servicios | Como developer, deseo que cada microservicio se registre en un Discovery Server, para que el API Gateway los ubique dinámicamente sin direcciones fijas. | 2 |
+| 17 | US12 | Ver mis facturas | Como empresario MYPE, deseo ver el listado de las facturas que subí con su estado actual, para hacer seguimiento a cada una. | 3 |
+| 18 | US16 | Ver el saldo y los movimientos de mi billetera | Como inversionista, deseo ver cuánto saldo tengo disponible para invertir y el historial de movimientos, para controlar mis fondos. | 3 |
+| 19 | US05 | Registrarme en la aplicación web | Como empresario MYPE, deseo crear una cuenta con mi correo y contraseña, para acceder a la gestión de mis facturas. | 3 |
+| 20 | US08 | Registrarme en la aplicación móvil | Como inversionista, deseo crear una cuenta desde mi celular, para empezar a invertir en facturas. | 3 |
+| 21 | US01 | Conocer la propuesta de valor de Vankoo | Como visitante, deseo ver en la página principal qué es Vankoo y qué beneficio ofrece a cada segmento, para entender rápidamente si la plataforma resuelve mi necesidad. | 3 |
+| 22 | US02 | Entender cómo funciona el financiamiento de facturas | Como visitante, deseo ver los pasos del proceso (subir factura, validación, subasta, fondeo y cobro) y las preguntas frecuentes, para comprender cómo opera Vankoo antes de registrarme. | 2 |
+| 23 | US03 | Simular el adelanto de una factura | Como visitante del segmento MYPE, deseo ingresar el monto y plazo de una factura en la calculadora, para estimar cuánto recibiría y cuál sería el costo del financiamiento. | 3 |
+| 26 | TS07 | Documentación OpenAPI agregada | Como developer, deseo que cada servicio exponga su especificación OpenAPI y que el gateway las agregue en una única interfaz Scalar, para consultar y probar todos los endpoints desde un solo lugar. | 3 |
+| 27 | TS08 | Entorno local reproducible | Como developer, deseo levantar toda la plataforma con Docker Compose, para desarrollar y probar los flujos completos sin configuración manual. | 3 |
+| 28 | US04 | Navegar la landing page en mi idioma y desde cualquier dispositivo | Como visitante, deseo cambiar el idioma entre español e inglés y navegar desde el móvil o escritorio, para consultar la información con comodidad. | 2 |
+
+Total de Story Points del backlog: **123**.
+
+<hr class="page-break">
 
 ## 3.4. Impact Mapping
 
@@ -2719,11 +2876,11 @@ El equipo utiliza **GitHub** como plataforma de alojamiento y **Git** como siste
 
 | Producto | Repositorio                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Landing Page | [yieldlabs/vankoo-landing-page](https://github.com/yieldlabs/vankoo-landing-page)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Frontend Web Application | [yieldlabs/vankoo-mype-web](https://github.com/yieldlabs/vankoo-mype-web)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Frontend Mobile Application | [yieldlabs/vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Web Services | [yieldlabs/vankoo-iam-service](https://github.com/yieldlabs/vankoo-iam-service)<br>[yieldlabs/vankoo-profile-service](https://github.com/yieldlabs/vankoo-profile-service)<br>[yieldlabs/vankoo-finance-service](https://github.com/yieldlabs/vankoo-finance-service)<br>[yieldlabs/vankoo-investment-service](https://github.com/yieldlabs/vankoo-investment-service)<br>[yieldlabs/vankoo-invoicing-service](https://github.com/yieldlabs/vankoo-invoicing-service)<br>[yieldlabs/vankoo-api-gateway](https://github.com/yieldlabs/vankoo-api-gateway) |
-| Informe del proyecto | [yieldlabs/report](https://github.com/yieldlabs/report)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Landing Page | [liquilabshq/vankoo-landing-page](https://github.com/liquilabshq/vankoo-landing-page)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Frontend Web Application | [liquilabshq/vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Frontend Mobile Application | [liquilabshq/vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Web Services | [liquilabshq/vankoo-iam-service](https://github.com/liquilabshq/vankoo-iam-service)<br>[liquilabshq/vankoo-profile-service](https://github.com/liquilabshq/vankoo-profile-service)<br>[liquilabshq/vankoo-finance-service](https://github.com/liquilabshq/vankoo-finance-service)<br>[liquilabshq/vankoo-investment-service](https://github.com/liquilabshq/vankoo-investment-service)<br>[liquilabshq/vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service)<br>[liquilabshq/vankoo-api-gateway](https://github.com/liquilabshq/vankoo-api-gateway) |
+| Informe del proyecto | [yieldlabshq/report](https://github.com/yieldlabshq/report)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 **GitFlow Workflow**
 
@@ -2933,28 +3090,69 @@ Para publicar la versión de iOS en Apple App Store Connect, se siguen los sigui
 <!-- Un Sprint Backlog por sprint, con work-items redactados en texto (no capturas de la herramienta). -->
 <!-- Assets: ./assets/cap5-product-implementation/sprint-backlogs/ -->
 
-_Pendiente de elaboración._
+Para esta entrega el equipo ejecutó un único Sprint orientado a tener usable, de extremo a extremo, el flujo mínimo del negocio: la MYPE inicia sesión, sube una factura, revisa su detalle y la publica en subasta; el inversionista inicia sesión, recarga su saldo, explora el mercado e invierte. El Sprint incluye también las Technical Stories del backend que hacen posible ese flujo (IAM, Invoicing, Investment, Finance, Discovery Server y API Gateway) y la Landing Page. Los work-items se derivan de las User Stories del Product Backlog (3.3) y se gestionaron en Trello.
 
 **Sprint 1**
 
 | Sprint # | Sprint 1 |
 |----------|----------|
 | **Sprint Planning Background** | |
-| Date | |
-| Time | |
-| Location | |
-| Prepared By | |
-| Attendees (to planning meeting) | |
-| Sprint n - 1 Review Summary | |
-| Sprint n - 1 Retrospective Summary | |
+| Date | _Pendiente_ |
+| Time | _Pendiente_ |
+| Location | _Pendiente_ |
+| Prepared By | Amaro Villar, Anjali |
+| Attendees (to planning meeting) | Acuache Lucas, Mathias Joaquin / Amaro Villar, Anjali / García Bernal, Daniela / Pillaca Vidal, Luis Angel |
+| Sprint n - 1 Review Summary | No aplica: es el primer Sprint del proyecto. |
+| Sprint n - 1 Retrospective Summary | No aplica: es el primer Sprint del proyecto. |
 | **Sprint Goal & User Stories** | |
-| Sprint n Goal | |
-| Sprint n Velocity | |
-| Sum of Story Points | |
+| Sprint 1 Goal | Tener operativo el flujo mínimo de Vankoo de extremo a extremo: en la web, una MYPE inicia sesión, sube una factura, revisa su detalle y acepta la oferta para publicarla en subasta; en el móvil, un inversionista inicia sesión, recarga su saldo, explora el mercado e invierte en una subasta. Métrica: los flujos de US06→US15 y US09→US20 se completan contra el backend desplegado localmente sin intervención manual. |
+| Sprint 1 Velocity | 115 |
+| Sum of Story Points | 115 |
 
 | User Story Id | Work-Item / Task Id | Título | Descripción | Estimación (Hours) | Asignado a | Estado |
 |---------------|---------------------|--------|-------------|--------------------|------------|--------|
-|  |  |  |  |  |  |  |
+| US06 | WI01 | Vista de inicio de sesión (web) | Implementar la vista SignIn, el store de sesión (Zustand) y el loader que protege las rutas internas. | 5 | Acuache Lucas, Mathias Joaquin | Done |
+| US06 | WI02 | Interceptor de autenticación | Configurar el interceptor de Axios que adjunta el JWT a cada petición al gateway. | 2 | García Bernal, Daniela | Done |
+| US11 | WI03 | Vista de carga de factura | Implementar UploadInvoice con dropzone de PDF, tarjeta del archivo y barra de progreso. | 6 | Amaro Villar, Anjali | Done |
+| US11 | WI04 | Integración de carga en invoicing-api | Integrar el endpoint multipart de carga de facturas y el manejo de errores (problem+json). | 3 | Pillaca Vidal, Luis Angel | Done |
+| US12 | WI05 | Vista Mis facturas | Implementar MyInvoices con listado paginado, InvoiceRow y StatusPill por estado. | 5 | Acuache Lucas, Mathias Joaquin | Done |
+| US13 | WI06 | Vista de detalle de factura | Implementar InvoiceDetail con datos extraídos, ítems, totales y apertura del PDF original. | 6 | Amaro Villar, Anjali | Done |
+| US13 | WI07 | Riel de progreso y alertas | Implementar InvoiceRail con los cinco hitos y las alertas de Requiere revisión / No elegible. | 4 | Pillaca Vidal, Luis Angel | Done |
+| US14 | WI08 | Store de inversión (web) | Implementar la búsqueda de la subasta por factura, la obtención o creación de la cotización activa y el polling mientras se evalúa el riesgo. | 4 | García Bernal, Daniela | Done |
+| US14 | WI09 | Panel de oferta | Implementar SettlementPanel con importe, descuento, comisión, neto a recibir, TCEA, plazo y validez. | 4 | Amaro Villar, Anjali | Done |
+| US15 | WI10 | Aceptar y publicar | Implementar AcceptQuoteDialog y la aceptación de la cotización con manejo de oferta vencida y factura próxima a vencer. | 4 | Acuache Lucas, Mathias Joaquin | Done |
+| US09 | WI11 | Pantalla de inicio de sesión (móvil) | Implementar SignInScreen, el caso de uso SignIn y la persistencia de la sesión en DataStore. | 5 | García Bernal, Daniela | Done |
+| US09 | WI12 | Cierre y observación de sesión | Implementar SignOut y ObserveSession para restaurar la sesión al abrir la app. | 2 | Pillaca Vidal, Luis Angel | Done |
+| US16 | WI13 | Pantalla Billetera | Implementar WalletScreen con saldo disponible, estado vacío y movimientos paginados. | 5 | García Bernal, Daniela | Done |
+| US17 | WI14 | Pantalla de recarga | Implementar TopUpScreen y el caso de uso InitiateDeposit que abre Stripe Checkout en el navegador. | 5 | Pillaca Vidal, Luis Angel | Done |
+| US17 | WI15 | Resultado de la recarga | Implementar TopUpPending / TopUpFailed y el retorno a la app mediante el deep link vankoo://. | 5 | Amaro Villar, Anjali | Done |
+| US18 | WI16 | Pantalla Mercado | Implementar MarketScreen con listado de subastas, filtros Todas / Verdes / Vencen pronto y paginación. | 6 | Acuache Lucas, Mathias Joaquin | Done |
+| US19 | WI17 | Pantalla de detalle de subasta | Implementar AuctionDetailScreen con reparto del importe, rendimiento esperado, datos de la factura y estados no disponibles. | 5 | Pillaca Vidal, Luis Angel | Done |
+| US20 | WI18 | Pantalla de confirmación de inversión | Implementar ConfirmInvestmentScreen con validaciones de mínimo, restante por fondear y saldo disponible. | 5 | García Bernal, Daniela | Done |
+| US20 | WI19 | Caso de uso InvestInAuction | Implementar el débito de billetera seguido del registro de la inversión, con clave de idempotencia y manejo del caso debitado-no-invertido. | 5 | Amaro Villar, Anjali | Done |
+| TS01 | WI20 | Discovery Server | Configurar Eureka Server y el registro de cada microservicio como cliente. | 3 | Acuache Lucas, Mathias Joaquin | Done |
+| TS02 | WI21 | Rutas del API Gateway | Configurar las rutas por prefijo /iam, /invoicing, /investment y /finance con StripPrefix y balanceo por Eureka. | 4 | Pillaca Vidal, Luis Angel | Done |
+| TS02 | WI22 | Filtro de autorización | Implementar BearerAuthorizationRequest: validación del JWT, respuesta 401 problem+json e inyección de cabeceras X-User-*. | 5 | Acuache Lucas, Mathias Joaquin | Done |
+| TS03 | WI23 | Autenticación en IAM | Implementar sign-up / sign-in con emisión de JWT, roles MYPE e Inversionista y política de contraseñas. | 5 | García Bernal, Daniela | Done |
+| TS03 | WI24 | Recuperación de contraseña | Implementar forgot-password / reset-password con envío de correo (SMTP) y enlaces con expiración. | 4 | Amaro Villar, Anjali | Done |
+| TS04 | WI25 | Carga y estados de factura | Implementar la recepción del PDF, su almacenamiento y la máquina de estados de la factura en Invoicing (.NET + MongoDB). | 6 | García Bernal, Daniela | Done |
+| TS04 | WI26 | OCR y validación de consistencia | Integrar Azure Document Intelligence para extraer los datos y validar que los totales cuadren. | 6 | Pillaca Vidal, Luis Angel | Done |
+| TS04 | WI27 | Eventos de integración | Publicar en Kafka los eventos de factura procesada / aprobada. | 3 | Amaro Villar, Anjali | Done |
+| TS05 | WI28 | Creación de subasta por evento | Implementar el consumidor de eventos de Invoicing que crea la subasta en estado Pendiente de verificación de riesgo. | 4 | Acuache Lucas, Mathias Joaquin | Done |
+| TS05 | WI29 | Cotizaciones y publicación | Implementar crear cotización, obtener la activa y aceptarla, pasando la subasta a Publicada. | 6 | Acuache Lucas, Mathias Joaquin | Done |
+| TS05 | WI30 | Marketplace e inversiones | Implementar el listado del marketplace, el detalle de subasta y el registro de inversiones con validación de montos. | 6 | Pillaca Vidal, Luis Angel | Done |
+| TS06 | WI31 | Agregado Wallet con Axon | Implementar el agregado Wallet con event sourcing (Axon Server) y su read model en PostgreSQL. | 6 | García Bernal, Daniela | Done |
+| TS06 | WI32 | Depósitos con Stripe | Implementar la creación de depósitos con Stripe Checkout y la verificación de firma de los webhooks. | 6 | Amaro Villar, Anjali | Done |
+| TS06 | WI33 | Débitos idempotentes | Implementar el endpoint de débito de billetera con clave de idempotencia. | 3 | Acuache Lucas, Mathias Joaquin | Done |
+| TS07 | WI34 | Documentación OpenAPI / Scalar | Configurar springdoc y Scalar en cada servicio y registrar las fuentes en el agregador del gateway. | 3 | Amaro Villar, Anjali | Done |
+| TS08 | WI35 | Docker Compose de la plataforma | Elaborar docker-compose.yaml con servicios, bases de datos, Kafka, Axon Server, Mailpit y healthchecks. | 5 | García Bernal, Daniela | Done |
+| US05 | WI36 | Vista de registro (web) | Implementar la vista SignUp y el assembler de registro que envía el rol MYPE al IAM. | 4 | Pillaca Vidal, Luis Angel | Done |
+| US08 | WI37 | Pantalla de registro (móvil) | Implementar SignUpScreen y el caso de uso SignUp con validación de correo y contraseña. | 4 | Pillaca Vidal, Luis Angel | Done |
+| US01 | WI38 | Hero y audiencias de la Landing | Implementar la sección principal con la propuesta de valor y las pestañas de audiencia MYPE / Inversionista (Astro, i18n es/en). | 4 | García Bernal, Daniela | Done |
+| US02 | WI39 | Cómo funciona y FAQ | Implementar las secciones de pasos del proceso y de preguntas frecuentes con despliegue de respuestas. | 3 | Acuache Lucas, Mathias Joaquin | Done |
+| US03 | WI40 | Calculadora de adelanto | Implementar la calculadora interactiva de monto y plazo con cálculo de neto a recibir, costo y TCEA. | 5 | Amaro Villar, Anjali | Done |
+
+Total de horas estimadas del Sprint: **181**.
 
 ### 5.2.2. Implemented Landing Page Evidence
 
@@ -2978,45 +3176,71 @@ Enlace al video demostrativo de landing page:[Enlace Video](https://upcedupe-my.
 
 ### 5.2.3. Implemented Frontend-Web Application Evidence
 
-<!-- Vue Framework + PrimeVue. Assets: ./assets/cap5-product-implementation/web-app-evidence/ -->
+<!-- React + TypeScript + Vite. Assets: ./assets/cap5-product-implementation/web-app-evidence/ -->
 
-_Pendiente de elaboración._
+En este apartado se evidencia el avance de la aplicación web de la MYPE (`vankoo-mype-web`), construida con **React + TypeScript + Vite**, que consume los servicios a través del API Gateway. Para esta entrega se muestra el bounded context de **IAM** (registro, inicio de sesión y recuperación de contraseña) y el de **Invoicing** (carga de facturas, listado y detalle), que constituyen el flujo principal del empresario para publicar sus facturas por cobrar.
+
+![img](assets/cap5-product-implementation/web-app-evidence/iam.png)
+
+![img](assets/cap5-product-implementation/web-app-evidence/068e1c73-9802-4b36-868d-95db49146bf3(Desktop).png)
+
+![img](assets/cap5-product-implementation/web-app-evidence/invoicing(Desktop).png)
+
+![img](assets/cap5-product-implementation/web-app-evidence/invoicing(Desktop)%201.png)
+
+![img](assets/cap5-product-implementation/web-app-evidence/invoicing(Desktop)%202.png)
+
+Enlace al repositorio: [/vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)
+
 
 ### 5.2.4. Implemented Native-Mobile Application Evidence
 
-<!-- Assets: ./assets/cap5-product-implementation/mobile-app-evidence/ -->
+<!-- Kotlin Multiplatform + Compose. Assets: ./assets/cap5-product-implementation/mobile-app-evidence/ -->
 
-_Pendiente de elaboración._
+En este apartado se evidencia el avance de la aplicación móvil del Inversionista (`vankoo-investor-mobile`), desarrollada con **Kotlin Multiplatform y Compose Multiplatform**, ejecutada sobre Android. Para esta entrega se presentan los flujos de **autenticación** (IAM), **mercado de subastas** (Investment) y **billetera** (Finance), que en conjunto permiten al inversionista registrarse, explorar oportunidades y confirmar una inversión.
+
+![img](assets/cap5-product-implementation/mobile-app-evidence/1.jpeg)
+
+![img](assets/cap5-product-implementation/mobile-app-evidence/2.jpeg)
+
+![img](assets/cap5-product-implementation/mobile-app-evidence/3.jpeg)
+
+![img](assets/cap5-product-implementation/mobile-app-evidence/4.jpeg)
+
+![img](assets/cap5-product-implementation/mobile-app-evidence/5.jpeg)
+![img](assets/cap5-product-implementation/mobile-app-evidence/6.jpeg)
+
+Enlace al repositorio: [vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)
 
 ### 5.2.5. Implemented RESTful API and/or Serverless Backend Evidence
 
-<!-- ASP.NET Core. Assets: ./assets/cap5-product-implementation/backend-api-evidence/ -->
+![img.png](img.png)
 
-_Pendiente de elaboración._
+![img_1.png](img_1.png)
 
-### 5.2.6. RESTful API documentation
+![img_2.png](img_2.png)
 
-<!-- OpenAPI Specification vía Swagger. Assets: ./assets/cap5-product-implementation/api-documentation/ -->
+![img_3.png](img_3.png)
 
-_Pendiente de elaboración._
+![img_4.png](img_4.png)
 
-### 5.2.7. Team Collaboration Insights
 
-<!-- Assets: ./assets/cap5-product-implementation/collaboration-insights/ -->
+Enlaces a los repositorios:
 
-_Pendiente de elaboración._
+| Servicio | Repositorio |
+|---|---|
+| Discovery Server | [liquilabshq/vankoo-discovery-server](https://github.com/liquilabshq/vankoo-discovery-server) |
+| API Gateway | [liquilabshq/vankoo-api-gateway](https://github.com/liquilabshq/vankoo-api-gateway) |
+| IAM Service | [liquilabshq/vankoo-iam-service](https://github.com/liquilabshq/vankoo-iam-service) |
+| Investment Service | [liquilabshq/vankoo-investment-service](https://github.com/liquilabshq/vankoo-investment-service) |
+| Finance Service | [liquilabshq/vankoo-finance-service](https://github.com/liquilabshq/vankoo-finance-service) |
+| Invoicing Service | [liquilabshq/vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service) |
+| Infraestructura local (Docker Compose) | [liquilabshq/vankoo-infra](https://github.com/liquilabshq/vankoo-infra) |
 
-<hr class="page-break">
 
 ## 5.3. Video About-the-Product
 
-<!-- Incluir enlace del video en Microsoft Stream y screenshot. Assets: ./assets/videos/ -->
-
-_Pendiente de elaboración._
-
-| Entrega | Título del video | Enlace | Duración |
-|---------|------------------|--------|----------|
-| AV1 |  |  |  |
+[https://goo.su/h0GAv](https://goo.su/h0GAv)
 
 <hr class="page-break">
 
@@ -3026,16 +3250,36 @@ _Pendiente de elaboración._
 
 <!-- Avance de conclusiones para AV1. Se expande en cada entrega. -->
 
-_Pendiente de elaboración._
+**Avance de conclusiones (AV1)**
+
+1. **Sobre el Problem Statement.** Las entrevistas confirman el problema planteado: el 100% de las MYPES entrevistadas emite facturas a crédito con plazos de 15 a 60 días, gestiona sus cuentas por cobrar con herramientas manuales y recurre a financiamiento de emergencia costoso ante la falta de caja. La brecha de liquidez no obedece a una mala gestión sino a la asimetría frente a los grandes adquirentes, tal como se asumió en el Lean UX Canvas.
+
+2. **Sobre los Business Assumptions.** Se validó que los clientes iniciales son empresarios de comercio y servicios con plazos de pago extendidos, y que el valor más apreciado es la rapidez del desembolso (menos de 48 horas) con comisiones transparentes (3/3). Por el lado del inversionista, se confirmó la disposición a participar mediante tickets accesibles con retorno a corto plazo (3/3), lo que respalda el enfoque de fraccionamiento de facturas.
+
+3. **Sobre los User Assumptions.** El uso predominante del smartphone en ambos segmentos (3/3 en cada uno) confirma la decisión de arquitectura de producto: aplicación web para la gestión administrativa de la MYPE y aplicación móvil nativa para el inversionista. El principal riesgo identificado —escepticismo frente a plataformas no bancarias (3/3 inversionistas, 2/3 MYPES)— refuerza la prioridad de la transparencia y la trazabilidad como atributos de diseño.
+
+4. **Sobre las Hypothesis Statements.** En esta entrega aún no se dispone de mediciones sobre las hipótesis 01 a 05; la implementación alcanzada (registro y autenticación, carga de facturas, subastas en el marketplace y billetera) constituye la base sobre la cual se ejecutarán las validaciones en las siguientes entregas. La hipótesis 04 (transparencia mediante Event Sourcing) se encuentra materializada a nivel técnico en el Finance Service con Axon Framework.
+
+5. **Sobre la implementación.** La arquitectura de microservicios por bounded context (IAM, Invoicing, Investment, Finance) con API Gateway y Discovery Server permitió que el equipo trabajara en paralelo con bajo acoplamiento, y la documentación OpenAPI agregada en Scalar facilitó la integración de las aplicaciones web y móvil contra un único punto de entrada.
+
+**Recomendaciones**
+
+* Ejecutar las entrevistas de validación con usuarios reales sobre las aplicaciones implementadas, para obtener las primeras mediciones de las hipótesis 01 (tiempo de carga de factura) y 03 (velocidad de fondeo).
+* Priorizar en el roadmap el despliegue en la nube de los servicios y la publicación de la documentación de la API, de modo que la validación no dependa de un entorno local.
+* Completar el flujo end-to-end (factura → subasta → inversión → débito de billetera) e incorporar el scoring de riesgo, que es el diferenciador central de la propuesta de valor.
 
 <hr class="page-break">
 
 # Bibliografía
 
-<!-- Formato APA. Usar la clase .ref para sangría francesa: <p class="ref">Autor, A. (año). Título...</p> -->
-
-_Pendiente de elaboración._
-
+<div>
+<p class="ref">CAVALI. (2024). <em>Reporte de desempeño de facturas negociables</em>. <a href="https://www.cavali.com.pe/factrack/uploads/shares/home/Reporte_Estadistico_FN_2024__1_.pdf">https://www.cavali.com.pe/factrack/uploads/shares/home/Reporte_Estadistico_FN_2024__1_.pdf</a></p>
+<p class="ref">ComexPerú. (2025). <em>Inclusión financiera de las MYPE: avances y retos</em>. <a href="https://www.comexperu.org.pe/articulo/inclusion-financiera-de-las-mypes-avances-y-retos">https://www.comexperu.org.pe/articulo/inclusion-financiera-de-las-mypes-avances-y-retos</a></p>
+<p class="ref">Contadores y Empresas. (2025). <em>Operaciones de factoring crecieron 14% en 2024</em>. <a href="https://www.contadoresyempresas.com.pe/operaciones-de-factoring-crecieron-14-en-2024/">https://www.contadoresyempresas.com.pe/operaciones-de-factoring-crecieron-14-en-2024/</a></p>
+<p class="ref">Innova Funding. (2022). <em>Ley de pago de facturas para MYPE a 30 días en Perú</em>. <a href="https://innova-funding.com/claves-del-pago-de-facturas-mype-a-treinta-dias/">https://innova-funding.com/claves-del-pago-de-facturas-mype-a-treinta-dias/</a></p>
+<p class="ref">LP. (2021). <em>Ley 31362, MYPE podrán cobrar facturas en un plazo máximo de 30 días</em>. <a href="https://lpderecho.pe/ley-31362-pago-facturas-mype-treinta-dias/">https://lpderecho.pe/ley-31362-pago-facturas-mype-treinta-dias/</a></p>
+<p class="ref">PRODUCE. (2025). <em>Estado de la inclusión financiera - MYPE</em>. <a href="https://www.producempresarial.pe/wp-content/uploads/2025/03/268-Reporte-de-Factoring-DIC-2024.pdf">https://www.producempresarial.pe/wp-content/uploads/2025/03/268-Reporte-de-Factoring-DIC-2024.pdf</a></p>
+</div>
 <hr class="page-break">
 
 # Anexos
@@ -3044,19 +3288,38 @@ _Pendiente de elaboración._
 
 **Anexo A. Videos de Exposiciones**
 
-| Entrega | Enlace del video |
-|---------|------------------|
-| AV1 |  |
+[https://goo.su/h0GAv](https://goo.su/h0GAv)
 
-**Anexo B. Enlaces de artefactos y herramientas**
 
-| Artefacto | Herramienta | Enlace |
-|-----------|-------------|--------|
-| Lean UX Canvas | UXPressia |  |
-| User Personas / Empathy Maps / Journey Maps / Impact Map | UXPressia |  |
-| As-Is / To-Be Scenario Maps | LucidChart / Miro |  |
-| Wireframes / Mock-ups / Prototypes | Figma |  |
-| Wireflows / User Flows | LucidChart / Overflow |  |
-| Software Architecture (C4) | Structurizr |  |
-| Database Design | LucidChart / Vertabelo |  |
-| Product Backlog | Trello / Jira / Pivotal Tracker |  |
+<hr class="page-break">
+
+**Anexo B. Enlaces a repositorios**
+
+| Producto | Repositorio                                                                                       |
+|---|---------------------------------------------------------------------------------------------------|
+| Informe del proyecto | [yieldlabshq/report](https://github.com/yieldlabshq/report)                                       |
+| Landing Page | [vankoo-landing-page](https://github.com/liquilabshq/vankoo-landing-page)                         |
+| Frontend Web Application (MYPE) | [vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)                                 |
+| Native Mobile Application (Inversionista) | [vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)                   |
+| Discovery Server | [vankoo-discovery-server](https://github.com/liquilabshq/vankoo-discovery-server)                 |
+| API Gateway | [vankoo-api-gateway](https://github.com/liquilabshq/vankoo-api-gateway)                           |
+| IAM Service | [vankoo-iam-service](https://github.com/liquilabshq/vankoo-iam-service)                           |
+| Investment Service | [vankoo-investment-service](https://github.com/liquilabshq/vankoo-investment-service)             |
+| Finance Service | [vankoo-finance-service](https://github.com/liquilabshq/vankoo-finance-service)                   |
+| Invoicing Service | [vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service)               |
+| Infraestructura local (Docker Compose) | [vankoo-infra](https://github.com/liquilabshq/vankoo-infra)                                       |
+
+<hr class="page-break">
+
+**Anexo C. Videos de entrevistas**
+
+<!-- Consolidar aquí los enlaces ya registrados en 2.2.2. Registro de entrevistas. -->
+
+| Segmento | Entrevistado | Fecha | Timing | Duración | Enlace |
+|---|---|---|---|---|---|
+| MYPE | Irving Vergara | 08/09/2026 | 00:00 - 8:58 | 8:58 minutos | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=WJmOfj&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MC42OX19) |
+| MYPE | Diego Melendez | 08/09/2026 | 8:58 - 17:30 | 8:32 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=Guig5U&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6NTM5LjF9fQ%3D%3D) |
+| MYPE | Thomas Bernardo | 08/09/2026 | 17:30 - 27:30 | 9:58 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=RYPQOg&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTA1MS40M319) |
+| Inversionista | Alessandro Hesse | 08/09/2026 | 27:30 - 40:15 | 12:45 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=0XdsHP&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTY1MC40OX19) |
+| Inversionista | Leicy Cahuana | 07/09/2026 | 40:15 - 55:19 | 15:04 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=FHk57K&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MjQxNS45OX19) |
+| Inversionista | Kalet Esteban | 07/09/2026 | 55:19 - 1:06:47 | 11:28 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=i6G1cy&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MzMyMC43NX19) |
