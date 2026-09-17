@@ -10,9 +10,9 @@
 
 <h4 style="text-align: center"> 1ASI0732 | Diseño de Experimentos de Ingeniería de Software </h4>
 
-<h4 style="text-align: center"> NRC: &lt;NRC&gt; </h4>
+<h4 style="text-align: center"> NRC: &lt;9108&gt; </h4>
 
-<h4 style="text-align: center"> Docente: &lt;Apellidos, Nombres del docente&gt; </h4>
+<h4 style="text-align: center"> Docente: &lt;Noriega Meléndez, Julio Manuel&gt; </h4>
 
 <br>
 
@@ -26,9 +26,9 @@
 
 <div style="text-align:center; margin-top: 10px; font-size: 90%; line-height: 1.6;">
   <p>&lt;Código&gt; — Acuache Lucas, Mathias Joaquin</p>
-  <p>&lt;Código&gt; — Amaro Villar, Anjali</p>
-  <p>&lt;Código&gt; — García Bernal, Daniela</p>
-  <p>&lt;Código&gt; — Pillaca Vidal, Luis Angel</p>
+  <p>&lt;U20221g044&gt; — Amaro Villar, Anjali</p>
+  <p>&lt;U202212994&gt; — García Bernal, Daniela</p>
+  <p>&lt;U202315654&gt; — Pillaca Vidal, Luis Angel</p>
 </div>
 
 <br>
@@ -42,7 +42,7 @@
 
 | Versión | Fecha    | Autor                | Descripción de modificación                                   |
 |---------|----------|----------------------|---------------------------------------------------------------|
-| 1.0     | 02/09/26 | Amaro Villar, Anjali | Organización inicial del informe y estructura del repositorio |
+| 1.0     | 02/09/26 | YieldLabs            | Organización inicial del informe y estructura del repositorio |
 |         |          |                      |                                                               |
 
 <hr class="page-break">
@@ -197,8 +197,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |:--------------------|:--------------------|:-------------|
-| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>_Pendiente._<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Pendiente._<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Pendiente._ | **AV1**<br>_Pendiente._ |
-| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>_Pendiente._<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Pendiente._<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Pendiente._ | **AV1**<br>_Pendiente._ |
+| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>_Pendiente._<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Me enfoqué en garantizar que el diseño de nuestra solución respete la privacidad de la información, promoviendo la transparencia y el cumplimiento de estándares éticos durante el desarrollo._<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Participé en la definición de buenas prácticas de desarrollo y el uso correcto de herramientas, asegurando el trabajo honesto y la ética profesional en el equipo._ | **AV1**<br>_Se logró identificar la importancia de la ética profesional en esta etapa inicial del proyecto._ |
+| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>_Pendiente._<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Investigué cómo YieldLabs puede mejorar la accesibilidad tecnológica en la comunidad, analizando su viabilidad económica y asegurando que el producto final sea socialmente inclusivo._<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Evalué el impacto de YieldLabs, considerando cómo nuestra plataforma puede optimizar recursos y promover beneficios económicos y sociales para nuestros futuros usuarios._ | **AV1**<br>_Se reconoció el impacto socioeconómico y ambiental positivo de nuestra solución de software._ |
 
 <hr class="page-break">
 
