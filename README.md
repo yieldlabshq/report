@@ -53,8 +53,7 @@ Enlace del repositorio del Project Report: [*Ver en GitHub*](https://github.com/
 
 **GitHub Collaboration Insights**
 
-
-_Pendiente de elaboración._
+![img_5.png](img_5.png)
 
 Los integrantes del equipo son:
 
