@@ -227,7 +227,7 @@ Yieldlabs es una startup Fintech de base tecnológica creada por estudiantes de 
 | <img src="./assets/profiles/daniela.jpeg" width="500"> | **García Bernal, Daniela**<br>Código: &lt;U202212994&gt;<br>Carrera: Ingeniería de Software<br><br>Soy estudiante de Ingeniería de Software con conocimientos en C++, programación orientada a objetos, estructuras de datos, UML y Diseño de Interfaces. Tengo conocimiento de desarrollo frontend y backend así como de  metodologías ágiles y Scrum. Me interesa aprender nuevas tecnologías y me caracterizo por prestar atención a los detalles al desarrollar mis proyectos. |
 |---|---|
 
-| <img src="./assets/profiles/perfil-pillaca-luis.jpeg" width="140"> | **Pillaca Vidal, Luis Angel**<br>Código: &lt;Código&gt;<br>Carrera: Ingeniería de Software<br><br>_Pendiente de elaboración._ |
+| <img src="./assets/profiles/AngelFoto.jpg" width="140"> | **Pillaca Vidal, Luis Angel**<br>Código: &lt;u202315654&gt;<br>Carrera: Ingeniería de Software<br><br> Estudiante de séptimo ciclo de Ingeniería de Software enfocado en el desarrollo con buenas prácticas, ética profesional y uso eficiente de herramientas de software. Apasionado por el aprendizaje continuo y la colaboración activa en proyectos tecnológicos de impacto. |
 |---|---|
 
 <hr class="page-break">
