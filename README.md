@@ -3208,8 +3208,13 @@ En este apartado se evidencia el avance de la aplicación web de la MYPE (`vanko
 
 Enlace al repositorio: [/vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)
 
+### 5.2.4. Acuerdo de Servicio - SaaS
 
-### 5.2.4. Implemented Native-Mobile Application Evidence
+<!-- Derechos, obligaciones y restricciones de los usuarios de la plataforma. Debe publicarse como "Terms and Conditions" en el footer del Landing Page y de las aplicaciones. -->
+
+_Pendiente de elaboración._
+
+### 5.2.5. Implemented Native-Mobile Application Evidence
 
 <!-- Kotlin Multiplatform + Compose. Assets: ./assets/cap5-product-implementation/mobile-app-evidence/ -->
 
@@ -3228,7 +3233,7 @@ En este apartado se evidencia el avance de la aplicación móvil del Inversionis
 
 Enlace al repositorio: [vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)
 
-### 5.2.5. Implemented RESTful API and/or Serverless Backend Evidence
+### 5.2.6. Implemented RESTful API and/or Serverless Backend Evidence
 
 ![img.png](img.png)
 
@@ -3253,10 +3258,85 @@ Enlaces a los repositorios:
 | Invoicing Service | [liquilabshq/vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service) |
 | Infraestructura local (Docker Compose) | [liquilabshq/vankoo-infra](https://github.com/liquilabshq/vankoo-infra) |
 
+### 5.2.7. RESTful API documentation
+
+<!-- Endpoints documentados con OpenAPI: acciones, verbo HTTP, sintaxis de llamada, parámetros, ejemplo de response y URL de la documentación desplegada. Assets: ./assets/cap5-product-implementation/api-documentation/ -->
+
+_Pendiente de elaboración._
+
+### 5.2.8. Team Collaboration Insights
+
+<!-- Capturas de los analíticos de colaboración y commits en GitHub de cada repositorio, con su interpretación. Assets: ./assets/cap5-product-implementation/collaboration-insights/ -->
+
+_Pendiente de elaboración._
 
 ## 5.3. Video About-the-Product
 
 [https://goo.su/h0GAv](https://goo.su/h0GAv)
+
+<hr class="page-break">
+
+# Capítulo VI: Product Verification & Validation
+
+## 6.1. Testing Suites & Validation
+
+### 6.1.1. Core Entities Unit Tests
+
+<!-- Pruebas unitarias de las entidades principales (modelos, clases y funciones clave) ejecutadas en aislamiento. -->
+
+_Pendiente de elaboración._
+
+### 6.1.2. Core Integration Tests
+
+<!-- Pruebas de integración entre módulos: comunicación frontend-backend e interacción entre servicios o APIs. -->
+
+_Pendiente de elaboración._
+
+### 6.1.3. Core Behavior-Driven Development
+
+<!-- Escenarios de usuario en archivos .feature (Gherkin) con sus Steps, relacionados con las User Stories. -->
+
+_Pendiente de elaboración._
+
+### 6.1.4. Core System Tests
+
+<!-- Pruebas de sistema en entorno web y móvil: navegación, interacción con APIs y respuesta ante distintos escenarios. -->
+
+_Pendiente de elaboración._
+
+<hr class="page-break">
+
+# Capítulo VII: DevOps Practices
+
+## 7.1. Continuous Integration
+
+### 7.1.1. Tools and Practices
+
+_Pendiente de elaboración._
+
+### 7.1.2. Build & Test Suite Pipeline Components
+
+_Pendiente de elaboración._
+
+## 7.2. Continuous Delivery
+
+### 7.2.1. Tools and Practices
+
+_Pendiente de elaboración._
+
+### 7.2.2. Stages Deployment Pipeline Components
+
+_Pendiente de elaboración._
+
+## 7.3. Continuous Deployment
+
+### 7.3.1. Tools and Practices
+
+_Pendiente de elaboración._
+
+### 7.3.2. Production Deployment Pipeline Components
+
+_Pendiente de elaboración._
 
 <hr class="page-break">
 
