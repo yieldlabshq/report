@@ -1,0 +1,64 @@
+@startuml iam-database-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam linetype ortho
+
+!define table(x) entity x << (T,#438DD5) >>
+!define enum(x)  entity x << (E,#85BBF0) >>
+
+hide circle
+hide empty members
+
+title Vankoo IAM — Physical Database Diagram (PostgreSQL)
+
+table(users) {
+  * id            : UUID <<PK>>
+  --
+  * email         : VARCHAR <<UNIQUE>>
+  * password      : VARCHAR
+  * created_at    : TIMESTAMP
+  * updated_at    : TIMESTAMP
+}
+
+table(roles) {
+  * id            : UUID <<PK>>
+  --
+  * name          : VARCHAR(20)
+}
+
+table(user_roles) {
+  * user_id       : UUID <<FK>>
+  * role_id       : UUID <<FK>>
+}
+
+users "1" -- "0..*" user_roles
+roles  "1" -- "0..*" user_roles
+
+note bottom of users
+  Indexes:
+  - UNIQUE idx_user_email { email }
+  Esquema generado por Hibernate (ddl-auto: update en dev/docker,
+  validate en prod). No existen migraciones Flyway/Liquibase.
+end note
+
+note bottom of user_roles
+  Composite PK: (user_id, role_id)
+  FK user_id -> users.id
+  FK role_id -> roles.id
+  Tabla de unión de la relación N:M User <-> Role.
+end note
+
+note bottom of roles
+  RoleName (enum de dominio) persistido como STRING(20).
+end note
+
+legend bottom
+  IAM es el Bounded Context raíz de identidad: no contiene <<ref>> hacia
+  otros contextos. Su clave primaria users.id es referenciada
+  lógicamente (sin FK física) por profile.companies.user_id,
+  profile.investors.user_id e investment.auctions.mype_id /
+  investment.partitions.investor_id, propagada vía el evento de
+  integración UserCreatedEvent (tópico Kafka vankoo.iam.events).
+end legend
+
+@enduml

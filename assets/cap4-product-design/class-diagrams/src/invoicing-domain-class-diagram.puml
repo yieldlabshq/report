@@ -1,0 +1,374 @@
+@startuml invoicing-domain-class-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 25
+skinparam ranksep 60
+hide empty members
+
+skinparam class {
+  BackgroundColor<<AggregateRoot>>     #1168BD
+  FontColor<<AggregateRoot>>           #FFFFFF
+  BorderColor<<AggregateRoot>>         #0B4884
+  BackgroundColor<<Entity>>            #438DD5
+  FontColor<<Entity>>                  #FFFFFF
+  BorderColor<<Entity>>                #2E6295
+  BackgroundColor<<ValueObject>>       #85BBF0
+  FontColor<<ValueObject>>             #000000
+  BorderColor<<ValueObject>>           #438DD5
+  BackgroundColor<<DomainEvent>>       #F28FAD
+  FontColor<<DomainEvent>>             #000000
+  BorderColor<<DomainEvent>>           #B56580
+  BackgroundColor<<DomainService>>     #6BA3DC
+  FontColor<<DomainService>>           #000000
+  BorderColor<<DomainService>>         #438DD5
+  BackgroundColor<<Exception>>         #CDA1A1
+  FontColor<<Exception>>               #000000
+  BorderColor<<Exception>>             #8F6262
+}
+
+title Vankoo Invoicing — Domain Layer Class Diagram
+
+package "Invoicing.Domain.Aggregates" {
+  class Invoice <<AggregateRoot>> {
+    - Id: InvoiceId
+    - MypeId: MypeId
+    - IssuerData: IssuerData
+    - PayerData: PayerData
+    - Status: InvoiceStatus
+    - Document: InvoiceDocument
+    - TotalAmount: Money
+    - SubtotalAmount: Money
+    - TaxAmount: Money
+    - DiscountAmount: Money
+    - OcrOperationId: OcrOperationId
+    - Metadata: InvoiceMetadata
+    - SunatValidation: SunatValidation
+    - SunatVerificationStatus: SunatVerificationStatus
+    - ConsistencyResult: InvoiceConsistencyResult
+    - IntegrationEventPublicationStatus: IntegrationEventPublicationStatus
+    - Items: IReadOnlyList<InvoiceLineItem>
+    - RejectionReason: RejectionReason
+    --
+    + {static} Create(mypeId: MypeId, document: InvoiceDocument): Invoice
+    + StartOcrProcessing(): void
+    + SetOcrOperationId(operationId: OcrOperationId): void
+    + Reject(reason: RejectionReason): void
+    + RegisterOcrResults(result: OcrExtractionResult, consistencyResult: InvoiceConsistencyResult): void
+    + MarkIntegrationEventPublished(): void
+    + MarkIntegrationEventPublicationFailed(): void
+    - CanBeRejected(): bool
+  }
+
+  class OcrTask <<AggregateRoot>> {
+    - Id: string
+    - InvoiceId: string
+    - Status: OcrTaskStatus
+    - AttemptCount: int
+    - MaxAttempts: int
+    - NextRetryAtUtc: DateTime
+    - LockExpiresAtUtc: DateTime?
+    - LastError: string?
+    --
+    + {static} Create(invoiceId: string, maxAttempts: int = 5): OcrTask
+    + MarkProcessing(leaseDuration: TimeSpan): void
+    + MarkCompleted(): void
+    + MarkFailure(error: string, retryDelay: TimeSpan): void
+  }
+}
+
+package "Invoicing.Domain.ValueObjects" {
+  class InvoiceId <<ValueObject>> {
+    - Value: string
+    --
+    + {static} NewId(): InvoiceId
+    + {static} Of(value: string): InvoiceId
+  }
+  class MypeId <<ValueObject>> {
+    - Value: string
+  }
+  class RucNumber <<ValueObject>> {
+    - Value: string
+    --
+    + {static} Of(value: string): RucNumber
+    + IsNaturalPerson(): bool
+    + IsLegalEntity(): bool
+  }
+  class FileKey <<ValueObject>> {
+    - Value: string
+    --
+    + {static} Generate(): FileKey
+  }
+  class OcrOperationId <<ValueObject>> {
+    - Value: string
+  }
+  class Currency <<ValueObject>> {
+    PEN
+    USD
+  }
+  class Money <<ValueObject>> {
+    - Amount: decimal
+    - Currency: Currency
+    --
+    + Add(other: Money): Money
+    + Subtract(other: Money): Money
+    + Multiply(factor: decimal): Money
+    + Divide(divisor: decimal): Money
+  }
+  class IssuerData <<ValueObject>> {
+    - Ruc: RucNumber
+    - LegalName: string
+    - TradeName: string
+    - Address: string
+    --
+    + GetDisplayName(): string
+  }
+  class PayerData <<ValueObject>> {
+    - Ruc: RucNumber
+    - LegalName: string
+    - TradeName: string
+    - Address: string
+    --
+    + GetDisplayName(): string
+  }
+  class InvoiceDocument <<ValueObject>> {
+    - Key: FileKey
+    - OriginalName: string
+    - ContentType: string
+    - FileSizeBytes: long
+    - ContentHash: string
+    --
+    + {static} Upload(...): InvoiceDocument
+  }
+  class InvoiceMetadata <<ValueObject>> {
+    - InvoiceSeries: string
+    - InvoiceNumber: string
+    - IssueDate: DateTime
+    - DueDate: DateTime
+    - Currency: Currency
+    - OcrConfidence: float
+    --
+    + GetFullInvoiceNumber(): string
+    + IsExpired(): bool
+    + HasAcceptableConfidence(threshold: float): bool
+  }
+  class InvoiceLineItem <<ValueObject>> {
+    - Description: string
+    - Quantity: decimal
+    - UnitPrice: Money
+    - Subtotal: Money
+    --
+    + {static} Create(description, quantity, unitPrice): InvoiceLineItem
+    + {static} CreateFromOcr(description, quantity, unitPrice, subtotal): InvoiceLineItem
+    + CalculateTotal(): Money
+  }
+  class InvoiceAmounts <<ValueObject>> {
+    - Subtotal: Money
+    - Tax: Money
+    - Discount: Money
+    - Total: Money
+    --
+    + {static} Create(...): InvoiceAmounts
+    + IsConsistent(tolerance: decimal): bool
+  }
+  class OcrFieldConfidence <<ValueObject>> {
+    - Field: string
+    - Confidence: float
+    - Critical: bool
+  }
+  class OcrExtractionResult <<ValueObject>> {
+    - IssuerData: IssuerData
+    - PayerData: PayerData
+    - Metadata: InvoiceMetadata
+    - Amounts: InvoiceAmounts
+    - Items: IReadOnlyList<InvoiceLineItem>
+    - FieldConfidences: IReadOnlyList<OcrFieldConfidence>
+    - ExtractionWarnings: IReadOnlyList<string>
+  }
+  class InvoiceConsistencyResult <<ValueObject>> {
+    - Status: InvoiceConsistencyStatus
+    - Issues: IReadOnlyList<InvoiceValidationIssue>
+    - CheckedAt: DateTime?
+    --
+    + {static} NotChecked(): InvoiceConsistencyResult
+    + {static} FromIssues(issues, checkedAt): InvoiceConsistencyResult
+  }
+  class InvoiceValidationIssue <<ValueObject>> {
+    - Code: string
+    - Severity: InvoiceValidationSeverity
+    - Message: string
+  }
+  class InvoiceConsistencyStatus <<ValueObject>> {
+    PASSED
+    REQUIRES_REVIEW
+    FAILED
+  }
+  class InvoiceValidationSeverity <<ValueObject>> {
+    WARNING
+    REVIEW
+    ERROR
+  }
+  class RejectionReason <<ValueObject>> {
+    - Reason: string
+    - RejectedAt: DateTime
+    - RejectedBy: string
+  }
+  class SunatValidation <<ValueObject>> {
+    - IsValid: bool
+    - ValidatedAt: DateTime?
+    - CdrUrl: string
+    - ResponseCode: string
+    --
+    + {static} CreateValid(...): SunatValidation
+    + {static} CreateInvalid(...): SunatValidation
+    + IsApproved(): bool
+  }
+  class InvoiceStatus <<ValueObject>> {
+    UPLOADED
+    OCR_PROCESSING
+    DATA_EXTRACTED
+    SUNAT_VALIDATING
+    SUNAT_VALIDATED
+    APPROVED
+    PUBLISHED
+    CONSISTENCY_PASSED
+    REQUIRES_REVIEW
+    NOT_ELIGIBLE
+    REJECTED
+  }
+  class OcrTaskStatus <<ValueObject>> {
+    Pending
+    Processing
+    Completed
+    DeadLetter
+  }
+  class SunatVerificationStatus <<ValueObject>> {
+    NOT_VERIFIED
+    VERIFIED
+    FAILED
+  }
+  class IntegrationEventPublicationStatus <<ValueObject>> {
+    NOT_APPLICABLE
+    PENDING
+    PUBLISHED
+    FAILED
+  }
+}
+
+package "Invoicing.Domain.Events" {
+  class InvoiceCreatedEvent <<DomainEvent>> {
+    + Invoice: Invoice
+  }
+  class InvoiceEligibleForFundingDomainEvent <<DomainEvent>> {
+    + Invoice: Invoice
+  }
+}
+
+package "Invoicing.Domain.Exceptions" {
+  abstract class DomainException <<Exception>> {
+    + ErrorCode: string
+  }
+  abstract class BusinessRuleViolationException <<Exception>>
+  abstract class EntityNotFoundException <<Exception>>
+  class InvalidValueException <<Exception>>
+  class InvalidInvoiceStateException <<Exception>> {
+    + CurrentStatus: InvoiceStatus
+    + ExpectedStatus: InvoiceStatus?
+  }
+  class InvalidRucException <<Exception>> {
+    + InvalidRuc: string
+  }
+  class InvoiceNotFoundException <<Exception>> {
+    + InvoiceId: string
+  }
+  class LowOcrConfidenceException <<Exception>> {
+    + Confidence: float
+    + MinimumRequired: float
+  }
+  class IncompleteOcrDataException <<Exception>> {
+    + InvoiceId: string
+    + MissingField: string
+  }
+
+  DomainException <|-- BusinessRuleViolationException
+  DomainException <|-- EntityNotFoundException
+  DomainException <|-- InvalidValueException
+  BusinessRuleViolationException <|-- InvalidInvoiceStateException
+  BusinessRuleViolationException <|-- LowOcrConfidenceException
+  BusinessRuleViolationException <|-- IncompleteOcrDataException
+  EntityNotFoundException <|-- InvoiceNotFoundException
+  InvalidValueException <|-- InvalidRucException
+}
+
+package "Invoicing.Domain.Services" {
+  class InvoiceConsistencyValidator <<DomainService>> {
+    - MoneyTolerance: decimal = 0.02
+    - CriticalConfidenceThreshold: float = 0.75
+    --
+    + Validate(extraction: OcrExtractionResult, checkedAt: DateTime, duplicateFiscalIdentity: bool): InvoiceConsistencyResult
+  }
+}
+
+' Composition: Invoice embeds its value objects
+Invoice "1" *-- "1" InvoiceId : identified by >
+Invoice "1" *-- "1" MypeId : issued by >
+Invoice "1" *-- "1" InvoiceStatus : has >
+Invoice "1" *-- "1" InvoiceDocument : has >
+Invoice "1" *-- "0..1" IssuerData : has >
+Invoice "1" *-- "0..1" PayerData : has >
+Invoice "1" *-- "0..1" InvoiceMetadata : has >
+Invoice "1" *-- "0..1" SunatValidation : has >
+Invoice "1" *-- "1" InvoiceConsistencyResult : has >
+Invoice "1" *-- "0..1" RejectionReason : has >
+Invoice "1" *-- "0..*" InvoiceLineItem : has >
+Invoice "1" *-- "0..4" Money : total/subtotal/tax/discount >
+
+InvoiceConsistencyResult "1" *-- "0..*" InvoiceValidationIssue
+
+OcrTask ..> Invoice : processes (by InvoiceId, plain string) >
+
+' Domain events (constructed and published from Application layer, not from the aggregate itself)
+Invoice ..> InvoiceCreatedEvent : "wraps (published from Application)" >
+Invoice ..> InvoiceEligibleForFundingDomainEvent : "wraps (published from Application)" >
+
+' Business rule violations
+Invoice ..> InvalidInvoiceStateException : throws >
+RucNumber ..> InvalidRucException : throws >
+
+' Domain service
+InvoiceConsistencyValidator ..> OcrExtractionResult : validates >
+InvoiceConsistencyValidator ..> InvoiceConsistencyResult : produces >
+InvoiceConsistencyValidator ..> Invoice : "feeds Invoice.RegisterOcrResults(...)" >
+
+note bottom of Invoice
+  Invoice no dispara eventos internamente (sin lista DomainEvents ni
+  AddDomainEvent): InvoiceCreatedEvent/InvoiceEligibleForFundingDomainEvent
+  se construyen y publican vía IMediator.Publish(...) desde
+  Application/Commands, envolviendo la instancia ya mutada.
+end note
+
+note bottom of OcrTask
+  Clasificada como AggregateRoot (no Entity) pese a residir físicamente
+  en Domain/Entities/: tiene identidad propia, colección Mongo propia
+  ("OcrTasks") y repositorio propio (IOcrTaskRepository) — referencia a
+  Invoice solo por InvoiceId (string plano), nunca por navegación de
+  objeto, cumpliendo la regla DDD "referenciar otros agregados solo por
+  identidad". Sus propias validaciones lanzan ArgumentException /
+  ArgumentOutOfRangeException nativas de .NET, no las DomainException
+  de este Bounded Context.
+end note
+
+note bottom of InvoiceEligibleForFundingDomainEvent
+  De los 6 domain events declarados, solo InvoiceCreatedEvent e
+  InvoiceEligibleForFundingDomainEvent implementan INotification y
+  tienen INotificationHandler asociado. InvoiceApprovedEvent,
+  InvoiceDataExtractedEvent, InvoiceRejectedEvent e
+  InvoiceSunatValidatedEvent existen en el código pero no están
+  cableados a ningún emisor ni handler (código aspiracional, se omiten
+  del diagrama por no reflejar comportamiento real).
+end note
+
+@enduml
