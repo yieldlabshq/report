@@ -3565,11 +3565,11 @@ Ruta del proyecto de pruebas: [yieldlabshq/vankoo-invoicing-service/LiquiLabs.Va
 
 El commit incorpora los archivos `SmartInvoiceUpload.feature`, `SmartInvoiceUploadSteps.cs`, `InvoicingTestHost.cs` e `InMemoryAdapters.cs`.
 
-## 6.1.4 Core System Tests
+### 6.1.4. Core System Tests
 
 En esta sección se presentan las pruebas funcionales realizadas sobre las principales User Stories del sistema Vankoo. Estas pruebas permiten verificar el comportamiento de las funcionalidades implementadas, la navegación entre las diferentes interfaces y la interacción con los servicios que conforman el sistema.
 
-### US01
+#### US01
 
 <table>
   <tr>
@@ -3596,7 +3596,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US02
+#### US02
 
 <table>
   <tr>
@@ -3623,7 +3623,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US03
+#### US03
 
 <table>
   <tr>
@@ -3650,7 +3650,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US04
+#### US04
 
 <table>
   <tr>
@@ -3677,7 +3677,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US05
+#### US05
 
 <table>
   <tr>
@@ -3706,7 +3706,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US06
+#### US06
 
 <table>
   <tr>
@@ -3733,7 +3733,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US08
+#### US08
 
 <table>
   <tr>
@@ -3760,7 +3760,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US09
+#### US09
 
 <table>
   <tr>
@@ -3787,7 +3787,7 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 <br>
 
-### US16
+#### US16
 
 <table>
   <tr>
