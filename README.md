@@ -3642,26 +3642,30 @@ _Pendiente de elaboración._
 
 **Anexo A. Videos de Exposiciones**
 
-[https://goo.su/h0GAv](https://goo.su/h0GAv)
-
+| Entrega | Título | Enlace |
+|---|---|---|
+| AV1 | Exposición del Avance 1 | [https://goo.su/h0GAv](https://goo.su/h0GAv) |
 
 <hr class="page-break">
 
 **Anexo B. Enlaces a repositorios**
 
-| Producto | Repositorio                                                                                       |
-|---|---------------------------------------------------------------------------------------------------|
-| Informe del proyecto | [yieldlabshq/report](https://github.com/yieldlabshq/report)                                       |
-| Landing Page | [vankoo-landing-page](https://github.com/liquilabshq/vankoo-landing-page)                         |
-| Frontend Web Application (MYPE) | [vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)                                 |
-| Native Mobile Application (Inversionista) | [vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)                   |
-| Discovery Server | [vankoo-discovery-server](https://github.com/liquilabshq/vankoo-discovery-server)                 |
-| API Gateway | [vankoo-api-gateway](https://github.com/liquilabshq/vankoo-api-gateway)                           |
-| IAM Service | [vankoo-iam-service](https://github.com/liquilabshq/vankoo-iam-service)                           |
-| Investment Service | [vankoo-investment-service](https://github.com/liquilabshq/vankoo-investment-service)             |
-| Finance Service | [vankoo-finance-service](https://github.com/liquilabshq/vankoo-finance-service)                   |
-| Invoicing Service | [vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service)               |
-| Infraestructura local (Docker Compose) | [vankoo-infra](https://github.com/liquilabshq/vankoo-infra)                                       |
+El código fuente y el informe del proyecto se alojan en la organización de GitHub [yieldlabshq](https://github.com/yieldlabshq). Cada repositorio sigue GitFlow, con `main` como rama de versiones liberadas y `develop` como rama de integración.
+
+| Producto | Repositorio | Tecnología |
+|---|---|---|
+| Informe del proyecto | [yieldlabshq/report](https://github.com/yieldlabshq/report) | Markdown |
+| Landing Page | [yieldlabshq/vankoo-landing-page](https://github.com/yieldlabshq/vankoo-landing-page) | Astro |
+| Frontend Web Application (MYPE) | [yieldlabshq/vankoo-mype-web](https://github.com/yieldlabshq/vankoo-mype-web) | React + TypeScript + Vite |
+| Native Mobile Application (Inversionista) | [yieldlabshq/vankoo-investor-mobile](https://github.com/yieldlabshq/vankoo-investor-mobile) | Kotlin Multiplatform + Compose |
+| Discovery Server | [yieldlabshq/vankoo-discovery-server](https://github.com/yieldlabshq/vankoo-discovery-server) | Java + Spring Cloud Netflix Eureka |
+| API Gateway | [yieldlabshq/vankoo-api-gateway](https://github.com/yieldlabshq/vankoo-api-gateway) | Java + Spring Cloud Gateway |
+| IAM Service | [yieldlabshq/vankoo-iam-service](https://github.com/yieldlabshq/vankoo-iam-service) | Java + Spring Boot |
+| Profile Service | [yieldlabshq/vankoo-profile-service](https://github.com/yieldlabshq/vankoo-profile-service) | TypeScript + NestJS |
+| Investment Service | [yieldlabshq/vankoo-investment-service](https://github.com/yieldlabshq/vankoo-investment-service) | Java + Spring Boot |
+| Finance Service | [yieldlabshq/vankoo-finance-service](https://github.com/yieldlabshq/vankoo-finance-service) | Java + Spring Boot + Axon Framework |
+| Invoicing Service | [yieldlabshq/vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service) | C# + ASP.NET Core |
+| Infraestructura local (Docker Compose) | [yieldlabshq/vankoo-infra](https://github.com/yieldlabshq/vankoo-infra) | Docker Compose |
 
 <hr class="page-break">
 
