@@ -1,0 +1,241 @@
+@startuml profile-domain-class-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classFontSize 12
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam linetype ortho
+skinparam nodesep 25
+skinparam ranksep 60
+hide empty members
+
+skinparam class {
+  BackgroundColor<<AggregateRoot>>     #1168BD
+  FontColor<<AggregateRoot>>           #FFFFFF
+  BorderColor<<AggregateRoot>>         #0B4884
+  BackgroundColor<<Entity>>            #438DD5
+  FontColor<<Entity>>                  #FFFFFF
+  BorderColor<<Entity>>                #2E6295
+  BackgroundColor<<ValueObject>>       #85BBF0
+  FontColor<<ValueObject>>             #000000
+  BorderColor<<ValueObject>>           #438DD5
+  BackgroundColor<<DomainEvent>>       #F28FAD
+  FontColor<<DomainEvent>>             #000000
+  BorderColor<<DomainEvent>>           #B56580
+  BackgroundColor<<DomainService>>     #6BA3DC
+  FontColor<<DomainService>>           #000000
+  BorderColor<<DomainService>>         #438DD5
+  BackgroundColor<<Exception>>         #CDA1A1
+  FontColor<<Exception>>               #000000
+  BorderColor<<Exception>>             #8F6262
+}
+
+title Vankoo Profile — Domain Layer Class Diagram
+
+package "profile.domain.model.aggregates" {
+  class Company <<AggregateRoot>> {
+    - id: CompanyId
+    - userId: UserId
+    - contactEmail: Email
+    - rucNumber: RucNumber
+    - businessName: BusinessName
+    - industrySector: IndustrySector
+    - contactPhone: PhoneNumber
+    - legalAddress: Address
+    - sustainabilityStatus: SustainabilityStatus
+    - kycStatus: KycStatus
+    - kycRejectionReason: KycRejectionReason
+    - logoUrl: DocumentUrl
+    - rucDocumentUrl: DocumentUrl
+    --
+    + completeProfile(rucNumber, businessName, industrySector, contactPhone, legalAddress): void
+    + verifyKyc(): void
+    + rejectKyc(reason: string): void
+    + uploadRucDocument(rucUrl: DocumentUrl): void
+    + updateLogo(logoUrl: DocumentUrl): void
+    - assertKycIsPending(): void
+  }
+
+  class Investor <<AggregateRoot>> {
+    - id: InvestorId
+    - userId: UserId
+    - contactEmail: Email
+    - dni: DniNumber
+    - fullName: FullName
+    - contactPhone: PhoneNumber
+    - billingAddress: Address
+    - kycStatus: KycStatus
+    - kycRejectionReason: KycRejectionReason
+    - photoUrl: DocumentUrl
+    - dniDocumentUrl: DocumentUrl
+    - bankAccount: BankAccount
+    --
+    + completeProfile(dni, firstName, lastName, contactPhone, billingAddress): void
+    + verifyKyc(): void
+    + rejectKyc(reason: string): void
+    + updatePhoto(photoUrl: DocumentUrl): void
+    + updateDniDocument(dniDocumentUrl: DocumentUrl): void
+    - assertKycIsPending(): void
+  }
+}
+
+package "profile.domain.model.entities" {
+  class BankAccount <<Entity>> {
+    - id: BankAccountId
+    - bankName: string
+    - accountNumber: string
+    --
+    + BankAccount(id, bankName, accountNumber)
+    + updateAccountDetails(newBankName: string, newAccountNumber: string): void
+  }
+}
+
+package "profile.domain.model.valueobjects" {
+  class CompanyId <<ValueObject>> {
+    - value: string
+  }
+  class InvestorId <<ValueObject>> {
+    - value: string
+  }
+  class UserId <<ValueObject>> {
+    - value: string
+  }
+  class BankAccountId <<ValueObject>> {
+    - value: string
+  }
+  class Email <<ValueObject>> {
+    - address: string
+    --
+    + validate(email: string): boolean
+  }
+  class RucNumber <<ValueObject>> {
+    - value: string
+  }
+  class BusinessName <<ValueObject>> {
+    - value: string
+  }
+  class IndustrySector <<ValueObject>> {
+    AGRICULTURE
+    MANUFACTURING
+    SERVICES
+    TECHNOLOGY
+    RETAIL
+    OTHER
+  }
+  class PhoneNumber <<ValueObject>> {
+    - value: string
+  }
+  class Address <<ValueObject>> {
+    - street: string
+    - city: string
+    - state: string
+    - postalCode: string
+    - country: string
+  }
+  class SustainabilityStatus <<ValueObject>> {
+    - isGreen: boolean
+    - verificationDate: Date
+  }
+  class KycStatus <<ValueObject>> {
+    PENDING
+    VERIFIED
+    REJECTED
+  }
+  class KycRejectionReason <<ValueObject>> {
+    - value: string
+  }
+  class DocumentUrl <<ValueObject>> {
+    - url: string
+  }
+  class DniNumber <<ValueObject>> {
+    - value: string
+  }
+  class FullName <<ValueObject>> {
+    - firstName: string
+    - lastName: string
+  }
+}
+
+package "profile.domain.services" {
+  interface ICompanyCommandService <<DomainService>> {
+    + handleCreateCompany(command): Promise<Company>
+    + handleCompleteProfile(command): Promise<Company>
+    + handleVerifyKyc(command): Promise<Company>
+    + handleRejectKyc(command): Promise<Company>
+    + handleRequestRucUploadUrl(command): Promise<UploadUrlResult>
+    + handleRequestLogoUploadUrl(command): Promise<UploadUrlResult>
+    + handleUploadRuc(command): Promise<Company>
+    + handleUploadLogo(command): Promise<Company>
+  }
+  interface ICompanyQueryService <<DomainService>> {
+    + handleGetCompanyById(query): Promise<Company>
+  }
+  interface IInvestorCommandService <<DomainService>> {
+    + handleCreateInvestor(command): Promise<Investor>
+    + handleCompleteProfile(command): Promise<Investor>
+    + handleVerifyKyc(command): Promise<Investor>
+    + handleRejectKyc(command): Promise<Investor>
+    + handleRequestDniUploadUrl(command): Promise<UploadUrlResult>
+    + handleRequestPhotoUploadUrl(command): Promise<UploadUrlResult>
+    + handleUploadDni(command): Promise<Investor>
+    + handleUploadPhoto(command): Promise<Investor>
+  }
+  interface IInvestorQueryService <<DomainService>> {
+    + handleGetInvestorById(query): Promise<Investor>
+  }
+  interface IEventPublisherService <<DomainService>> {
+    + publish(topic: string, payload: Record<string,unknown>): Promise<void>
+  }
+  interface IFileStorageService <<DomainService>> {
+    + generateUploadUrl(objectKey: string): Promise<UploadUrlResult>
+  }
+}
+
+' Composition: Company
+Company "1" *-- "1" CompanyId : identified by >
+Company "1" *-- "1" UserId : owned by >
+Company "1" *-- "1" Email : has >
+Company "1" *-- "0..1" RucNumber : has >
+Company "1" *-- "0..1" BusinessName : has >
+Company "1" *-- "0..1" IndustrySector : has >
+Company "1" *-- "0..1" PhoneNumber : has >
+Company "1" *-- "0..1" Address : has >
+Company "1" *-- "1" SustainabilityStatus : has >
+Company "1" *-- "1" KycStatus : has >
+Company "1" *-- "0..1" KycRejectionReason : has >
+Company "1" *-- "0..1" DocumentUrl : logo >
+Company "1" *-- "0..1" DocumentUrl : ruc document >
+
+' Composition: Investor
+Investor "1" *-- "1" InvestorId : identified by >
+Investor "1" *-- "1" UserId : owned by >
+Investor "1" *-- "1" Email : has >
+Investor "1" *-- "0..1" DniNumber : has >
+Investor "1" *-- "0..1" FullName : has >
+Investor "1" *-- "0..1" PhoneNumber : has >
+Investor "1" *-- "0..1" Address : has >
+Investor "1" *-- "1" KycStatus : has >
+Investor "1" *-- "0..1" KycRejectionReason : has >
+Investor "1" *-- "0..1" DocumentUrl : photo >
+Investor "1" *-- "0..1" DocumentUrl : dni document >
+Investor "1" *-- "0..1" BankAccount : holds >
+
+BankAccount "1" *-- "1" BankAccountId : identified by >
+
+' Domain services orchestrate the aggregates
+ICompanyCommandService ..> Company : creates / mutates >
+ICompanyQueryService ..> Company : resolves >
+IInvestorCommandService ..> Investor : creates / mutates >
+IInvestorQueryService ..> Investor : resolves >
+
+note bottom of Company
+  Profile no define eventos ni excepciones de dominio tipados:
+  - Las validaciones de invariantes lanzan Error nativo de TypeScript
+    (no existen las carpetas domain/model/events ni domain/model/exceptions).
+  - La integración con otros servicios se publica vía
+    IEventPublisherService.publish('vankoo.profile.events', payload) con
+    payloads planos ad-hoc (ProfileCompleted, KycVerified, KycRejected),
+    invocados desde la capa de aplicación, no desde el propio agregado.
+end note
+
+@enduml

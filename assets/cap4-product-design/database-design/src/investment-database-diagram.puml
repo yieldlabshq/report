@@ -1,0 +1,99 @@
+@startuml investment-database-diagram
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam linetype ortho
+
+!define table(x) entity x << (T,#438DD5) >>
+!define enum(x)  entity x << (E,#85BBF0) >>
+
+hide circle
+hide empty members
+
+title Vankoo Investment — Physical Database Diagram (Oracle)
+
+table(auctions) {
+  * id                            : VARCHAR2(36) <<PK>>
+  --
+  * invoice_id                    : VARCHAR2(36) <<UNIQUE>> <<ref Invoicing.Invoices._id>>
+  * mype_id                       : VARCHAR2(36) <<ref Profile.companies.user_id>>
+  * status                       : VARCHAR2
+  * grade                         : VARCHAR2
+  * invoice_amount / invoice_currency   : NUMBER / VARCHAR2
+  * discount_rate                 : NUMBER
+  * net_amount / net_currency          : NUMBER / VARCHAR2
+  * commission_rate               : NUMBER
+  * target_amount / target_currency    : NUMBER / VARCHAR2
+  * current_funding_amount / current_funding_currency : NUMBER / VARCHAR2
+  * created_at                    : TIMESTAMP
+  * updated_at                    : TIMESTAMP
+  * published_at, expires_at, closed_at, due_date : TIMESTAMP
+  * green_certified               : NUMBER(1)
+}
+
+table(partitions) {
+  * id                            : VARCHAR2(36) <<PK>>
+  --
+  * auction_id                    : VARCHAR2(36) <<FK auctions.id>>
+  * investor_id                   : VARCHAR2(36) <<ref Profile.investors.user_id>>
+  * investment_amount / investment_currency : NUMBER / VARCHAR2
+  * participation_percentage      : NUMBER
+  * purchased_at                  : TIMESTAMP
+  * status                        : VARCHAR2
+  * expected_return_amount / expected_return_currency : NUMBER / VARCHAR2
+  * return_rate                   : NUMBER
+  * actual_return_amount / actual_return_currency : NUMBER / VARCHAR2
+  * paid_at                       : TIMESTAMP
+  * investment_transaction_id     : VARCHAR2 <<ref Finance.wallet_movements.id>>
+  * payment_transaction_id        : VARCHAR2 <<ref Finance.wallet_movements.id>>
+}
+
+table(auction_marketplace_view_entities) {
+  * auction_id                    : VARCHAR2(36) <<PK>>
+  --
+  * invoice_id                    : VARCHAR2(36)
+  * mype_id                       : VARCHAR2(36)
+  * target_amount                 : NUMBER
+  * current_funding               : NUMBER
+  * currency                      : VARCHAR2
+  * status                        : VARCHAR2
+  * green_certified               : NUMBER(1)
+  * expires_at                    : TIMESTAMP
+  * payer_ruc                     : VARCHAR2
+  * payer_name                    : VARCHAR2
+  * due_date                      : TIMESTAMP
+}
+
+auctions "1" -- "0..*" partitions : auction_id
+
+note bottom of auctions
+  Sin migraciones Flyway/Liquibase: esquema generado por Hibernate
+  (ddl-auto: update), riesgoso según docs/ARCHITECTURE.md. Sin índices
+  @Index explícitos más allá de PK/UNIQUE.
+end note
+
+note bottom of partitions
+  Sin índices adicionales declarados. auction_id es FK gestionada desde
+  el lado padre (@OneToMany @JoinColumn en Auction, sin mappedBy).
+end note
+
+note bottom of auction_marketplace_view_entities
+  Read model de CQRS para el marketplace (GetMarketplaceAuctionsQuery).
+  Se puebla de forma asíncrona vía @EventListener sobre
+  AuctionCreatedEvent (AuctionCreatedEventHandler). No existe un
+  handler que la sincronice ante PartitionAddedEvent /
+  AuctionFullyFundedEvent: status y current_funding pueden
+  desincronizarse del agregado tras la primera inversión (hallazgo de
+  código, no falso positivo).
+end note
+
+legend bottom
+  auctions.invoice_id referencia lógicamente la colección Invoices de
+  invoicing (MongoDB). auctions.mype_id referencia companies.user_id de
+  Profile (a través de IAM.users.id). partitions.investor_id referencia
+  investors.user_id de Profile. investment_transaction_id /
+  payment_transaction_id de partitions son strings planos (no VOs
+  tipados) que apuntarían a movimientos de Finance
+  (finance_read_model.wallet_movements).
+end legend
+
+@enduml
