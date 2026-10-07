@@ -25,7 +25,7 @@
 <h4 style="text-align: center">Integrantes:</h4>
 
 <div style="text-align:center; margin-top: 10px; font-size: 90%; line-height: 1.6;">
-  <p>&lt;Código&gt; — Acuache Lucas, Mathias Joaquin</p>
+  <p>&lt;U202314898&gt; — Acuache Lucas, Mathias Joaquin</p>
   <p>&lt;U20221g044&gt; — Amaro Villar, Anjali</p>
   <p>&lt;U202212994&gt; — García Bernal, Daniela</p>
   <p>&lt;U202315654&gt; — Pillaca Vidal, Luis Angel</p>
@@ -33,7 +33,7 @@
 
 <br>
 
-<h5 style="text-align: center; font-style: italic;"> Setiembre 2026 </h5>
+<h5 style="text-align: center; font-style: italic;"> Octubre 2026 </h5>
 
 <hr class="page-break">
 
@@ -43,7 +43,14 @@
 | Versión | Fecha    | Autor                | Descripción de modificación                                   |
 |---------|----------|----------------------|---------------------------------------------------------------|
 | 1.0     | 02/09/26 | YieldLabs            | Organización inicial del informe y estructura del repositorio |
-|         |          |                      |                                                               |
+| 2.0     | 05/10/26 | Amaro Villar, Anjali | Estructura del TB1: Acuerdo de Servicio SaaS (5.2.4), renumeración del Capítulo V y Capítulos VI y VII en el índice y el cuerpo |
+| 2.1     | 06/10/26 | Pillaca Vidal, Luis Angel | Core Entities Unit Tests (6.1.1) y Continuous Integration (7.1.1 y 7.1.2) |
+| 2.2     | 07/10/26 | Acuache Lucas, Mathias Joaquin | Core Integration Tests (6.1.2) y Continuous Delivery (7.2.1 y 7.2.2) |
+| 2.3     | 07/10/26 | Amaro Villar, Anjali | Core Behavior-Driven Development (6.1.3), Continuous Deployment Tools and Practices (7.3.1) y actualización de Anexos |
+| 2.4     | 07/10/26 | García Bernal, Daniela | Production Deployment Pipeline Components (7.3.2) y Core System Tests (6.1.4) |
+| 2.5     | 07/10/26 | Amaro Villar, Anjali | Alineación de los Capítulos V, VI y VII con el pipeline CI/CD implementado y evidencias de ejecución |
+| 2.6     | 07/10/26 | Amaro Villar, Anjali | Student Outcome del TB1 y Registro de Versiones |
+| 2.7     | 07/10/26 | Amaro Villar, Anjali | Collaboration Insights del TB1, se retiran Acuerdo de Servicio SaaS y RESTful API documentation y se actualiza la carátula |
 
 <hr class="page-break">
 
@@ -80,6 +87,14 @@ Las principales ramas del repositorio, gestionadas bajo **GitFlow Workflow**, **
 <!-- Assets: ./assets/github-insights/ — capturas de Insights > Contributors e Insights > Network. -->
 
 _Pendiente: capturas de los analíticos de colaboración y commits en GitHub._
+
+**TB1**
+
+Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `feature/*` y lo integraron a `develop` mediante Pull Requests. Cada integrante desarrolló las secciones de los Capítulos VI y VII que tenía asignadas (ver Registro de Versiones), y los aportes se consolidaron en `develop` antes de la entrega.
+
+![Contribuidores del repositorio del informe](assets/github-insights/report-contributors-tb1.png)
+
+*Figura. Insights > Contributors del repositorio `yieldlabshq/report`: commits por integrante en los últimos tres meses (Luis Angel Pillaca Vidal 53, Daniela García Bernal 16, Mathias Joaquin Acuache Lucas 11 y Anjali Amaro Villar 11).*
 
 <hr class="page-break">
 
@@ -170,11 +185,9 @@ _Pendiente: capturas de los analíticos de colaboración y commits en GitHub._
     - [5.2.1. Sprint Backlogs](#521-sprint-backlogs)
     - [5.2.2. Implemented Landing Page Evidence](#522-implemented-landing-page-evidence)
     - [5.2.3. Implemented Frontend-Web Application Evidence](#523-implemented-frontend-web-application-evidence)
-    - [5.2.4. Acuerdo de Servicio - SaaS](#524-acuerdo-de-servicio---saas)
-    - [5.2.5. Implemented Native-Mobile Application Evidence](#525-implemented-native-mobile-application-evidence)
-    - [5.2.6. Implemented RESTful API and/or Serverless Backend Evidence](#526-implemented-restful-api-andor-serverless-backend-evidence)
-    - [5.2.7. RESTful API documentation](#527-restful-api-documentation)
-    - [5.2.8. Team Collaboration Insights](#528-team-collaboration-insights)
+    - [5.2.4. Implemented Native-Mobile Application Evidence](#524-implemented-native-mobile-application-evidence)
+    - [5.2.5. Implemented RESTful API and/or Serverless Backend Evidence](#525-implemented-restful-api-andor-serverless-backend-evidence)
+    - [5.2.6. Team Collaboration Insights](#526-team-collaboration-insights)
   - [5.3. Video About-the-Product](#53-video-about-the-product)
 - [Capítulo VI: Product Verification \& Validation](#capítulo-vi-product-verification--validation)
   - [6.1. Testing Suites \& Validation](#61-testing-suites--validation)
@@ -213,8 +226,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |:--------------------|:--------------------|:-------------|
-| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del Information Architecture e Implemented Frontend-Web Application Evidence.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Me enfoqué en garantizar que el diseño de nuestra solución respete la privacidad de la información, promoviendo la transparencia y el cumplimiento de estándares éticos durante el desarrollo._<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Participé en la definición de buenas prácticas de desarrollo y el uso correcto de herramientas, asegurando el trabajo honesto y la ética profesional en el equipo._ | **AV1**<br>_Se logró identificar la importancia de la ética profesional en esta etapa inicial del proyecto._ |
-| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del To-Be Scenario Mapping, General and Web style guidelines, Landing Page Design,Web Application Prototyping, siguiendo los diversos lineamientos para el proyecto.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Investigué cómo YieldLabs puede mejorar la accesibilidad tecnológica en la comunidad, analizando su viabilidad económica y asegurando que el producto final sea socialmente inclusivo._<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Evalué el impacto de YieldLabs, considerando cómo nuestra plataforma puede optimizar recursos y promover beneficios económicos y sociales para nuestros futuros usuarios._ | **AV1**<br>_Se reconoció el impacto socioeconómico y ambiental positivo de nuestra solución de software._ |
+| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del Information Architecture e Implemented Frontend-Web Application Evidence.<br><br>**TB1**<br>Implementé el API Gateway, cuyo filtro de autorización valida el token JWT y rechaza con 401 toda petición sin credenciales válidas, y elaboré las pruebas de ese filtro (6.1.2), asumiendo la responsabilidad de proteger los datos financieros de MYPEs e inversionistas. En el informe definí las prácticas de Continuous Delivery (7.2), que exigen revisión y aprobación antes de llevar un cambio a producción.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Me enfoqué en garantizar que el diseño de nuestra solución respete la privacidad de la información, promoviendo la transparencia y el cumplimiento de estándares éticos durante el desarrollo._<br><br>**TB1**<br>Implementé el pipeline de CI/CD de los repositorios del API Gateway y del Invoicing Service sin exponer credenciales: en CI solo se usan valores de prueba y los secretos de producción quedan en el entorno protegido `production` de GitHub. Me aseguré de que el informe documente únicamente evidencia verificable, como las ejecuciones reales del pipeline y las pruebas que existen en los repositorios, y corregí las afirmaciones que no coincidían con el código. Documenté la suite BDD (6.1.3) y las prácticas de Continuous Deployment (7.3.1).<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**TB1**<br>Elaboré la sección Production Deployment Pipeline Components (7.3.2), en la que definí un proceso de despliegue controlado y reproducible que mantiene la trazabilidad de las versiones publicadas, para que el equipo pueda responder por cada cambio que llega a los usuarios.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Participé en la definición de buenas prácticas de desarrollo y el uso correcto de herramientas, asegurando el trabajo honesto y la ética profesional en el equipo._<br><br>**TB1**<br>Implementé el Investment Service, el Discovery Server y el Invoicing Service, junto con sus pruebas unitarias, de integración y BDD, que validan reglas como el dígito verificador del RUC y la consistencia de los montos de cada factura, de modo que la plataforma no publique información errónea a los inversionistas. En el informe elaboré las pruebas unitarias (6.1.1) y la integración continua (7.1). | **AV1**<br>_Se logró identificar la importancia de la ética profesional en esta etapa inicial del proyecto._<br><br>**TB1**<br>En una plataforma que gestiona dinero de terceros, verificar el software es una responsabilidad profesional: cada cambio pasa por pruebas automatizadas y por revisión antes de integrarse, y el informe se sustenta en evidencia verificable de los repositorios y del pipeline. |
+| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del To-Be Scenario Mapping, General and Web style guidelines, Landing Page Design,Web Application Prototyping, siguiendo los diversos lineamientos para el proyecto.<br><br>**TB1**<br>Al implementar la aplicación web de la MYPE con soporte en español e inglés, consideré el impacto social de que empresarios con distinto nivel de familiaridad digital puedan gestionar sus facturas sin barreras de idioma.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Investigué cómo YieldLabs puede mejorar la accesibilidad tecnológica en la comunidad, analizando su viabilidad económica y asegurando que el producto final sea socialmente inclusivo._<br><br>**TB1**<br>Evalué el impacto económico que tendría una caída del servicio sobre las MYPEs que esperan liquidez y los inversionistas con fondos comprometidos, y por ello incorporé al despliegue la verificación de salud y el rollback automático. Elegí herramientas sin costo para repositorios públicos (GitHub Actions y GitHub Container Registry), lo que hace sostenible el pipeline para una startup en etapa temprana.<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**TB1**<br>Incorporé la verificación posterior al despliegue como etapa del pipeline de producción, considerando que una falla no detectada afectaría directamente a las MYPEs e inversionistas que dependen de la plataforma para su liquidez y sus ahorros.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Evalué el impacto de YieldLabs, considerando cómo nuestra plataforma puede optimizar recursos y promover beneficios económicos y sociales para nuestros futuros usuarios._<br><br>**TB1**<br>Las validaciones automáticas de facturas que implementé (facturas vencidas, totales que no cuadran o emisor igual al pagador) reducen el riesgo de fraude y de pérdidas para los inversionistas minoristas, lo que contribuye a la confianza en el financiamiento alternativo para las MYPEs en el Perú. | **AV1**<br>_Se reconoció el impacto socioeconómico y ambiental positivo de nuestra solución de software._<br><br>**TB1**<br>Automatizar la validación de facturas y el despliegue con verificación y rollback reduce los riesgos económicos para MYPEs e inversionistas, y el uso de herramientas sin costo hace viable sostener estas prácticas en una startup, lo que favorece la inclusión financiera de las MYPEs. |
 
 <hr class="page-break">
 
@@ -2880,7 +2893,12 @@ A continuación se detallan los productos de software utilizados por el equipo e
 | Software Testing | Testcontainers | Pruebas de integración contra Kafka y Axon Server reales, usadas en el servicio Finance. | [https://testcontainers.com](https://testcontainers.com) |
 | Software Testing | Jest & Supertest | Pruebas unitarias y end-to-end del servicio Profile (NestJS). | [https://jestjs.io](https://jestjs.io) |
 | Software Testing | xUnit.net | Pruebas unitarias del servicio Invoicing (.NET). | [https://xunit.net](https://xunit.net) |
-| Software Deployment |  |  |  |
+| Software Testing | Reqnroll | Pruebas de aceptación BDD en Gherkin del servicio Invoicing (.NET), ejecutadas sobre xUnit. | [https://reqnroll.net](https://reqnroll.net) |
+| Software Deployment | GitHub Actions | Pipeline de CI/CD de cada repositorio: compilación, pruebas, publicación de imágenes y despliegue. | [https://github.com/features/actions](https://github.com/features/actions) |
+| Software Deployment | GitHub Container Registry (GHCR) | Registro de las imágenes Docker versionadas que publica el pipeline. | [https://ghcr.io](https://ghcr.io) |
+| Software Deployment | Microsoft Azure (Azure Container Instances) | Ejecución en producción de los contenedores del backend. | [https://portal.azure.com](https://portal.azure.com) |
+| Software Deployment | Netlify | Publicación del Landing Page y de la aplicación web de la MYPE. | [https://www.netlify.com](https://www.netlify.com) |
+| Software Deployment | Firebase App Distribution / Google Play Console | Distribución de la aplicación Android a testers y publicación en la tienda. | [https://firebase.google.com/products/app-distribution](https://firebase.google.com/products/app-distribution) |
 | Software Documentation | Markdown | Lenguaje de marcado ligero usado para todo el informe y la documentación técnica del proyecto. | [https://www.markdownguide.org](https://www.markdownguide.org) |
 | Software Documentation | Scalar (sobre OpenAPI) | Documentación interactiva autogenerada de los endpoints REST de cada microservicio. | [https://scalar.com](https://scalar.com) |
 | Software Documentation | Visual Studio Code | Edición y previsualización del informe en Markdown. | [https://code.visualstudio.com](https://code.visualstudio.com) |
@@ -2892,10 +2910,11 @@ El equipo utiliza **GitHub** como plataforma de alojamiento y **Git** como siste
 
 | Producto | Repositorio                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
 |---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Landing Page | [liquilabshq/vankoo-landing-page](https://github.com/liquilabshq/vankoo-landing-page)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| Frontend Web Application | [liquilabshq/vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Frontend Mobile Application | [liquilabshq/vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-| Web Services | [liquilabshq/vankoo-iam-service](https://github.com/liquilabshq/vankoo-iam-service)<br>[liquilabshq/vankoo-profile-service](https://github.com/liquilabshq/vankoo-profile-service)<br>[liquilabshq/vankoo-finance-service](https://github.com/liquilabshq/vankoo-finance-service)<br>[liquilabshq/vankoo-investment-service](https://github.com/liquilabshq/vankoo-investment-service)<br>[liquilabshq/vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service)<br>[liquilabshq/vankoo-api-gateway](https://github.com/liquilabshq/vankoo-api-gateway) |
+| Landing Page | [yieldlabshq/vankoo-landing-page](https://github.com/yieldlabshq/vankoo-landing-page)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| Frontend Web Application | [yieldlabshq/vankoo-mype-web](https://github.com/yieldlabshq/vankoo-mype-web)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Frontend Mobile Application | [yieldlabshq/vankoo-investor-mobile](https://github.com/yieldlabshq/vankoo-investor-mobile)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| Web Services | [yieldlabshq/vankoo-iam-service](https://github.com/yieldlabshq/vankoo-iam-service)<br>[yieldlabshq/vankoo-profile-service](https://github.com/yieldlabshq/vankoo-profile-service)<br>[yieldlabshq/vankoo-finance-service](https://github.com/yieldlabshq/vankoo-finance-service)<br>[yieldlabshq/vankoo-investment-service](https://github.com/yieldlabshq/vankoo-investment-service)<br>[yieldlabshq/vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service)<br>[yieldlabshq/vankoo-api-gateway](https://github.com/yieldlabshq/vankoo-api-gateway)<br>[yieldlabshq/vankoo-discovery-server](https://github.com/yieldlabshq/vankoo-discovery-server) |
+| Infraestructura local (Docker Compose) | [yieldlabshq/vankoo-infra](https://github.com/yieldlabshq/vankoo-infra) |
 | Informe del proyecto | [yieldlabshq/report](https://github.com/yieldlabshq/report)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
 
 **GitFlow Workflow**
@@ -3003,7 +3022,7 @@ Basado en las *Kotlin Coding Conventions* oficiales y las *Jetpack Compose API G
 
 **Gherkin**
 
-Basado en las convenciones de Gherkin de Cucumber, adoptadas para cuando el equipo incorpore especificaciones ejecutables sobre los criterios de aceptación de las User Stories (al cierre de este informe, los repositorios de Vankoo aún no contienen archivos `.feature`):
+Basado en las convenciones de Gherkin de Cucumber, aplicadas en las especificaciones ejecutables que automatizan los criterios de aceptación de las User Stories con Reqnroll (por ejemplo, `SmartInvoiceUpload.feature` del Invoicing Service, descrito en la sección 6.1.3):
 
 - Archivos `.feature` en inglés, uno por funcionalidad.
 - Estructura `Given-When-Then`, con un escenario por comportamiento observable.
@@ -3017,9 +3036,9 @@ Se utilizarán las siguientes plataformas para el despliegue de los diferentes p
 |---|---|---|---|
 | **Landing Page** | **Netlify** | Plataforma utilizada para el despliegue automático y continuo de la landing page estática. | [https://www.netlify.com](https://www.netlify.com) |
 | **Frontend Web Application** | **Netlify** | Alojamiento y despliegue continuo de la aplicación web cliente, con soporte para rutas y variables de entorno. | [https://www.netlify.com](https://www.netlify.com) |
-| **Microservices** | **Microsoft Azure (Azure Container Instances / ACR)** | Ejecución de microservicios contenedorizados sin servidor (serverless containers), alimentados desde imágenes privadas en Azure Container Registry. | [https://portal.azure.com](https://portal.azure.com) |
-| **Discovery Server** | **Microsoft Azure (Dapr / Azure Container Apps)** | Descubrimiento de servicios y resolución dinámica de nombres entre componentes mediante la integración de Dapr en Azure. | [https://dapr.io](https://dapr.io) |
-| **Message Broker** | **Microsoft Azure (Azure Event Hubs)** | Plataforma de transmisión masiva de datos y desacoplamiento de eventos asíncronos en tiempo real entre microservicios. | [https://azure.microsoft.com/services/event-hubs](https://azure.microsoft.com/services/event-hubs) |
+| **Microservices** | **Microsoft Azure (Azure Container Instances) + GitHub Container Registry** | Ejecución de microservicios contenedorizados sin servidor (serverless containers), a partir de las imágenes versionadas que el pipeline publica en GitHub Container Registry. | [https://portal.azure.com](https://portal.azure.com) |
+| **Discovery Server** | **Microsoft Azure (Azure Container Instances)** | Ejecución del Discovery Server del proyecto (Spring Cloud Netflix Eureka), en el que se registran los microservicios y que el API Gateway consulta para enrutar por nombre lógico. | [https://spring.io/projects/spring-cloud-netflix](https://spring.io/projects/spring-cloud-netflix) |
+| **Message Broker** | **Microsoft Azure (Azure Event Hubs, endpoint compatible con Kafka)** | Transmisión de los eventos de integración entre microservicios. Los servicios usan clientes de Apache Kafka, que se conectan al endpoint Kafka de Event Hubs sin cambios de código. | [https://azure.microsoft.com/services/event-hubs](https://azure.microsoft.com/services/event-hubs) |
 | **Kotlin Multiplatform Mobile App (Android)** | **Google Play Console** | Publicación, gestión de versiones y distribución del artefacto Android generado desde la base de código compartida. | [https://play.google.com/console](https://play.google.com/console) |
 
 **Netlify (Landing Page & Frontend Web Application)**
@@ -3044,25 +3063,25 @@ Para configurar el despliegue tanto de la Landing Page como del Frontend Web App
 Microsoft Azure centraliza la infraestructura de backend del proyecto, garantizando alta disponibilidad, seguridad por aislamiento y escalabilidad mediante soluciones gestionadas y serverless.
 
 Los microservicios son empaquetados como imágenes Docker y gestionados mediante dos servicios complementarios:
-* **Azure Container Registry (ACR):** Repositorio privado y seguro administrado en la nube donde se compilan y almacenan las imágenes de cada microservicio a través de pipelines de CI/CD.
+* **GitHub Container Registry (GHCR):** Registro de imágenes integrado con GitHub, donde el pipeline de cada repositorio publica la imagen del microservicio etiquetada con el SHA del commit y con la rama de origen (ver Capítulo VII).
 * **Azure Container Instances (ACI):** Entorno de ejecución serverless que permite inicializar contenedores de forma aislada, rápida y sin necesidad de gestionar la infraestructura de un clúster de máquinas virtuales subyacente.
 
 **Flujo de despliegue:**
-1. Crear un recurso de Azure Container Registry en el grupo de recursos del proyecto.
-2. Construir la imagen Docker de cada microservicio y publicarla (`docker push`) en ACR utilizando credenciales administradas o un Service Principal.
-3. Crear y configurar instancias en Azure Container Instances vinculando la imagen correspondiente desde ACR.
-4. Definir las variables de entorno (cadenas de conexión a bases de datos, perfiles de entorno) y especificaciones de cómputo (CPU y memoria).
-5. Asignar redes virtuales (VNet) o puertos públicos para permitir la comunicación entre servicios.
+1. Crear un grupo de recursos para el proyecto en Azure y un Service Principal con permisos sobre él.
+2. Registrar las credenciales del Service Principal (`AZURE_CREDENTIALS`), el grupo de recursos (`AZURE_RESOURCE_GROUP`), la etiqueta DNS pública (`AZURE_DNS_LABEL`) y las variables de entorno de producción (`PRODUCTION_ENV`) en el entorno `production` del repositorio en GitHub.
+3. Al integrar un cambio en `main`, el pipeline publica la imagen en GHCR y crea o actualiza la instancia en Azure Container Instances con esa imagen.
+4. Las variables de entorno (cadenas de conexión a bases de datos, secretos, perfiles) y las especificaciones de cómputo (CPU y memoria) se aplican en la misma operación.
+5. El pipeline verifica el endpoint de salud del servicio desplegado y, si no responde, vuelve a desplegar la versión anterior.
 
-**Discovery Server (Azure con Dapr)**
-Para la orquestación, resolución de endpoints y comunicación directa service-to-service, se utiliza **Dapr (Distributed Application Runtime)** integrado en el entorno de Azure (Azure Container Apps / ACI con sidecars).
-* Dapr actúa como capa de abstracción desacoplada, permitiendo que cada microservicio descubra y consuma a otros componentes mediante llamadas seguras gRPC/HTTP utilizando identificadores lógicos (`app-id`), eliminando el acoplamiento a direcciones IP o puertos dinámicos.
-* Proporciona resiliencia automática mediante políticas de reintento, balanceo de carga en el lado del cliente y cifrado mutuo TLS (mTLS).
+**Discovery Server (Spring Cloud Netflix Eureka en Azure)**
+Para la resolución de endpoints y la comunicación service-to-service se utiliza el **Discovery Server** propio del proyecto (`vankoo-discovery-server`), basado en Spring Cloud Netflix Eureka y desplegado como un contenedor más en Azure Container Instances.
+* Cada microservicio se registra en Eureka con su nombre lógico (`spring.application.name`), lo que elimina el acoplamiento a direcciones IP o puertos dinámicos.
+* El API Gateway resuelve las rutas `lb://<servicio>` consultando a Eureka y balancea la carga entre las instancias disponibles.
 
 **Message Broker (Azure Event Hubs)**
 Azure Event Hubs es el motor de ingesta y mensajería distribuida de baja latencia utilizado para habilitar una arquitectura orientada a eventos (Event-Driven Architecture):
 * Permite el desacoplamiento asíncrono entre productores y consumidores de eventos del dominio.
-* Cuenta con particionamiento de datos para procesamiento paralelo concurrente y compatibilidad nativa con el protocolo AMQP y la API de Apache Kafka.
+* Cuenta con particionamiento de datos para procesamiento paralelo concurrente y con un endpoint compatible con la API de Apache Kafka, por lo que los productores y consumidores Kafka de los microservicios se conectan cambiando únicamente la configuración de conexión.
 * Se aprovisiona un espacio de nombres (*Event Hubs Namespace*) donde se crean los temas/hubs requeridos por los distintos flujos de negocio del proyecto.
 
 
@@ -3074,7 +3093,7 @@ Google Play Console es la consola oficial para publicar y gestionar el artefacto
 Para publicar la versión de Android en Google Play Console, se siguen los siguientes pasos:
 1. Acceder a la cuenta de desarrollador en [Google Play Console](https://play.google.com/console).
 2. Crear una nueva aplicación ingresando el nombre oficial, idioma predeterminado y tipo de distribución (gratuita o de pago).
-3. Generar el paquete firmado en formato Android App Bundle (`.aab`) mediante Gradle en el proyecto (`./gradlew :composeApp:bundleRelease`).
+3. Generar el paquete firmado en formato Android App Bundle (`.aab`) mediante Gradle en el proyecto (`./gradlew :androidApp:bundleRelease`).
 4. Crear un lanzamiento en el canal de pruebas internas o producción y cargar el archivo `.aab`.
 5. Completar la ficha de Play Store (descripción breve y completa, capturas de pantalla de la app en móvil y tablet, e icono en alta resolución).
 6. Configurar la clasificación de contenido, la política de privacidad y la declaración de permisos de la app.
@@ -3206,15 +3225,9 @@ En este apartado se evidencia el avance de la aplicación web de la MYPE (`vanko
 
 ![img](assets/cap5-product-implementation/web-app-evidence/invoicing(Desktop)%202.png)
 
-Enlace al repositorio: [/vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)
+Enlace al repositorio: [/vankoo-mype-web](https://github.com/yieldlabshq/vankoo-mype-web)
 
-### 5.2.4. Acuerdo de Servicio - SaaS
-
-<!-- Derechos, obligaciones y restricciones de los usuarios de la plataforma. Debe publicarse como "Terms and Conditions" en el footer del Landing Page y de las aplicaciones. -->
-
-_Pendiente de elaboración._
-
-### 5.2.5. Implemented Native-Mobile Application Evidence
+### 5.2.4. Implemented Native-Mobile Application Evidence
 
 <!-- Kotlin Multiplatform + Compose. Assets: ./assets/cap5-product-implementation/mobile-app-evidence/ -->
 
@@ -3231,9 +3244,9 @@ En este apartado se evidencia el avance de la aplicación móvil del Inversionis
 ![img](assets/cap5-product-implementation/mobile-app-evidence/5.jpeg)
 ![img](assets/cap5-product-implementation/mobile-app-evidence/6.jpeg)
 
-Enlace al repositorio: [vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)
+Enlace al repositorio: [vankoo-investor-mobile](https://github.com/yieldlabshq/vankoo-investor-mobile)
 
-### 5.2.6. Implemented RESTful API and/or Serverless Backend Evidence
+### 5.2.5. Implemented RESTful API and/or Serverless Backend Evidence
 
 ![img.png](img.png)
 
@@ -3250,25 +3263,52 @@ Enlaces a los repositorios:
 
 | Servicio | Repositorio |
 |---|---|
-| Discovery Server | [liquilabshq/vankoo-discovery-server](https://github.com/liquilabshq/vankoo-discovery-server) |
-| API Gateway | [liquilabshq/vankoo-api-gateway](https://github.com/liquilabshq/vankoo-api-gateway) |
-| IAM Service | [liquilabshq/vankoo-iam-service](https://github.com/liquilabshq/vankoo-iam-service) |
-| Investment Service | [liquilabshq/vankoo-investment-service](https://github.com/liquilabshq/vankoo-investment-service) |
-| Finance Service | [liquilabshq/vankoo-finance-service](https://github.com/liquilabshq/vankoo-finance-service) |
-| Invoicing Service | [liquilabshq/vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service) |
-| Infraestructura local (Docker Compose) | [liquilabshq/vankoo-infra](https://github.com/liquilabshq/vankoo-infra) |
+| Discovery Server | [yieldlabshq/vankoo-discovery-server](https://github.com/yieldlabshq/vankoo-discovery-server) |
+| API Gateway | [yieldlabshq/vankoo-api-gateway](https://github.com/yieldlabshq/vankoo-api-gateway) |
+| IAM Service | [yieldlabshq/vankoo-iam-service](https://github.com/yieldlabshq/vankoo-iam-service) |
+| Investment Service | [yieldlabshq/vankoo-investment-service](https://github.com/yieldlabshq/vankoo-investment-service) |
+| Finance Service | [yieldlabshq/vankoo-finance-service](https://github.com/yieldlabshq/vankoo-finance-service) |
+| Invoicing Service | [yieldlabshq/vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service) |
+| Infraestructura local (Docker Compose) | [yieldlabshq/vankoo-infra](https://github.com/yieldlabshq/vankoo-infra) |
 
-### 5.2.7. RESTful API documentation
+### 5.2.6. Team Collaboration Insights
 
-<!-- Endpoints documentados con OpenAPI: acciones, verbo HTTP, sintaxis de llamada, parámetros, ejemplo de response y URL de la documentación desplegada. Assets: ./assets/cap5-product-implementation/api-documentation/ -->
+En esta sección se presentan los analíticos de colaboración de GitHub (*Insights > Contributors*) de los repositorios de código de Vankoo en la organización [yieldlabshq](https://github.com/yieldlabshq). Las gráficas muestran los commits integrados en `main` durante los últimos tres meses, sin contar los commits de merge.
 
-_Pendiente de elaboración._
+El trabajo se organizó por bounded context: cada integrante asumió la implementación completa de uno o más servicios o aplicaciones, lo que se refleja en un contribuidor principal por repositorio. Los aportes de Anjali Amaro Villar en los repositorios del API Gateway, Investment e Invoicing corresponden al pipeline de CI/CD y a las pruebas descritas en los Capítulos VI y VII.
 
-### 5.2.8. Team Collaboration Insights
+| Repositorio | Contribuidores (commits) |
+|---|---|
+| vankoo-invoicing-service | Luis Angel Pillaca Vidal (10), Anjali Amaro Villar (1) |
+| vankoo-api-gateway | Mathias Joaquin Acuache Lucas (7), Anjali Amaro Villar (2) |
+| vankoo-investment-service | Luis Angel Pillaca Vidal (8), Anjali Amaro Villar (1) |
+| vankoo-iam-service | Anjali Amaro Villar (9) |
+| vankoo-profile-service | Anjali Amaro Villar (9) |
+| vankoo-landing-page | Anjali Amaro Villar (8) |
 
-<!-- Capturas de los analíticos de colaboración y commits en GitHub de cada repositorio, con su interpretación. Assets: ./assets/cap5-product-implementation/collaboration-insights/ -->
+**Invoicing Service**
 
-_Pendiente de elaboración._
+![Contribuidores de vankoo-invoicing-service](assets/cap5-product-implementation/collaboration-insights/invoicing-service-contributors.png)
+
+**API Gateway**
+
+![Contribuidores de vankoo-api-gateway](assets/cap5-product-implementation/collaboration-insights/api-gateway-contributors.png)
+
+**Investment Service**
+
+![Contribuidores de vankoo-investment-service](assets/cap5-product-implementation/collaboration-insights/investment-service-contributors.png)
+
+**IAM Service**
+
+![Contribuidores de vankoo-iam-service](assets/cap5-product-implementation/collaboration-insights/iam-service-contributors.png)
+
+**Profile Service**
+
+![Contribuidores de vankoo-profile-service](assets/cap5-product-implementation/collaboration-insights/profile-service-contributors.png)
+
+**Landing Page**
+
+![Contribuidores de vankoo-landing-page](assets/cap5-product-implementation/collaboration-insights/landing-page-contributors.png)
 
 ## 5.3. Video About-the-Product
 
@@ -3282,27 +3322,529 @@ _Pendiente de elaboración._
 
 ### 6.1.1. Core Entities Unit Tests
 
-<!-- Pruebas unitarias de las entidades principales (modelos, clases y funciones clave) ejecutadas en aislamiento. -->
+En esta sección se detalla el diseño, la estrategia de aislamiento y la ejecución de las pruebas unitarias aplicadas a las entidades, value objects y servicios de dominio principales de los microservicios de Vankoo. Las pruebas validan que cada componente cumpla sus invariantes en aislamiento, sin depender de bases de datos, brokers de mensajería ni servicios HTTP externos.
 
-_Pendiente de elaboración._
+#### 1. Estrategia y entorno de pruebas
+
+| Servicio | Lenguaje / Plataforma | Framework de pruebas | Aislamiento |
+|---|---|---|---|
+| API Gateway | Java 25 + Spring Boot 4 | JUnit 5 + Mockito | Las dependencias se reemplazan con mocks de Mockito; no se levanta el contexto de Spring. |
+| Invoicing Service | C# + .NET 10 | xUnit | Los value objects y validadores de dominio se instancian directamente, sin infraestructura. |
+
+* **Patrón de estructuración:** AAA (*Arrange, Act, Assert*).
+* **Nomenclatura:** en Java, nombres que describen el comportamiento esperado (`rejectsAMissingUserId`); en C#, el formato `Método_Comportamiento` (`Of_RejectsInvalidPeruvianCheckDigit`).
+
+#### 2. Matriz de pruebas unitarias por componente core
+
+| Servicio | Clase bajo prueba | Clase de prueba | Invariante o comportamiento validado | Casos | User Story relacionada |
+|---|---|---|---|---|---|
+| API Gateway | `UserAuthentication` (value object) | `UserAuthenticationTest` | Conserva la identidad tomada del token y rechaza un usuario o correo ausente. | 3 | TS02 |
+| API Gateway | `TokenServiceImpl` | `TokenServiceImplTest` | Acepta solo tokens firmados por IAM y vigentes; rechaza firmas ajenas, tokens vencidos o mal formados; extrae usuario, correo y roles; lee el token de la cabecera `Authorization`. | 10 | TS02, TS03 |
+| API Gateway | `AuthenticationRequestEnricher` | `AuthenticationRequestEnricherTest` | Inyecta las cabeceras `X-User-Id`, `X-User-Email` y `X-User-Roles`, descarta roles vacíos y conserva la ruta original. | 4 | TS02 |
+| API Gateway | `GatewayProblem` | `GatewayProblemTest` | Construye la respuesta de error en formato `problem+json`. | 1 | TS02 |
+| Invoicing Service | `RucNumber` (value object) | `RucNumberTests` | Acepta RUC con dígito verificador peruano válido y rechaza los inválidos con `InvalidRucException`. | 5 | US11, TS04 |
+| Invoicing Service | `InvoiceConsistencyValidator` (servicio de dominio) | `InvoiceConsistencyValidatorTests` | Aprueba facturas consistentes y vigentes, marca como no elegibles las vencidas y exige revisión cuando un campo crítico tiene baja confianza de OCR. | 4 | US13, TS04 |
+| Invoicing Service | `InvoiceLineItemResolver` | `InvoiceLineItemResolverTests` | Conserva montos con decimales largos y resuelve montos ambiguos como precio unitario cuando el subtotal lo requiere. | 2 | US13 |
+| Invoicing Service | `AzureOcrMapper` | `AzureOcrMapperTests` | Traduce el resultado de Azure Document Intelligence al modelo de la factura: emisor e ítems. | 1 | US11, TS04 |
+
+**User Stories relacionadas**
+
+* **TS02 – Punto de entrada único con validación de JWT:** *Como developer, deseo un API Gateway que enrute las peticiones por prefijo y valide el token JWT, para que los servicios internos confíen en la identidad inyectada.* Las pruebas del gateway verifican el rechazo con `401 problem+json` de las peticiones sin token o con token inválido (Escenario 2) y la inyección de las cabeceras `X-User-*` (Escenario 3).
+* **TS03 – Servicio de identidad y acceso (IAM):** *Como developer, deseo endpoints de registro, inicio de sesión, recuperación y restablecimiento de contraseña que emitan tokens JWT, para autenticar a los usuarios de la web y del móvil.* `TokenServiceImplTest` comprueba que el gateway acepta los tokens que emite IAM con su identificador, correo y roles (Escenario 1).
+* **US11 – Subir una factura electrónica:** *Como empresario MYPE, deseo subir el PDF de una factura electrónica emitida en SUNAT, para que Vankoo extraiga sus datos sin que yo tenga que digitarlos.* Las pruebas de `AzureOcrMapper` y `RucNumber` validan la lectura automática de los datos del emisor (Escenario 3).
+* **US13 – Ver el detalle y el progreso de una factura:** *Como empresario MYPE, deseo ver los datos leídos de una factura, sus ítems y en qué paso del proceso se encuentra, para saber si necesita mi intervención.* Las pruebas del validador y del resolvedor de ítems cubren los datos extraídos (Escenario 1) y las facturas observadas (Escenario 3).
+* **TS04 – Servicio de facturación con lectura automática:** *Como developer, deseo un servicio que reciba el PDF de la factura, extraiga sus datos mediante OCR, valide su consistencia y publique eventos de integración, para que otros servicios reaccionen a las facturas aprobadas.* Las pruebas de Invoicing validan la extracción y la validación de consistencia (Escenario 1).
+
+#### 3. Ejemplos de implementación
+
+**Java (JUnit 5): `UserAuthenticationTest` del API Gateway**
+
+```java
+class UserAuthenticationTest {
+
+    @Test
+    void keepsTheIdentityTakenFromTheToken() {
+        var authentication = new UserAuthentication("user-123", "sofia@vankoo.pe", List.of("ROLE_INVESTOR"));
+
+        assertEquals("user-123", authentication.userId());
+        assertEquals("sofia@vankoo.pe", authentication.email());
+        assertEquals(List.of("ROLE_INVESTOR"), authentication.roles());
+    }
+
+    @Test
+    void rejectsAMissingUserId() {
+        assertThrows(IllegalArgumentException.class,
+                () -> new UserAuthentication(null, "sofia@vankoo.pe", List.of()));
+    }
+}
+```
+
+**C# (xUnit): `RucNumberTests` del Invoicing Service**
+
+```csharp
+public sealed class RucNumberTests
+{
+    [Theory]
+    [InlineData("20573093420")]
+    [InlineData("20169004359")]
+    [InlineData("20601144311")]
+    [InlineData("10445899611")]
+    public void Of_AcceptsValidPeruvianCheckDigit(string value)
+    {
+        var ruc = RucNumber.Of(value);
+        Assert.Equal(value, ruc.Value);
+    }
+
+    [Fact]
+    public void Of_RejectsInvalidPeruvianCheckDigit()
+    {
+        Assert.Throws<InvalidRucException>(() => RucNumber.Of("20573093421"));
+    }
+}
+```
+
+#### 4. Ejecución
+
+Las pruebas se ejecutan automáticamente en el job *Build & Test* del pipeline de cada repositorio (ver 7.1.2):
+
+| Repositorio | Comando | Resultado | Ejecución |
+|---|---|---|---|
+| yieldlabshq/vankoo-api-gateway | `./mvnw -B verify` | 23 pruebas ejecutadas, 0 fallidas (22 unitarias, incluidas las 4 del filtro de autorización descritas en 6.1.2, y la verificación de carga del contexto). | [Run #37680570068](https://github.com/yieldlabshq/vankoo-api-gateway/actions/runs/37680570068) |
+| yieldlabshq/vankoo-invoicing-service | `dotnet test` | 16 pruebas ejecutadas, 0 fallidas (12 unitarias y los 4 escenarios BDD de 6.1.3). | [Run #37680586800](https://github.com/yieldlabshq/vankoo-invoicing-service/actions/runs/37680586800) |
+
+![Ejecución de las pruebas del API Gateway en GitHub Actions](assets/cap6-product-verification-validation/core-entities-unit-tests/gateway-tests-ci.png)
+
+*Figura 6.1.1.1. Paso de compilación y pruebas del job Build & Test del API Gateway: Maven Surefire ejecuta cada clase de prueba y reporta sus resultados (el total de 23 pruebas aprobadas figura al final del log de la ejecución enlazada).*
+
+![Ejecución de las pruebas del Invoicing Service en GitHub Actions](assets/cap6-product-verification-validation/core-entities-unit-tests/invoicing-tests-ci.png)
+
+*Figura 6.1.1.2. Paso de pruebas del job Build & Test del Invoicing Service: 16 pruebas aprobadas y 0 fallidas.*
 
 ### 6.1.2. Core Integration Tests
 
-<!-- Pruebas de integración entre módulos: comunicación frontend-backend e interacción entre servicios o APIs. -->
+Las Core Integration Tests verifican que los componentes reales del sistema funcionen correctamente en conjunto. En el API Gateway se integran el filtro de autorización, el servicio de tokens JWT y el escritor de respuestas de error, de modo que cada solicitud rechazada responda con el código de estado y el formato correctos. Esto facilita la depuración y aporta confiabilidad al punto de entrada único de la plataforma.
 
-_Pendiente de elaboración._
+#### 1. Estrategia y entorno de pruebas
+
+- **Framework:** JUnit 5.
+- **Componentes reales bajo prueba:** `BearerAuthorizationRequestGatewayFilterFactory`, `TokenServiceImpl` y `ProblemDetailWriter`.
+- **Simulación:** la petición y la respuesta se representan con `MockServerWebExchange`. El servicio destino se sustituye por una cadena de filtros de prueba que registra si la petición llegó a ser reenviada. No se usan Eureka ni microservicios externos.
+- **Patrón de estructuración:** AAA (Arrange, Act, Assert).
+
+#### 2. Matriz de pruebas de integración
+
+| Componentes integrados | Caso de prueba | Resultado esperado |
+|---|---|---|
+| Filtro + `TokenServiceImpl` + `ProblemDetailWriter` | Petición a ruta protegida sin cabecera `Authorization` | 401, `application/problem+json`, `WWW-Authenticate: Bearer`; la petición no se reenvía |
+| Filtro + `TokenServiceImpl` | Token con formato inválido | 401; la petición no se reenvía |
+| Filtro + `ProblemDetailWriter` | Cuerpo de la respuesta de rechazo | Cuerpo `problem+json` con status 401 |
+| Filtro + `TokenServiceImpl` + enriquecedor de identidad | Token válido | La petición se reenvía con la cabecera `X-User-Id` del usuario |
+
+#### 3. Gateway Authorization Filter Integration Test
+
+Clase: `BearerAuthorizationRequestFilterIntegrationTest`
+
+![Código del test de integración, parte 1](assets/cap6-product-verification-validation/core-integration-tests/section3-tests.png)
+![Código del test de integración, parte 1](assets/cap6-product-verification-validation/core-integration-tests/section3-tests2.png)
+
+#### 4. Resultado de la ejecución
+
+4 pruebas ejecutadas, 4 exitosas, 0 fallidas.
+
+![Resultado de la ejecución: 4 tests passed](assets/cap6-product-verification-validation/core-integration-tests/4tests-6.1.2.png)
+
+#### 5. Limitación
+
+Las pruebas integran tres clases reales del gateway, pero el servicio destino está simulado con una cadena de filtros de prueba. No se verifica el enrutamiento real a los microservicios a través de Eureka.
 
 ### 6.1.3. Core Behavior-Driven Development
 
-<!-- Escenarios de usuario en archivos .feature (Gherkin) con sus Steps, relacionados con las User Stories. -->
+En esta sección se presenta la especificación ejecutable del comportamiento de Vankoo desde la perspectiva del usuario, aplicando Behavior-Driven Development (BDD). Los criterios de aceptación redactados en Gherkin (Given-When-Then) en las User Stories se convierten en escenarios automatizados que se ejecutan contra la lógica de aplicación real del microservicio, de modo que cada escenario documenta una regla de negocio y, al mismo tiempo, verifica que se cumpla.
 
-_Pendiente de elaboración._
+Para esta entrega, la suite BDD cubre el flujo de **carga inteligente de facturas** del Invoicing Service, que es la puerta de entrada del negocio: una factura que no supera la extracción y la validación inicial no debe llegar nunca a la subasta.
+
+#### 1. Herramientas y entorno
+
+| Elemento | Detalle |
+|---|---|
+| Framework BDD | **Reqnroll** 3.3.4 (sucesor open source de SpecFlow), integrado con xUnit mediante el paquete `Reqnroll.xUnit`. |
+| Test runner | **xUnit** 2.9.3 con `Microsoft.NET.Test.Sdk` 17.14.1. |
+| Plataforma | .NET 10 (`net10.0`), C#. |
+| Lenguaje de especificación | Gherkin en inglés, siguiendo las convenciones de la sección 5.1.3. |
+| Proyecto de pruebas | `LiquiLabs.Vankoo.Invoicing.Tests` |
+| Repositorio | [yieldlabshq/vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service) |
+
+#### 2. Relación con las User Stories
+
+| Feature / Escenario | User Story | Criterio de aceptación verificado |
+|---|---|---|
+| Smart invoice upload — *An invoice with inconsistent data is not sent to the auction* | **US11** – Subir una factura electrónica | Escenario 3 (Lectura de datos): al terminar la lectura automática, los datos extraídos quedan disponibles y la factura avanza en su proceso. |
+| | **US13** – Ver el detalle y el progreso de una factura | Escenario 3 (Factura observada): una factura en estado *Requiere revisión* o *No elegible* muestra el motivo de la observación y no continúa el proceso automáticamente. |
+| | **TS04** – Servicio de facturación con lectura automática | Escenarios 1 y 2: el servicio procesa el PDF, registra el avance de estado y solo publica el evento de integración cuando la factura es elegible. |
+
+#### 3. Organización de los archivos
+
+| Archivo | Rol |
+|---|---|
+| `Acceptance/Features/SmartInvoiceUpload.feature` | Especificación en Gherkin del comportamiento esperado. |
+| `Acceptance/Steps/SmartInvoiceUploadSteps.cs` | Step definitions: vinculan cada paso Gherkin con código C# que actúa sobre la aplicación y verifica el resultado. |
+| `Acceptance/Support/InvoicingTestHost.cs` | Arma el mismo pipeline de MediatR que `Program.cs` (handlers, `ValidationBehavior` y validadores de FluentValidation). Reqnroll crea una instancia por escenario, por lo que cada escenario parte de cero. |
+| `Acceptance/Support/InMemoryAdapters.cs` | Dobles en memoria que reemplazan MongoDB, el object storage, Azure Document Intelligence (OCR) y Kafka, para ejercitar los handlers reales sin infraestructura externa. |
+
+#### 4. Feature file
+
+El escenario se define como un *Scenario Outline*: los mismos pasos se ejecutan una vez por cada fila de la tabla `Examples`, lo que permite cubrir las cuatro reglas de validación inicial con una única especificación legible.
+
+```gherkin
+@US01
+Feature: Smart invoice upload
+  As a MYPE business owner
+  I want to register my invoice in the MYPE Web
+  So that the system extracts its data and prepares the liquidity operation
+
+  Background:
+    Given a MYPE business owner is signed in through the API Gateway
+
+  Scenario Outline: An invoice with inconsistent data is not sent to the auction
+    Given the business owner has a readable PDF invoice
+    And the OCR reads the invoice with <inconsistency>
+    When the business owner uploads the invoice
+    And the system finishes the extraction and initial validation
+    Then the invoice status is "<status>"
+    And the invoice reports the issue "<issue code>"
+    And the invoice is not sent to the auction
+
+    Examples:
+      | inconsistency                     | status          | issue code              |
+      | a total that does not reconcile   | REQUIRES_REVIEW | TOTALS_DO_NOT_RECONCILE |
+      | a low-confidence due date         | REQUIRES_REVIEW | LOW_OCR_CONFIDENCE      |
+      | an expired due date               | NOT_ELIGIBLE    | INVOICE_EXPIRED         |
+      | the same RUC for issuer and payer | NOT_ELIGIBLE    | ISSUER_EQUALS_PAYER     |
+```
+
+Cada fila de `Examples` corresponde a una regla de negocio de la validación inicial:
+
+| Caso | Regla de negocio | Estado resultante | Código de observación |
+|---|---|---|---|
+| Total que no cuadra | El total leído debe coincidir con la suma de los montos parciales de la factura (subtotal + IGV). | `REQUIRES_REVIEW` | `TOTALS_DO_NOT_RECONCILE` |
+| Fecha de vencimiento con baja confianza | Un campo crítico leído por el OCR con confianza baja (0.40) requiere revisión humana. | `REQUIRES_REVIEW` | `LOW_OCR_CONFIDENCE` |
+| Factura vencida | Una factura con fecha de vencimiento pasada no puede financiarse. | `NOT_ELIGIBLE` | `INVOICE_EXPIRED` |
+| Mismo RUC de emisor y pagador | El emisor no puede ser a la vez el pagador de la factura. | `NOT_ELIGIBLE` | `ISSUER_EQUALS_PAYER` |
+
+#### 5. Step definitions
+
+| Paso Gherkin | Método | Qué hace |
+|---|---|---|
+| `Given a MYPE business owner is signed in through the API Gateway` | `GivenABusinessOwnerIsSignedIn` | Simula la identidad que el API Gateway inyecta en `X-User-Id`; ese valor se usa como `MypeId`. |
+| `Given the business owner has a readable PDF invoice` | `GivenAReadablePdfInvoice` | Usa un PDF mínimo con firma válida, suficiente para superar `InvoiceFileInspector`. |
+| `And the OCR reads the invoice with <inconsistency>` | `GivenTheOcrReadsAnInconsistentInvoice` | Configura el resultado que devolverá el OCR simulado según el caso (total, confianza, fechas o RUC). |
+| `When the business owner uploads the invoice` | `WhenTheBusinessOwnerUploadsTheInvoice` | Envía el `UploadInvoiceCommand` real por MediatR. |
+| `And the system finishes the extraction and initial validation` | `WhenTheSystemFinishesTheExtraction` | Verifica que la factura quedó encolada para OCR y ejecuta `ProcessOcrSynchronouslyCommand`. |
+| `Then the invoice status is "<status>"` | `ThenTheInvoiceStatusIs` | Compara el estado de la factura con el esperado. |
+| `And the invoice reports the issue "<issue code>"` | `ThenTheInvoiceReportsTheIssue` | Verifica que la lista de observaciones contenga el código esperado. |
+| `And the invoice is not sent to the auction` | `ThenTheInvoiceIsNotSentToTheAuction` | Verifica que la factura no es elegible, que su evento de integración queda como `NOT_APPLICABLE` y que no se publicó ningún `InvoiceEligibleForFundingIntegrationEvent`. |
+
+Fragmento de los pasos de verificación:
+
+```csharp
+[Then("the invoice status is {string}")]
+public void ThenTheInvoiceStatusIs(string status)
+{
+    Assert.NotNull(_details);
+    Assert.Equal(status, _details.Status);
+}
+
+[Then("the invoice reports the issue {string}")]
+public void ThenTheInvoiceReportsTheIssue(string issueCode)
+{
+    Assert.NotNull(_details);
+    Assert.Contains(_details.ValidationIssues, issue => issue.Code == issueCode);
+}
+
+[Then("the invoice is not sent to the auction")]
+public void ThenTheInvoiceIsNotSentToTheAuction()
+{
+    Assert.NotNull(_details);
+    Assert.False(_details.EligibleForFunding);
+    Assert.Equal(nameof(IntegrationEventPublicationStatus.NOT_APPLICABLE), _details.IntegrationEventStatus);
+    Assert.Empty(_host.EventBus.Published.OfType<InvoiceEligibleForFundingIntegrationEvent>());
+}
+```
+
+#### 6. Ejecución
+
+Los escenarios se ejecutan con el comando estándar de .NET desde la raíz del repositorio (requiere el SDK de .NET 10); Reqnroll genera una prueba xUnit por cada fila de `Examples`, por lo que el escenario produce cuatro casos de prueba:
+
+```bash
+dotnet test LiquiLabs.Vankoo.Invoicing.Tests --filter "FullyQualifiedName~Acceptance"
+```
+
+Los escenarios también se ejecutan automáticamente en el job *Build & Test* del pipeline del repositorio (ver 7.1.2). En la ejecución [Run #37680586800](https://github.com/yieldlabshq/vankoo-invoicing-service/actions/runs/37680586800) del 07/10/2026, el proyecto de pruebas reportó 16 pruebas aprobadas y 0 fallidas, entre ellas los 4 casos del escenario *An invoice with inconsistent data is not sent to the auction*:
+
+```text
+Passed!  - Failed:     0, Passed:    16, Skipped:     0, Total:    16, Duration: 588 ms - LiquiLabs.Vankoo.Invoicing.Tests.dll (net10.0)
+```
+
+![Ejecución de los escenarios BDD en GitHub Actions](assets/cap6-product-verification-validation/core-entities-unit-tests/invoicing-tests-ci.png)
+
+*Figura 6.1.3.1. Ejecución del proyecto de pruebas del Invoicing Service, que incluye los 4 casos del escenario BDD, en el job Build & Test.*
+
+#### 7. Commits relacionados
+
+Ruta del proyecto de pruebas: [yieldlabshq/vankoo-invoicing-service/LiquiLabs.Vankoo.Invoicing.Tests](https://github.com/yieldlabshq/vankoo-invoicing-service/tree/develop/LiquiLabs.Vankoo.Invoicing.Tests)
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| yieldlabshq/vankoo-invoicing-service | develop | e3a7324 | test(invoicing): add bdd acceptance tests | — | 06/10/2026 |
+
+El commit incorpora los archivos `SmartInvoiceUpload.feature`, `SmartInvoiceUploadSteps.cs`, `InvoicingTestHost.cs` e `InMemoryAdapters.cs`.
 
 ### 6.1.4. Core System Tests
 
-<!-- Pruebas de sistema en entorno web y móvil: navegación, interacción con APIs y respuesta ante distintos escenarios. -->
+En esta sección se presentan las pruebas funcionales realizadas sobre las principales User Stories del sistema Vankoo. Estas pruebas permiten verificar el comportamiento de las funcionalidades implementadas, la navegación entre las diferentes interfaces y la interacción con los servicios que conforman el sistema.
 
-_Pendiente de elaboración._
+#### US01
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US01</td>
+    <td>Conocer la propuesta de valor de Vankoo</td>
+    <td>Como visitante, deseo ver en la página principal qué es Vankoo y qué beneficio ofrece a cada segmento, para entender rápidamente si la plataforma resuelve mi necesidad.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US01.png" alt="Evidencia US01" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar satisfactoriamente la visualización de la propuesta de valor de Vankoo y el contenido dirigido a los diferentes segmentos desde la Landing Page.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US02
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US02</td>
+    <td>Entender cómo funciona el financiamiento de facturas</td>
+    <td>Como visitante, deseo ver los pasos del proceso (subir factura, validación, subasta, fondeo y cobro) y las preguntas frecuentes, para comprender cómo opera Vankoo antes de registrarme.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US02.png" alt="Evidencia US02" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar la navegación hacia la información del proceso de financiamiento y el contenido correspondiente a las preguntas frecuentes de la Landing Page.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US03
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US03</td>
+    <td>Simular el adelanto de una factura</td>
+    <td>Como visitante del segmento MYPE, deseo ingresar el monto y plazo de una factura en la calculadora, para estimar cuánto recibiría y cuál sería el costo del financiamiento.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US03.png" alt="Evidencia US03" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el funcionamiento de la calculadora de adelanto de facturas y la actualización de los resultados de la simulación.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US04
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US04</td>
+    <td>Navegar la landing page en mi idioma y desde cualquier dispositivo</td>
+    <td>Como visitante, deseo cambiar el idioma entre español e inglés y navegar desde el móvil o escritorio, para consultar la información con comodidad.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US04.png" alt="Evidencia US04" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el cambio de idioma de la Landing Page y su comportamiento responsive para diferentes tamaños de pantalla.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US05
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US05</td>
+    <td>Registrarme en la aplicación web</td>
+    <td>Como empresario MYPE, deseo crear una cuenta con mi correo y contraseña, para acceder a la gestión de mis facturas.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US05.png" alt="Evidencia US05" width="800">
+          <br><br>
+    <img src="assets/cap6-product-verification-validation/core-system-tests/US05(1).png" alt="Evidencia US05 - Validación de registro" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el flujo de registro de un empresario MYPE en la aplicación web y las validaciones correspondientes al formulario de registro.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US06
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US06</td>
+    <td>Iniciar sesión en la aplicación web</td>
+    <td>Como empresario MYPE, deseo iniciar sesión con mi correo y contraseña, para acceder a mis facturas de forma segura.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US06.png" alt="Evidencia US06" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el inicio de sesión del empresario MYPE y el acceso a las funcionalidades protegidas de la aplicación web.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US08
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US08</td>
+    <td>Registrarme en la aplicación móvil</td>
+    <td>Como inversionista, deseo crear una cuenta desde mi celular, para empezar a invertir en facturas.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US08.png" alt="Evidencia US08" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> Mediante Postman se verificó exitosamente el registro de un nuevo inversionista a través de la API del sistema. El servicio respondió con el estado <code>201 Created</code>, confirmando la creación de la cuenta y la asignación del rol <code>ROLE_INVESTOR</code>.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US09
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US09</td>
+    <td>Iniciar sesión en la aplicación móvil</td>
+    <td>Como inversionista, deseo iniciar sesión con mi correo y contraseña, para acceder a mi billetera y al mercado.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US09.png" alt="Evidencia US09" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> Mediante Postman se verificó exitosamente la autenticación del inversionista utilizando un correo y contraseña registrados previamente. La API respondió correctamente y proporcionó el token de autenticación necesario para acceder a los recursos protegidos del sistema.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US16
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US16</td>
+    <td>Ver el saldo y los movimientos de mi billetera</td>
+    <td>Como inversionista, deseo ver cuánto saldo tengo disponible para invertir y el historial de movimientos, para controlar mis fondos.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US16.png" alt="Evidencia US16" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> Mediante Postman se comprobó el comportamiento de la API para una cuenta de inversionista que todavía no posee una billetera abierta. El servicio respondió con <code>404 Not Found</code> y el código <code>wallet-not-found</code>, validando el caso de una billetera sin saldo previo a la primera recarga.
+    </td>
+  </tr>
+</table>
 
 <hr class="page-break">
 
@@ -3312,31 +3854,427 @@ _Pendiente de elaboración._
 
 ### 7.1.1. Tools and Practices
 
-_Pendiente de elaboración._
+Para garantizar la calidad continua del código, el equipo implementa un flujo de Integración Continua (CI) automatizado: cada push y cada Pull Request hacia `develop` o `main` compila el proyecto y ejecuta su suite de pruebas completa. El CI es la primera etapa del pipeline de cada repositorio, definido en el archivo `.github/workflows/pipeline.yml`, que continúa con la entrega (7.2) y el despliegue (7.3).
+
+| Herramienta | Uso en Continuous Integration |
+|---|---|
+| **GitHub Actions** | Motor de automatización integrado en GitHub. Ejecuta el job *Build & Test* en un runner `ubuntu-latest` en cada evento de código. |
+| **Java 25 (Temurin) + Maven Wrapper** | Compilación y ejecución de pruebas del API Gateway con `./mvnw -B verify`. La caché de dependencias de Maven acelera las ejecuciones sucesivas. |
+| **JUnit 5 + Mockito** | Pruebas unitarias del API Gateway (6.1.1 y 6.1.2). |
+| **.NET 10 SDK** | Restauración, compilación en modo Release y ejecución de pruebas del Invoicing Service. |
+| **xUnit + Reqnroll** | Pruebas unitarias y escenarios BDD en Gherkin del Invoicing Service (6.1.1 y 6.1.3). |
+| **Artifacts de GitHub Actions** | Conservación de los reportes de pruebas (Surefire en Java, TRX en .NET) de cada ejecución. |
+
+Prácticas aplicadas:
+
+* **Pipeline en cada cambio:** todo push a `develop` o `main` y todo Pull Request hacia esas ramas dispara el CI, de modo que ningún cambio se integra sin compilar ni probar.
+* **Integración por Pull Request bajo GitFlow:** los cambios se desarrollan en ramas `feature/*` y llegan a `develop` mediante Pull Request; el resultado del CI aparece como check en el propio Pull Request antes de fusionarlo.
+* **Fail fast:** si la compilación o alguna prueba falla, el job termina en error y las etapas siguientes del pipeline (entrega y despliegue) no se ejecutan.
+* **Ejecuciones reproducibles:** el runner parte de una máquina limpia en cada ejecución y las versiones de Java (25) y .NET (10) quedan fijadas en el workflow.
+* **Cancelación de ejecuciones obsoletas:** en un Pull Request, un nuevo push cancela la ejecución anterior; los push a `develop` y `main` nunca se interrumpen.
 
 ### 7.1.2. Build & Test Suite Pipeline Components
 
-_Pendiente de elaboración._
+El job *Build & Test* es el primer componente del pipeline y se compone de los siguientes pasos:
+
+| Paso | API Gateway (Java) | Invoicing Service (.NET) |
+|---|---|---|
+| 1. Obtención del código | `actions/checkout@v5` | `actions/checkout@v5` |
+| 2. Preparación del entorno | `actions/setup-java@v5` con Temurin 25 y caché de Maven | `actions/setup-dotnet@v5` con .NET 10 |
+| 3. Restauración de dependencias | Incluida en `./mvnw -B verify` | `dotnet restore` |
+| 4. Compilación | Incluida en `./mvnw -B verify` | `dotnet build --configuration Release` |
+| 5. Suite de pruebas | Unitarias e integración (JUnit 5 + Mockito) | Unitarias (xUnit) y BDD (Reqnroll) |
+| 6. Reportes | `target/surefire-reports/` como artifact | `test-results/*.trx` como artifact |
+
+Configuración del job en el API Gateway ([pipeline.yml](https://github.com/yieldlabshq/vankoo-api-gateway/blob/develop/.github/workflows/pipeline.yml)):
+
+```yaml
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [develop, main]
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    env:
+      SPRING_PROFILES_ACTIVE: dev
+      JWT_SECRET: ci-only-test-secret-for-pipeline-runs-0001
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v5
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+
+      - name: Build and run unit and integration tests
+        run: ./mvnw -B verify
+
+      - name: Upload test reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: target/surefire-reports/
+          if-no-files-found: ignore
+```
+
+`JWT_SECRET` toma un valor exclusivo para pruebas: la aplicación exige una clave de al menos 32 caracteres para iniciar su contexto, y en CI no se utiliza ningún secreto real.
+
+Configuración del job en el Invoicing Service ([pipeline.yml](https://github.com/yieldlabshq/vankoo-invoicing-service/blob/develop/.github/workflows/pipeline.yml)):
+
+```yaml
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v5
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore LiquiLabs.Vankoo.Invoicing.sln
+
+      - name: Build
+        run: dotnet build LiquiLabs.Vankoo.Invoicing.sln --configuration Release --no-restore
+
+      - name: Run unit, integration and BDD tests
+        run: >
+          dotnet test LiquiLabs.Vankoo.Invoicing.sln --configuration Release --no-build
+          --logger "trx;LogFileName=test-results.trx" --results-directory test-results
+```
+
+Resultados de las primeras ejecuciones del CI (07/10/2026, Pull Request `feature/ci-cd-pipeline` → `develop`):
+
+| Repositorio | Duración del job | Resultado | Ejecución |
+|---|---|---|---|
+| yieldlabshq/vankoo-api-gateway | 45 s | 23 pruebas, 0 fallidas | [Run #37680570068](https://github.com/yieldlabshq/vankoo-api-gateway/actions/runs/37680570068) |
+| yieldlabshq/vankoo-invoicing-service | 37 s | 16 pruebas, 0 fallidas | [Run #37680586800](https://github.com/yieldlabshq/vankoo-invoicing-service/actions/runs/37680586800) |
+
+![Pipeline del Invoicing Service en el Pull Request](assets/cap7-devops-practices/invoicing-pipeline-pr-run.png)
+
+*Figura 7.1.2.1. Ejecución del pipeline del Invoicing Service en el Pull Request hacia `develop`: el job Build & Test se completa en 37 s y los jobs de entrega y despliegue se omiten, porque solo corren con un push.*
+
+Tras fusionar el Pull Request, el push a `develop` del API Gateway ejecutó el pipeline completo ([Run #37681065893](https://github.com/yieldlabshq/vankoo-api-gateway/actions/runs/37681065893)): *Build & Test* y *Build, Validate & Publish Image* terminaron con éxito, y *Deploy to Production* se omitió porque solo se ejecuta en `main`.
+
+![Pipeline del API Gateway en develop](assets/cap7-devops-practices/gateway-pipeline-develop-run.png)
+
+*Figura 7.1.2.2. Ejecución del pipeline del API Gateway tras el push a `develop`: los tres jobs encadenados y su duración total de 4 min 45 s.*
+
+![Pasos del job Build & Test del API Gateway](assets/cap7-devops-practices/gateway-build-and-test-steps.png)
+
+*Figura 7.1.2.3. Pasos del job Build & Test del API Gateway: obtención del código, configuración de JDK 25, compilación y ejecución de pruebas, y publicación de reportes.*
 
 ## 7.2. Continuous Delivery
 
+Continuous Delivery extiende el flujo de Integración Continua descrito en la sección 7.1. Una vez que el código compila y sus pruebas pasan, el pipeline empaqueta el servicio en una imagen Docker y lo deja listo para desplegarse. El paso final a producción permanece bajo aprobación manual del equipo.
+
+
 ### 7.2.1. Tools and Practices
 
-_Pendiente de elaboración._
+El equipo reutiliza las herramientas de CI y suma las que empaquetan y entregan cada servicio. La siguiente tabla resume cada herramienta, su tipo y el propósito que cumple en el flujo de entrega.
+
+| Herramienta | Tipo | Propósito |
+|---|---|---|
+| GitHub | Control de versiones y colaboración | Aloja los repositorios de la organización `yieldlabs` y gestiona ramas y Pull Requests con revisión cruzada entre integrantes. |
+| GitHub Actions | Automatización de CI/CD | Ejecuta la compilación y las pruebas en cada evento de código y encadena la construcción de la imagen y la aprobación del despliegue. |
+| Maven | Construcción del backend | Compila el API Gateway y ejecuta las pruebas unitarias, de integración y BDD. |
+| JUnit 5 y Cucumber | Pruebas | Validan el comportamiento del servicio antes de que el cambio avance en el pipeline. |
+| pnpm y Vite | Construcción del frontend | Instalan dependencias y generan el build de `vankoo-mype-web`, con la versión de Node fijada en `.nvmrc` y ESLint para validar el código. |
+| Docker | Contenerización | El `Dockerfile` del gateway usa dos etapas: construye el JAR con Maven y Temurin 25, y ejecuta solo el JRE en una imagen ligera, con usuario sin privilegios y `curl` para el healthcheck. |
+| Docker Compose | Orquestación | El `docker-compose.yaml` de `vankoo-infra` levanta el sistema completo con el mismo entorno en desarrollo y en validación. |
+| Perfiles de Spring (`dev`, `docker`, `prod`) | Configuración por entorno | Separan la configuración de cada entorno sin cambiar el código. |
+
+Además de las herramientas, el equipo sigue prácticas que reducen el riesgo de llevar código no deseado a producción:
+
+- **Feature Branching y Pull Requests:** cada cambio se desarrolla en una rama `feature/*` y se integra a `develop` mediante un Pull Request que revisa otro integrante del equipo.
+- **Conventional Commits:** los mensajes siguen el formato `feat`, `build`, `chore` y `docs`, lo que mantiene un historial ordenado por capa.
+- **Pruebas antes de integrar:** un cambio solo se fusiona a la rama estable si sus pruebas pasan. La imagen se construye con `-DskipTests` porque las pruebas ya corrieron en la etapa de CI.
+- **Imagen única por entorno:** la misma imagen se ejecuta en cada entorno y solo cambia el perfil de configuración activo.
+- **Despliegue semiautomático con aprobación manual:** el pipeline deja la imagen lista, pero el despliegue final lo autoriza un responsable.
+- **Rollback manual:** ante un error grave en producción, el equipo vuelve a la imagen de la versión anterior de forma controlada.
+
 
 ### 7.2.2. Stages Deployment Pipeline Components
 
-_Pendiente de elaboración._
+El pipeline de entrega se organiza en etapas encadenadas: cada una solo se ejecuta si la anterior termina con éxito, y la última exige aprobación humana. La siguiente tabla describe qué ocurre en cada etapa y con qué herramienta.
+
+| Etapa | Qué ocurre | Herramienta |
+|---|---|---|
+| 1. Integración continua | Se compila el proyecto y se ejecutan las pruebas unitarias, de integración y BDD. Si alguna falla, el cambio no avanza. | GitHub Actions, Maven |
+| 2. Construcción de la imagen | Con las pruebas aprobadas, se construye la imagen Docker del servicio. | Docker |
+| 3. Validación en staging | El sistema se levanta con el perfil `docker` en un entorno similar al de producción para pruebas manuales, de carga o seguridad . | Docker Compose |
+| 4. Aprobación del despliegue | El pipeline queda en espera hasta que un responsable revise los resultados y autorice. | GitHub Environments |
+| 5. Despliegue manual | Con la aprobación, se despliega la versión validada con el perfil `prod` . | GitHub Actions, Docker |
+| 6. Monitoreo y feedback | Se observa el estado del servicio, por ejemplo con el healthcheck de la imagen, y los resultados alimentan el siguiente ciclo. | Docker healthcheck |
+
+La configuración propuesta del flujo reutiliza el job de pruebas de la sección 7.1, agrega la construcción de la imagen y deja el despliegue detrás de un entorno `production` que exige aprobación manual:
 
 ## 7.3. Continuous Deployment
 
 ### 7.3.1. Tools and Practices
 
-_Pendiente de elaboración._
+Continuous Deployment es el último tramo del pipeline de Vankoo: todo cambio que llega a la rama `main` y supera las etapas de integración (7.1) y entrega (7.2) se despliega a producción de forma automática, sin una aprobación manual intermedia. A diferencia de Continuous Delivery, donde el paso a producción queda listo pero lo dispara una persona, aquí la decisión la toman los controles automáticos del pipeline. Por ello, la confianza en el despliegue descansa en las pruebas descritas en el Capítulo VI y en las verificaciones posteriores al despliegue.
+
+#### 1. Herramientas
+
+| Herramienta | Uso en Continuous Deployment | Productos |
+|---|---|---|
+| **GitHub Actions** | Ejecuta el job *Deploy to Production* del archivo `.github/workflows/pipeline.yml`, que se dispara con cada push a `main` después de los jobs de CI (7.1) y entrega (7.2). | Todos |
+| **GitHub Environments & Secrets** | Entorno `production` de cada repositorio. Guarda como secretos `AZURE_CREDENTIALS` (Service Principal de Azure) y `PRODUCTION_ENV` (variables de producción del servicio, como `JWT_SECRET`, credenciales de base de datos, claves de Stripe y de Azure OCR), y como variables `AZURE_RESOURCE_GROUP` y `AZURE_DNS_LABEL`. Los repositorios solo contienen archivos `.env.example` de referencia, nunca valores reales. | Todos |
+| **Docker** | Cada microservicio cuenta con un `Dockerfile` multi-stage; la imagen resultante es el artefacto que se despliega. | IAM, Profile, Invoicing, Investment, Finance, API Gateway, Discovery Server |
+| **GitHub Container Registry (GHCR)** | Registro de las imágenes versionadas que publica la etapa de entrega. La etiqueta `production` señala la última versión que superó la verificación en producción. | Backend |
+| **Azure CLI + `azure/login`** | Autenticación con el Service Principal y creación o actualización del contenedor con `az container create`. | Backend |
+| **Azure Container Instances (ACI)** | Entorno de ejecución en producción de los contenedores del backend (ver 5.1.4). | Backend |
+| **Netlify** | Despliegue automático desde `main` con publicación atómica y rollback instantáneo a un despliegue anterior. El Landing Page ya se publica en [vankoo-landing-page.netlify.app](https://vankoo-landing-page.netlify.app). | Landing Page, Web App de la MYPE |
+| **Firebase App Distribution** | Distribución automática de cada build Android a los testers del equipo y a usuarios de validación. | App móvil del Inversionista |
+| **Google Play Console** | Canal de producción de la app Android (ver 5.1.4). | App móvil del Inversionista |
+
+![Imagen del API Gateway publicada en GitHub Container Registry](assets/cap7-devops-practices/ghcr-gateway-image.png)
+
+*Figura 7.3.1.1. Imagen `ghcr.io/yieldlabshq/vankoo-api-gateway` publicada por el pipeline en GitHub Container Registry, con las etiquetas `sha-64e3854` y `develop`.*
+
+#### 2. Prácticas
+
+**Despliegue disparado por `main` bajo GitFlow.** Solo las ramas `release/*` y `hotfix/*` llegan a `main`, siempre mediante Pull Request. El merge a `main` es el evento que inicia el despliegue a producción, y cada versión liberada se identifica con un tag de Semantic Versioning (`vMAJOR.MINOR.PATCH`); los repositorios de la organización parten de la versión `v1.0.0`.
+
+**Construir una vez y promover el mismo artefacto.** La imagen Docker (o el build estático del frontend) se construye y prueba una sola vez en las etapas previas, etiquetada con el SHA del commit. En producción se despliega exactamente ese artefacto, al que se agrega la etiqueta de versión, sin volver a compilar. Así lo que llega a producción es lo mismo que pasó las pruebas.
+
+**Configuración externa por entorno.** El código no cambia entre entornos; las diferencias (URLs, cadenas de conexión, claves de terceros) se inyectan como variables de entorno desde los secretos del entorno `production`.
+
+**Orden de despliegue según dependencias.** El backend se despliega respetando las dependencias que ya define el `docker-compose.yaml` de `vankoo-infra`: primero el Discovery Server, luego los servicios de dominio (IAM, Invoicing, Investment, Finance y Profile), después el API Gateway y, al final, los frontends que lo consumen.
+
+**Verificación posterior al despliegue.** Un despliegue solo se da por exitoso cuando el servicio responde en su endpoint de readiness. Se reutilizan los mismos endpoints que ya emplean los healthchecks del entorno local:
+
+| Servicio | Endpoint de readiness |
+|---|---|
+| Discovery Server | `/actuator/health/readiness` |
+| API Gateway | `/actuator/health/readiness` |
+| IAM Service | `/actuator/health/readiness` |
+| Investment Service | `/actuator/health/readiness` |
+| Finance Service | `/actuator/health/readiness` |
+| Invoicing Service | `/health/ready` |
+
+**Rollback ante fallos.** Cuando una versión supera la verificación, el pipeline le asigna la etiqueta `production` en GHCR. Si la verificación de una versión nueva falla, el mismo job vuelve a desplegar la imagen con la etiqueta `production`, es decir, la última versión que funcionó. En Netlify se restaura el despliegue previo, que queda publicado de inmediato.
+
+**Controles automáticos en lugar de aprobaciones manuales.** Para que el despliegue sin intervención sea seguro, `main` se protege para aceptar cambios solo por Pull Request con el pipeline de CI en verde, y las pruebas unitarias, de integración, BDD y de sistema (6.1.1 a 6.1.4) deben haber pasado en las etapas anteriores.
+
+**Excepción de la app móvil.** La publicación en Google Play pasa por la revisión de Google, por lo que no puede ser completamente automática. El despliegue continuo de la app llega hasta Firebase App Distribution, donde cada build queda disponible para los testers; la promoción al canal de producción de Google Play se realiza al liberar una versión.
+
+#### 3. Resumen por producto
+
+| Producto | Disparador | Artefacto | Destino de producción | Verificación | Rollback |
+|---|---|---|---|---|---|
+| Landing Page | Push a `main` | Build estático (Astro) | Netlify | Publicación exitosa del sitio | Restaurar despliegue anterior en Netlify |
+| Web App de la MYPE | Push a `main` | Build estático (React + Vite) | Netlify | Publicación exitosa del sitio | Restaurar despliegue anterior en Netlify |
+| Microservicios, API Gateway y Discovery Server | Push a `main` | Imagen Docker versionada | GHCR + ACI | Endpoint de readiness | Redesplegar la imagen con etiqueta `production` |
+| App móvil del Inversionista | Push a `main` | APK / AAB firmado | Firebase App Distribution (testers) y Google Play (al liberar) | Build distribuido a testers | Distribuir el build anterior |
 
 ### 7.3.2. Production Deployment Pipeline Components
 
-_Pendiente de elaboración._
+El **Production Deployment Pipeline** de Vankoo comprende el conjunto de etapas necesarias para llevar una versión validada del sistema desde los repositorios de código fuente hasta el ambiente de producción. Debido a que Vankoo está conformado por diferentes componentes, el proceso de despliegue considera el **Landing Page, la aplicación web, la aplicación móvil y los servicios backend** que forman parte de la solución.
+
+El código fuente de los diferentes componentes es administrado mediante **GitHub**, siguiendo la estrategia de ramas definida por el equipo. Los cambios son desarrollados inicialmente en ramas de tipo `feature/*` y posteriormente son integrados a las ramas correspondientes mediante el flujo de trabajo establecido. De esta manera, se mantiene una separación entre el desarrollo de nuevas funcionalidades y las versiones del producto que se encuentran preparadas para continuar con los procesos de integración, validación y despliegue.
+
+El objetivo del Production Deployment Pipeline es establecer un proceso controlado y reproducible para llevar los componentes de Vankoo hacia el ambiente productivo, reduciendo la intervención manual y manteniendo la trazabilidad de las versiones desplegadas.
+
+#### Production Deployment Pipeline Flow
+
+El pipeline se encuentra compuesto por las siguientes etapas:
+
+#### Source Code Retrieval
+
+El proceso comienza con la obtención del código fuente almacenado en los repositorios de **GitHub** de la organización. Los componentes principales de Vankoo se mantienen en repositorios independientes, permitiendo administrar de forma separada las aplicaciones frontend, los servicios backend y los componentes de infraestructura.
+
+El uso de Git y GitHub permite mantener un historial de los cambios realizados, identificar las versiones utilizadas durante cada despliegue y controlar la integración del código mediante ramas y Pull Requests.
+
+#### Environment Preparation
+
+Una vez obtenida la versión del código que será utilizada, se prepara el entorno requerido para construir el componente correspondiente. Debido a que Vankoo posee una arquitectura distribuida y utiliza diferentes tecnologías, los requisitos del entorno pueden variar entre las aplicaciones frontend y los distintos servicios backend.
+
+Esta etapa comprende la preparación de los runtimes, herramientas de construcción, administradores de dependencias y variables de entorno requeridas para que cada componente pueda ser construido correctamente.
+
+Las variables de entorno permiten separar los valores de configuración del código fuente, facilitando el uso de diferentes configuraciones dependiendo del ambiente donde se ejecute la aplicación.
+
+#### Dependency Installation
+
+Posteriormente, se realiza la instalación o restauración de las dependencias requeridas por cada proyecto.
+
+En los componentes frontend se utilizan los administradores de paquetes correspondientes para obtener las librerías declaradas por la aplicación. De manera similar, los servicios backend utilizan las herramientas de gestión de dependencias correspondientes a su tecnología.
+
+Esta etapa permite garantizar que cada componente disponga de las librerías necesarias antes de iniciar el proceso de construcción.
+
+#### Build
+
+Después de preparar el entorno y obtener las dependencias, se ejecuta el proceso de **build** del componente.
+
+El objetivo de esta etapa es comprobar que el código integrado puede ser construido correctamente y generar una versión ejecutable o desplegable de la aplicación.
+
+Si durante el proceso de construcción se produce un error, el componente no debe continuar hacia el despliegue hasta que el problema haya sido solucionado. De esta forma, el build funciona como una validación previa a la generación del artefacto que será utilizado posteriormente.
+
+#### Validation Before Deployment
+
+Antes de realizar el despliegue a producción, la versión del producto debe pasar por las validaciones establecidas durante los procesos de **Continuous Integration** y **Continuous Delivery**.
+
+Estas validaciones permiten comprobar que los cambios incorporados no afecten negativamente las funcionalidades previamente implementadas y que el componente se encuentre en condiciones adecuadas para continuar hacia el ambiente productivo.
+
+De esta manera, el Continuous Deployment se relaciona directamente con las etapas anteriores del proceso DevOps, utilizando como entrada una versión que previamente ha sido integrada, construida y validada.
+
+#### Deployment Artifact Generation
+
+Luego de superar las etapas de construcción y validación, se prepara el artefacto que será utilizado para realizar el despliegue.
+
+En los servicios que utilizan contenedores, **Docker** permite empaquetar la aplicación junto con los elementos necesarios para su ejecución mediante imágenes. Esto permite disponer de unidades de despliegue reproducibles y mantener mayor consistencia entre los diferentes ambientes.
+
+La utilización de contenedores también facilita la administración de los diferentes servicios que forman parte de la arquitectura de Vankoo, debido a que cada servicio puede mantener sus propias dependencias y configuración de ejecución.
+
+Para los componentes frontend, el proceso de construcción genera los recursos necesarios para publicar la aplicación mediante el servicio de hosting correspondiente.
+
+#### Production Deployment
+
+Una vez generado correctamente el artefacto, se procede con su publicación en el ambiente definido para la ejecución del producto.
+
+Debido a que Vankoo se encuentra compuesto por diferentes aplicaciones y servicios, el proceso considera individualmente los siguientes componentes:
+
+- **Landing Page:** presenta la propuesta de valor de Vankoo y proporciona información inicial sobre el funcionamiento de la plataforma.
+- **Web Application:** permite al segmento MYPE acceder a las funcionalidades relacionadas con la gestión y financiamiento de sus facturas.
+- **Mobile Application:** permite al segmento inversionista acceder a las funcionalidades destinadas a la gestión de sus operaciones dentro de la plataforma.
+- **Backend Services:** implementan la lógica de negocio y proporcionan las APIs requeridas por las aplicaciones cliente.
+- **Infrastructure Components:** proporcionan los servicios necesarios para permitir la comunicación, persistencia y funcionamiento de los diferentes componentes de la solución.
+
+La separación de estos componentes permite que cada uno siga el proceso de construcción y despliegue apropiado para su tecnología, manteniendo al mismo tiempo la integración necesaria para el funcionamiento completo de la plataforma.
+
+#### Post-Deployment Verification
+
+Una vez realizado el despliegue, se debe verificar que los componentes se encuentren disponibles y funcionando correctamente en el ambiente correspondiente.
+
+Para el Landing Page y las aplicaciones frontend, esta comprobación considera la disponibilidad de la aplicación, la correcta carga de sus recursos y la posibilidad de acceder a sus principales funcionalidades.
+
+Para los servicios backend, la verificación considera que los servicios puedan iniciarse correctamente, se encuentren disponibles para recibir solicitudes y puedan comunicarse con los demás componentes requeridos por la arquitectura.
+
+Esta etapa permite detectar problemas relacionados con configuración, conectividad o disponibilidad que podrían no presentarse durante el proceso de construcción.
+
+#### Production Deployment Pipeline Summary
+
+Los principales componentes que forman parte del Production Deployment Pipeline de Vankoo pueden resumirse de la siguiente manera:
+
+| Componente | Propósito |
+|---|---|
+| **Source Code Retrieval** | Obtener desde GitHub la versión del código que será utilizada para el despliegue. |
+| **Environment Preparation** | Preparar las herramientas, runtimes y configuraciones requeridas. |
+| **Dependency Installation** | Instalar o restaurar las dependencias utilizadas por cada aplicación. |
+| **Build** | Construir el componente y generar una versión ejecutable o desplegable. |
+| **Validation** | Verificar que la versión cumpla con las validaciones establecidas antes del despliegue. |
+| **Artifact Generation** | Generar el artefacto o imagen necesaria para realizar el deployment. |
+| **Production Deployment** | Publicar la versión validada en el ambiente correspondiente. |
+| **Post-Deployment Verification** | Comprobar la disponibilidad y funcionamiento del componente después del despliegue. |
+
+En conjunto, estas etapas permiten estructurar el proceso mediante el cual una modificación realizada en el código fuente de Vankoo puede avanzar desde su desarrollo e integración hasta su publicación en el ambiente de producción. La separación de responsabilidades entre las diferentes etapas contribuye a mantener la trazabilidad del proceso y facilita la identificación de errores antes y después de realizar un despliegue.
+
+#### Implementación en el pipeline
+
+Las etapas anteriores se implementan en el job *Deploy to Production* del archivo `.github/workflows/pipeline.yml`, configurado en los repositorios [vankoo-api-gateway](https://github.com/yieldlabshq/vankoo-api-gateway/blob/develop/.github/workflows/pipeline.yml) y [vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service/blob/develop/.github/workflows/pipeline.yml). El job se ejecuta solo en los push a `main` y depende de que los jobs de CI (7.1) y de entrega (7.2) hayan terminado con éxito, por lo que las etapas de obtención del código, preparación del entorno, dependencias, build, validación y generación del artefacto ya están cubiertas cuando comienza.
+
+| Etapa del pipeline | Implementación |
+|---|---|
+| Source Code Retrieval, Environment Preparation, Dependency Installation y Build | Job *Build & Test* (7.1): `actions/checkout`, `actions/setup-java` o `actions/setup-dotnet`, `./mvnw -B verify` o `dotnet restore` y `dotnet build`. |
+| Validation Before Deployment | Suite de pruebas del job *Build & Test* (6.1.1 a 6.1.3) y smoke test de la imagen en el job *Build, Validate & Publish Image*, que la ejecuta como contenedor y verifica su endpoint de salud antes de publicarla. |
+| Deployment Artifact Generation | Imagen Docker publicada en GHCR por el job *Build, Validate & Publish Image* como `ghcr.io/yieldlabshq/<servicio>:sha-xxxxxxx`. |
+| Production Deployment | Paso *Deploy container to Azure Container Instances*: `az container create` con la imagen del commit y las variables de `PRODUCTION_ENV`. |
+| Post-Deployment Verification | Paso *Verify deployment health*: consulta el endpoint de readiness del servicio desplegado hasta 40 veces, cada 6 segundos. |
+| Rollback | Paso *Roll back to the previous production release*: si la verificación falla, vuelve a desplegar la imagen con la etiqueta `production`. Si tiene éxito, el paso *Mark image as the current production release* mueve esa etiqueta a la nueva versión. |
+
+Configuración del job en el API Gateway (el Invoicing Service usa la misma estructura, con el endpoint `/health/ready`):
+
+```yaml
+  deploy-production:
+    name: Deploy to Production
+    needs: publish-image
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    permissions:
+      contents: read
+      packages: write
+    env:
+      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+      AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RESOURCE_GROUP }}
+      AZURE_DNS_LABEL: ${{ vars.AZURE_DNS_LABEL }}
+      PRODUCTION_ENV: ${{ secrets.PRODUCTION_ENV }}
+    steps:
+      - name: Check deployment configuration
+        id: config
+        run: |
+          if [ -z "$AZURE_CREDENTIALS" ] || [ -z "$AZURE_RESOURCE_GROUP" ] || [ -z "$AZURE_DNS_LABEL" ]; then
+            echo "::notice title=Deployment skipped::Configure AZURE_CREDENTIALS, PRODUCTION_ENV, AZURE_RESOURCE_GROUP and AZURE_DNS_LABEL in the production environment to enable it."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Log in to Azure
+        if: steps.config.outputs.enabled == 'true'
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy container to Azure Container Instances
+        id: deploy
+        if: steps.config.outputs.enabled == 'true'
+        run: |
+          az container create \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --name "$SERVICE_NAME" \
+            --image "${IMAGE_NAME}:sha-${GITHUB_SHA::7}" \
+            --os-type Linux --cpu 1 --memory 1.5 \
+            --ports 8080 \
+            --dns-name-label "$AZURE_DNS_LABEL" \
+            --secure-environment-variables $PRODUCTION_ENV
+          fqdn=$(az container show --resource-group "$AZURE_RESOURCE_GROUP" --name "$SERVICE_NAME" --query ipAddress.fqdn -o tsv)
+          echo "url=http://${fqdn}:8080" >> "$GITHUB_OUTPUT"
+
+      - name: Verify deployment health
+        if: steps.config.outputs.enabled == 'true'
+        run: |
+          for attempt in $(seq 1 40); do
+            if curl -fsS "${{ steps.deploy.outputs.url }}${HEALTH_PATH}"; then
+              echo "Production deployment is ready."
+              exit 0
+            fi
+            sleep 6
+          done
+          echo "::error::The production deployment did not become ready."
+          exit 1
+
+      - name: Mark image as the current production release
+        if: success() && steps.config.outputs.enabled == 'true'
+        run: docker buildx imagetools create -t "${IMAGE_NAME}:production" "${IMAGE_NAME}:sha-${GITHUB_SHA::7}"
+
+      - name: Roll back to the previous production release
+        if: failure() && steps.deploy.outcome == 'success'
+        run: |
+          az container create \
+            --resource-group "$AZURE_RESOURCE_GROUP" \
+            --name "$SERVICE_NAME" \
+            --image "${IMAGE_NAME}:production" \
+            --os-type Linux --cpu 1 --memory 1.5 \
+            --ports 8080 \
+            --dns-name-label "$AZURE_DNS_LABEL" \
+            --secure-environment-variables $PRODUCTION_ENV
+```
+
+El primer paso del job comprueba que el entorno `production` tenga configuradas las credenciales de Azure. Mientras no lo estén, el job termina sin desplegar y deja un aviso en el resumen de la ejecución, de modo que la integración y la entrega siguen funcionando aunque el ambiente de producción aún no exista.
 
 <hr class="page-break">
 
@@ -3384,26 +4322,30 @@ _Pendiente de elaboración._
 
 **Anexo A. Videos de Exposiciones**
 
-[https://goo.su/h0GAv](https://goo.su/h0GAv)
-
+| Entrega | Título | Enlace |
+|---|---|---|
+| AV1 | Exposición del Avance 1 | [https://goo.su/h0GAv](https://goo.su/h0GAv) |
 
 <hr class="page-break">
 
 **Anexo B. Enlaces a repositorios**
 
-| Producto | Repositorio                                                                                       |
-|---|---------------------------------------------------------------------------------------------------|
-| Informe del proyecto | [yieldlabshq/report](https://github.com/yieldlabshq/report)                                       |
-| Landing Page | [vankoo-landing-page](https://github.com/liquilabshq/vankoo-landing-page)                         |
-| Frontend Web Application (MYPE) | [vankoo-mype-web](https://github.com/liquilabshq/vankoo-mype-web)                                 |
-| Native Mobile Application (Inversionista) | [vankoo-investor-mobile](https://github.com/liquilabshq/vankoo-investor-mobile)                   |
-| Discovery Server | [vankoo-discovery-server](https://github.com/liquilabshq/vankoo-discovery-server)                 |
-| API Gateway | [vankoo-api-gateway](https://github.com/liquilabshq/vankoo-api-gateway)                           |
-| IAM Service | [vankoo-iam-service](https://github.com/liquilabshq/vankoo-iam-service)                           |
-| Investment Service | [vankoo-investment-service](https://github.com/liquilabshq/vankoo-investment-service)             |
-| Finance Service | [vankoo-finance-service](https://github.com/liquilabshq/vankoo-finance-service)                   |
-| Invoicing Service | [vankoo-invoicing-service](https://github.com/liquilabshq/vankoo-invoicing-service)               |
-| Infraestructura local (Docker Compose) | [vankoo-infra](https://github.com/liquilabshq/vankoo-infra)                                       |
+El código fuente y el informe del proyecto se alojan en la organización de GitHub [yieldlabshq](https://github.com/yieldlabshq). Cada repositorio sigue GitFlow, con `main` como rama de versiones liberadas y `develop` como rama de integración.
+
+| Producto | Repositorio | Tecnología |
+|---|---|---|
+| Informe del proyecto | [yieldlabshq/report](https://github.com/yieldlabshq/report) | Markdown |
+| Landing Page | [yieldlabshq/vankoo-landing-page](https://github.com/yieldlabshq/vankoo-landing-page) | Astro |
+| Frontend Web Application (MYPE) | [yieldlabshq/vankoo-mype-web](https://github.com/yieldlabshq/vankoo-mype-web) | React + TypeScript + Vite |
+| Native Mobile Application (Inversionista) | [yieldlabshq/vankoo-investor-mobile](https://github.com/yieldlabshq/vankoo-investor-mobile) | Kotlin Multiplatform + Compose |
+| Discovery Server | [yieldlabshq/vankoo-discovery-server](https://github.com/yieldlabshq/vankoo-discovery-server) | Java + Spring Cloud Netflix Eureka |
+| API Gateway | [yieldlabshq/vankoo-api-gateway](https://github.com/yieldlabshq/vankoo-api-gateway) | Java + Spring Cloud Gateway |
+| IAM Service | [yieldlabshq/vankoo-iam-service](https://github.com/yieldlabshq/vankoo-iam-service) | Java + Spring Boot |
+| Profile Service | [yieldlabshq/vankoo-profile-service](https://github.com/yieldlabshq/vankoo-profile-service) | TypeScript + NestJS |
+| Investment Service | [yieldlabshq/vankoo-investment-service](https://github.com/yieldlabshq/vankoo-investment-service) | Java + Spring Boot |
+| Finance Service | [yieldlabshq/vankoo-finance-service](https://github.com/yieldlabshq/vankoo-finance-service) | Java + Spring Boot + Axon Framework |
+| Invoicing Service | [yieldlabshq/vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service) | C# + ASP.NET Core |
+| Infraestructura local (Docker Compose) | [yieldlabshq/vankoo-infra](https://github.com/yieldlabshq/vankoo-infra) | Docker Compose |
 
 <hr class="page-break">
 
