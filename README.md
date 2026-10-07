@@ -3628,6 +3628,8 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
   <tr>
     <td colspan="3" align="center">
       <img src="assets/cap6-product-verification-validation/core-system-tests/US05.png" alt="Evidencia US05" width="800">
+          <br><br>
+    <img src="assets/cap6-product-verification-validation/core-system-tests/US05(1).png" alt="Evidencia US05 - Validación de registro" width="800">
     </td>
   </tr>
   <tr>
