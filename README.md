@@ -3378,6 +3378,10 @@ Las pruebas se ejecutan automáticamente en el job *Build & Test* del pipeline d
 | yieldlabshq/vankoo-api-gateway | `./mvnw -B verify` | 23 pruebas ejecutadas, 0 fallidas (22 unitarias, incluidas las 4 del filtro de autorización descritas en 6.1.2, y la verificación de carga del contexto). | [Run #37680570068](https://github.com/yieldlabshq/vankoo-api-gateway/actions/runs/37680570068) |
 | yieldlabshq/vankoo-invoicing-service | `dotnet test` | 16 pruebas ejecutadas, 0 fallidas (12 unitarias y los 4 escenarios BDD de 6.1.3). | [Run #37680586800](https://github.com/yieldlabshq/vankoo-invoicing-service/actions/runs/37680586800) |
 
+![Ejecución de las pruebas del Invoicing Service en GitHub Actions](assets/cap6-product-verification-validation/core-entities-unit-tests/invoicing-tests-ci.png)
+
+*Figura 6.1.1.1. Paso de pruebas del job Build & Test del Invoicing Service: 16 pruebas aprobadas y 0 fallidas.*
+
 ### 6.1.2. Core Integration Tests
 
 Las Core Integration Tests verifican que los componentes reales del sistema funcionen correctamente en conjunto. En el API Gateway se integran el filtro de autorización, el servicio de tokens JWT y el escritor de respuestas de error, de modo que cada solicitud rechazada responda con el código de estado y el formato correctos. Esto facilita la depuración y aporta confiabilidad al punto de entrada único de la plataforma.
@@ -3543,6 +3547,10 @@ Los escenarios también se ejecutan automáticamente en el job *Build & Test* de
 Passed!  - Failed:     0, Passed:    16, Skipped:     0, Total:    16, Duration: 588 ms - LiquiLabs.Vankoo.Invoicing.Tests.dll (net10.0)
 ```
 
+![Ejecución de los escenarios BDD en GitHub Actions](assets/cap6-product-verification-validation/core-entities-unit-tests/invoicing-tests-ci.png)
+
+*Figura 6.1.3.1. Ejecución del proyecto de pruebas del Invoicing Service, que incluye los 4 casos del escenario BDD, en el job Build & Test.*
+
 #### 7. Commits relacionados
 
 Ruta del proyecto de pruebas: [yieldlabshq/vankoo-invoicing-service/LiquiLabs.Vankoo.Invoicing.Tests](https://github.com/yieldlabshq/vankoo-invoicing-service/tree/develop/LiquiLabs.Vankoo.Invoicing.Tests)
@@ -3675,6 +3683,20 @@ Resultados de las primeras ejecuciones del CI (07/10/2026, Pull Request `feature
 | yieldlabshq/vankoo-api-gateway | 45 s | 23 pruebas, 0 fallidas | [Run #37680570068](https://github.com/yieldlabshq/vankoo-api-gateway/actions/runs/37680570068) |
 | yieldlabshq/vankoo-invoicing-service | 37 s | 16 pruebas, 0 fallidas | [Run #37680586800](https://github.com/yieldlabshq/vankoo-invoicing-service/actions/runs/37680586800) |
 
+![Pipeline del Invoicing Service en el Pull Request](assets/cap7-devops-practices/invoicing-pipeline-pr-run.png)
+
+*Figura 7.1.2.1. Ejecución del pipeline del Invoicing Service en el Pull Request hacia `develop`: el job Build & Test se completa en 37 s y los jobs de entrega y despliegue se omiten, porque solo corren con un push.*
+
+Tras fusionar el Pull Request, el push a `develop` del API Gateway ejecutó el pipeline completo ([Run #37681065893](https://github.com/yieldlabshq/vankoo-api-gateway/actions/runs/37681065893)): *Build & Test* y *Build, Validate & Publish Image* terminaron con éxito, y *Deploy to Production* se omitió porque solo se ejecuta en `main`.
+
+![Pipeline del API Gateway en develop](assets/cap7-devops-practices/gateway-pipeline-develop-run.png)
+
+*Figura 7.1.2.2. Ejecución del pipeline del API Gateway tras el push a `develop`: los tres jobs encadenados y su duración total de 4 min 45 s.*
+
+![Pasos del job Build & Test del API Gateway](assets/cap7-devops-practices/gateway-build-and-test-steps.png)
+
+*Figura 7.1.2.3. Pasos del job Build & Test del API Gateway: obtención del código, configuración de JDK 25, compilación y ejecución de pruebas, y publicación de reportes.*
+
 ## 7.2. Continuous Delivery
 
 Continuous Delivery extiende el flujo de Integración Continua descrito en la sección 7.1. Una vez que el código compila y sus pruebas pasan, el pipeline empaqueta el servicio en una imagen Docker y lo deja listo para desplegarse. El paso final a producción permanece bajo aprobación manual del equipo.
@@ -3739,6 +3761,10 @@ Continuous Deployment es el último tramo del pipeline de Vankoo: todo cambio qu
 | **Netlify** | Despliegue automático desde `main` con publicación atómica y rollback instantáneo a un despliegue anterior. El Landing Page ya se publica en [vankoo-landing-page.netlify.app](https://vankoo-landing-page.netlify.app). | Landing Page, Web App de la MYPE |
 | **Firebase App Distribution** | Distribución automática de cada build Android a los testers del equipo y a usuarios de validación. | App móvil del Inversionista |
 | **Google Play Console** | Canal de producción de la app Android (ver 5.1.4). | App móvil del Inversionista |
+
+![Imagen del API Gateway publicada en GitHub Container Registry](assets/cap7-devops-practices/ghcr-gateway-image.png)
+
+*Figura 7.3.1.1. Imagen `ghcr.io/yieldlabshq/vankoo-api-gateway` publicada por el pipeline en GitHub Container Registry, con las etiquetas `sha-64e3854` y `develop`.*
 
 #### 2. Prácticas
 
