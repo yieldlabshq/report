@@ -3567,9 +3567,250 @@ El commit incorpora los archivos `SmartInvoiceUpload.feature`, `SmartInvoiceUplo
 
 ### 6.1.4. Core System Tests
 
-<!-- Pruebas de sistema en entorno web y móvil: navegación, interacción con APIs y respuesta ante distintos escenarios. -->
+En esta sección se presentan las pruebas funcionales realizadas sobre las principales User Stories del sistema Vankoo. Estas pruebas permiten verificar el comportamiento de las funcionalidades implementadas, la navegación entre las diferentes interfaces y la interacción con los servicios que conforman el sistema.
 
-_Pendiente de elaboración._
+#### US01
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US01</td>
+    <td>Conocer la propuesta de valor de Vankoo</td>
+    <td>Como visitante, deseo ver en la página principal qué es Vankoo y qué beneficio ofrece a cada segmento, para entender rápidamente si la plataforma resuelve mi necesidad.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US01.png" alt="Evidencia US01" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar satisfactoriamente la visualización de la propuesta de valor de Vankoo y el contenido dirigido a los diferentes segmentos desde la Landing Page.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US02
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US02</td>
+    <td>Entender cómo funciona el financiamiento de facturas</td>
+    <td>Como visitante, deseo ver los pasos del proceso (subir factura, validación, subasta, fondeo y cobro) y las preguntas frecuentes, para comprender cómo opera Vankoo antes de registrarme.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US02.png" alt="Evidencia US02" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar la navegación hacia la información del proceso de financiamiento y el contenido correspondiente a las preguntas frecuentes de la Landing Page.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US03
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US03</td>
+    <td>Simular el adelanto de una factura</td>
+    <td>Como visitante del segmento MYPE, deseo ingresar el monto y plazo de una factura en la calculadora, para estimar cuánto recibiría y cuál sería el costo del financiamiento.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US03.png" alt="Evidencia US03" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el funcionamiento de la calculadora de adelanto de facturas y la actualización de los resultados de la simulación.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US04
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US04</td>
+    <td>Navegar la landing page en mi idioma y desde cualquier dispositivo</td>
+    <td>Como visitante, deseo cambiar el idioma entre español e inglés y navegar desde el móvil o escritorio, para consultar la información con comodidad.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US04.png" alt="Evidencia US04" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el cambio de idioma de la Landing Page y su comportamiento responsive para diferentes tamaños de pantalla.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US05
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US05</td>
+    <td>Registrarme en la aplicación web</td>
+    <td>Como empresario MYPE, deseo crear una cuenta con mi correo y contraseña, para acceder a la gestión de mis facturas.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US05.png" alt="Evidencia US05" width="800">
+          <br><br>
+    <img src="assets/cap6-product-verification-validation/core-system-tests/US05(1).png" alt="Evidencia US05 - Validación de registro" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el flujo de registro de un empresario MYPE en la aplicación web y las validaciones correspondientes al formulario de registro.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US06
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US06</td>
+    <td>Iniciar sesión en la aplicación web</td>
+    <td>Como empresario MYPE, deseo iniciar sesión con mi correo y contraseña, para acceder a mis facturas de forma segura.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US06.png" alt="Evidencia US06" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> La prueba permitió verificar el inicio de sesión del empresario MYPE y el acceso a las funcionalidades protegidas de la aplicación web.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US08
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US08</td>
+    <td>Registrarme en la aplicación móvil</td>
+    <td>Como inversionista, deseo crear una cuenta desde mi celular, para empezar a invertir en facturas.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US08.png" alt="Evidencia US08" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> Mediante Postman se verificó exitosamente el registro de un nuevo inversionista a través de la API del sistema. El servicio respondió con el estado <code>201 Created</code>, confirmando la creación de la cuenta y la asignación del rol <code>ROLE_INVESTOR</code>.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US09
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US09</td>
+    <td>Iniciar sesión en la aplicación móvil</td>
+    <td>Como inversionista, deseo iniciar sesión con mi correo y contraseña, para acceder a mi billetera y al mercado.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US09.png" alt="Evidencia US09" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> Mediante Postman se verificó exitosamente la autenticación del inversionista utilizando un correo y contraseña registrados previamente. La API respondió correctamente y proporcionó el token de autenticación necesario para acceder a los recursos protegidos del sistema.
+    </td>
+  </tr>
+</table>
+
+<br>
+
+#### US16
+
+<table>
+  <tr>
+    <th>User Story</th>
+    <th>Título</th>
+    <th>Descripción</th>
+  </tr>
+  <tr>
+    <td>US16</td>
+    <td>Ver el saldo y los movimientos de mi billetera</td>
+    <td>Como inversionista, deseo ver cuánto saldo tengo disponible para invertir y el historial de movimientos, para controlar mis fondos.</td>
+  </tr>
+  <tr>
+    <td colspan="3" align="center">
+      <img src="assets/cap6-product-verification-validation/core-system-tests/US16.png" alt="Evidencia US16" width="800">
+    </td>
+  </tr>
+  <tr>
+    <td colspan="3">
+      <strong>Resultado:</strong> Mediante Postman se comprobó el comportamiento de la API para una cuenta de inversionista que todavía no posee una billetera abierta. El servicio respondió con <code>404 Not Found</code> y el código <code>wallet-not-found</code>, validando el caso de una billetera sin saldo previo a la primera recarga.
+    </td>
+  </tr>
+</table>
 
 <hr class="page-break">
 
