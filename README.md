@@ -3282,9 +3282,50 @@ _Pendiente de elaboración._
 
 ### 6.1.1. Core Entities Unit Tests
 
-<!-- Pruebas unitarias de las entidades principales (modelos, clases y funciones clave) ejecutadas en aislamiento. -->
+En esta sección se detalla el diseño, la estrategia de aislamiento y la ejecución de las pruebas unitarias aplicadas a las entidades y clases principales del dominio (*Core Entities* / *Aggregate Roots*) en los microservicios de la plataforma.
 
-_Pendiente de elaboración._
+#### 1. Estrategia y Entorno de Pruebas
+
+* **Framework de Testing:** JUnit 5.
+* **Librerías de Aislamiento:** Mockito (para la creación de *mocks* y *stubs*).
+* **Aislamiento de Componentes:** Las pruebas unitarias de las entidades se ejecutan totalmente en memoria. No existen dependencias activas hacia bases de datos (PostgreSQL/MongoDB), brokers de mensajería (RabbitMQ/Kafka) ni servicios HTTP externos.
+* **Patrón de Estructuración:** Patrón **AAA** (*Arrange, Act, Assert*).
+
+---
+
+#### 2. Matriz de Pruebas Unitarias por Entidad Core
+
+| Entidad / Clase | Requisito / Invariante a Validar | Caso de Prueba Unitario | Resultado Esperado |
+| :--- | :--- | :--- | :--- |
+| `Invoice` | Transición de estado y consistencia de datos de facturación. | Intento de procesar una factura sin items asociados. | Lanza `DomainException`, rechaza el cambio de estado y conserva el estado anterior. |
+| `Investment` | Reglas de negocio sobre montos y plazos de inversión. | Creación de una propuesta con un monto inferior al mínimo permitido. | Lanza `IllegalArgumentException` y detiene la creación de la entidad. |
+| `User` / `Account` | Validación de credenciales e invariantes de perfil. | Intento de asignación o actualización con un correo de formato inválido. | Lanza excepción de validación de dominio antes de aplicar los cambios. |
+
+---
+
+#### 3. Ejemplo de Implementación con JUnit 5
+
+```java
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class InvoiceTest {
+
+    @Test
+    @DisplayName("Debe lanzar DomainException al intentar procesar una factura sin items")
+    void shouldThrowExceptionWhenInvoiceHasNoItems() {
+        // Arrange: Preparación del escenario en aislamiento
+        Invoice invoice = new Invoice("INV-2026-001", "CUST-99");
+
+        // Act & Assert: Ejecución y verificación del invariante de la entidad
+        assertThrows(DomainException.class, () -> {
+            invoice.processInvoice();
+        });
+    }
+}
+```
 
 ### 6.1.2. Core Integration Tests
 
@@ -3312,11 +3353,49 @@ _Pendiente de elaboración._
 
 ### 7.1.1. Tools and Practices
 
-_Pendiente de elaboración._
+Para garantizar la calidad continua del código y la estabilidad de las entidades e invariantes del dominio (*Core Entities*), el equipo implementa un flujo de Integración Continua (CI) automatizado a través de las siguientes herramientas y prácticas:
+
+* **GitHub Actions:** Motor de automatización CI/CD integrado directamente al repositorio de GitHub para ejecutar tareas de compilación y pruebas en cada evento de código.
+* **Java 17 & JUnit 5:** Entorno de ejecución y framework estándar para la creación y ejecución estructurada de la suite de pruebas unitarias sobre los modelos de datos y lógica de dominio.
+* **Mockito:** Librería de *mocking* utilizada para simular comportamientos y mantener el total aislamiento de las pruebas, evitando dependencias activas con bases de datos, APIs de terceros o servicios HTTP externos.
+* **Estrategia de Pull Requests (PR):** Todo cambio o nueva funcionalidad en la rama principal (`main` o `develop`) requiere la apertura de un *Pull Request*. El pipeline de CI se dispara automáticamente y bloquea la integración si alguna prueba unitaria falla.
 
 ### 7.1.2. Build & Test Suite Pipeline Components
 
-_Pendiente de elaboración._
+El pipeline de compilación y ejecución de la suite de pruebas unitarias automatizadas está estructurado en los siguientes componentes clave:
+
+#### 1. Flujo de Trabajo de CI (GitHub Actions Workflow)
+
+Configuración del flujo automatizado que valida el build y ejecuta la suite de pruebas de JUnit 5 en el servidor de CI:
+
+```yaml
+# .github/workflows/ci.yml
+name: Java CI with Maven & JUnit 5
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Compilar y Ejecutar Pruebas Unitarias (JUnit)
+        run: mvn clean test
+```
 
 ## 7.2. Continuous Delivery
 
