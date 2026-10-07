@@ -10,9 +10,9 @@
 
 <h4 style="text-align: center"> 1ASI0732 | Diseño de Experimentos de Ingeniería de Software </h4>
 
-<h4 style="text-align: center"> NRC: &lt;9108&gt; </h4>
+<h4 style="text-align: center"> NRC: 9108 </h4>
 
-<h4 style="text-align: center"> Docente: &lt;Noriega Meléndez, Julio Manuel&gt; </h4>
+<h4 style="text-align: center"> Docente: Noriega Meléndez, Julio Manuel </h4>
 
 <br>
 
@@ -25,10 +25,10 @@
 <h4 style="text-align: center">Integrantes:</h4>
 
 <div style="text-align:center; margin-top: 10px; font-size: 90%; line-height: 1.6;">
-  <p>&lt;U202314898&gt; — Acuache Lucas, Mathias Joaquin</p>
-  <p>&lt;U20221g044&gt; — Amaro Villar, Anjali</p>
-  <p>&lt;U202212994&gt; — García Bernal, Daniela</p>
-  <p>&lt;U202315654&gt; — Pillaca Vidal, Luis Angel</p>
+  <p>U202314898 — Acuache Lucas, Mathias Joaquin</p>
+  <p>U20221g044 — Amaro Villar, Anjali</p>
+  <p>U202212994 — García Bernal, Daniela</p>
+  <p>U202315654 — Pillaca Vidal, Luis Angel</p>
 </div>
 
 <br>
@@ -51,6 +51,7 @@
 | 2.5     | 07/10/26 | Amaro Villar, Anjali | Alineación de los Capítulos V, VI y VII con el pipeline CI/CD implementado y evidencias de ejecución |
 | 2.6     | 07/10/26 | Amaro Villar, Anjali | Student Outcome del TB1 y Registro de Versiones |
 | 2.7     | 07/10/26 | Amaro Villar, Anjali | Collaboration Insights del TB1, se retiran Acuerdo de Servicio SaaS y RESTful API documentation y se actualiza la carátula |
+| 2.8     | 07/10/26 | Amaro Villar, Anjali | Conclusiones del TB1, se retiran las secciones pendientes (Mobile Applications Prototyping y 4.10.2), se renumera el Capítulo IV y se corrigen carátula, perfiles e imágenes |
 
 <hr class="page-break">
 
@@ -84,9 +85,7 @@ Las principales ramas del repositorio, gestionadas bajo **GitFlow Workflow**, **
 
 **AV1**
 
-<!-- Assets: ./assets/github-insights/ — capturas de Insights > Contributors e Insights > Network. -->
-
-_Pendiente: capturas de los analíticos de colaboración y commits en GitHub._
+La red de ramas del repositorio (*Network graph*) correspondiente a la AV1 se muestra al inicio de esta sección.
 
 **TB1**
 
@@ -157,24 +156,21 @@ Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `featu
     - [4.4.2. Mobile Applications Wireflow Diagrams](#442-mobile-applications-wireflow-diagrams)
     - [4.4.3. Mobile Applications Mock-ups](#443-mobile-applications-mock-ups)
     - [4.4.4. Mobile Applications User Flow Diagrams](#444-mobile-applications-user-flow-diagrams)
-  - [4.5. Mobile Applications Prototyping](#45-mobile-applications-prototyping)
-    - [4.5.1. Android Mobile Applications Prototyping](#451-android-mobile-applications-prototyping)
-    - [4.5.2. iOS Mobile Applications Prototyping](#452-ios-mobile-applications-prototyping)
-  - [4.6. Web Applications UX/UI Design](#46-web-applications-uxui-design)
-    - [4.6.1. Web Applications Wireframes](#461-web-applications-wireframes)
-    - [4.6.2. Web Applications Wireflow Diagrams](#462-web-applications-wireflow-diagrams)
-    - [4.6.3. Web Applications Mock-ups](#463-web-applications-mock-ups)
-    - [4.6.4. Web Applications User Flow Diagrams](#464-web-applications-user-flow-diagrams)
-  - [4.7. Web Applications Prototyping](#47-web-applications-prototyping)
-  - [4.8. Domain-Driven Software Architecture](#48-domain-driven-software-architecture)
-    - [4.8.1. Software Architecture Context Diagram](#481-software-architecture-context-diagram)
-    - [4.8.2. Software Architecture Container Diagrams](#482-software-architecture-container-diagrams)
-    - [4.8.3. Software Architecture Components Diagrams](#483-software-architecture-components-diagrams)
-  - [4.9. Software Object-Oriented Design](#49-software-object-oriented-design)
-    - [4.9.1. Class Diagrams](#491-class-diagrams)
-    - [4.9.2. Class Dictionary](#492-class-dictionary)
-  - [4.10. Database Design](#410-database-design)
-    - [4.10.1. Relational/Non-Relational Database Diagram](#4101-relationalnon-relational-database-diagram)
+  - [4.5. Web Applications UX/UI Design](#45-web-applications-uxui-design)
+    - [4.5.1. Web Applications Wireframes](#451-web-applications-wireframes)
+    - [4.5.2. Web Applications Wireflow Diagrams](#452-web-applications-wireflow-diagrams)
+    - [4.5.3. Web Applications Mock-ups](#453-web-applications-mock-ups)
+    - [4.5.4. Web Applications User Flow Diagrams](#454-web-applications-user-flow-diagrams)
+  - [4.6. Web Applications Prototyping](#46-web-applications-prototyping)
+  - [4.7. Domain-Driven Software Architecture](#47-domain-driven-software-architecture)
+    - [4.7.1. Software Architecture Context Diagram](#471-software-architecture-context-diagram)
+    - [4.7.2. Software Architecture Container Diagrams](#472-software-architecture-container-diagrams)
+    - [4.7.3. Software Architecture Components Diagrams](#473-software-architecture-components-diagrams)
+  - [4.8. Software Object-Oriented Design](#48-software-object-oriented-design)
+    - [4.8.1. Class Diagrams](#481-class-diagrams)
+    - [4.8.2. Class Dictionary](#482-class-dictionary)
+  - [4.9. Database Design](#49-database-design)
+    - [4.9.1. Relational/Non-Relational Database Diagram](#491-relationalnon-relational-database-diagram)
 - [Capítulo V: Product Implementation](#capítulo-v-product-implementation)
   - [5.1. Software Configuration Management](#51-software-configuration-management)
     - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
@@ -248,16 +244,16 @@ Yieldlabs es una startup Fintech de base tecnológica creada por estudiantes de 
 <!-- Por integrante: foto, nombres y apellidos, código de estudiante, carrera y párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo. -->
 <!-- Assets: ./assets/profiles/ -->
 
-| <img src="./assets/profiles/mathias.png" width="1500"> | **Acuache Lucas, Mathias Joaquin**<br>Código: &lt;u202314898&gt;<br>Carrera: Ingeniería de Software<br><br>Soy Mathias Joaquin Acuache Lucas, me encuentro en el septimo ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB,tambien poder crear un Frontend y Backend basico, en vue.js, java,etc.Además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos.Asimismo me considero una persona que le gusta aprender nuevas cosas, aportar las ideas que tenga en mente y apartir de ello presentar buenos trabajos._ |
+| <img src="./assets/profiles/mathias.png" width="1500"> | **Acuache Lucas, Mathias Joaquin**<br>Código: u202314898<br>Carrera: Ingeniería de Software<br><br>Soy Mathias Joaquin Acuache Lucas, me encuentro en el septimo ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB,tambien poder crear un Frontend y Backend basico, en vue.js, java,etc.Además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos.Asimismo me considero una persona que le gusta aprender nuevas cosas, aportar las ideas que tenga en mente y apartir de ello presentar buenos trabajos._ |
 |---|---|
 
-| <img src="./assets/profiles/perfil-amaro-anjali.jpg" width="140"/> | **Amaro Villar, Anjali**<br>Código: &lt;Código&gt;<br>Carrera: Ingeniería de Software<br><br> Soy estudiante de séptimo ciclo de Ingeniería de Software con sólidas competencias en el diseño e implementación de arquitecturas backend utilizando Java y el ecosistema Spring Boot. Destaco por mi comunicación asertiva, adaptabilidad y trabajo colaborativo, buscando siempre aportar valor técnico continuo y garantizar entregables de calidad dentro del equipo.  |
+| <img src="./assets/profiles/perfil-amaro-anjali.jpg" width="140"/> | **Amaro Villar, Anjali**<br>Código: U20221g044<br>Carrera: Ingeniería de Software<br><br> Soy estudiante de séptimo ciclo de Ingeniería de Software con sólidas competencias en el diseño e implementación de arquitecturas backend utilizando Java y el ecosistema Spring Boot. Destaco por mi comunicación asertiva, adaptabilidad y trabajo colaborativo, buscando siempre aportar valor técnico continuo y garantizar entregables de calidad dentro del equipo.  |
 |--------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
 
-| <img src="./assets/profiles/daniela.jpeg" width="500"> | **García Bernal, Daniela**<br>Código: &lt;U202212994&gt;<br>Carrera: Ingeniería de Software<br><br>Soy estudiante de Ingeniería de Software con conocimientos en C++, programación orientada a objetos, estructuras de datos, UML y Diseño de Interfaces. Tengo conocimiento de desarrollo frontend y backend así como de  metodologías ágiles y Scrum. Me interesa aprender nuevas tecnologías y me caracterizo por prestar atención a los detalles al desarrollar mis proyectos. |
+| <img src="./assets/profiles/daniela.jpeg" width="500"> | **García Bernal, Daniela**<br>Código: U202212994<br>Carrera: Ingeniería de Software<br><br>Soy estudiante de Ingeniería de Software con conocimientos en C++, programación orientada a objetos, estructuras de datos, UML y Diseño de Interfaces. Tengo conocimiento de desarrollo frontend y backend así como de  metodologías ágiles y Scrum. Me interesa aprender nuevas tecnologías y me caracterizo por prestar atención a los detalles al desarrollar mis proyectos. |
 |---|---|
 
-| <img src="./assets/profiles/AngelFoto.jpg" width="140"> | **Pillaca Vidal, Luis Angel**<br>Código: &lt;u202315654&gt;<br>Carrera: Ingeniería de Software<br><br> Estudiante de séptimo ciclo de Ingeniería de Software enfocado en el desarrollo con buenas prácticas, ética profesional y uso eficiente de herramientas de software. Apasionado por el aprendizaje continuo y la colaboración activa en proyectos tecnológicos de impacto. |
+| <img src="./assets/profiles/AngelFoto.jpg" width="140"> | **Pillaca Vidal, Luis Angel**<br>Código: u202315654<br>Carrera: Ingeniería de Software<br><br> Estudiante de séptimo ciclo de Ingeniería de Software enfocado en el desarrollo con buenas prácticas, ética profesional y uso eficiente de herramientas de software. Apasionado por el aprendizaje continuo y la colaboración activa en proyectos tecnológicos de impacto. |
 |---|---|
 
 <hr class="page-break">
@@ -1150,7 +1146,7 @@ A partir de los segmentos objetivo, los User Personas (Carlos, el empresario MYP
 
 El Product Backlog ordena las User Stories según su valor para el negocio. Se priorizan primero las historias que completan el flujo mínimo de la MYPE (iniciar sesión, subir factura, revisar su detalle y publicarla) y del inversionista (iniciar sesión, recargar saldo, explorar el mercado e invertir), seguidas de las Technical Stories que las soportan y, finalmente, las historias de la Landing Page y las de soporte (recuperación de contraseña, documentación, infraestructura). La estimación se realizó en Story Points con la escala 1 / 2 / 3 / 5 / 8, considerando complejidad técnica, incertidumbre y esfuerzo relativo.
 
-El backlog se gestiona en Trello: _Pendiente: enlace público y captura del tablero._
+El backlog se gestiona en Trello.
 
 
 | # Orden | User Story Id | Título | Descripción | Story Points (1 / 2 / 3 / 5 / 8) |
@@ -1853,74 +1849,74 @@ Esta sección presenta las pantallas de la aplicación móvil de Vankoo organiza
 
 ##### Autenticación e Inicios de Sesión (Login)
 
-![Login 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login0.png)
+![Login 0](assets/cap4-product-design/mobile-app/mockups/Login0.png)
 *Figura 4.4.3.1. Pantalla de inicio / bienvenida.*
 
-![Login 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login1.png)
+![Login 1](assets/cap4-product-design/mobile-app/mockups/Login1.png)
 *Figura 4.4.3.2. Formulario de inicio de sesión.*
 
-![Login 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login2.png)
+![Login 2](assets/cap4-product-design/mobile-app/mockups/Login2.png)
 *Figura 4.4.3.3. Selección de tipo de perfil / credenciales.*
 
-![Login 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login3.png)
+![Login 3](assets/cap4-product-design/mobile-app/mockups/Login3.png)
 *Figura 4.4.3.4. Confirmación de acceso / verificación.*
 
-![Login 4](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login4.png)
+![Login 4](assets/cap4-product-design/mobile-app/mockups/Login4.png)
 *Figura 4.4.3.5. Recuperación y validación de seguridad.*
 
 ---
 
 ##### Pantalla Principal (Home) y Mercado (Marketplace)
 
-![Home 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Home0.png)
+![Home 0](assets/cap4-product-design/mobile-app/mockups/Home0.png)
 *Figura 4.4.3.6. Dashboard principal de la aplicación.*
 
-![Market 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market0.png)
+![Market 0](assets/cap4-product-design/mobile-app/mockups/Market0.png)
 *Figura 4.4.3.7. Vista general del Mercado de Oportunidades.*
 
-![Market 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market1.png)
+![Market 1](assets/cap4-product-design/mobile-app/mockups/Market1.png)
 *Figura 4.4.3.8. Detalle de subasta e inversión.*
 
 ---
 
 ##### Mis Inversiones y Billetera (Wallet)
 
-![My Investments](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/MyInvestments.png)
+![My Investments](assets/cap4-product-design/mobile-app/mockups/MyInvestments.png)
 *Figura 4.4.3.9. Portafolio de inversiones activas y rendimiento.*
 
-![Wallet 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet0.png)
+![Wallet 0](assets/cap4-product-design/mobile-app/mockups/Wallet0.png)
 *Figura 4.4.3.10. Saldo de la billetera y resumen transaccional.*
 
-![Wallet 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet1.png)
+![Wallet 1](assets/cap4-product-design/mobile-app/mockups/Wallet1.png)
 *Figura 4.4.3.11. Opciones de depósito y retiro de fondos.*
 
 ---
 
 ##### Perfil de Usuario y Deltas
 
-![Profile 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile0.png)
+![Profile 0](assets/cap4-product-design/mobile-app/mockups/Profile0.png)
 *Figura 4.4.3.12. Información general del perfil de usuario.*
 
-![Profile 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile1.png)
+![Profile 1](assets/cap4-product-design/mobile-app/mockups/Profile1.png)
 *Figura 4.4.3.13. Ajustes de la cuenta y preferencias.*
 
-![Deltas](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Deltas.png)
+![Deltas](assets/cap4-product-design/mobile-app/mockups/Deltas.png)
 *Figura 4.4.3.14. Comparativa de variaciones y métricas del sistema (Deltas).*
 
 ---
 
 ##### Mantenimiento y Tema Oscuro (Night Mode)
 
-![Night Mode 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode0.png)
+![Night Mode 0](assets/cap4-product-design/mobile-app/mockups/NightMode0.png)
 *Figura 4.4.3.15. Vista principal en Modo Oscuro.*
 
-![Night Mode 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode1.png)
+![Night Mode 1](assets/cap4-product-design/mobile-app/mockups/NightMode1.png)
 *Figura 4.4.3.16. Mercado de Oportunidades en Modo Oscuro.*
 
-![Night Mode 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode2.png)
+![Night Mode 2](assets/cap4-product-design/mobile-app/mockups/NightMode2.png)
 *Figura 4.4.3.17. Vista del portafolio/billetera en Modo Oscuro.*
 
-![Night Mode 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode3.png)
+![Night Mode 3](assets/cap4-product-design/mobile-app/mockups/NightMode3.png)
 *Figura 4.4.3.18. Ajustes y perfil en Modo Oscuro.*
 
 ### 4.4.4. Mobile Applications User Flow Diagrams
@@ -1929,65 +1925,49 @@ Esta sección presenta los diagramas de flujo de usuario (User Flows) para la ap
 
 ##### Flujo de Portada e Inicio (Front Page)
 
-![Front Page User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/FrontPage.png)
+![Front Page User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/FrontPage.png)
 *Figura 4.4.4.1. Diagrama de flujo de la pantalla de bienvenida e inicio de la aplicación.*
 
 ---
 
 ##### Flujo de Autenticación y Acceso (Access)
 
-![Access User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Access.png)
+![Access User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/Access.png)
 *Figura 4.4.4.2. Diagrama de flujo para el registro, inicio de sesión y recuperación de credenciales.*
 
 ---
 
 ##### Flujo de Registro de Perfil y Verificación KYC (Profile KYC)
 
-![Profile KYC User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/ProfileKYC.png)
+![Profile KYC User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/ProfileKYC.png)
 *Figura 4.4.4.3. Diagrama de flujo para el completado de perfil y el proceso de validación de identidad KYC.*
 
 ---
 
 ##### Flujo de Recarga de Billetera (Recharge Wallet)
 
-![Recharge Wallet User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/RechargeWallet.png)
+![Recharge Wallet User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/RechargeWallet.png)
 *Figura 4.4.4.4. Diagrama de flujo para la recarga de fondos y gestión del saldo en la billetera.*
 
 ---
 
 ##### Flujo de Exploración del Mercado (Marketplace)
 
-![Marketplace User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Marketplace.png)
+![Marketplace User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/Marketplace.png)
 *Figura 4.4.4.5. Diagrama de flujo para la navegación y búsqueda de subastas en el mercado de oportunidades.*
 
 ---
 
 ##### Flujo de Gestión de Inversiones (Investments)
 
-![Investments User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Investments.png)
+![Investments User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/Investments.png)
 *Figura 4.4.4.6. Diagrama de flujo para la ejecución de inversiones y seguimiento del portafolio.*
 
-## 4.5. Mobile Applications Prototyping
-
-<!-- Assets: ./assets/cap4-product-design/mobile-app/prototyping/ — incluir enlace público al prototipo en Figma. -->
-
-_Pendiente de elaboración._
-
-### 4.5.1. Android Mobile Applications Prototyping
-
-_Pendiente de elaboración._
-
-### 4.5.2. iOS Mobile Applications Prototyping
-
-_Pendiente de elaboración._
-
-<hr class="page-break">
-
-## 4.6. Web Applications UX/UI Design
+## 4.5. Web Applications UX/UI Design
 
 En este segmento se exponen los esquemas visuales y prototipos interactivos correspondientes a los módulos operativos de la plataforma Vankoo. Asimismo, se detallan las interfaces principales, sus capacidades dinámicas y los componentes estéticos que conforman el sistema.
 
-### 4.6.1. Web Applications Wireframes
+### 4.5.1. Web Applications Wireframes
 
 **IAM**
 
@@ -2120,7 +2100,7 @@ Muestra un mensaje al usuario indicando que la página solicitada no se encuentr
 ![404-Wireframe](assets/cap4-product-design/web-app/wireframes/404-wireframe.png)
 
 
-### 4.6.2. Web Applications Wireflow Diagrams
+### 4.5.2. Web Applications Wireflow Diagrams
 
 **Acceso y Recuperación**
 
@@ -2162,7 +2142,7 @@ El retiro es el último tramo del recorrido de la MYPE y el único que saca dine
 
 ![Wallet-Wireflow](assets/cap4-product-design/web-app/wireflow-diagrams/wallet-withdraw-wireflow.png)
 
-### 4.6.3. Web Applications Mock-ups
+### 4.5.3. Web Applications Mock-ups
 
 **IAM**
 
@@ -2349,7 +2329,7 @@ Pantalla que indica al usuario que la página solicitada no se encuentra disponi
 
 ![404-Mockup](assets/cap4-product-design/web-app/mockups/404-mockup.png)
 
-### 4.6.4. Web Applications User Flow Diagrams
+### 4.5.4. Web Applications User Flow Diagrams
 
 **Acceso y Recuperación**
 
@@ -2391,7 +2371,7 @@ El retiro es la última milla del producto para la MYPE: el dinero ya cobrado sa
 
 ![Wallet-Withdraw-User-Flow](assets/cap4-product-design/web-app/user-flow-diagrams/wallet-withdraw-user-flow.png)
 
-## 4.7. Web Applications Prototyping
+## 4.6. Web Applications Prototyping
 
 En esta sección se presentan los prototipos de alta fidelidad de las aplicaciones web de la plataforma Vankoo, junto con enlaces a los videos demostrativos y capturas de pantalla representativas.
 
@@ -2399,11 +2379,11 @@ En esta sección se presentan los prototipos de alta fidelidad de las aplicacion
 
 <hr class="page-break">
 
-## 4.8. Domain-Driven Software Architecture
+## 4.7. Domain-Driven Software Architecture
 
 En esta sección se presenta el modelo físico de datos correspondiente a cada microservicio mediante sus respectivos diagramas entidad-relación (ERD). Se contemplan cuatro contextos relacionales (IAM y Profile en PostgreSQL, Finance mediante un read model en PostgreSQL sobre Axon Server Event Store, e Investment en Oracle) y un esquema de documentos NoSQL en MongoDB para el contexto de Invoicing. Cada diagrama refleja de forma fidedigna el estado real de la base de datos a partir de sus entidades (JPA/TypeORM/EF-Mongo) y scripts de migración. Destaca el caso particular de Finance, el cual aplica el patrón Axon Event Sourcing: los agregados de dominio no se mapean en tablas dedicadas, limitando el esquema de PostgreSQL a las tablas del modelo de lectura y a las estructuras de soporte operativo (idempotencia, inbox de webhooks y el token/saga store de Axon)
 
-### 4.8.1. Software Architecture Context Diagram
+### 4.7.1. Software Architecture Context Diagram
 
 En esta sección se presenta el **Diagrama de Contexto del Sistema (System Context View)** para **Vankoo**, el cual delimita las fronteras de la plataforma, identifica los tipos de usuarios principales y detalla sus interacciones con los servicios externos que complementan la arquitectura del software.
 
@@ -2429,7 +2409,7 @@ En esta sección se presenta el **Diagrama de Contexto del Sistema (System Conte
    * **Firebase (FCM):** Servicio de notificaciones Push para el envío en tiempo real de alertas sobre el estado de subastas, recargas y operaciones.
    * **Cloud OCR API:** Servicio externo de reconocimiento óptico de caracteres para la extracción e intepretación automática de datos relevantes a partir de la imagen de las facturas.
 
-### 4.8.2. Software Architecture Container Diagrams
+### 4.7.2. Software Architecture Container Diagrams
 
 En esta sección se presenta el **Diagrama de Contenedores (Container View)** bajo el modelo C4 para la plataforma **Vankoo**. Este nivel muestra la distribución de las aplicaciones ejecutables, los servicios de backend y los almacenes de datos que conforman el ecosistema técnico, detallando sus responsabilidades principales y los protocolos de comunicación utilizados.
 
@@ -2466,7 +2446,7 @@ En esta sección se presenta el **Diagrama de Contenedores (Container View)** ba
    * **Firebase FCM:** Envío de notificaciones Push en tiempo real a los dispositivos móviles.
    * **Cloud OCR API:** Servicio de lectura e interpretación inteligente de documentos.
 
-### 4.8.3. Software Architecture Components Diagrams
+### 4.7.3. Software Architecture Components Diagrams
 
 Los diagramas de componentes (C4 Nivel 3) profundizan en la organización interna y la estructura de módulos de cada *bounded context* de **Vankoo**. Fueron elaborados en **Structurizr** tomando como referencia el código fuente y la arquitectura de capas de cada microservicio. 
 
@@ -2550,9 +2530,9 @@ El diagrama de componentes del **Profile Service** (TypeScript / NestJS) se divi
 
 
 
-## 4.9. Software Object-Oriented Design
+## 4.8. Software Object-Oriented Design
 
-### 4.9.1. Class Diagrams
+### 4.8.1. Class Diagrams
 
 Se presentan a continuación los cinco diagramas de clases de la capa de dominio, uno por cada *Bounded Context*, bajo la paleta de estereotipos DDD acordada para el proyecto: **`«AggregateRoot»`** (`#1168BD`), **`«Entity»`** (`#438DD5`), **`«ValueObject»`** (`#85BBF0`), **`«DomainEvent»`** (`#F28FAD`), **`«DomainService»`** (`#6BA3DC`) y **`«Exception»`** (`#CDA1A1`).
 
@@ -2572,7 +2552,7 @@ Las líneas continuas marcan composición y las punteadas, dependencias semánti
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/iam-domain-class-diagram.png" alt="IAM Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.1. Diagrama de clases del dominio del Bounded Context IAM.</b>
+  <b>Figura 4.8.1.1. Diagrama de clases del dominio del Bounded Context IAM.</b>
 </p>
 
 ---
@@ -2588,7 +2568,7 @@ Las líneas continuas marcan la composición de cada agregado con sus Value Obje
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/profile-domain-class-diagram.png" alt="Profile Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.2. Diagrama de clases del dominio del Bounded Context Profile.</b>
+  <b>Figura 4.8.1.2. Diagrama de clases del dominio del Bounded Context Profile.</b>
 </p>
 
 ---
@@ -2605,7 +2585,7 @@ Las líneas punteadas marcan eventos y excepciones; los Domain Services despacha
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/finance-domain-class-diagram.png" alt="Finance Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.3. Diagrama de clases del dominio del Bounded Context Finance.</b>
+  <b>Figura 4.8.1.3. Diagrama de clases del dominio del Bounded Context Finance.</b>
 </p>
 
 ---
@@ -2621,7 +2601,7 @@ Las líneas continuas marcan la composición de `Auction` con sus particiones; l
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/investment-domain-class-diagram.png" alt="Investment Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.4. Diagrama de clases del dominio del Bounded Context Investment.</b>
+  <b>Figura 4.8.1.4. Diagrama de clases del dominio del Bounded Context Investment.</b>
 </p>
 
 ---
@@ -2638,11 +2618,11 @@ De los seis Domain Events declarados en el código, solo dos están realmente ca
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/invoicing-domain-class-diagram.png" alt="Invoicing Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.5. Diagrama de clases del dominio del Bounded Context Invoicing.</b>
+  <b>Figura 4.8.1.5. Diagrama de clases del dominio del Bounded Context Invoicing.</b>
 </p>
 
 
-### 4.9.2. Class Dictionary
+### 4.8.2. Class Dictionary
 
 Se presenta a continuación el diccionario de clases de la capa de dominio organizado por *Bounded Context*, el cual especifica la responsabilidad, estereotipo DDD, atributos y métodos de negocio clave de cada elemento.
 
@@ -2803,19 +2783,19 @@ Se presenta a continuación el diccionario de clases de la capa de dominio organ
 
 > **Nota de fidelidad:** De los 6 eventos de dominio declarados en el código de Invoicing, solo `InvoiceCreatedEvent` e `InvoiceEligibleForFundingDomainEvent` implementan `INotification` y tienen un manejador asociado.
 
-## 4.10. Database Design
+## 4.9. Database Design
 
 Esta sección documenta el modelo físico de datos de cada microservicio: modelos entidad-relación (ERD) para los cuatro contextos relacionales (IAM y Profile sobre PostgreSQL, Finance sobre PostgreSQL como read model de un Event Store en Axon Server, Investment sobre Oracle) y un modelo de documentos en MongoDB para el contexto NoSQL (Invoicing). Los diagramas se construyeron a partir de las entidades JPA/TypeORM/EF-Mongo y las migraciones o configuraciones de persistencia realmente presentes en cada repositorio, no de un diseño ideal; en particular, Finance despliega un modelo poco convencional (Axon Event Sourcing) en el que los agregados de dominio no poseen tabla propia y el esquema PostgreSQL solo contiene el read model de consulta y las tablas operativas de soporte (idempotencia, inbox de webhooks, token/saga store de Axon).
 
-#### 4.10.1. Database Diagram
+### 4.9.1. Relational/Non-Relational Database Diagram
 
 ##### IAM
 
 El esquema físico del Bounded Context IAM (PostgreSQL) consta de la tabla `users` (credenciales y auditoría), la tabla de catálogo `roles` y la tabla de unión `user_roles` que materializa la relación N:M entre ambas. El único índice adicional es la restricción de unicidad sobre `email`; el esquema se genera automáticamente vía Hibernate, sin migraciones versionadas. IAM es el Bounded Context raíz de identidad: no declara referencias hacia otros contextos, sino que su clave `users.id` es la que Profile e Investment referencian lógicamente a través del evento `UserCreatedEvent`.
 
-![Vankoo — IAM Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/iam-database-diagram.png)
+![Vankoo — IAM Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/iam-database-diagram.png)
 
-*Figura 4.10.1.1. Diagrama entidad-relación del Bounded Context IAM.*
+*Figura 4.9.1.1. Diagrama entidad-relación del Bounded Context IAM.*
 
 ---
 
@@ -2823,9 +2803,9 @@ El esquema físico del Bounded Context IAM (PostgreSQL) consta de la tabla `user
 
 El esquema físico del Bounded Context Profile (PostgreSQL) consta de las tablas `companies` e `investors` —con sus Value Objects de dirección y sostenibilidad aplanados como columnas con prefijo— y de `bank_accounts`, en relación 1 a 1 con `investors` mediante una foreign key con `ON DELETE CASCADE`. Ambas tablas principales declaran unicidad sobre su identificador fiscal (`ruc_number`, `dni_number`) y una referencia lógica, sin FK física, hacia `users.id` de IAM. El esquema se sincroniza automáticamente desde las entidades TypeORM, sin carpeta de migraciones.
 
-![Vankoo — Profile Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/profile-database-diagram.png)
+![Vankoo — Profile Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/profile-database-diagram.png)
 
-*Figura 4.10.1.2. Diagrama entidad-relación del Bounded Context Profile.*
+*Figura 4.9.1.2. Diagrama entidad-relación del Bounded Context Profile.*
 
 ---
 
@@ -2833,9 +2813,9 @@ El esquema físico del Bounded Context Profile (PostgreSQL) consta de las tablas
 
 El esquema físico del Bounded Context Finance (PostgreSQL) no almacena los agregados `Deposit` y `Wallet` como tablas: al ser event-sourced con Axon Framework, el Event Store real reside en Axon Server, un producto externo. PostgreSQL solo contiene el read model de consulta (`finance_read_model`), las tablas operativas de idempotencia y borde (`finance_ops`) y las tablas de soporte propias de Axon (token store, saga store y dead-letter queue). Todas las referencias a cuentas son lógicas hacia el `UserId` de IAM propagado a través de Profile, ya que Finance no mantiene una tabla local de cuentas.
 
-![Vankoo — Finance Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/finance-database-diagram.png)
+![Vankoo — Finance Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/finance-database-diagram.png)
 
-*Figura 4.10.1.3. Diagrama entidad-relación del Bounded Context Finance.*
+*Figura 4.9.1.3. Diagrama entidad-relación del Bounded Context Finance.*
 
 ---
 
@@ -2843,9 +2823,9 @@ El esquema físico del Bounded Context Finance (PostgreSQL) no almacena los agre
 
 El esquema físico del Bounded Context Investment reside en Oracle (no PostgreSQL) y consta de las tablas `auctions` y `partitions` —en relación 1 a N mediante una foreign key gestionada desde el lado padre— más la vista de lectura `auction_marketplace_view_entities`, poblada de forma asíncrona por el evento `AuctionCreatedEvent` para servir el marketplace bajo CQRS sin tocar el agregado transaccional. El esquema se genera vía Hibernate, sin migraciones ni índices adicionales; `mype_id`, `investor_id` e `invoice_id` son referencias lógicas hacia Profile e Invoicing.
 
-![Vankoo — Investment Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/investment-database-diagram.png)
+![Vankoo — Investment Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/investment-database-diagram.png)
 
-*Figura 4.10.1.4. Diagrama entidad-relación del Bounded Context Investment.*
+*Figura 4.9.1.4. Diagrama entidad-relación del Bounded Context Investment.*
 
 ---
 
@@ -2853,16 +2833,9 @@ El esquema físico del Bounded Context Investment reside en Oracle (no PostgreSQ
 
 El modelo de datos del Bounded Context Invoicing es documental (MongoDB) y consta de dos colecciones: `Invoices`, donde el propio agregado de dominio se persiste como documento —sin un modelo de persistencia separado— con sus Value Objects embebidos; y `OcrTasks`, la cola de reintentos de OCR, que la referencia por un identificador simple (`InvoiceId`), sin unión física entre colecciones. Ninguna de las dos define Shard Key ni índices TTL; `Invoices` no tiene ningún índice secundario declarado, mientras que `OcrTasks` sí declara tres, incluido el que soporta su patrón de cola con lease.
 
-![Vankoo — Invoicing Bounded Context Document Data Model](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/invoicing-database-diagram.png)
+![Vankoo — Invoicing Bounded Context Document Data Model](assets/cap4-product-design/database-design/out/invoicing-database-diagram.png)
 
-*Figura 4.10.1.5. Diagrama del modelo de datos documental del Bounded Context Invoicing.*
-
-### 4.10.2. Relational/Non-Relational Database Diagram
-
-<!-- Herramienta: LucidChart / Vertabelo. -->
-<!-- Assets: ./assets/cap4-product-design/database-design/ -->
-
-_Pendiente de elaboración._
+*Figura 4.9.1.5. Diagrama del modelo de datos documental del Bounded Context Invoicing.*
 
 <hr class="page-break">
 
@@ -3132,9 +3105,6 @@ Para esta entrega el equipo ejecutó un único Sprint orientado a tener usable, 
 | Sprint # | Sprint 1 |
 |----------|----------|
 | **Sprint Planning Background** | |
-| Date | _Pendiente_ |
-| Time | _Pendiente_ |
-| Location | _Pendiente_ |
 | Prepared By | Amaro Villar, Anjali |
 | Attendees (to planning meeting) | Acuache Lucas, Mathias Joaquin / Amaro Villar, Anjali / García Bernal, Daniela / Pillaca Vidal, Luis Angel |
 | Sprint n - 1 Review Summary | No aplica: es el primer Sprint del proyecto. |
@@ -3496,7 +3466,7 @@ Para esta entrega, la suite BDD cubre el flujo de **carga inteligente de factura
 El escenario se define como un *Scenario Outline*: los mismos pasos se ejecutan una vez por cada fila de la tabla `Examples`, lo que permite cubrir las cuatro reglas de validación inicial con una única especificación legible.
 
 ```gherkin
-@US01
+@US11
 Feature: Smart invoice upload
   As a MYPE business owner
   I want to register my invoice in the MYPE Web
@@ -4282,7 +4252,6 @@ El primer paso del job comprueba que el entorno `production` tenga configuradas 
 
 **Conclusiones y recomendaciones**
 
-<!-- Avance de conclusiones para AV1. Se expande en cada entrega. -->
 
 **Avance de conclusiones (AV1)**
 
@@ -4296,11 +4265,30 @@ El primer paso del job comprueba que el entorno `production` tenga configuradas 
 
 5. **Sobre la implementación.** La arquitectura de microservicios por bounded context (IAM, Invoicing, Investment, Finance) con API Gateway y Discovery Server permitió que el equipo trabajara en paralelo con bajo acoplamiento, y la documentación OpenAPI agregada en Scalar facilitó la integración de las aplicaciones web y móvil contra un único punto de entrada.
 
-**Recomendaciones**
+**Recomendaciones (AV1)**
 
 * Ejecutar las entrevistas de validación con usuarios reales sobre las aplicaciones implementadas, para obtener las primeras mediciones de las hipótesis 01 (tiempo de carga de factura) y 03 (velocidad de fondeo).
 * Priorizar en el roadmap el despliegue en la nube de los servicios y la publicación de la documentación de la API, de modo que la validación no dependa de un entorno local.
 * Completar el flujo end-to-end (factura → subasta → inversión → débito de billetera) e incorporar el scoring de riesgo, que es el diferenciador central de la propuesta de valor.
+
+**Avance de conclusiones (TB1)**
+
+1. **Sobre la verificación del producto.** El TB1 incorporó pruebas automatizadas en cuatro niveles. En los repositorios del API Gateway y del Invoicing Service, 39 pruebas unitarias, de integración y BDD se ejecutan en cada push y Pull Request, y la última ejecución terminó sin fallas. Las pruebas de sistema validaron nueve User Stories en el Landing Page, la aplicación web de la MYPE y la aplicación móvil del inversionista.
+
+2. **Sobre los criterios de aceptación.** Los criterios de US11 y US13 dejaron de ser solo texto: el escenario BDD `SmartInvoiceUpload.feature` los ejecuta y comprueba que una factura con totales que no cuadran, baja confianza de lectura, fecha vencida o emisor igual al pagador no llega a la subasta. Esto respalda, a nivel técnico, la transparencia y la confianza que ambos segmentos señalaron como condición para usar la plataforma.
+
+3. **Sobre las prácticas DevOps.** Se implementó un pipeline de GitHub Actions con tres etapas encadenadas (integración, entrega y despliegue) en dos repositorios. Cada cambio integrado en `develop` o `main` genera una imagen Docker validada y versionada en GitHub Container Registry. El despliegue a producción en Azure, con verificación de salud y rollback, está configurado y queda listo para activarse al registrar las credenciales del entorno `production`.
+
+4. **Sobre las Hypothesis Statements.** En esta entrega todavía no se dispone de mediciones con usuarios reales: la validación de las hipótesis corresponde a las siguientes etapas del proyecto. La verificación automatizada asegura que los flujos sobre los que se realizarán esas mediciones (carga de facturas, publicación en subasta, recarga e inversión) funcionan de forma consistente.
+
+5. **Sobre el trabajo en equipo.** La adopción de GitFlow y Pull Requests permitió integrar los aportes de los cuatro integrantes en el informe y en los once repositorios de código, cada uno con una primera versión estable publicada en `main`.
+
+**Recomendaciones (TB1)**
+
+* Extender el pipeline de CI/CD a los repositorios restantes (IAM, Profile, Investment, Finance, Discovery Server, aplicación web, aplicación móvil y Landing Page).
+* Registrar las credenciales de Azure y de Netlify para activar el despliegue continuo y contar con un ambiente de producción accesible para las validaciones.
+* Ampliar la suite BDD a los flujos de inicio de sesión, recarga de billetera e inversión, y agregar pruebas de integración entre microservicios a través del API Gateway.
+* Iniciar la fase de experimentación del Capítulo VIII y las entrevistas de validación con usuarios para medir las hipótesis definidas en el Lean UX Process.
 
 <hr class="page-break">
 
