@@ -43,7 +43,13 @@
 | Versión | Fecha    | Autor                | Descripción de modificación                                   |
 |---------|----------|----------------------|---------------------------------------------------------------|
 | 1.0     | 02/09/26 | YieldLabs            | Organización inicial del informe y estructura del repositorio |
-|         |          |                      |                                                               |
+| 2.0     | 05/10/26 | Amaro Villar, Anjali | Estructura del TB1: Acuerdo de Servicio SaaS (5.2.4), renumeración del Capítulo V y Capítulos VI y VII en el índice y el cuerpo |
+| 2.1     | 06/10/26 | Pillaca Vidal, Luis Angel | Core Entities Unit Tests (6.1.1) y Continuous Integration (7.1.1 y 7.1.2) |
+| 2.2     | 07/10/26 | Acuache Lucas, Mathias Joaquin | Core Integration Tests (6.1.2) y Continuous Delivery (7.2.1 y 7.2.2) |
+| 2.3     | 07/10/26 | Amaro Villar, Anjali | Core Behavior-Driven Development (6.1.3), Continuous Deployment Tools and Practices (7.3.1) y actualización de Anexos |
+| 2.4     | 07/10/26 | García Bernal, Daniela | Production Deployment Pipeline Components (7.3.2) y Core System Tests (6.1.4) |
+| 2.5     | 07/10/26 | Amaro Villar, Anjali | Alineación de los Capítulos V, VI y VII con el pipeline CI/CD implementado y evidencias de ejecución |
+| 2.6     | 07/10/26 | Amaro Villar, Anjali | Student Outcome del TB1 y Registro de Versiones |
 
 <hr class="page-break">
 
