@@ -25,7 +25,7 @@
 <h4 style="text-align: center">Integrantes:</h4>
 
 <div style="text-align:center; margin-top: 10px; font-size: 90%; line-height: 1.6;">
-  <p>&lt;Código&gt; — Acuache Lucas, Mathias Joaquin</p>
+  <p>&lt;U202314898&gt; — Acuache Lucas, Mathias Joaquin</p>
   <p>&lt;U20221g044&gt; — Amaro Villar, Anjali</p>
   <p>&lt;U202212994&gt; — García Bernal, Daniela</p>
   <p>&lt;U202315654&gt; — Pillaca Vidal, Luis Angel</p>
@@ -3329,9 +3329,40 @@ class InvoiceTest {
 
 ### 6.1.2. Core Integration Tests
 
-<!-- Pruebas de integración entre módulos: comunicación frontend-backend e interacción entre servicios o APIs. -->
+Las Core Integration Tests verifican que los componentes reales del sistema funcionen correctamente en conjunto. En el API Gateway se integran el filtro de autorización, el servicio de tokens JWT y el escritor de respuestas de error, de modo que cada solicitud rechazada responda con el código de estado y el formato correctos. Esto facilita la depuración y aporta confiabilidad al punto de entrada único de la plataforma.
 
-_Pendiente de elaboración._
+#### 1. Estrategia y entorno de pruebas
+
+- **Framework:** JUnit 5.
+- **Componentes reales bajo prueba:** `BearerAuthorizationRequestGatewayFilterFactory`, `TokenServiceImpl` y `ProblemDetailWriter`.
+- **Simulación:** la petición y la respuesta se representan con `MockServerWebExchange`. El servicio destino se sustituye por una cadena de filtros de prueba que registra si la petición llegó a ser reenviada. No se usan Eureka ni microservicios externos.
+- **Patrón de estructuración:** AAA (Arrange, Act, Assert).
+
+#### 2. Matriz de pruebas de integración
+
+| Componentes integrados | Caso de prueba | Resultado esperado |
+|---|---|---|
+| Filtro + `TokenServiceImpl` + `ProblemDetailWriter` | Petición a ruta protegida sin cabecera `Authorization` | 401, `application/problem+json`, `WWW-Authenticate: Bearer`; la petición no se reenvía |
+| Filtro + `TokenServiceImpl` | Token con formato inválido | 401; la petición no se reenvía |
+| Filtro + `ProblemDetailWriter` | Cuerpo de la respuesta de rechazo | Cuerpo `problem+json` con status 401 |
+| Filtro + `TokenServiceImpl` + enriquecedor de identidad | Token válido | La petición se reenvía con la cabecera `X-User-Id` del usuario |
+
+#### 3. Gateway Authorization Filter Integration Test
+
+Clase: `BearerAuthorizationRequestFilterIntegrationTest`
+
+![Código del test de integración, parte 1](assets/cap6-product-verification-validation/core-integration-tests/section3-tests.png)
+![Código del test de integración, parte 1](assets/cap6-product-verification-validation/core-integration-tests/section3-tests2.png)
+
+#### 4. Resultado de la ejecución
+
+4 pruebas ejecutadas, 4 exitosas, 0 fallidas.
+
+![Resultado de la ejecución: 4 tests passed](assets/cap6-product-verification-validation/core-integration-tests/4tests-6.1.2.png)
+
+#### 5. Limitación
+
+Las pruebas integran tres clases reales del gateway, pero el servicio destino está simulado con una cadena de filtros de prueba. No se verifica el enrutamiento real a los microservicios a través de Eureka.
 
 ### 6.1.3. Core Behavior-Driven Development
 
@@ -3529,13 +3560,48 @@ jobs:
 
 ## 7.2. Continuous Delivery
 
+Continuous Delivery extiende el flujo de Integración Continua descrito en la sección 7.1. Una vez que el código compila y sus pruebas pasan, el pipeline empaqueta el servicio en una imagen Docker y lo deja listo para desplegarse. El paso final a producción permanece bajo aprobación manual del equipo.
+
+
 ### 7.2.1. Tools and Practices
 
-_Pendiente de elaboración._
+El equipo reutiliza las herramientas de CI y suma las que empaquetan y entregan cada servicio. La siguiente tabla resume cada herramienta, su tipo y el propósito que cumple en el flujo de entrega.
+
+| Herramienta | Tipo | Propósito |
+|---|---|---|
+| GitHub | Control de versiones y colaboración | Aloja los repositorios de la organización `yieldlabs` y gestiona ramas y Pull Requests con revisión cruzada entre integrantes. |
+| GitHub Actions | Automatización de CI/CD | Ejecuta la compilación y las pruebas en cada evento de código y encadena la construcción de la imagen y la aprobación del despliegue. |
+| Maven | Construcción del backend | Compila el API Gateway y ejecuta las pruebas unitarias, de integración y BDD. |
+| JUnit 5 y Cucumber | Pruebas | Validan el comportamiento del servicio antes de que el cambio avance en el pipeline. |
+| pnpm y Vite | Construcción del frontend | Instalan dependencias y generan el build de `vankoo-mype-web`, con la versión de Node fijada en `.nvmrc` y ESLint para validar el código. |
+| Docker | Contenerización | El `Dockerfile` del gateway usa dos etapas: construye el JAR con Maven y Temurin 25, y ejecuta solo el JRE en una imagen ligera, con usuario sin privilegios y `curl` para el healthcheck. |
+| Docker Compose | Orquestación | El `docker-compose.yaml` de `vankoo-infra` levanta el sistema completo con el mismo entorno en desarrollo y en validación. |
+| Perfiles de Spring (`dev`, `docker`, `prod`) | Configuración por entorno | Separan la configuración de cada entorno sin cambiar el código. |
+
+Además de las herramientas, el equipo sigue prácticas que reducen el riesgo de llevar código no deseado a producción:
+
+- **Feature Branching y Pull Requests:** cada cambio se desarrolla en una rama `feature/*` y se integra a `develop` mediante un Pull Request que revisa otro integrante del equipo.
+- **Conventional Commits:** los mensajes siguen el formato `feat`, `build`, `chore` y `docs`, lo que mantiene un historial ordenado por capa.
+- **Pruebas antes de integrar:** un cambio solo se fusiona a la rama estable si sus pruebas pasan. La imagen se construye con `-DskipTests` porque las pruebas ya corrieron en la etapa de CI.
+- **Imagen única por entorno:** la misma imagen se ejecuta en cada entorno y solo cambia el perfil de configuración activo.
+- **Despliegue semiautomático con aprobación manual:** el pipeline deja la imagen lista, pero el despliegue final lo autoriza un responsable.
+- **Rollback manual:** ante un error grave en producción, el equipo vuelve a la imagen de la versión anterior de forma controlada.
+
 
 ### 7.2.2. Stages Deployment Pipeline Components
 
-_Pendiente de elaboración._
+El pipeline de entrega se organiza en etapas encadenadas: cada una solo se ejecuta si la anterior termina con éxito, y la última exige aprobación humana. La siguiente tabla describe qué ocurre en cada etapa y con qué herramienta.
+
+| Etapa | Qué ocurre | Herramienta |
+|---|---|---|
+| 1. Integración continua | Se compila el proyecto y se ejecutan las pruebas unitarias, de integración y BDD. Si alguna falla, el cambio no avanza. | GitHub Actions, Maven |
+| 2. Construcción de la imagen | Con las pruebas aprobadas, se construye la imagen Docker del servicio. | Docker |
+| 3. Validación en staging | El sistema se levanta con el perfil `docker` en un entorno similar al de producción para pruebas manuales, de carga o seguridad . | Docker Compose |
+| 4. Aprobación del despliegue | El pipeline queda en espera hasta que un responsable revise los resultados y autorice. | GitHub Environments |
+| 5. Despliegue manual | Con la aprobación, se despliega la versión validada con el perfil `prod` . | GitHub Actions, Docker |
+| 6. Monitoreo y feedback | Se observa el estado del servicio, por ejemplo con el healthcheck de la imagen, y los resultados alimentan el siguiente ciclo. | Docker healthcheck |
+
+La configuración propuesta del flujo reutiliza el job de pruebas de la sección 7.1, agrega la construcción de la imagen y deja el despliegue detrás de un entorno `production` que exige aprobación manual:
 
 ## 7.3. Continuous Deployment
 
@@ -3594,7 +3660,104 @@ Continuous Deployment es el último tramo del pipeline de Vankoo: todo cambio qu
 
 ### 7.3.2. Production Deployment Pipeline Components
 
-_Pendiente de elaboración._
+El **Production Deployment Pipeline** de Vankoo comprende el conjunto de etapas necesarias para llevar una versión validada del sistema desde los repositorios de código fuente hasta el ambiente de producción. Debido a que Vankoo está conformado por diferentes componentes, el proceso de despliegue considera el **Landing Page, la aplicación web, la aplicación móvil y los servicios backend** que forman parte de la solución.
+
+El código fuente de los diferentes componentes es administrado mediante **GitHub**, siguiendo la estrategia de ramas definida por el equipo. Los cambios son desarrollados inicialmente en ramas de tipo `feature/*` y posteriormente son integrados a las ramas correspondientes mediante el flujo de trabajo establecido. De esta manera, se mantiene una separación entre el desarrollo de nuevas funcionalidades y las versiones del producto que se encuentran preparadas para continuar con los procesos de integración, validación y despliegue.
+
+El objetivo del Production Deployment Pipeline es establecer un proceso controlado y reproducible para llevar los componentes de Vankoo hacia el ambiente productivo, reduciendo la intervención manual y manteniendo la trazabilidad de las versiones desplegadas.
+
+#### Production Deployment Pipeline Flow
+
+El pipeline se encuentra compuesto por las siguientes etapas:
+
+#### Source Code Retrieval
+
+El proceso comienza con la obtención del código fuente almacenado en los repositorios de **GitHub** de la organización. Los componentes principales de Vankoo se mantienen en repositorios independientes, permitiendo administrar de forma separada las aplicaciones frontend, los servicios backend y los componentes de infraestructura.
+
+El uso de Git y GitHub permite mantener un historial de los cambios realizados, identificar las versiones utilizadas durante cada despliegue y controlar la integración del código mediante ramas y Pull Requests.
+
+#### Environment Preparation
+
+Una vez obtenida la versión del código que será utilizada, se prepara el entorno requerido para construir el componente correspondiente. Debido a que Vankoo posee una arquitectura distribuida y utiliza diferentes tecnologías, los requisitos del entorno pueden variar entre las aplicaciones frontend y los distintos servicios backend.
+
+Esta etapa comprende la preparación de los runtimes, herramientas de construcción, administradores de dependencias y variables de entorno requeridas para que cada componente pueda ser construido correctamente.
+
+Las variables de entorno permiten separar los valores de configuración del código fuente, facilitando el uso de diferentes configuraciones dependiendo del ambiente donde se ejecute la aplicación.
+
+#### Dependency Installation
+
+Posteriormente, se realiza la instalación o restauración de las dependencias requeridas por cada proyecto.
+
+En los componentes frontend se utilizan los administradores de paquetes correspondientes para obtener las librerías declaradas por la aplicación. De manera similar, los servicios backend utilizan las herramientas de gestión de dependencias correspondientes a su tecnología.
+
+Esta etapa permite garantizar que cada componente disponga de las librerías necesarias antes de iniciar el proceso de construcción.
+
+#### Build
+
+Después de preparar el entorno y obtener las dependencias, se ejecuta el proceso de **build** del componente.
+
+El objetivo de esta etapa es comprobar que el código integrado puede ser construido correctamente y generar una versión ejecutable o desplegable de la aplicación.
+
+Si durante el proceso de construcción se produce un error, el componente no debe continuar hacia el despliegue hasta que el problema haya sido solucionado. De esta forma, el build funciona como una validación previa a la generación del artefacto que será utilizado posteriormente.
+
+#### Validation Before Deployment
+
+Antes de realizar el despliegue a producción, la versión del producto debe pasar por las validaciones establecidas durante los procesos de **Continuous Integration** y **Continuous Delivery**.
+
+Estas validaciones permiten comprobar que los cambios incorporados no afecten negativamente las funcionalidades previamente implementadas y que el componente se encuentre en condiciones adecuadas para continuar hacia el ambiente productivo.
+
+De esta manera, el Continuous Deployment se relaciona directamente con las etapas anteriores del proceso DevOps, utilizando como entrada una versión que previamente ha sido integrada, construida y validada.
+
+#### Deployment Artifact Generation
+
+Luego de superar las etapas de construcción y validación, se prepara el artefacto que será utilizado para realizar el despliegue.
+
+En los servicios que utilizan contenedores, **Docker** permite empaquetar la aplicación junto con los elementos necesarios para su ejecución mediante imágenes. Esto permite disponer de unidades de despliegue reproducibles y mantener mayor consistencia entre los diferentes ambientes.
+
+La utilización de contenedores también facilita la administración de los diferentes servicios que forman parte de la arquitectura de Vankoo, debido a que cada servicio puede mantener sus propias dependencias y configuración de ejecución.
+
+Para los componentes frontend, el proceso de construcción genera los recursos necesarios para publicar la aplicación mediante el servicio de hosting correspondiente.
+
+#### Production Deployment
+
+Una vez generado correctamente el artefacto, se procede con su publicación en el ambiente definido para la ejecución del producto.
+
+Debido a que Vankoo se encuentra compuesto por diferentes aplicaciones y servicios, el proceso considera individualmente los siguientes componentes:
+
+- **Landing Page:** presenta la propuesta de valor de Vankoo y proporciona información inicial sobre el funcionamiento de la plataforma.
+- **Web Application:** permite al segmento MYPE acceder a las funcionalidades relacionadas con la gestión y financiamiento de sus facturas.
+- **Mobile Application:** permite al segmento inversionista acceder a las funcionalidades destinadas a la gestión de sus operaciones dentro de la plataforma.
+- **Backend Services:** implementan la lógica de negocio y proporcionan las APIs requeridas por las aplicaciones cliente.
+- **Infrastructure Components:** proporcionan los servicios necesarios para permitir la comunicación, persistencia y funcionamiento de los diferentes componentes de la solución.
+
+La separación de estos componentes permite que cada uno siga el proceso de construcción y despliegue apropiado para su tecnología, manteniendo al mismo tiempo la integración necesaria para el funcionamiento completo de la plataforma.
+
+#### Post-Deployment Verification
+
+Una vez realizado el despliegue, se debe verificar que los componentes se encuentren disponibles y funcionando correctamente en el ambiente correspondiente.
+
+Para el Landing Page y las aplicaciones frontend, esta comprobación considera la disponibilidad de la aplicación, la correcta carga de sus recursos y la posibilidad de acceder a sus principales funcionalidades.
+
+Para los servicios backend, la verificación considera que los servicios puedan iniciarse correctamente, se encuentren disponibles para recibir solicitudes y puedan comunicarse con los demás componentes requeridos por la arquitectura.
+
+Esta etapa permite detectar problemas relacionados con configuración, conectividad o disponibilidad que podrían no presentarse durante el proceso de construcción.
+
+#### Production Deployment Pipeline Summary
+
+Los principales componentes que forman parte del Production Deployment Pipeline de Vankoo pueden resumirse de la siguiente manera:
+
+| Componente | Propósito |
+|---|---|
+| **Source Code Retrieval** | Obtener desde GitHub la versión del código que será utilizada para el despliegue. |
+| **Environment Preparation** | Preparar las herramientas, runtimes y configuraciones requeridas. |
+| **Dependency Installation** | Instalar o restaurar las dependencias utilizadas por cada aplicación. |
+| **Build** | Construir el componente y generar una versión ejecutable o desplegable. |
+| **Validation** | Verificar que la versión cumpla con las validaciones establecidas antes del despliegue. |
+| **Artifact Generation** | Generar el artefacto o imagen necesaria para realizar el deployment. |
+| **Production Deployment** | Publicar la versión validada en el ambiente correspondiente. |
+| **Post-Deployment Verification** | Comprobar la disponibilidad y funcionamiento del componente después del despliegue. |
+
+En conjunto, estas etapas permiten estructurar el proceso mediante el cual una modificación realizada en el código fuente de Vankoo puede avanzar desde su desarrollo e integración hasta su publicación en el ambiente de producción. La separación de responsabilidades entre las diferentes etapas contribuye a mantener la trazabilidad del proceso y facilita la identificación de errores antes y después de realizar un despliegue.
 
 <hr class="page-break">
 
