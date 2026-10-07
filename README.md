@@ -176,6 +176,22 @@ _Pendiente: capturas de los analíticos de colaboración y commits en GitHub._
     - [5.2.6. RESTful API documentation](#526-restful-api-documentation)
     - [5.2.7. Team Collaboration Insights](#527-team-collaboration-insights)
   - [5.3. Video About-the-Product](#53-video-about-the-product)
+- [Capítulo VI: Product Verification \& Validation](#capítulo-vi-product-verification--validation)
+  - [6.1. Testing Suites \& Validation](#61-testing-suites--validation)
+    - [6.1.1. Core Entities Unit Tests](#611-core-entities-unit-tests)
+    - [6.1.2. Core Integration Tests](#612-core-integration-tests)
+    - [6.1.3. Core Behavior-Driven Development](#613-core-behavior-driven-development)
+    - [6.1.4. Core System Tests](#614-core-system-tests)
+- [Capítulo VII: DevOps Practices](#capítulo-vii-devops-practices)
+  - [7.1. Continuous Integration](#71-continuous-integration)
+    - [7.1.1. Tools and Practices](#711-tools-and-practices)
+    - [7.1.2. Build \& Test Suite Pipeline Components](#712-build--test-suite-pipeline-components)
+  - [7.2. Continuous Delivery](#72-continuous-delivery)
+    - [7.2.1. Tools and Practices](#721-tools-and-practices)
+    - [7.2.2. Stages Deployment Pipeline Components](#722-stages-deployment-pipeline-components)
+  - [7.3. Continuous Deployment](#73-continuous-deployment)
+    - [7.3.1. Tools and Practices](#731-tools-and-practices)
+    - [7.3.2. Production Deployment Pipeline Components](#732-production-deployment-pipeline-components)
 - [Conclusiones](#conclusiones)
 - [Bibliografía](#bibliografía)
 - [Anexos](#anexos)
@@ -1312,6 +1328,147 @@ _Pendiente de elaboración._
 | Entrega | Título del video | Enlace | Duración |
 |---------|------------------|--------|----------|
 | AV1 |  |  |  |
+
+<hr class="page-break">
+
+# Capítulo VI: Product Verification & Validation
+
+## 6.1. Testing Suites & Validation
+
+### 6.1.1. Core Entities Unit Tests
+### 6.1.2. Core Integration Tests
+
+<!-- Pruebas de integración entre módulos: comunicación frontend-backend e interacción entre servicios o APIs. -->
+
+_Pendiente de elaboración._
+
+### 6.1.3. Core Behavior-Driven Development
+
+<!-- Escenarios de usuario en archivos .feature (Gherkin) con sus Steps, relacionados con las User Stories. -->
+
+_Pendiente de elaboración._
+
+### 6.1.4. Core System Tests
+
+<!-- Pruebas de sistema en entorno web y móvil: navegación, interacción con APIs y respuesta ante distintos escenarios. -->
+
+_Pendiente de elaboración._
+
+<hr class="page-break">
+
+# Capítulo VII: DevOps Practices
+
+## 7.1. Continuous Integration
+
+### 7.1.1. Tools and Practices
+### 7.1.2. Build & Test Suite Pipeline Components
+## 7.2. Continuous Delivery
+
+### 7.2.1. Tools and Practices
+### 7.2.2. Stages Deployment Pipeline Components
+## 7.3. Continuous Deployment
+
+### 7.3.1. Tools and Practices
+### 7.3.2. Production Deployment Pipeline Components
+
+El **Production Deployment Pipeline** de Vankoo comprende el conjunto de etapas necesarias para llevar una versión validada del sistema desde los repositorios de código fuente hasta el ambiente de producción. Debido a que Vankoo está conformado por diferentes componentes, el proceso de despliegue considera el **Landing Page, la aplicación web, la aplicación móvil y los servicios backend** que forman parte de la solución.
+
+El código fuente de los diferentes componentes es administrado mediante **GitHub**, siguiendo la estrategia de ramas definida por el equipo. Los cambios son desarrollados inicialmente en ramas de tipo `feature/*` y posteriormente son integrados a las ramas correspondientes mediante el flujo de trabajo establecido. De esta manera, se mantiene una separación entre el desarrollo de nuevas funcionalidades y las versiones del producto que se encuentran preparadas para continuar con los procesos de integración, validación y despliegue.
+
+El objetivo del Production Deployment Pipeline es establecer un proceso controlado y reproducible para llevar los componentes de Vankoo hacia el ambiente productivo, reduciendo la intervención manual y manteniendo la trazabilidad de las versiones desplegadas.
+
+#### Production Deployment Pipeline Flow
+
+El pipeline se encuentra compuesto por las siguientes etapas:
+
+#### Source Code Retrieval
+
+El proceso comienza con la obtención del código fuente almacenado en los repositorios de **GitHub** de la organización. Los componentes principales de Vankoo se mantienen en repositorios independientes, permitiendo administrar de forma separada las aplicaciones frontend, los servicios backend y los componentes de infraestructura.
+
+El uso de Git y GitHub permite mantener un historial de los cambios realizados, identificar las versiones utilizadas durante cada despliegue y controlar la integración del código mediante ramas y Pull Requests.
+
+#### Environment Preparation
+
+Una vez obtenida la versión del código que será utilizada, se prepara el entorno requerido para construir el componente correspondiente. Debido a que Vankoo posee una arquitectura distribuida y utiliza diferentes tecnologías, los requisitos del entorno pueden variar entre las aplicaciones frontend y los distintos servicios backend.
+
+Esta etapa comprende la preparación de los runtimes, herramientas de construcción, administradores de dependencias y variables de entorno requeridas para que cada componente pueda ser construido correctamente.
+
+Las variables de entorno permiten separar los valores de configuración del código fuente, facilitando el uso de diferentes configuraciones dependiendo del ambiente donde se ejecute la aplicación.
+
+#### Dependency Installation
+
+Posteriormente, se realiza la instalación o restauración de las dependencias requeridas por cada proyecto.
+
+En los componentes frontend se utilizan los administradores de paquetes correspondientes para obtener las librerías declaradas por la aplicación. De manera similar, los servicios backend utilizan las herramientas de gestión de dependencias correspondientes a su tecnología.
+
+Esta etapa permite garantizar que cada componente disponga de las librerías necesarias antes de iniciar el proceso de construcción.
+
+#### Build
+
+Después de preparar el entorno y obtener las dependencias, se ejecuta el proceso de **build** del componente.
+
+El objetivo de esta etapa es comprobar que el código integrado puede ser construido correctamente y generar una versión ejecutable o desplegable de la aplicación.
+
+Si durante el proceso de construcción se produce un error, el componente no debe continuar hacia el despliegue hasta que el problema haya sido solucionado. De esta forma, el build funciona como una validación previa a la generación del artefacto que será utilizado posteriormente.
+
+#### Validation Before Deployment
+
+Antes de realizar el despliegue a producción, la versión del producto debe pasar por las validaciones establecidas durante los procesos de **Continuous Integration** y **Continuous Delivery**.
+
+Estas validaciones permiten comprobar que los cambios incorporados no afecten negativamente las funcionalidades previamente implementadas y que el componente se encuentre en condiciones adecuadas para continuar hacia el ambiente productivo.
+
+De esta manera, el Continuous Deployment se relaciona directamente con las etapas anteriores del proceso DevOps, utilizando como entrada una versión que previamente ha sido integrada, construida y validada.
+
+#### Deployment Artifact Generation
+
+Luego de superar las etapas de construcción y validación, se prepara el artefacto que será utilizado para realizar el despliegue.
+
+En los servicios que utilizan contenedores, **Docker** permite empaquetar la aplicación junto con los elementos necesarios para su ejecución mediante imágenes. Esto permite disponer de unidades de despliegue reproducibles y mantener mayor consistencia entre los diferentes ambientes.
+
+La utilización de contenedores también facilita la administración de los diferentes servicios que forman parte de la arquitectura de Vankoo, debido a que cada servicio puede mantener sus propias dependencias y configuración de ejecución.
+
+Para los componentes frontend, el proceso de construcción genera los recursos necesarios para publicar la aplicación mediante el servicio de hosting correspondiente.
+
+#### Production Deployment
+
+Una vez generado correctamente el artefacto, se procede con su publicación en el ambiente definido para la ejecución del producto.
+
+Debido a que Vankoo se encuentra compuesto por diferentes aplicaciones y servicios, el proceso considera individualmente los siguientes componentes:
+
+- **Landing Page:** presenta la propuesta de valor de Vankoo y proporciona información inicial sobre el funcionamiento de la plataforma.
+- **Web Application:** permite al segmento MYPE acceder a las funcionalidades relacionadas con la gestión y financiamiento de sus facturas.
+- **Mobile Application:** permite al segmento inversionista acceder a las funcionalidades destinadas a la gestión de sus operaciones dentro de la plataforma.
+- **Backend Services:** implementan la lógica de negocio y proporcionan las APIs requeridas por las aplicaciones cliente.
+- **Infrastructure Components:** proporcionan los servicios necesarios para permitir la comunicación, persistencia y funcionamiento de los diferentes componentes de la solución.
+
+La separación de estos componentes permite que cada uno siga el proceso de construcción y despliegue apropiado para su tecnología, manteniendo al mismo tiempo la integración necesaria para el funcionamiento completo de la plataforma.
+
+#### Post-Deployment Verification
+
+Una vez realizado el despliegue, se debe verificar que los componentes se encuentren disponibles y funcionando correctamente en el ambiente correspondiente.
+
+Para el Landing Page y las aplicaciones frontend, esta comprobación considera la disponibilidad de la aplicación, la correcta carga de sus recursos y la posibilidad de acceder a sus principales funcionalidades.
+
+Para los servicios backend, la verificación considera que los servicios puedan iniciarse correctamente, se encuentren disponibles para recibir solicitudes y puedan comunicarse con los demás componentes requeridos por la arquitectura.
+
+Esta etapa permite detectar problemas relacionados con configuración, conectividad o disponibilidad que podrían no presentarse durante el proceso de construcción.
+
+#### Production Deployment Pipeline Summary
+
+Los principales componentes que forman parte del Production Deployment Pipeline de Vankoo pueden resumirse de la siguiente manera:
+
+| Componente | Propósito |
+|---|---|
+| **Source Code Retrieval** | Obtener desde GitHub la versión del código que será utilizada para el despliegue. |
+| **Environment Preparation** | Preparar las herramientas, runtimes y configuraciones requeridas. |
+| **Dependency Installation** | Instalar o restaurar las dependencias utilizadas por cada aplicación. |
+| **Build** | Construir el componente y generar una versión ejecutable o desplegable. |
+| **Validation** | Verificar que la versión cumpla con las validaciones establecidas antes del despliegue. |
+| **Artifact Generation** | Generar el artefacto o imagen necesaria para realizar el deployment. |
+| **Production Deployment** | Publicar la versión validada en el ambiente correspondiente. |
+| **Post-Deployment Verification** | Comprobar la disponibilidad y funcionamiento del componente después del despliegue. |
+
+En conjunto, estas etapas permiten estructurar el proceso mediante el cual una modificación realizada en el código fuente de Vankoo puede avanzar desde su desarrollo e integración hasta su publicación en el ambiente de producción. La separación de responsabilidades entre las diferentes etapas contribuye a mantener la trazabilidad del proceso y facilita la identificación de errores antes y después de realizar un despliegue.
 
 <hr class="page-break">
 
