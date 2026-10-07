@@ -3335,9 +3335,139 @@ _Pendiente de elaboración._
 
 ### 6.1.3. Core Behavior-Driven Development
 
-<!-- Escenarios de usuario en archivos .feature (Gherkin) con sus Steps, relacionados con las User Stories. -->
+En esta sección se presenta la especificación ejecutable del comportamiento de Vankoo desde la perspectiva del usuario, aplicando Behavior-Driven Development (BDD). Los criterios de aceptación redactados en Gherkin (Given-When-Then) en las User Stories se convierten en escenarios automatizados que se ejecutan contra la lógica de aplicación real del microservicio, de modo que cada escenario documenta una regla de negocio y, al mismo tiempo, verifica que se cumpla.
 
-_Pendiente de elaboración._
+Para esta entrega, la suite BDD cubre el flujo de **carga inteligente de facturas** del Invoicing Service, que es la puerta de entrada del negocio: una factura que no supera la extracción y la validación inicial no debe llegar nunca a la subasta.
+
+#### 1. Herramientas y entorno
+
+| Elemento | Detalle |
+|---|---|
+| Framework BDD | **Reqnroll** 3.3.4 (sucesor open source de SpecFlow), integrado con xUnit mediante el paquete `Reqnroll.xUnit`. |
+| Test runner | **xUnit** 2.9.3 con `Microsoft.NET.Test.Sdk` 17.14.1. |
+| Plataforma | .NET 10 (`net10.0`), C#. |
+| Lenguaje de especificación | Gherkin en inglés, siguiendo las convenciones de la sección 5.1.3. |
+| Proyecto de pruebas | `LiquiLabs.Vankoo.Invoicing.Tests` |
+| Repositorio | [yieldlabshq/vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service) |
+
+#### 2. Relación con las User Stories
+
+| Feature / Escenario | User Story | Criterio de aceptación verificado |
+|---|---|---|
+| Smart invoice upload — *An invoice with inconsistent data is not sent to the auction* | **US11** – Subir una factura electrónica | Escenario 3 (Lectura de datos): al terminar la lectura automática, los datos extraídos quedan disponibles y la factura avanza en su proceso. |
+| | **US13** – Ver el detalle y el progreso de una factura | Escenario 3 (Factura observada): una factura en estado *Requiere revisión* o *No elegible* muestra el motivo de la observación y no continúa el proceso automáticamente. |
+| | **TS04** – Servicio de facturación con lectura automática | Escenarios 1 y 2: el servicio procesa el PDF, registra el avance de estado y solo publica el evento de integración cuando la factura es elegible. |
+
+#### 3. Organización de los archivos
+
+| Archivo | Rol |
+|---|---|
+| `Acceptance/Features/SmartInvoiceUpload.feature` | Especificación en Gherkin del comportamiento esperado. |
+| `Acceptance/Steps/SmartInvoiceUploadSteps.cs` | Step definitions: vinculan cada paso Gherkin con código C# que actúa sobre la aplicación y verifica el resultado. |
+| `Acceptance/Support/InvoicingTestHost.cs` | Arma el mismo pipeline de MediatR que `Program.cs` (handlers, `ValidationBehavior` y validadores de FluentValidation). Reqnroll crea una instancia por escenario, por lo que cada escenario parte de cero. |
+| `Acceptance/Support/InMemoryAdapters.cs` | Dobles en memoria que reemplazan MongoDB, el object storage, Azure Document Intelligence (OCR) y Kafka, para ejercitar los handlers reales sin infraestructura externa. |
+
+#### 4. Feature file
+
+El escenario se define como un *Scenario Outline*: los mismos pasos se ejecutan una vez por cada fila de la tabla `Examples`, lo que permite cubrir las cuatro reglas de validación inicial con una única especificación legible.
+
+```gherkin
+@US01
+Feature: Smart invoice upload
+  As a MYPE business owner
+  I want to register my invoice in the MYPE Web
+  So that the system extracts its data and prepares the liquidity operation
+
+  Background:
+    Given a MYPE business owner is signed in through the API Gateway
+
+  Scenario Outline: An invoice with inconsistent data is not sent to the auction
+    Given the business owner has a readable PDF invoice
+    And the OCR reads the invoice with <inconsistency>
+    When the business owner uploads the invoice
+    And the system finishes the extraction and initial validation
+    Then the invoice status is "<status>"
+    And the invoice reports the issue "<issue code>"
+    And the invoice is not sent to the auction
+
+    Examples:
+      | inconsistency                     | status          | issue code              |
+      | a total that does not reconcile   | REQUIRES_REVIEW | TOTALS_DO_NOT_RECONCILE |
+      | a low-confidence due date         | REQUIRES_REVIEW | LOW_OCR_CONFIDENCE      |
+      | an expired due date               | NOT_ELIGIBLE    | INVOICE_EXPIRED         |
+      | the same RUC for issuer and payer | NOT_ELIGIBLE    | ISSUER_EQUALS_PAYER     |
+```
+
+Cada fila de `Examples` corresponde a una regla de negocio de la validación inicial:
+
+| Caso | Regla de negocio | Estado resultante | Código de observación |
+|---|---|---|---|
+| Total que no cuadra | El total leído debe coincidir con la suma de los montos parciales de la factura (subtotal + IGV). | `REQUIRES_REVIEW` | `TOTALS_DO_NOT_RECONCILE` |
+| Fecha de vencimiento con baja confianza | Un campo crítico leído por el OCR con confianza baja (0.40) requiere revisión humana. | `REQUIRES_REVIEW` | `LOW_OCR_CONFIDENCE` |
+| Factura vencida | Una factura con fecha de vencimiento pasada no puede financiarse. | `NOT_ELIGIBLE` | `INVOICE_EXPIRED` |
+| Mismo RUC de emisor y pagador | El emisor no puede ser a la vez el pagador de la factura. | `NOT_ELIGIBLE` | `ISSUER_EQUALS_PAYER` |
+
+#### 5. Step definitions
+
+| Paso Gherkin | Método | Qué hace |
+|---|---|---|
+| `Given a MYPE business owner is signed in through the API Gateway` | `GivenABusinessOwnerIsSignedIn` | Simula la identidad que el API Gateway inyecta en `X-User-Id`; ese valor se usa como `MypeId`. |
+| `Given the business owner has a readable PDF invoice` | `GivenAReadablePdfInvoice` | Usa un PDF mínimo con firma válida, suficiente para superar `InvoiceFileInspector`. |
+| `And the OCR reads the invoice with <inconsistency>` | `GivenTheOcrReadsAnInconsistentInvoice` | Configura el resultado que devolverá el OCR simulado según el caso (total, confianza, fechas o RUC). |
+| `When the business owner uploads the invoice` | `WhenTheBusinessOwnerUploadsTheInvoice` | Envía el `UploadInvoiceCommand` real por MediatR. |
+| `And the system finishes the extraction and initial validation` | `WhenTheSystemFinishesTheExtraction` | Verifica que la factura quedó encolada para OCR y ejecuta `ProcessOcrSynchronouslyCommand`. |
+| `Then the invoice status is "<status>"` | `ThenTheInvoiceStatusIs` | Compara el estado de la factura con el esperado. |
+| `And the invoice reports the issue "<issue code>"` | `ThenTheInvoiceReportsTheIssue` | Verifica que la lista de observaciones contenga el código esperado. |
+| `And the invoice is not sent to the auction` | `ThenTheInvoiceIsNotSentToTheAuction` | Verifica que la factura no es elegible, que su evento de integración queda como `NOT_APPLICABLE` y que no se publicó ningún `InvoiceEligibleForFundingIntegrationEvent`. |
+
+Fragmento de los pasos de verificación:
+
+```csharp
+[Then("the invoice status is {string}")]
+public void ThenTheInvoiceStatusIs(string status)
+{
+    Assert.NotNull(_details);
+    Assert.Equal(status, _details.Status);
+}
+
+[Then("the invoice reports the issue {string}")]
+public void ThenTheInvoiceReportsTheIssue(string issueCode)
+{
+    Assert.NotNull(_details);
+    Assert.Contains(_details.ValidationIssues, issue => issue.Code == issueCode);
+}
+
+[Then("the invoice is not sent to the auction")]
+public void ThenTheInvoiceIsNotSentToTheAuction()
+{
+    Assert.NotNull(_details);
+    Assert.False(_details.EligibleForFunding);
+    Assert.Equal(nameof(IntegrationEventPublicationStatus.NOT_APPLICABLE), _details.IntegrationEventStatus);
+    Assert.Empty(_host.EventBus.Published.OfType<InvoiceEligibleForFundingIntegrationEvent>());
+}
+```
+
+#### 6. Ejecución
+
+Los escenarios se ejecutan con el comando estándar de .NET desde la raíz del repositorio (requiere el SDK de .NET 10); Reqnroll genera una prueba xUnit por cada fila de `Examples`, por lo que el escenario produce cuatro casos de prueba:
+
+```bash
+dotnet test LiquiLabs.Vankoo.Invoicing.Tests --filter "FullyQualifiedName~Acceptance"
+```
+
+<!-- Assets: ./assets/cap6-product-verification/bdd/ — captura de la ejecución de los 4 casos en verde. -->
+
+_Captura de la ejecución pendiente._
+
+#### 7. Commits relacionados
+
+Ruta del proyecto de pruebas: [yieldlabshq/vankoo-invoicing-service/LiquiLabs.Vankoo.Invoicing.Tests](https://github.com/yieldlabshq/vankoo-invoicing-service/tree/develop/LiquiLabs.Vankoo.Invoicing.Tests)
+
+| Repository | Branch | Commit Id | Commit Message | Commit Message Body | Committed on (Date) |
+|---|---|---|---|---|---|
+| yieldlabshq/vankoo-invoicing-service | develop | e3a7324 | test(invoicing): add bdd acceptance tests | — | 06/10/2026 |
+
+El commit incorpora los archivos `SmartInvoiceUpload.feature`, `SmartInvoiceUploadSteps.cs`, `InvoicingTestHost.cs` e `InMemoryAdapters.cs`.
 
 ### 6.1.4. Core System Tests
 
@@ -3411,7 +3541,56 @@ _Pendiente de elaboración._
 
 ### 7.3.1. Tools and Practices
 
-_Pendiente de elaboración._
+Continuous Deployment es el último tramo del pipeline de Vankoo: todo cambio que llega a la rama `main` y supera las etapas de integración (7.1) y entrega (7.2) se despliega a producción de forma automática, sin una aprobación manual intermedia. A diferencia de Continuous Delivery, donde el paso a producción queda listo pero lo dispara una persona, aquí la decisión la toman los controles automáticos del pipeline. Por ello, la confianza en el despliegue descansa en las pruebas descritas en el Capítulo VI y en las verificaciones posteriores al despliegue.
+
+#### 1. Herramientas
+
+| Herramienta | Uso en Continuous Deployment | Productos |
+|---|---|---|
+| **GitHub Actions** | Orquesta el workflow de despliegue a producción, que se dispara con cada push a `main`. | Todos |
+| **GitHub Environments & Secrets** | Entorno `production` que agrupa los secretos y variables de producción (por ejemplo `JWT_SECRET`, credenciales de base de datos, `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET` y las claves de Azure OCR). Los repositorios solo contienen archivos `.env.example` de referencia, nunca valores reales. | Todos |
+| **Docker** | Cada microservicio cuenta con un `Dockerfile` multi-stage; la imagen resultante es el artefacto que se despliega. | IAM, Profile, Invoicing, Investment, Finance, API Gateway, Discovery Server |
+| **Azure Container Registry (ACR)** | Registro privado de las imágenes versionadas de cada microservicio. | Backend |
+| **Azure Container Instances (ACI)** | Entorno de ejecución en producción de los contenedores del backend (ver 5.1.4). | Backend |
+| **Netlify** | Despliegue automático desde `main` con publicación atómica y rollback instantáneo a un despliegue anterior. El Landing Page ya se publica en [vankoo-landing-page.netlify.app](https://vankoo-landing-page.netlify.app). | Landing Page, Web App de la MYPE |
+| **Firebase App Distribution** | Distribución automática de cada build Android a los testers del equipo y a usuarios de validación. | App móvil del Inversionista |
+| **Google Play Console** | Canal de producción de la app Android (ver 5.1.4). | App móvil del Inversionista |
+
+#### 2. Prácticas
+
+**Despliegue disparado por `main` bajo GitFlow.** Solo las ramas `release/*` y `hotfix/*` llegan a `main`, siempre mediante Pull Request. El merge a `main` es el evento que inicia el despliegue a producción, y cada versión liberada se identifica con un tag de Semantic Versioning (`vMAJOR.MINOR.PATCH`); los repositorios de la organización parten de la versión `v1.0.0`.
+
+**Construir una vez y promover el mismo artefacto.** La imagen Docker (o el build estático del frontend) se construye y prueba una sola vez en las etapas previas, etiquetada con el SHA del commit. En producción se despliega exactamente ese artefacto, al que se agrega la etiqueta de versión, sin volver a compilar. Así lo que llega a producción es lo mismo que pasó las pruebas.
+
+**Configuración externa por entorno.** El código no cambia entre entornos; las diferencias (URLs, cadenas de conexión, claves de terceros) se inyectan como variables de entorno desde los secretos del entorno `production`.
+
+**Orden de despliegue según dependencias.** El backend se despliega respetando las dependencias que ya define el `docker-compose.yaml` de `vankoo-infra`: primero el Discovery Server, luego los servicios de dominio (IAM, Invoicing, Investment, Finance y Profile), después el API Gateway y, al final, los frontends que lo consumen.
+
+**Verificación posterior al despliegue.** Un despliegue solo se da por exitoso cuando el servicio responde en su endpoint de readiness. Se reutilizan los mismos endpoints que ya emplean los healthchecks del entorno local:
+
+| Servicio | Endpoint de readiness |
+|---|---|
+| Discovery Server | `/actuator/health/readiness` |
+| API Gateway | `/actuator/health/readiness` |
+| IAM Service | `/actuator/health/readiness` |
+| Investment Service | `/actuator/health/readiness` |
+| Finance Service | `/actuator/health/readiness` |
+| Invoicing Service | `/health/ready` |
+
+**Rollback ante fallos.** Si la verificación falla, el pipeline vuelve a desplegar la imagen de la versión anterior, que sigue disponible en ACR porque las imágenes son inmutables. En Netlify se restaura el despliegue previo, que queda publicado de inmediato.
+
+**Controles automáticos en lugar de aprobaciones manuales.** Para que el despliegue sin intervención sea seguro, `main` se protege para aceptar cambios solo por Pull Request con el pipeline de CI en verde, y las pruebas unitarias, de integración, BDD y de sistema (6.1.1 a 6.1.4) deben haber pasado en las etapas anteriores.
+
+**Excepción de la app móvil.** La publicación en Google Play pasa por la revisión de Google, por lo que no puede ser completamente automática. El despliegue continuo de la app llega hasta Firebase App Distribution, donde cada build queda disponible para los testers; la promoción al canal de producción de Google Play se realiza al liberar una versión.
+
+#### 3. Resumen por producto
+
+| Producto | Disparador | Artefacto | Destino de producción | Verificación | Rollback |
+|---|---|---|---|---|---|
+| Landing Page | Push a `main` | Build estático (Astro) | Netlify | Publicación exitosa del sitio | Restaurar despliegue anterior en Netlify |
+| Web App de la MYPE | Push a `main` | Build estático (React + Vite) | Netlify | Publicación exitosa del sitio | Restaurar despliegue anterior en Netlify |
+| Microservicios, API Gateway y Discovery Server | Push a `main` | Imagen Docker versionada | ACR + ACI | Endpoint de readiness | Redesplegar la imagen de la versión anterior |
+| App móvil del Inversionista | Push a `main` | APK / AAB firmado | Firebase App Distribution (testers) y Google Play (al liberar) | Build distribuido a testers | Distribuir el build anterior |
 
 ### 7.3.2. Production Deployment Pipeline Components
 
