@@ -3378,9 +3378,13 @@ Las pruebas se ejecutan automáticamente en el job *Build & Test* del pipeline d
 | yieldlabshq/vankoo-api-gateway | `./mvnw -B verify` | 23 pruebas ejecutadas, 0 fallidas (22 unitarias, incluidas las 4 del filtro de autorización descritas en 6.1.2, y la verificación de carga del contexto). | [Run #37680570068](https://github.com/yieldlabshq/vankoo-api-gateway/actions/runs/37680570068) |
 | yieldlabshq/vankoo-invoicing-service | `dotnet test` | 16 pruebas ejecutadas, 0 fallidas (12 unitarias y los 4 escenarios BDD de 6.1.3). | [Run #37680586800](https://github.com/yieldlabshq/vankoo-invoicing-service/actions/runs/37680586800) |
 
+![Ejecución de las pruebas del API Gateway en GitHub Actions](assets/cap6-product-verification-validation/core-entities-unit-tests/gateway-tests-ci.png)
+
+*Figura 6.1.1.1. Paso de compilación y pruebas del job Build & Test del API Gateway: Maven Surefire ejecuta cada clase de prueba y reporta sus resultados (el total de 23 pruebas aprobadas figura al final del log de la ejecución enlazada).*
+
 ![Ejecución de las pruebas del Invoicing Service en GitHub Actions](assets/cap6-product-verification-validation/core-entities-unit-tests/invoicing-tests-ci.png)
 
-*Figura 6.1.1.1. Paso de pruebas del job Build & Test del Invoicing Service: 16 pruebas aprobadas y 0 fallidas.*
+*Figura 6.1.1.2. Paso de pruebas del job Build & Test del Invoicing Service: 16 pruebas aprobadas y 0 fallidas.*
 
 ### 6.1.2. Core Integration Tests
 
