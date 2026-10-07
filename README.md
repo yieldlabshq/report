@@ -33,7 +33,7 @@
 
 <br>
 
-<h5 style="text-align: center; font-style: italic;"> Setiembre 2026 </h5>
+<h5 style="text-align: center; font-style: italic;"> Octubre 2026 </h5>
 
 <hr class="page-break">
 
@@ -50,6 +50,7 @@
 | 2.4     | 07/10/26 | García Bernal, Daniela | Production Deployment Pipeline Components (7.3.2) y Core System Tests (6.1.4) |
 | 2.5     | 07/10/26 | Amaro Villar, Anjali | Alineación de los Capítulos V, VI y VII con el pipeline CI/CD implementado y evidencias de ejecución |
 | 2.6     | 07/10/26 | Amaro Villar, Anjali | Student Outcome del TB1 y Registro de Versiones |
+| 2.7     | 07/10/26 | Amaro Villar, Anjali | Collaboration Insights del TB1, se retiran Acuerdo de Servicio SaaS y RESTful API documentation y se actualiza la carátula |
 
 <hr class="page-break">
 
@@ -86,6 +87,14 @@ Las principales ramas del repositorio, gestionadas bajo **GitFlow Workflow**, **
 <!-- Assets: ./assets/github-insights/ — capturas de Insights > Contributors e Insights > Network. -->
 
 _Pendiente: capturas de los analíticos de colaboración y commits en GitHub._
+
+**TB1**
+
+Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `feature/*` y lo integraron a `develop` mediante Pull Requests. Cada integrante desarrolló las secciones de los Capítulos VI y VII que tenía asignadas (ver Registro de Versiones), y los aportes se consolidaron en `develop` antes de la entrega.
+
+![Contribuidores del repositorio del informe](assets/github-insights/report-contributors-tb1.png)
+
+*Figura. Insights > Contributors del repositorio `yieldlabshq/report`: commits por integrante en los últimos tres meses (Luis Angel Pillaca Vidal 53, Daniela García Bernal 16, Mathias Joaquin Acuache Lucas 11 y Anjali Amaro Villar 11).*
 
 <hr class="page-break">
 
@@ -176,11 +185,9 @@ _Pendiente: capturas de los analíticos de colaboración y commits en GitHub._
     - [5.2.1. Sprint Backlogs](#521-sprint-backlogs)
     - [5.2.2. Implemented Landing Page Evidence](#522-implemented-landing-page-evidence)
     - [5.2.3. Implemented Frontend-Web Application Evidence](#523-implemented-frontend-web-application-evidence)
-    - [5.2.4. Acuerdo de Servicio - SaaS](#524-acuerdo-de-servicio---saas)
-    - [5.2.5. Implemented Native-Mobile Application Evidence](#525-implemented-native-mobile-application-evidence)
-    - [5.2.6. Implemented RESTful API and/or Serverless Backend Evidence](#526-implemented-restful-api-andor-serverless-backend-evidence)
-    - [5.2.7. RESTful API documentation](#527-restful-api-documentation)
-    - [5.2.8. Team Collaboration Insights](#528-team-collaboration-insights)
+    - [5.2.4. Implemented Native-Mobile Application Evidence](#524-implemented-native-mobile-application-evidence)
+    - [5.2.5. Implemented RESTful API and/or Serverless Backend Evidence](#525-implemented-restful-api-andor-serverless-backend-evidence)
+    - [5.2.6. Team Collaboration Insights](#526-team-collaboration-insights)
   - [5.3. Video About-the-Product](#53-video-about-the-product)
 - [Capítulo VI: Product Verification \& Validation](#capítulo-vi-product-verification--validation)
   - [6.1. Testing Suites \& Validation](#61-testing-suites--validation)
@@ -3220,13 +3227,7 @@ En este apartado se evidencia el avance de la aplicación web de la MYPE (`vanko
 
 Enlace al repositorio: [/vankoo-mype-web](https://github.com/yieldlabshq/vankoo-mype-web)
 
-### 5.2.4. Acuerdo de Servicio - SaaS
-
-<!-- Derechos, obligaciones y restricciones de los usuarios de la plataforma. Debe publicarse como "Terms and Conditions" en el footer del Landing Page y de las aplicaciones. -->
-
-_Pendiente de elaboración._
-
-### 5.2.5. Implemented Native-Mobile Application Evidence
+### 5.2.4. Implemented Native-Mobile Application Evidence
 
 <!-- Kotlin Multiplatform + Compose. Assets: ./assets/cap5-product-implementation/mobile-app-evidence/ -->
 
@@ -3245,7 +3246,7 @@ En este apartado se evidencia el avance de la aplicación móvil del Inversionis
 
 Enlace al repositorio: [vankoo-investor-mobile](https://github.com/yieldlabshq/vankoo-investor-mobile)
 
-### 5.2.6. Implemented RESTful API and/or Serverless Backend Evidence
+### 5.2.5. Implemented RESTful API and/or Serverless Backend Evidence
 
 ![img.png](img.png)
 
@@ -3270,17 +3271,44 @@ Enlaces a los repositorios:
 | Invoicing Service | [yieldlabshq/vankoo-invoicing-service](https://github.com/yieldlabshq/vankoo-invoicing-service) |
 | Infraestructura local (Docker Compose) | [yieldlabshq/vankoo-infra](https://github.com/yieldlabshq/vankoo-infra) |
 
-### 5.2.7. RESTful API documentation
+### 5.2.6. Team Collaboration Insights
 
-<!-- Endpoints documentados con OpenAPI: acciones, verbo HTTP, sintaxis de llamada, parámetros, ejemplo de response y URL de la documentación desplegada. Assets: ./assets/cap5-product-implementation/api-documentation/ -->
+En esta sección se presentan los analíticos de colaboración de GitHub (*Insights > Contributors*) de los repositorios de código de Vankoo en la organización [yieldlabshq](https://github.com/yieldlabshq). Las gráficas muestran los commits integrados en `main` durante los últimos tres meses, sin contar los commits de merge.
 
-_Pendiente de elaboración._
+El trabajo se organizó por bounded context: cada integrante asumió la implementación completa de uno o más servicios o aplicaciones, lo que se refleja en un contribuidor principal por repositorio. Los aportes de Anjali Amaro Villar en los repositorios del API Gateway, Investment e Invoicing corresponden al pipeline de CI/CD y a las pruebas descritas en los Capítulos VI y VII.
 
-### 5.2.8. Team Collaboration Insights
+| Repositorio | Contribuidores (commits) |
+|---|---|
+| vankoo-invoicing-service | Luis Angel Pillaca Vidal (10), Anjali Amaro Villar (1) |
+| vankoo-api-gateway | Mathias Joaquin Acuache Lucas (7), Anjali Amaro Villar (2) |
+| vankoo-investment-service | Luis Angel Pillaca Vidal (8), Anjali Amaro Villar (1) |
+| vankoo-iam-service | Anjali Amaro Villar (9) |
+| vankoo-profile-service | Anjali Amaro Villar (9) |
+| vankoo-landing-page | Anjali Amaro Villar (8) |
 
-<!-- Capturas de los analíticos de colaboración y commits en GitHub de cada repositorio, con su interpretación. Assets: ./assets/cap5-product-implementation/collaboration-insights/ -->
+**Invoicing Service**
 
-_Pendiente de elaboración._
+![Contribuidores de vankoo-invoicing-service](assets/cap5-product-implementation/collaboration-insights/invoicing-service-contributors.png)
+
+**API Gateway**
+
+![Contribuidores de vankoo-api-gateway](assets/cap5-product-implementation/collaboration-insights/api-gateway-contributors.png)
+
+**Investment Service**
+
+![Contribuidores de vankoo-investment-service](assets/cap5-product-implementation/collaboration-insights/investment-service-contributors.png)
+
+**IAM Service**
+
+![Contribuidores de vankoo-iam-service](assets/cap5-product-implementation/collaboration-insights/iam-service-contributors.png)
+
+**Profile Service**
+
+![Contribuidores de vankoo-profile-service](assets/cap5-product-implementation/collaboration-insights/profile-service-contributors.png)
+
+**Landing Page**
+
+![Contribuidores de vankoo-landing-page](assets/cap5-product-implementation/collaboration-insights/landing-page-contributors.png)
 
 ## 5.3. Video About-the-Product
 
