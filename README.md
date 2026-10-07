@@ -3660,50 +3660,6 @@ Continuous Deployment es el último tramo del pipeline de Vankoo: todo cambio qu
 
 ### 7.3.2. Production Deployment Pipeline Components
 
-_Pendiente de elaboración._
-
-<hr class="page-break">
-
-# Capítulo VI: Product Verification & Validation
-
-## 6.1. Testing Suites & Validation
-
-### 6.1.1. Core Entities Unit Tests
-### 6.1.2. Core Integration Tests
-
-<!-- Pruebas de integración entre módulos: comunicación frontend-backend e interacción entre servicios o APIs. -->
-
-_Pendiente de elaboración._
-
-### 6.1.3. Core Behavior-Driven Development
-
-<!-- Escenarios de usuario en archivos .feature (Gherkin) con sus Steps, relacionados con las User Stories. -->
-
-_Pendiente de elaboración._
-
-### 6.1.4. Core System Tests
-
-<!-- Pruebas de sistema en entorno web y móvil: navegación, interacción con APIs y respuesta ante distintos escenarios. -->
-
-_Pendiente de elaboración._
-
-<hr class="page-break">
-
-# Capítulo VII: DevOps Practices
-
-## 7.1. Continuous Integration
-
-### 7.1.1. Tools and Practices
-### 7.1.2. Build & Test Suite Pipeline Components
-## 7.2. Continuous Delivery
-
-### 7.2.1. Tools and Practices
-### 7.2.2. Stages Deployment Pipeline Components
-## 7.3. Continuous Deployment
-
-### 7.3.1. Tools and Practices
-### 7.3.2. Production Deployment Pipeline Components
-
 El **Production Deployment Pipeline** de Vankoo comprende el conjunto de etapas necesarias para llevar una versión validada del sistema desde los repositorios de código fuente hasta el ambiente de producción. Debido a que Vankoo está conformado por diferentes componentes, el proceso de despliegue considera el **Landing Page, la aplicación web, la aplicación móvil y los servicios backend** que forman parte de la solución.
 
 El código fuente de los diferentes componentes es administrado mediante **GitHub**, siguiendo la estrategia de ramas definida por el equipo. Los cambios son desarrollados inicialmente en ramas de tipo `feature/*` y posteriormente son integrados a las ramas correspondientes mediante el flujo de trabajo establecido. De esta manera, se mantiene una separación entre el desarrollo de nuevas funcionalidades y las versiones del producto que se encuentran preparadas para continuar con los procesos de integración, validación y despliegue.
