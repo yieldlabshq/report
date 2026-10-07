@@ -25,7 +25,7 @@
 <h4 style="text-align: center">Integrantes:</h4>
 
 <div style="text-align:center; margin-top: 10px; font-size: 90%; line-height: 1.6;">
-  <p>&lt;Código&gt; — Acuache Lucas, Mathias Joaquin</p>
+  <p>&lt;U202314898&gt; — Acuache Lucas, Mathias Joaquin</p>
   <p>&lt;U20221g044&gt; — Amaro Villar, Anjali</p>
   <p>&lt;U202212994&gt; — García Bernal, Daniela</p>
   <p>&lt;U202315654&gt; — Pillaca Vidal, Luis Angel</p>
@@ -3329,9 +3329,40 @@ class InvoiceTest {
 
 ### 6.1.2. Core Integration Tests
 
-<!-- Pruebas de integración entre módulos: comunicación frontend-backend e interacción entre servicios o APIs. -->
+Las Core Integration Tests verifican que los componentes reales del sistema funcionen correctamente en conjunto. En el API Gateway se integran el filtro de autorización, el servicio de tokens JWT y el escritor de respuestas de error, de modo que cada solicitud rechazada responda con el código de estado y el formato correctos. Esto facilita la depuración y aporta confiabilidad al punto de entrada único de la plataforma.
 
-_Pendiente de elaboración._
+#### 1. Estrategia y entorno de pruebas
+
+- **Framework:** JUnit 5.
+- **Componentes reales bajo prueba:** `BearerAuthorizationRequestGatewayFilterFactory`, `TokenServiceImpl` y `ProblemDetailWriter`.
+- **Simulación:** la petición y la respuesta se representan con `MockServerWebExchange`. El servicio destino se sustituye por una cadena de filtros de prueba que registra si la petición llegó a ser reenviada. No se usan Eureka ni microservicios externos.
+- **Patrón de estructuración:** AAA (Arrange, Act, Assert).
+
+#### 2. Matriz de pruebas de integración
+
+| Componentes integrados | Caso de prueba | Resultado esperado |
+|---|---|---|
+| Filtro + `TokenServiceImpl` + `ProblemDetailWriter` | Petición a ruta protegida sin cabecera `Authorization` | 401, `application/problem+json`, `WWW-Authenticate: Bearer`; la petición no se reenvía |
+| Filtro + `TokenServiceImpl` | Token con formato inválido | 401; la petición no se reenvía |
+| Filtro + `ProblemDetailWriter` | Cuerpo de la respuesta de rechazo | Cuerpo `problem+json` con status 401 |
+| Filtro + `TokenServiceImpl` + enriquecedor de identidad | Token válido | La petición se reenvía con la cabecera `X-User-Id` del usuario |
+
+#### 3. Gateway Authorization Filter Integration Test
+
+Clase: `BearerAuthorizationRequestFilterIntegrationTest`
+
+![Código del test de integración, parte 1](assets/cap6-product-verification-validation/core-integration-tests/section3-tests.png)
+![Código del test de integración, parte 1](assets/cap6-product-verification-validation/core-integration-tests/section3-tests2.png)
+
+#### 4. Resultado de la ejecución
+
+4 pruebas ejecutadas, 4 exitosas, 0 fallidas.
+
+![Resultado de la ejecución: 4 tests passed](assets/cap6-product-verification-validation/core-integration-tests/4tests-6.1.2.png)
+
+#### 5. Limitación
+
+Las pruebas integran tres clases reales del gateway, pero el servicio destino está simulado con una cadena de filtros de prueba. No se verifica el enrutamiento real a los microservicios a través de Eureka.
 
 ### 6.1.3. Core Behavior-Driven Development
 
@@ -3529,13 +3560,48 @@ jobs:
 
 ## 7.2. Continuous Delivery
 
+Continuous Delivery extiende el flujo de Integración Continua descrito en la sección 7.1. Una vez que el código compila y sus pruebas pasan, el pipeline empaqueta el servicio en una imagen Docker y lo deja listo para desplegarse. El paso final a producción permanece bajo aprobación manual del equipo.
+
+
 ### 7.2.1. Tools and Practices
 
-_Pendiente de elaboración._
+El equipo reutiliza las herramientas de CI y suma las que empaquetan y entregan cada servicio. La siguiente tabla resume cada herramienta, su tipo y el propósito que cumple en el flujo de entrega.
+
+| Herramienta | Tipo | Propósito |
+|---|---|---|
+| GitHub | Control de versiones y colaboración | Aloja los repositorios de la organización `yieldlabs` y gestiona ramas y Pull Requests con revisión cruzada entre integrantes. |
+| GitHub Actions | Automatización de CI/CD | Ejecuta la compilación y las pruebas en cada evento de código y encadena la construcción de la imagen y la aprobación del despliegue. |
+| Maven | Construcción del backend | Compila el API Gateway y ejecuta las pruebas unitarias, de integración y BDD. |
+| JUnit 5 y Cucumber | Pruebas | Validan el comportamiento del servicio antes de que el cambio avance en el pipeline. |
+| pnpm y Vite | Construcción del frontend | Instalan dependencias y generan el build de `vankoo-mype-web`, con la versión de Node fijada en `.nvmrc` y ESLint para validar el código. |
+| Docker | Contenerización | El `Dockerfile` del gateway usa dos etapas: construye el JAR con Maven y Temurin 25, y ejecuta solo el JRE en una imagen ligera, con usuario sin privilegios y `curl` para el healthcheck. |
+| Docker Compose | Orquestación | El `docker-compose.yaml` de `vankoo-infra` levanta el sistema completo con el mismo entorno en desarrollo y en validación. |
+| Perfiles de Spring (`dev`, `docker`, `prod`) | Configuración por entorno | Separan la configuración de cada entorno sin cambiar el código. |
+
+Además de las herramientas, el equipo sigue prácticas que reducen el riesgo de llevar código no deseado a producción:
+
+- **Feature Branching y Pull Requests:** cada cambio se desarrolla en una rama `feature/*` y se integra a `develop` mediante un Pull Request que revisa otro integrante del equipo.
+- **Conventional Commits:** los mensajes siguen el formato `feat`, `build`, `chore` y `docs`, lo que mantiene un historial ordenado por capa.
+- **Pruebas antes de integrar:** un cambio solo se fusiona a la rama estable si sus pruebas pasan. La imagen se construye con `-DskipTests` porque las pruebas ya corrieron en la etapa de CI.
+- **Imagen única por entorno:** la misma imagen se ejecuta en cada entorno y solo cambia el perfil de configuración activo.
+- **Despliegue semiautomático con aprobación manual:** el pipeline deja la imagen lista, pero el despliegue final lo autoriza un responsable.
+- **Rollback manual:** ante un error grave en producción, el equipo vuelve a la imagen de la versión anterior de forma controlada.
+
 
 ### 7.2.2. Stages Deployment Pipeline Components
 
-_Pendiente de elaboración._
+El pipeline de entrega se organiza en etapas encadenadas: cada una solo se ejecuta si la anterior termina con éxito, y la última exige aprobación humana. La siguiente tabla describe qué ocurre en cada etapa y con qué herramienta.
+
+| Etapa | Qué ocurre | Herramienta |
+|---|---|---|
+| 1. Integración continua | Se compila el proyecto y se ejecutan las pruebas unitarias, de integración y BDD. Si alguna falla, el cambio no avanza. | GitHub Actions, Maven |
+| 2. Construcción de la imagen | Con las pruebas aprobadas, se construye la imagen Docker del servicio. | Docker |
+| 3. Validación en staging | El sistema se levanta con el perfil `docker` en un entorno similar al de producción para pruebas manuales, de carga o seguridad . | Docker Compose |
+| 4. Aprobación del despliegue | El pipeline queda en espera hasta que un responsable revise los resultados y autorice. | GitHub Environments |
+| 5. Despliegue manual | Con la aprobación, se despliega la versión validada con el perfil `prod` . | GitHub Actions, Docker |
+| 6. Monitoreo y feedback | Se observa el estado del servicio, por ejemplo con el healthcheck de la imagen, y los resultados alimentan el siguiente ciclo. | Docker healthcheck |
+
+La configuración propuesta del flujo reutiliza el job de pruebas de la sección 7.1, agrega la construcción de la imagen y deja el despliegue detrás de un entorno `production` que exige aprobación manual:
 
 ## 7.3. Continuous Deployment
 
