@@ -3302,16 +3302,24 @@ En esta sección se detalla el diseño, la estrategia de aislamiento y la ejecuc
 
 #### 2. Matriz de pruebas unitarias por componente core
 
-| Servicio | Clase bajo prueba | Clase de prueba | Invariante o comportamiento validado | Casos |
-|---|---|---|---|---|
-| API Gateway | `UserAuthentication` (value object) | `UserAuthenticationTest` | Conserva la identidad tomada del token y rechaza un usuario o correo ausente. | 3 |
-| API Gateway | `TokenServiceImpl` | `TokenServiceImplTest` | Acepta solo tokens firmados por IAM y vigentes; rechaza firmas ajenas, tokens vencidos o mal formados; extrae usuario, correo y roles; lee el token de la cabecera `Authorization`. | 10 |
-| API Gateway | `AuthenticationRequestEnricher` | `AuthenticationRequestEnricherTest` | Inyecta las cabeceras `X-User-Id`, `X-User-Email` y `X-User-Roles`, descarta roles vacíos y conserva la ruta original. | 4 |
-| API Gateway | `GatewayProblem` | `GatewayProblemTest` | Construye la respuesta de error en formato `problem+json`. | 1 |
-| Invoicing Service | `RucNumber` (value object) | `RucNumberTests` | Acepta RUC con dígito verificador peruano válido y rechaza los inválidos con `InvalidRucException`. | 5 |
-| Invoicing Service | `InvoiceConsistencyValidator` (servicio de dominio) | `InvoiceConsistencyValidatorTests` | Aprueba facturas consistentes y vigentes, marca como no elegibles las vencidas y exige revisión cuando un campo crítico tiene baja confianza de OCR. | 4 |
-| Invoicing Service | `InvoiceLineItemResolver` | `InvoiceLineItemResolverTests` | Conserva montos con decimales largos y resuelve montos ambiguos como precio unitario cuando el subtotal lo requiere. | 2 |
-| Invoicing Service | `AzureOcrMapper` | `AzureOcrMapperTests` | Traduce el resultado de Azure Document Intelligence al modelo de la factura: emisor e ítems. | 1 |
+| Servicio | Clase bajo prueba | Clase de prueba | Invariante o comportamiento validado | Casos | User Story relacionada |
+|---|---|---|---|---|---|
+| API Gateway | `UserAuthentication` (value object) | `UserAuthenticationTest` | Conserva la identidad tomada del token y rechaza un usuario o correo ausente. | 3 | TS02 |
+| API Gateway | `TokenServiceImpl` | `TokenServiceImplTest` | Acepta solo tokens firmados por IAM y vigentes; rechaza firmas ajenas, tokens vencidos o mal formados; extrae usuario, correo y roles; lee el token de la cabecera `Authorization`. | 10 | TS02, TS03 |
+| API Gateway | `AuthenticationRequestEnricher` | `AuthenticationRequestEnricherTest` | Inyecta las cabeceras `X-User-Id`, `X-User-Email` y `X-User-Roles`, descarta roles vacíos y conserva la ruta original. | 4 | TS02 |
+| API Gateway | `GatewayProblem` | `GatewayProblemTest` | Construye la respuesta de error en formato `problem+json`. | 1 | TS02 |
+| Invoicing Service | `RucNumber` (value object) | `RucNumberTests` | Acepta RUC con dígito verificador peruano válido y rechaza los inválidos con `InvalidRucException`. | 5 | US11, TS04 |
+| Invoicing Service | `InvoiceConsistencyValidator` (servicio de dominio) | `InvoiceConsistencyValidatorTests` | Aprueba facturas consistentes y vigentes, marca como no elegibles las vencidas y exige revisión cuando un campo crítico tiene baja confianza de OCR. | 4 | US13, TS04 |
+| Invoicing Service | `InvoiceLineItemResolver` | `InvoiceLineItemResolverTests` | Conserva montos con decimales largos y resuelve montos ambiguos como precio unitario cuando el subtotal lo requiere. | 2 | US13 |
+| Invoicing Service | `AzureOcrMapper` | `AzureOcrMapperTests` | Traduce el resultado de Azure Document Intelligence al modelo de la factura: emisor e ítems. | 1 | US11, TS04 |
+
+**User Stories relacionadas**
+
+* **TS02 – Punto de entrada único con validación de JWT:** *Como developer, deseo un API Gateway que enrute las peticiones por prefijo y valide el token JWT, para que los servicios internos confíen en la identidad inyectada.* Las pruebas del gateway verifican el rechazo con `401 problem+json` de las peticiones sin token o con token inválido (Escenario 2) y la inyección de las cabeceras `X-User-*` (Escenario 3).
+* **TS03 – Servicio de identidad y acceso (IAM):** *Como developer, deseo endpoints de registro, inicio de sesión, recuperación y restablecimiento de contraseña que emitan tokens JWT, para autenticar a los usuarios de la web y del móvil.* `TokenServiceImplTest` comprueba que el gateway acepta los tokens que emite IAM con su identificador, correo y roles (Escenario 1).
+* **US11 – Subir una factura electrónica:** *Como empresario MYPE, deseo subir el PDF de una factura electrónica emitida en SUNAT, para que Vankoo extraiga sus datos sin que yo tenga que digitarlos.* Las pruebas de `AzureOcrMapper` y `RucNumber` validan la lectura automática de los datos del emisor (Escenario 3).
+* **US13 – Ver el detalle y el progreso de una factura:** *Como empresario MYPE, deseo ver los datos leídos de una factura, sus ítems y en qué paso del proceso se encuentra, para saber si necesita mi intervención.* Las pruebas del validador y del resolvedor de ítems cubren los datos extraídos (Escenario 1) y las facturas observadas (Escenario 3).
+* **TS04 – Servicio de facturación con lectura automática:** *Como developer, deseo un servicio que reciba el PDF de la factura, extraiga sus datos mediante OCR, valide su consistencia y publique eventos de integración, para que otros servicios reaccionen a las facturas aprobadas.* Las pruebas de Invoicing validan la extracción y la validación de consistencia (Escenario 1).
 
 #### 3. Ejemplos de implementación
 
@@ -3669,7 +3677,7 @@ Resultados de las primeras ejecuciones del CI (07/10/2026, Pull Request `feature
 
 ## 7.2. Continuous Delivery
 
-Continuous Delivery extiende el flujo de Integración Continua descrito en la sección 7.1. Una vez que el código compila y sus pruebas pasan, el pipeline empaqueta el servicio en una imagen Docker, la valida y la publica en el registro, de modo que cada versión de `develop` y `main` queda lista para desplegarse. La decisión de llevar una versión a producción es manual: un integrante del equipo la toma al aprobar el Pull Request de la rama `release/*` hacia `main`. A partir de ese merge, el despliegue es automático (ver 7.3).
+Continuous Delivery extiende el flujo de Integración Continua descrito en la sección 7.1. Una vez que el código compila y sus pruebas pasan, el pipeline empaqueta el servicio en una imagen Docker y lo deja listo para desplegarse. El paso final a producción permanece bajo aprobación manual del equipo.
 
 
 ### 7.2.1. Tools and Practices
@@ -3678,15 +3686,13 @@ El equipo reutiliza las herramientas de CI y suma las que empaquetan y entregan 
 
 | Herramienta | Tipo | Propósito |
 |---|---|---|
-| GitHub | Control de versiones y colaboración | Aloja los repositorios de la organización `yieldlabshq` y gestiona ramas y Pull Requests con revisión cruzada entre integrantes. |
-| GitHub Actions | Automatización de CI/CD | Ejecuta la compilación y las pruebas en cada evento de código y, en cada push a `develop` o `main`, encadena la construcción, validación y publicación de la imagen (job *Build, Validate & Publish Image*). |
-| Maven | Construcción del backend | Compila el API Gateway y ejecuta sus pruebas unitarias e integración. |
-| JUnit 5, xUnit y Reqnroll | Pruebas | Validan el comportamiento de cada servicio (Java y .NET, incluidos los escenarios BDD) antes de que el cambio avance en el pipeline. |
+| GitHub | Control de versiones y colaboración | Aloja los repositorios de la organización `yieldlabs` y gestiona ramas y Pull Requests con revisión cruzada entre integrantes. |
+| GitHub Actions | Automatización de CI/CD | Ejecuta la compilación y las pruebas en cada evento de código y encadena la construcción de la imagen y la aprobación del despliegue. |
+| Maven | Construcción del backend | Compila el API Gateway y ejecuta las pruebas unitarias, de integración y BDD. |
+| JUnit 5 y Cucumber | Pruebas | Validan el comportamiento del servicio antes de que el cambio avance en el pipeline. |
 | pnpm y Vite | Construcción del frontend | Instalan dependencias y generan el build de `vankoo-mype-web`, con la versión de Node fijada en `.nvmrc` y ESLint para validar el código. |
 | Docker | Contenerización | El `Dockerfile` del gateway usa dos etapas: construye el JAR con Maven y Temurin 25, y ejecuta solo el JRE en una imagen ligera, con usuario sin privilegios y `curl` para el healthcheck. |
-| Docker Buildx y acciones de Docker | Construcción y publicación de imágenes | `docker/metadata-action` calcula las etiquetas de la imagen y `docker/build-push-action` la construye con caché de capas y la publica. |
-| GitHub Container Registry (GHCR) | Registro de imágenes | Almacena las imágenes publicadas por el pipeline en `ghcr.io/yieldlabshq/<servicio>`, etiquetadas con el SHA del commit (`sha-xxxxxxx`) y con la rama (`develop`, `main` y `latest`). |
-| Docker Compose | Orquestación | El `docker-compose.yaml` de `vankoo-infra` levanta el sistema completo con el mismo entorno en desarrollo y en validación manual. |
+| Docker Compose | Orquestación | El `docker-compose.yaml` de `vankoo-infra` levanta el sistema completo con el mismo entorno en desarrollo y en validación. |
 | Perfiles de Spring (`dev`, `docker`, `prod`) | Configuración por entorno | Separan la configuración de cada entorno sin cambiar el código. |
 
 Además de las herramientas, el equipo sigue prácticas que reducen el riesgo de llevar código no deseado a producción:
@@ -3695,105 +3701,30 @@ Además de las herramientas, el equipo sigue prácticas que reducen el riesgo de
 - **Conventional Commits:** los mensajes siguen el formato `feat`, `build`, `chore` y `docs`, lo que mantiene un historial ordenado por capa.
 - **Pruebas antes de integrar:** un cambio solo se fusiona a la rama estable si sus pruebas pasan. La imagen se construye con `-DskipTests` porque las pruebas ya corrieron en la etapa de CI.
 - **Imagen única por entorno:** la misma imagen se ejecuta en cada entorno y solo cambia el perfil de configuración activo.
-- **Validación del artefacto antes de publicarlo:** la imagen recién construida se ejecuta en el runner y debe responder en su endpoint de salud; si no lo hace, no se publica.
-- **Aprobación manual de la release:** el pipeline deja cada versión lista en el registro, pero el paso a producción lo autoriza un integrante al aprobar el Pull Request `release/*` → `main`.
-- **Versiones trazables para rollback:** cada imagen queda etiquetada con el SHA de su commit, lo que permite volver a cualquier versión anterior; en producción, ese retorno es automático (ver 7.3).
+- **Despliegue semiautomático con aprobación manual:** el pipeline deja la imagen lista, pero el despliegue final lo autoriza un responsable.
+- **Rollback manual:** ante un error grave en producción, el equipo vuelve a la imagen de la versión anterior de forma controlada.
 
 
 ### 7.2.2. Stages Deployment Pipeline Components
 
-El pipeline de entrega se organiza en etapas encadenadas: cada una solo se ejecuta si la anterior termina con éxito. Las etapas 2 a 4 forman el job *Build, Validate & Publish Image*, que se ejecuta en cada push a `develop` o `main` después del job de CI (7.1). La siguiente tabla describe qué ocurre en cada etapa y con qué herramienta.
+El pipeline de entrega se organiza en etapas encadenadas: cada una solo se ejecuta si la anterior termina con éxito, y la última exige aprobación humana. La siguiente tabla describe qué ocurre en cada etapa y con qué herramienta.
 
 | Etapa | Qué ocurre | Herramienta |
 |---|---|---|
-| 1. Integración continua | Se compila el proyecto y se ejecutan las pruebas unitarias, de integración y BDD. Si alguna falla, el cambio no avanza. | GitHub Actions, Maven / .NET |
-| 2. Construcción de la imagen | Con las pruebas aprobadas, se construye la imagen Docker del servicio a partir de su `Dockerfile` multi-stage. | Docker Buildx |
-| 3. Validación de la imagen | La imagen se ejecuta como contenedor en el runner y debe responder en su endpoint de salud (`/actuator/health/readiness` en el gateway, `/health/live` en Invoicing) en un máximo de 90 segundos. Para pruebas manuales del sistema completo, el equipo levanta la misma versión con el `docker-compose.yaml` de `vankoo-infra`. | Docker, Docker Compose |
-| 4. Publicación en el registro | La imagen validada se publica en GHCR con las etiquetas `sha-xxxxxxx`, la rama de origen y, en `main`, `latest`. | GitHub Container Registry |
-| 5. Aprobación de la release | Un integrante revisa y aprueba el Pull Request `release/*` → `main`. Es la única decisión manual del flujo. | GitHub Pull Requests |
-| 6. Paso a producción | El merge a `main` repite las etapas 1 a 4 sobre esa versión y entrega la imagen al job de despliegue (7.3). | GitHub Actions |
+| 1. Integración continua | Se compila el proyecto y se ejecutan las pruebas unitarias, de integración y BDD. Si alguna falla, el cambio no avanza. | GitHub Actions, Maven |
+| 2. Construcción de la imagen | Con las pruebas aprobadas, se construye la imagen Docker del servicio. | Docker |
+| 3. Validación en staging | El sistema se levanta con el perfil `docker` en un entorno similar al de producción para pruebas manuales, de carga o seguridad . | Docker Compose |
+| 4. Aprobación del despliegue | El pipeline queda en espera hasta que un responsable revise los resultados y autorice. | GitHub Environments |
+| 5. Despliegue manual | Con la aprobación, se despliega la versión validada con el perfil `prod` . | GitHub Actions, Docker |
+| 6. Monitoreo y feedback | Se observa el estado del servicio, por ejemplo con el healthcheck de la imagen, y los resultados alimentan el siguiente ciclo. | Docker healthcheck |
 
-Configuración del job de entrega en el API Gateway ([pipeline.yml](https://github.com/yieldlabshq/vankoo-api-gateway/blob/develop/.github/workflows/pipeline.yml)); el Invoicing Service usa la misma estructura, cambiando el `Dockerfile` y el endpoint de salud:
-
-```yaml
-  publish-image:
-    name: Build, Validate & Publish Image
-    needs: build-and-test
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v5
-
-      - name: Compute image tags
-        id: meta
-        uses: docker/metadata-action@v5
-        with:
-          images: ${{ env.IMAGE_NAME }}
-          tags: |
-            type=sha,prefix=sha-
-            type=ref,event=branch
-            type=raw,value=latest,enable={{is_default_branch}}
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Build image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          load: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-
-      - name: Smoke test the image
-        run: |
-          image="${IMAGE_NAME}:sha-${GITHUB_SHA::7}"
-          docker run -d --name smoke -p 8080:8080 \
-            -e JWT_SECRET="${CI_JWT_SECRET}" \
-            -e EUREKA_CLIENT_ENABLED=false \
-            "$image"
-          for attempt in $(seq 1 30); do
-            if curl -fsS "http://localhost:8080${HEALTH_PATH}"; then
-              echo
-              echo "Container is ready after ${attempt} attempt(s)."
-              exit 0
-            fi
-            sleep 3
-          done
-          echo "::error::The container did not become ready."
-          docker logs smoke
-          exit 1
-
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Publish image
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-```
-
-En el smoke test, el gateway se ejecuta con `EUREKA_CLIENT_ENABLED=false` porque el Discovery Server no forma parte de la validación aislada de la imagen. La publicación usa el `GITHUB_TOKEN` que GitHub Actions entrega a cada ejecución, por lo que no requiere credenciales adicionales.
+La configuración propuesta del flujo reutiliza el job de pruebas de la sección 7.1, agrega la construcción de la imagen y deja el despliegue detrás de un entorno `production` que exige aprobación manual:
 
 ## 7.3. Continuous Deployment
 
 ### 7.3.1. Tools and Practices
 
-Continuous Deployment es el último tramo del pipeline de Vankoo: todo cambio que llega a la rama `main` y supera las etapas de integración (7.1) y entrega (7.2) se despliega a producción de forma automática, sin una aprobación manual intermedia. En Continuous Delivery (7.2) la única decisión humana es aprobar el Pull Request `release/*` → `main`; desde ese merge, la publicación en producción la deciden los controles automáticos del pipeline. Por ello, la confianza en el despliegue descansa en las pruebas descritas en el Capítulo VI y en las verificaciones posteriores al despliegue.
+Continuous Deployment es el último tramo del pipeline de Vankoo: todo cambio que llega a la rama `main` y supera las etapas de integración (7.1) y entrega (7.2) se despliega a producción de forma automática, sin una aprobación manual intermedia. A diferencia de Continuous Delivery, donde el paso a producción queda listo pero lo dispara una persona, aquí la decisión la toman los controles automáticos del pipeline. Por ello, la confianza en el despliegue descansa en las pruebas descritas en el Capítulo VI y en las verificaciones posteriores al despliegue.
 
 #### 1. Herramientas
 
@@ -3953,8 +3884,8 @@ Las etapas anteriores se implementan en el job *Deploy to Production* del archiv
 | Etapa del pipeline | Implementación |
 |---|---|
 | Source Code Retrieval, Environment Preparation, Dependency Installation y Build | Job *Build & Test* (7.1): `actions/checkout`, `actions/setup-java` o `actions/setup-dotnet`, `./mvnw -B verify` o `dotnet restore` y `dotnet build`. |
-| Validation Before Deployment | Suite de pruebas del job *Build & Test* (6.1.1 a 6.1.3) y smoke test de la imagen en el job *Build, Validate & Publish Image* (7.2.2). |
-| Deployment Artifact Generation | Imagen Docker publicada en GHCR como `ghcr.io/yieldlabshq/<servicio>:sha-xxxxxxx` (7.2.2). |
+| Validation Before Deployment | Suite de pruebas del job *Build & Test* (6.1.1 a 6.1.3) y smoke test de la imagen en el job *Build, Validate & Publish Image*, que la ejecuta como contenedor y verifica su endpoint de salud antes de publicarla. |
+| Deployment Artifact Generation | Imagen Docker publicada en GHCR por el job *Build, Validate & Publish Image* como `ghcr.io/yieldlabshq/<servicio>:sha-xxxxxxx`. |
 | Production Deployment | Paso *Deploy container to Azure Container Instances*: `az container create` con la imagen del commit y las variables de `PRODUCTION_ENV`. |
 | Post-Deployment Verification | Paso *Verify deployment health*: consulta el endpoint de readiness del servicio desplegado hasta 40 veces, cada 6 segundos. |
 | Rollback | Paso *Roll back to the previous production release*: si la verificación falla, vuelve a desplegar la imagen con la etiqueta `production`. Si tiene éxito, el paso *Mark image as the current production release* mueve esa etiqueta a la nueva versión. |
