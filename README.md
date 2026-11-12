@@ -3897,6 +3897,14 @@ pnpm exec eslint "{src,test}/**/*.ts"
 | `vankoo-mype-web` | 108 | 0 | 0 | Sin hallazgos |
 | `vankoo-profile-service` | 104 | 13 | 6 | 19 hallazgos en 5 archivos |
 
+![ESLint en vankoo-mype-web](./assets/cap6-verification-validation/static-testing/eslint-mype-web.png)
+
+*Figura. Ejecución de ESLint en `vankoo-mype-web`, sin hallazgos.*
+
+![ESLint en vankoo-profile-service](./assets/cap6-verification-validation/static-testing/eslint-profile-service.png)
+
+*Figura. Ejecución de ESLint en `vankoo-profile-service`, con 19 hallazgos (13 errores y 6 advertencias).*
+
 Detalle de los hallazgos de `vankoo-profile-service` por regla:
 
 | Regla | Severidad | Ocurrencias | Descripción |
@@ -3941,13 +3949,27 @@ Se ejecutó `pnpm audit --prod` sobre los dos proyectos Node.js para identificar
 | `vankoo-mype-web` | 1 | 23 | 36 | 8 | 68 |
 | `vankoo-profile-service` | 2 | 28 | 30 | 3 | 63 |
 
+![pnpm audit en vankoo-mype-web](./assets/cap6-verification-validation/static-testing/audit-mype-web.png)
+
+*Figura. Resumen de `pnpm audit --prod` en `vankoo-mype-web`.*
+
+![Detalle de pnpm audit en vankoo-mype-web](./assets/cap6-verification-validation/static-testing/audit-mype-web-detalle.png)
+
+*Figura. Detalle de la vulnerabilidad crítica (`proxy-addr`) y de las primeras altas en `vankoo-mype-web`; la columna Paths muestra que llegan a través de `shadcn`.*
+
+![pnpm audit en vankoo-profile-service](./assets/cap6-verification-validation/static-testing/audit-profile-service.png)
+
+*Figura. Resumen de `pnpm audit --prod` en `vankoo-profile-service`.*
+
 Las vulnerabilidades críticas corresponden a `proxy-addr` (suplantación de IP mediante direcciones IPv4 mapeadas) en ambos proyectos y a `form-data` (función aleatoria insegura) en el Profile Service. Entre las altas destacan `multer`, `path-to-regexp` y `lodash` en el Profile Service, y `undici`, `fast-uri` y `follow-redirects` en la web. La mayoría llega como dependencia transitiva, por lo que se resuelve actualizando el paquete directo que la incluye o fijando una versión segura con `pnpm.overrides`.
+
+En la web, la columna *Paths* del reporte muestra que la vulnerabilidad crítica y varias altas (`proxy-addr`, `js-yaml`, `fast-uri`) llegan a través de `shadcn`, cuyo CLI arrastra `@modelcontextprotocol/sdk`, `express` y `@dotenvx/dotenvx`. Este paquete está declarado en `dependencies`, aunque la aplicación solo lo usa para importar su hoja de estilos (`@import "shadcn/tailwind.css"`), que Vite incorpora al compilar. Moverlo a `devDependencies` retira esas dependencias del árbol de producción sin cambiar el comportamiento de la aplicación. En el Profile Service, en cambio, las vulnerabilidades provienen de dependencias de ejecución (`@nestjs/platform-express`, `multer`, `minio`), por lo que requieren actualizar esos paquetes.
 
 **Plan de mejora derivado del análisis**
 
 | # | Acción | Prioridad |
 |---|---|---|
-| 1 | Actualizar las dependencias con vulnerabilidades críticas y altas (`pnpm update` y `pnpm.overrides` para las transitivas). | Alta |
+| 1 | Mover `shadcn` a `devDependencies` en la web y actualizar las dependencias con vulnerabilidades críticas y altas del Profile Service (`pnpm update` y `pnpm.overrides` para las transitivas). | Alta |
 | 2 | Tipar el payload de `user-registered.subscriber.ts` y corregir los 19 hallazgos de ESLint del Profile Service. | Alta |
 | 3 | Agregar `pnpm lint` y `pnpm audit --audit-level=high` como pasos del job *Build & Test* (7.1.2), para que el pipeline falle ante nuevos hallazgos. | Media |
 | 4 | Incorporar SonarQube Cloud sobre los repositorios Java, .NET y Kotlin, que hoy no tienen un analizador dedicado. | Media |
