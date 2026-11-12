@@ -4717,19 +4717,138 @@ Las cuatro preguntas con mayor puntaje (Q1, Q3, Q2 y Q4) pasan a experimento en 
 
 ### 8.2.1. Hypotheses
 
+| ID | Experimento | Hipótesis | H0 (nula) | H1 (alternativa) |
+|---|---|---|---|---|
+| H1 | E1 – Oferta explicada | Creemos que explicar los conceptos de la oferta aumentará la aceptación de ofertas. Sabremos que tuvimos éxito cuando la tasa de aceptación suba de 40 % a 50 % o más. | La tasa de aceptación del grupo tratamiento es igual a la del grupo control. | La tasa de aceptación del grupo tratamiento es distinta a la del grupo control. |
+| H2 | E2 – Confirmación del pago | Creemos que mostrar el estado de confirmación del pago aumentará las recargas completadas sin reintento. Sabremos que tuvimos éxito cuando pasen de 80 % a 90 % o más. | La proporción de recargas completadas sin reintento es igual en ambos grupos. | La proporción es distinta entre ambos grupos. |
+| H3 | E3 – Aviso de aprobación | Creemos que notificar por correo la aprobación aumentará las ofertas aceptadas en las primeras 48 horas. Sabremos que tuvimos éxito cuando pasen de 35 % a 50 % o más. | La proporción de ofertas aceptadas en 48 horas es igual en ambos grupos. | La proporción es distinta entre ambos grupos. |
+| H4 | E4 – Mercado comparable | Creemos que ordenar el mercado y mostrar el mínimo aumentará la conversión de detalle de subasta a inversión. Sabremos que tuvimos éxito cuando pase de 15 % a 20 % o más. | La conversión es igual en ambos grupos. | La conversión es distinta entre ambos grupos. |
+
+Las pruebas son bilaterales: se rechaza H0 tanto si el cambio mejora la métrica como si la empeora.
+
 ### 8.2.2. Domain Business Metrics
+
+Métricas del negocio de crowdfactoring que los experimentos buscan mover:
+
+| Métrica de negocio | Definición | Segmento |
+|---|---|---|
+| Tasa de aceptación de ofertas | Ofertas aceptadas / ofertas mostradas | MYPE |
+| Tiempo a la aceptación | Horas entre la aprobación de la factura y la aceptación de la oferta | MYPE |
+| Volumen publicado | Suma del importe de las facturas publicadas en subasta por mes | MYPE |
+| Tasa de recarga exitosa | Recargas acreditadas / recargas iniciadas | Inversionista |
+| Conversión a inversión | Inversiones confirmadas / detalles de subasta abiertos | Inversionista |
+| Tiempo de fondeo | Horas entre la publicación de la subasta y su fondeo al 100 % | Marketplace |
+| Ingreso por comisión | Comisión cobrada sobre el importe de las facturas fondeadas | Negocio |
 
 ### 8.2.3. Measures
 
+| Experimento | Métrica principal | Fórmula | Métricas secundarias | Métrica de control (guardrail) |
+|---|---|---|---|---|
+| E1 | Tasa de aceptación de ofertas | MYPEs que aceptan / MYPEs que ven la oferta | Tiempo en el panel de la oferta; clics en la ayuda contextual | Ofertas vencidas sin respuesta |
+| E2 | Recargas completadas sin reintento | Recargas acreditadas en el primer intento / recargas iniciadas | Tiempo hasta la acreditación; contactos a soporte | Pagos duplicados |
+| E3 | Ofertas aceptadas en 48 h | Ofertas aceptadas dentro de 48 h desde la aprobación / facturas aprobadas | Tasa de apertura del correo; clics en el enlace | Bajas de la lista de correo |
+| E4 | Conversión de detalle a inversión | Inversiones confirmadas / detalles de subasta abiertos | Monto promedio invertido; uso del selector de orden | Errores de validación de monto |
+
 ### 8.2.4. Conditions
+
+| Experimento | Control (A) | Tratamiento (B) | Unidad de asignación | Distribución |
+|---|---|---|---|---|
+| E1 | Panel de la oferta actual | Panel con ayuda contextual y ejemplo en soles | Usuario MYPE | 50 % / 50 % |
+| E2 | Pantalla de recarga pendiente actual | Pantalla "Confirmando tu pago" con actualización automática | Usuario inversionista | 50 % / 50 % |
+| E3 | Sin correo de aprobación | Correo de aprobación con enlace a la oferta | Usuario MYPE | 50 % / 50 % |
+| E4 | Mercado y confirmación actuales | Selector de orden y mínimo visible | Usuario inversionista | 50 % / 50 % |
+
+**Reglas comunes:**
+
+* La asignación es aleatoria y estable: un usuario permanece en el mismo grupo durante todo el experimento (hash del identificador de usuario).
+* E1 y E3 se ejecutan sobre la misma población de MYPEs con asignaciones independientes (diseño factorial 2×2), de modo que el efecto de cada cambio se puede analizar por separado.
+* Solo participan usuarios nuevos o activos durante el periodo del experimento; se excluyen las cuentas del equipo y de prueba.
+* No se modifica ningún otro elemento de las pantallas involucradas mientras el experimento está activo.
 
 ### 8.2.5. Scale Calculations and Decisions
 
+Para cada experimento se calculó el tamaño de muestra de una prueba de diferencia de proporciones bilateral, con:
+
+* **Nivel de significancia (α):** 5 % (z = 1.96)
+* **Potencia estadística (1 − β):** 80 % (z = 0.8416)
+* **Efecto mínimo detectable (MDE):** la mejora mínima que justifica implementar el cambio para todos los usuarios.
+
+Fórmula utilizada, por grupo:
+
+```
+n = [ z(1−α/2) · √(2·p̄·(1−p̄)) + z(1−β) · √(p1·(1−p1) + p2·(1−p2)) ]² / (p2 − p1)²
+
+donde p1 = tasa base, p2 = p1 + MDE, p̄ = (p1 + p2) / 2
+```
+
+| Experimento | Tasa base (p1) | MDE | p2 | n por grupo | n total | Volumen diario estimado | Duración estimada |
+|---|---|---|---|---|---|---|---|
+| E1 | 40 % | +10 pp | 50 % | 388 | 776 MYPEs que ven una oferta | 25 | 32 días |
+| E2 | 80 % | +10 pp | 90 % | 199 | 398 recargas iniciadas | 20 | 20 días |
+| E3 | 35 % | +15 pp | 50 % | 170 | 340 facturas aprobadas | 15 | 23 días |
+| E4 | 15 % | +5 pp | 20 % | 906 | 1,812 detalles de subasta abiertos | 60 | 31 días |
+
+**Origen de las tasas base:** como el producto aún no registra eventos de uso, las tasas base se estimaron a partir de las entrevistas de validación y de referencias del mercado de factoring. Durante la primera semana de cada experimento se medirá la tasa real del grupo control y, si difiere en más de 5 puntos de la estimada, se recalculará el tamaño de muestra.
+
+**Decisiones:**
+
+1. **Potencia de 80 %:** se eligió el extremo inferior del rango recomendado (80 % – 95 %) porque el volumen de usuarios en la etapa inicial es limitado; con 95 % de potencia, E4 necesitaría unos 1,500 detalles de subasta por grupo en lugar de 906, lo que extendería el experimento a más de 7 semanas.
+2. **MDE diferenciado:** E4 usa un MDE de 5 puntos porque parte de una tasa base baja, donde un aumento de 5 puntos representa un 33 % de mejora relativa. E3 usa 15 puntos porque un correo solo justifica su costo si el efecto es grande.
+3. **Duración máxima de 5 semanas:** si un experimento no alcanza su muestra en ese plazo, se analiza con la muestra obtenida y se reporta la potencia real alcanzada.
+4. **Sin detener antes de tiempo:** los resultados no se evalúan para tomar decisiones antes de alcanzar el tamaño de muestra, para no inflar la tasa de falsos positivos.
+
 ### 8.2.6. Methods Selection
+
+| Método | Uso en Vankoo | Experimentos |
+|---|---|---|
+| **A/B testing (diseño entre sujetos)** | Cada usuario ve una sola variante, asignada al azar. Permite atribuir la diferencia en la métrica al cambio. | E1, E2, E3, E4 |
+| **Diseño factorial 2×2** | Combina E1 y E3 sobre la misma población sin que un experimento contamine al otro. | E1, E3 |
+| **Feature flags** | Activan la variante B por usuario sin desplegar una versión distinta: configuración remota en la web y Firebase Remote Config en el móvil (TS09). | E1, E2, E4 |
+| **Prueba z de diferencia de proporciones** | Contrasta H0 frente a H1 para las métricas principales, que son proporciones. | E1, E2, E3, E4 |
+| **Intervalo de confianza del 95 %** | Reporta el tamaño del efecto, no solo si es significativo. | E1, E2, E3, E4 |
+| **Entrevistas de seguimiento** | 2 o 3 entrevistas cortas por experimento para entender el porqué del resultado. | E1, E4 |
+
+**Criterio de decisión:** si p < 0.05 y el límite inferior del intervalo de confianza supera cero, la variante B se implementa para todos los usuarios. Si el resultado no es significativo, se mantiene la versión A y el aprendizaje se registra en el Question Backlog. Si la métrica de control empeora de forma significativa, el experimento se detiene.
 
 ### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection
 
+| Objetivo | KPI | Métricas que lo componen | Meta |
+|---|---|---|---|
+| Que más MYPEs conviertan sus facturas en liquidez | Tasa de aceptación de ofertas | Ofertas mostradas, ofertas aceptadas, ofertas vencidas | ≥ 50 % |
+| Que la MYPE reciba su dinero más rápido | Tiempo a la aceptación | Hora de aprobación, hora de apertura de la oferta, hora de aceptación | ≤ 48 h para el 50 % de las facturas |
+| Que el inversionista recargue sin fricción | Tasa de recarga exitosa | Recargas iniciadas, acreditadas, fallidas y duplicadas | ≥ 90 % |
+| Que más inversionistas inviertan | Conversión a inversión | Detalles de subasta abiertos, inversiones iniciadas y confirmadas | ≥ 20 % |
+| Que las facturas se fondeen rápido | Tiempo de fondeo | Hora de publicación, hora de fondeo al 100 % | ≤ 24 h para el 90 % de las subastas (Lean UX H03) |
+| Que la plataforma esté disponible | Disponibilidad mensual | Resultado de las sondas de readiness (7.4) | ≥ 99 % |
+
 ### 8.2.8. Web and Mobile Tracking Plan
+
+Los eventos de la web se envían a **Google Analytics 4** y los de la aplicación móvil a **Firebase Analytics**. Todos los eventos incluyen `user_id` (seudonimizado), `experiment_id` y `variant` (`A` o `B`) cuando el usuario participa en un experimento. No se registran datos personales ni montos de facturas individuales asociados a la identidad del usuario.
+
+**Aplicación web de la MYPE**
+
+| Evento | Se dispara cuando | Propiedades | Experimento |
+|---|---|---|---|
+| `invoice_uploaded` | La carga del PDF termina correctamente | `invoice_id` | – |
+| `invoice_approved` | El backend aprueba la factura (evento de servidor) | `invoice_id`, `approved_at` | E3 |
+| `approval_email_clicked` | La MYPE abre la oferta desde el enlace del correo | `invoice_id` | E3 |
+| `offer_viewed` | Se muestra el panel de la oferta | `invoice_id`, `tcea`, `days` | E1, E3 |
+| `offer_help_opened` | La MYPE abre la ayuda de un concepto | `concept` (`tcea`, `discount`, `fee`) | E1 |
+| `offer_accepted` | La MYPE confirma la aceptación | `invoice_id`, `hours_since_approval` | E1, E3 |
+| `offer_expired` | La oferta vence sin respuesta | `invoice_id` | E1 (guardrail) |
+
+**Aplicación móvil del inversionista**
+
+| Evento | Se dispara cuando | Propiedades | Experimento |
+|---|---|---|---|
+| `topup_started` | El inversionista confirma el monto y se abre Stripe Checkout | `amount_range` | E2 |
+| `topup_returned` | La app recibe el deep link `vankoo://` de retorno | `status` (`pending`, `failed`) | E2 |
+| `topup_credited` | El saldo se acredita | `attempt_number` | E2 |
+| `market_sorted` | El inversionista cambia el orden del mercado | `sort_by` (`tea`, `term`, `funded`) | E4 |
+| `auction_detail_viewed` | Se abre el detalle de una subasta | `auction_id`, `is_green` | E4 |
+| `investment_started` | Se abre la pantalla de confirmación | `auction_id` | E4 |
+| `investment_validation_error` | El monto ingresado no es válido | `reason` (`below_minimum`, `exceeds_remaining`, `insufficient_balance`) | E4 (guardrail) |
+| `investment_confirmed` | La inversión queda registrada | `auction_id`, `amount_range` | E4 |
 
 ## 8.3. Experimentation
 
