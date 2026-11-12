@@ -4504,13 +4504,77 @@ El primer paso del job comprueba que el entorno `production` tenga configuradas 
 
 ## 7.4. Continuous Monitoring
 
+El monitoreo continuo cierra el ciclo DevOps de Vankoo: una vez desplegado cada componente (7.3), el equipo necesita saber si sigue disponible, si sus dependencias responden y si su comportamiento cambia después de una nueva versión. Además, como el Capítulo VIII plantea experimentos sobre el producto en producción, el monitoreo técnico se complementa con la recolección de métricas de uso definida en el tracking plan (8.2.8).
+
 ### 7.4.1. Tools and Practices
+
+| Herramienta | Uso en Continuous Monitoring | Estado |
+|---|---|---|
+| **Spring Boot Actuator** | Expone `/actuator/health` e `/actuator/info` en IAM, Finance, Investment, API Gateway y Discovery Server. En el perfil de Azure solo se publican `health` e `info`, para no exponer `env`, `heapdump` ni `loggers`. | Implementado |
+| **ASP.NET Core Health Checks** | El Invoicing Service expone `/health/live` (el proceso está vivo) y `/health/ready` (dependencias disponibles), con chequeos de MongoDB, Kafka y almacenamiento de objetos. | Implementado |
+| **Docker Compose healthchecks** | Cada contenedor del entorno local define su `healthcheck`, y los servicios dependientes esperan a que sus dependencias estén sanas antes de iniciar. | Implementado |
+| **Eureka Dashboard** | Muestra qué instancias de cada microservicio están registradas y activas. | Implementado |
+| **Azure Monitor (métricas de ACI)** | Métricas nativas de CPU, memoria y red de cada contenedor desplegado en Azure Container Instances. | Disponible por defecto |
+| **GitHub Actions** | Verificación post-despliegue contra el endpoint de readiness (7.3.2) y notificación por correo cuando un workflow falla. | Implementado |
+| **Netlify** | Estado de cada despliegue de la Landing Page y de la web de la MYPE, con historial para restaurar versiones. | Implementado |
+| **Azure Monitor Alerts + Action Groups** | Reglas de alerta sobre métricas y disponibilidad, con envío de notificaciones. | Planificado |
+| **Firebase Crashlytics** | Reporte de fallos de la aplicación móvil del inversionista en los dispositivos de los testers. | Planificado |
+
+Prácticas aplicadas:
+
+* **Liveness y readiness separados:** el endpoint de liveness no consulta dependencias externas, para que una caída de la base de datos no provoque reinicios en cadena; el de readiness sí lo hace y responde 503 cuando el servicio no puede atender.
+* **Severidad por dependencia:** en el Invoicing Service, MongoDB es crítica (`Unhealthy`), mientras que Kafka y el almacenamiento de objetos son degradantes (`Degraded`): la factura se guarda aunque la publicación del evento falle.
+* **Mínima exposición:** en producción solo se publican los endpoints de salud e información.
+* **Verificación después de cada despliegue:** ningún despliegue a producción se da por terminado sin que el endpoint de readiness responda correctamente.
 
 ### 7.4.2. Monitoring Pipeline Components
 
+El pipeline de monitoreo recoge señales en tres niveles:
+
+| Nivel | Señal | Fuente | Frecuencia |
+|---|---|---|---|
+| Infraestructura | CPU, memoria, red y reinicios de contenedor | Azure Monitor (ACI) | Cada minuto |
+| Servicio | Estado de salud (`UP` / `DOWN`, `Healthy` / `Degraded` / `Unhealthy`) | `/actuator/health`, `/health/ready` | Cada minuto (sonda de disponibilidad) |
+| Servicio | Instancias registradas en el Discovery Server | Eureka | Cada 30 segundos (heartbeat de Eureka) |
+| Entrega | Resultado de build, pruebas y despliegue | GitHub Actions, Netlify | En cada ejecución del pipeline |
+| Producto | Eventos de uso definidos en el tracking plan | Google Analytics 4 / Firebase Analytics (8.2.8) | En tiempo real |
+
+**Flujo del pipeline de monitoreo**
+
+1. Cada servicio publica su estado en su endpoint de salud.
+2. Una sonda de disponibilidad consulta los endpoints de readiness de los servicios expuestos detrás del API Gateway.
+3. Azure Monitor registra las métricas de los contenedores y el resultado de la sonda.
+4. Las métricas se visualizan en un dashboard de Azure que agrupa los servicios por bounded context.
+5. Los resultados de cada despliegue quedan en el historial de GitHub Actions y Netlify.
+
+**Limitación actual:** el Profile Service (NestJS) se registra en Eureka pero todavía no expone un endpoint de salud propio. Se agregará con `@nestjs/terminus` para alinearlo con el resto de los servicios.
+
 ### 7.4.3. Alerting Pipeline Components
 
+Las alertas se definen sobre las señales anteriores, con umbrales que evitan falsos positivos:
+
+| Alerta | Condición | Severidad | Ventana de evaluación |
+|---|---|---|---|
+| Servicio no disponible | El endpoint de readiness responde distinto de 200 en 3 sondeos consecutivos | Crítica | 3 minutos |
+| Servicio degradado | El Invoicing Service reporta `Degraded` (Kafka o almacenamiento de objetos) | Alta | 5 minutos |
+| Reinicios repetidos | Un contenedor se reinicia más de 2 veces | Alta | 15 minutos |
+| Consumo de recursos | CPU o memoria por encima del 85 % | Media | 10 minutos |
+| Instancia no registrada | Un microservicio desaparece del Discovery Server | Alta | 2 minutos |
+| Pipeline fallido | Un workflow de CI/CD termina en error en `develop` o `main` | Media | Inmediata |
+
+Las alertas críticas y altas se configuran como reglas de Azure Monitor sobre las métricas de ACI y sobre la sonda de disponibilidad; la alerta de pipeline fallido la emite GitHub Actions de forma nativa.
+
 ### 7.4.4. Notification Pipeline Components
+
+| Canal | Alertas que recibe | Destinatarios |
+|---|---|---|
+| Correo electrónico (Action Group de Azure Monitor) | Críticas y altas | Todos los integrantes del equipo |
+| Canal de Discord del equipo (webhook) | Todas las alertas | Equipo de desarrollo |
+| Correo de GitHub | Pipeline fallido | Autor del commit que disparó el workflow |
+
+**Contenido de cada notificación:** servicio afectado, condición que disparó la alerta, hora de inicio, enlace al recurso en Azure o a la ejecución en GitHub Actions y acción sugerida (por ejemplo, revisar los logs del contenedor o redesplegar la imagen `production`).
+
+**Gestión de la respuesta:** el integrante responsable del bounded context afectado confirma la alerta en el canal del equipo, la atiende y comunica cuando se resuelve. Si la causa es un despliegue reciente, se aplica el rollback definido en 7.3.1.
 
 <hr class="page-break">
 
