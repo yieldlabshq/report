@@ -4580,17 +4580,138 @@ Las alertas críticas y altas se configuran como reglas de Azure Monitor sobre l
 
 # Capítulo VIII: Experiment-Driven Development
 
+En este capítulo se aplica Experiment-Driven Development sobre Vankoo: en lugar de decidir las siguientes funcionalidades por intuición, el equipo parte de lo que aún no sabe sobre sus usuarios, lo convierte en preguntas que un experimento puede responder y diseña cada experimento con hipótesis, métricas, condiciones y tamaño de muestra definidos antes de ejecutarlo.
+
 ## 8.1. Experiment Planning
 
 ### 8.1.1. As-Is Summary
 
+Al cierre del Avance 2, Vankoo cuenta con la versión **v1.0.0** desplegada:
+
+| Componente | Estado actual |
+|---|---|
+| Landing Page | Publicada en Netlify, en español e inglés, con calculadora de adelanto (US01 – US04). |
+| Aplicación web de la MYPE | Registro, inicio de sesión, carga de facturas con OCR, seguimiento de estados, revisión y aceptación de la oferta (US05, US06, US11 – US15). |
+| Aplicación móvil del inversionista | Registro, inicio de sesión, billetera, recarga con Stripe, mercado con filtros, detalle de subasta e inversión (US08, US09, US16 – US20). |
+| Backend | Microservicios IAM, Profile, Invoicing, Investment y Finance, detrás de un API Gateway y un Discovery Server, desplegados en Azure (TS01 – TS08). |
+| Calidad y DevOps | Pruebas unitarias, de integración, BDD y de sistema (6.1); análisis estático (6.2); pipelines de CI/CD (7.1 – 7.3) y monitoreo (7.4). |
+
+**Lo que se sabe hoy.** Las entrevistas de validación (6.3) muestran que los flujos principales funcionan: 28 de 30 tareas se completaron sin ayuda. Las tareas con menor facilidad percibida fueron la revisión de la oferta en la web (SEQ 4.7) y la recarga en el móvil (SEQ 5.0). La auditoría (6.4.1) registró 8 problemas, 3 de ellos de severidad 3.
+
+**Lo que no se sabe todavía.** Ninguna de las hipótesis del Lean UX Process (1.2.2.3) se ha medido con usuarios reales en producción. El producto no registra eventos de uso, por lo que hoy no se puede saber cuántas MYPEs aceptan la oferta, cuánto tardan en hacerlo ni cuántos inversionistas pasan de ver una subasta a invertir.
+
 ### 8.1.2. Raw Material: Assumptions, Knowledge Gaps, Ideas, Claims
+
+**Assumptions** (lo que el equipo cree, sin evidencia suficiente)
+
+| ID | Supuesto | Origen |
+|---|---|---|
+| A1 | La MYPE acepta la oferta si entiende cuánto le cuesta el adelanto. | Lean UX Business Assumption 4; entrevistas 6.3 |
+| A2 | El inversionista invierte con más frecuencia si puede comparar oportunidades por rentabilidad. | Lean UX User Assumption 3; entrevista 4 |
+| A3 | La incertidumbre al volver de la página de pago provoca reintentos y abandono de la recarga. | Entrevista 5; auditoría, problema #3 |
+| A4 | Las facturas verdes se fondean más rápido que las convencionales. | Lean UX Hypothesis 05 |
+
+**Knowledge Gaps** (lo que el equipo no sabe y necesita saber)
+
+| ID | Vacío de conocimiento |
+|---|---|
+| K1 | Qué porcentaje de las ofertas mostradas termina aceptado. |
+| K2 | Cuánto tiempo pasa entre que una factura es aprobada y la MYPE revisa su oferta. |
+| K3 | Qué porcentaje de las recargas iniciadas se completa sin reintentos. |
+| K4 | Qué porcentaje de los inversionistas que abren el detalle de una subasta termina invirtiendo. |
+
+**Ideas** (posibles cambios en el producto)
+
+| ID | Idea | Problema que atiende |
+|---|---|---|
+| I1 | Explicar la TCEA, el descuento y la comisión con ayuda contextual y un ejemplo en soles. | Auditoría #2 |
+| I2 | Enviar un correo a la MYPE cuando su factura es aprobada, con un enlace directo a la oferta. | Entrevista 2; auditoría #7 |
+| I3 | Mostrar un estado "Confirmando tu pago" con actualización automática al volver de Stripe. | Auditoría #3 |
+| I4 | Permitir ordenar el mercado por TEA y plazo, y mostrar el mínimo de inversión junto al campo de monto. | Auditoría #5 y #8 |
+| I5 | Mostrar el motivo de "Requiere revisión" y "No elegible" con una acción sugerida. | Auditoría #1 |
+
+**Claims** (afirmaciones de usuarios o del mercado que deben comprobarse)
+
+| ID | Afirmación | Fuente |
+|---|---|---|
+| C1 | "Usaría Vankoo porque no suma deuda." | Entrevistas 1 y 3 |
+| C2 | "Empezaría invirtiendo entre S/ 500 y S/ 1,000." | Entrevistas 4 y 6 |
+| C3 | "Si me avisan cuando la factura está aprobada, no tengo que entrar a revisar." | Entrevista 2 |
+| C4 | "Ver cómo se mueve mi dinero es lo que más confianza me da." | Entrevista 5 |
 
 ### 8.1.3. Experiment-Ready Questions
 
+A partir del material anterior, se formularon preguntas que se pueden responder con un experimento medible:
+
+| ID | Pregunta | Relación |
+|---|---|---|
+| Q1 | ¿Explicar los conceptos de la oferta con ayuda contextual y un ejemplo en soles aumenta la tasa de aceptación de ofertas de las MYPEs? | A1, K1, I1 |
+| Q2 | ¿Notificar por correo la aprobación de la factura aumenta la proporción de ofertas aceptadas en las primeras 48 horas? | K2, I2, C3 |
+| Q3 | ¿Mostrar un estado de confirmación del pago aumenta la proporción de recargas completadas sin reintento? | A3, K3, I3 |
+| Q4 | ¿Permitir ordenar el mercado y mostrar el mínimo de inversión aumenta la conversión de detalle de subasta a inversión? | A2, K4, I4 |
+| Q5 | ¿Mostrar el motivo de "Requiere revisión" reduce el tiempo que tarda la MYPE en corregir una factura? | I5 |
+| Q6 | ¿Las facturas etiquetadas como verdes se fondean más rápido que las convencionales? | A4 |
+| Q7 | ¿Mostrar el historial de pagos del adquirente aumenta el monto promedio invertido? | C4 |
+| Q8 | ¿Ofrecer un monto mínimo de inversión menor a S/ 500 aumenta la cantidad de inversionistas que realizan su primera inversión? | C2 |
+
 ### 8.1.4. Question Backlog
 
+Cada pregunta se puntuó de 1 a 5 en tres criterios: **Impacto** en el negocio, **Incertidumbre** (cuánto se desconoce la respuesta) y **Facilidad** de ejecución con el producto actual. La prioridad es la suma de los tres.
+
+| Prioridad | ID | Pregunta (resumen) | Impacto | Incertidumbre | Facilidad | Puntaje |
+|---|---|---|---|---|---|---|
+| 1 | Q1 | Explicación de la oferta → aceptación | 5 | 4 | 5 | 14 |
+| 2 | Q3 | Confirmación del pago → recargas completadas | 4 | 4 | 5 | 13 |
+| 3 | Q2 | Correo de aprobación → aceptación en 48 h | 4 | 4 | 4 | 12 |
+| 4 | Q4 | Ordenar mercado y mínimo visible → conversión | 5 | 3 | 4 | 12 |
+| 5 | Q5 | Motivo de revisión → tiempo de corrección | 3 | 3 | 4 | 10 |
+| 6 | Q6 | Facturas verdes → velocidad de fondeo | 4 | 4 | 2 | 10 |
+| 7 | Q8 | Mínimo menor a S/ 500 → primera inversión | 4 | 3 | 2 | 9 |
+| 8 | Q7 | Historial del adquirente → monto invertido | 3 | 3 | 2 | 8 |
+
+Las cuatro preguntas con mayor puntaje (Q1, Q3, Q2 y Q4) pasan a experimento en esta etapa. Q6, Q7 y Q8 requieren más volumen de facturas publicadas o cambios en las reglas de negocio, por lo que quedan para una siguiente iteración. Q5 se implementa directamente como mejora de usabilidad (US23), porque la auditoría ya lo identificó como un problema de severidad 3.
+
 ### 8.1.5. Experiment Cards
+
+**Experiment Card E1 – Oferta explicada**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q1: ¿Explicar los conceptos de la oferta aumenta la tasa de aceptación? |
+| Why | Dos de tres MYPEs no entendieron la TCEA; si no entienden el costo, no aceptan la oferta. |
+| What | Ayuda contextual en TCEA, descuento y comisión, más un ejemplo en soles en el panel de la oferta (US21). |
+| Hypotheses | Ver 8.2.1, H1. |
+| Plataforma | Aplicación web de la MYPE |
+
+**Experiment Card E2 – Confirmación del pago**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q3: ¿Un estado de confirmación del pago aumenta las recargas completadas sin reintento? |
+| Why | El estado "pendiente" sin explicación provocó un reintento de pago en las entrevistas. |
+| What | Pantalla "Confirmando tu pago" con actualización automática y bloqueo de una segunda recarga mientras la anterior está pendiente (US24). |
+| Hypotheses | Ver 8.2.1, H2. |
+| Plataforma | Aplicación móvil del inversionista |
+
+**Experiment Card E3 – Aviso de aprobación**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q2: ¿Notificar la aprobación por correo aumenta las ofertas aceptadas en 48 horas? |
+| Why | La oferta tiene fecha de validez; si la MYPE no entra a revisarla a tiempo, se vence. |
+| What | Correo automático al aprobarse la factura, con el neto a recibir y un enlace directo a la oferta (US22). |
+| Hypotheses | Ver 8.2.1, H3. |
+| Plataforma | Aplicación web de la MYPE (correo) |
+
+**Experiment Card E4 – Mercado comparable**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q4: ¿Ordenar el mercado y mostrar el mínimo aumenta la conversión a inversión? |
+| Why | Los inversionistas comparan por rentabilidad y plazo, y el mínimo de S/ 500 se descubre recién al confirmar. |
+| What | Selector "Ordenar por" (TEA, plazo, porcentaje fondeado) y texto de ayuda con el mínimo y el restante por fondear (US25, US26). |
+| Hypotheses | Ver 8.2.1, H4. |
+| Plataforma | Aplicación móvil del inversionista |
 
 ## 8.2. Experiment Design
 
