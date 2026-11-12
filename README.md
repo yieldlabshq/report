@@ -4854,7 +4854,64 @@ Los eventos de la web se envían a **Google Analytics 4** y los de la aplicació
 
 ### 8.3.1. To-Be User Stories
 
+Las siguientes User Stories y Technical Stories implementan las variantes B de los experimentos (8.1.5) y las mejoras de usabilidad de la auditoría (6.4.1). Continúan la numeración de la sección 3.2 y se asocian a las Epics existentes.
+
+| Story ID | User | Priority | Epic |
+|----------|------|----------|------|
+| **US21** | Empresario MYPE | Alta | EP04 – Publicación en subasta (Investment) |
+| **Title** | Entender los conceptos de la oferta de financiamiento | | |
+| **Description** | Como empresario MYPE, deseo ver qué significan la TCEA, el descuento y la comisión con un ejemplo en soles, para entender cuánto me cuesta el adelanto antes de aceptar la oferta. | | |
+| **Acceptance Criteria** | **Escenario 1: Ayuda contextual**<br>Given la MYPE se encuentra en el panel de la oferta y pertenece a la variante B del experimento E1<br>When selecciona el ícono de información junto a TCEA, descuento o comisión<br>Then el sistema muestra una explicación breve del concepto en lenguaje simple<br><br>**Escenario 2: Ejemplo en soles**<br>Given la MYPE pertenece a la variante B<br>When se muestra el panel de la oferta<br>Then el sistema presenta un ejemplo con el importe de la factura, el monto que recibe hoy y el costo total en soles<br><br>**Escenario 3: Variante de control**<br>Given la MYPE pertenece a la variante A<br>When se muestra el panel de la oferta<br>Then el sistema muestra el panel actual sin ayuda contextual | | |
+| **US22** | Empresario MYPE | Alta | EP03 – Gestión de facturas (Invoicing) |
+| **Title** | Recibir un aviso cuando mi factura sea aprobada | | |
+| **Description** | Como empresario MYPE, deseo recibir un correo cuando mi factura sea aprobada, para revisar la oferta a tiempo sin tener que entrar a la aplicación a verificar. | | |
+| **Acceptance Criteria** | **Escenario 1: Envío del aviso**<br>Given la MYPE pertenece a la variante B del experimento E3<br>When su factura cambia al estado Aprobada<br>Then el sistema envía un correo con el número de factura, el neto a recibir, la validez de la oferta y un enlace a la oferta<br><br>**Escenario 2: Acceso desde el correo**<br>Given la MYPE recibió el correo de aprobación<br>When selecciona el enlace e inicia sesión<br>Then el sistema la lleva directamente al panel de la oferta de esa factura<br><br>**Escenario 3: Variante de control**<br>Given la MYPE pertenece a la variante A<br>When su factura es aprobada<br>Then el sistema no envía el correo y solo actualiza el estado en Mis facturas | | |
+| **US23** | Empresario MYPE | Alta | EP03 – Gestión de facturas (Invoicing) |
+| **Title** | Conocer el motivo de una factura observada | | |
+| **Description** | Como empresario MYPE, deseo ver por qué mi factura quedó en Requiere revisión o No elegible y qué puedo hacer, para corregirla o entender por qué no se puede financiar. | | |
+| **Acceptance Criteria** | **Escenario 1: Factura que requiere revisión**<br>Given la validación de consistencia detectó una diferencia en la factura<br>When la MYPE abre el detalle de la factura<br>Then el sistema muestra el motivo de la observación y la opción de subir una nueva versión<br><br>**Escenario 2: Factura no elegible**<br>Given la factura no cumple las condiciones para ser financiada<br>When la MYPE abre el detalle de la factura<br>Then el sistema muestra el motivo y la opción de contactar a soporte | | |
+| **US24** | Inversionista | Alta | EP05 – Billetera (Finance) |
+| **Title** | Saber que mi pago se está confirmando | | |
+| **Description** | Como inversionista, deseo ver que mi pago se está confirmando al volver de la página de pago, para no pagar dos veces y saber cuándo tendré el saldo disponible. | | |
+| **Acceptance Criteria** | **Escenario 1: Pago en confirmación**<br>Given el inversionista pertenece a la variante B del experimento E2 y vuelve a la app desde Stripe<br>When el pago todavía no ha sido confirmado por el proveedor<br>Then el sistema muestra "Confirmando tu pago" y actualiza el estado automáticamente<br><br>**Escenario 2: Pago acreditado**<br>Given el pago está en confirmación<br>When el proveedor confirma el pago<br>Then el sistema muestra el nuevo saldo y el movimiento de recarga<br><br>**Escenario 3: Recarga duplicada**<br>Given existe una recarga en confirmación<br>When el inversionista intenta iniciar otra recarga<br>Then el sistema le informa que hay un pago en curso y le pide esperar su confirmación | | |
+| **US25** | Inversionista | Media | EP06 – Mercado e inversión (Investment) |
+| **Title** | Ordenar el mercado por rentabilidad y plazo | | |
+| **Description** | Como inversionista, deseo ordenar las subastas del mercado por TEA, plazo o porcentaje fondeado, para comparar oportunidades rápidamente. | | |
+| **Acceptance Criteria** | **Escenario 1: Ordenar por TEA**<br>Given el inversionista pertenece a la variante B del experimento E4 y se encuentra en el mercado<br>When selecciona Ordenar por TEA<br>Then el sistema muestra las subastas de mayor a menor TEA<br><br>**Escenario 2: Orden combinado con filtro**<br>Given el inversionista aplicó el filtro Verdes<br>When selecciona Ordenar por plazo<br>Then el sistema muestra solo las subastas verdes, de menor a mayor plazo | | |
+| **US26** | Inversionista | Media | EP06 – Mercado e inversión (Investment) |
+| **Title** | Conocer el monto mínimo antes de invertir | | |
+| **Description** | Como inversionista, deseo ver el monto mínimo y el restante por fondear antes de ingresar mi monto, para no cometer errores al confirmar la inversión. | | |
+| **Acceptance Criteria** | **Escenario 1: Ayuda en el campo de monto**<br>Given el inversionista pertenece a la variante B y abre la confirmación de inversión<br>When se muestra el campo de monto<br>Then el sistema indica debajo del campo el mínimo por factura y el monto restante por fondear<br><br>**Escenario 2: Monto inválido**<br>Given el inversionista ingresó un monto menor al mínimo o mayor al restante<br>When revisa el formulario<br>Then el sistema muestra el motivo junto al campo y mantiene deshabilitado el botón Confirmar | | |
+| **TS09** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Feature flags para experimentos | | |
+| **Description** | Como developer, deseo asignar a cada usuario una variante estable por experimento y activar funcionalidades según esa variante, para ejecutar experimentos A/B sin desplegar versiones distintas. | | |
+| **Acceptance Criteria** | **Escenario 1: Asignación estable**<br>Given un experimento activo con distribución 50 / 50<br>When un usuario inicia sesión en distintas ocasiones<br>Then el sistema le asigna siempre la misma variante, calculada a partir del hash de su identificador<br><br>**Escenario 2: Desactivación**<br>Given un experimento se detiene<br>When se desactiva su flag en la configuración remota<br>Then todos los usuarios ven la variante A sin necesidad de un nuevo despliegue | | |
+| **TS10** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Registro de eventos de analítica | | |
+| **Description** | Como developer, deseo registrar los eventos del tracking plan en Google Analytics 4 y Firebase Analytics, para medir las métricas de los experimentos. | | |
+| **Acceptance Criteria** | **Escenario 1: Evento con variante**<br>Given un usuario participa en un experimento<br>When realiza una acción definida en el tracking plan (8.2.8)<br>Then el sistema envía el evento con `experiment_id` y `variant`<br><br>**Escenario 2: Sin datos personales**<br>Given se envía cualquier evento de analítica<br>When se revisan sus propiedades<br>Then no contienen nombre, correo, documento de identidad ni montos asociados a la identidad del usuario | | |
+| **TS11** | Developer | Media | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Endpoint de salud y alertas de monitoreo | | |
+| **Description** | Como developer, deseo que todos los servicios expongan su estado de salud y que las caídas generen alertas, para detectar problemas en producción antes que los usuarios. | | |
+| **Acceptance Criteria** | **Escenario 1: Salud del Profile Service**<br>Given el Profile Service está desplegado<br>When se consulta su endpoint de salud<br>Then responde el estado del servicio y de su base de datos<br><br>**Escenario 2: Alerta por caída**<br>Given un servicio no responde en 3 sondeos consecutivos<br>When se evalúa la regla de alerta<br>Then el equipo recibe una notificación por correo y en el canal del equipo | | |
+
 ### 8.3.2. To-Be Product Backlog
+
+El To-Be Product Backlog agrega las historias anteriores a las ya implementadas en la versión v1.0.0 (3.3). El orden sigue la prioridad del Question Backlog (8.1.4): primero las bases técnicas que permiten ejecutar y medir cualquier experimento, luego las variantes de los experimentos con mayor puntaje y, al final, las mejoras de soporte.
+
+| # Orden | User Story Id | Título | Descripción | Story Points (1 / 2 / 3 / 5 / 8) | Experimento |
+|---------|---------------|--------|-------------|----------------------------------|-------------|
+| 1 | TS09 | Feature flags para experimentos | Como developer, deseo asignar a cada usuario una variante estable por experimento y activar funcionalidades según esa variante, para ejecutar experimentos A/B sin desplegar versiones distintas. | 5 | Todos |
+| 2 | TS10 | Registro de eventos de analítica | Como developer, deseo registrar los eventos del tracking plan en Google Analytics 4 y Firebase Analytics, para medir las métricas de los experimentos. | 5 | Todos |
+| 3 | US21 | Entender los conceptos de la oferta de financiamiento | Como empresario MYPE, deseo ver qué significan la TCEA, el descuento y la comisión con un ejemplo en soles, para entender cuánto me cuesta el adelanto antes de aceptar la oferta. | 3 | E1 |
+| 4 | US24 | Saber que mi pago se está confirmando | Como inversionista, deseo ver que mi pago se está confirmando al volver de la página de pago, para no pagar dos veces y saber cuándo tendré el saldo disponible. | 5 | E2 |
+| 5 | US22 | Recibir un aviso cuando mi factura sea aprobada | Como empresario MYPE, deseo recibir un correo cuando mi factura sea aprobada, para revisar la oferta a tiempo sin tener que entrar a la aplicación a verificar. | 5 | E3 |
+| 6 | US25 | Ordenar el mercado por rentabilidad y plazo | Como inversionista, deseo ordenar las subastas del mercado por TEA, plazo o porcentaje fondeado, para comparar oportunidades rápidamente. | 3 | E4 |
+| 7 | US26 | Conocer el monto mínimo antes de invertir | Como inversionista, deseo ver el monto mínimo y el restante por fondear antes de ingresar mi monto, para no cometer errores al confirmar la inversión. | 2 | E4 |
+| 8 | US23 | Conocer el motivo de una factura observada | Como empresario MYPE, deseo ver por qué mi factura quedó en Requiere revisión o No elegible y qué puedo hacer, para corregirla o entender por qué no se puede financiar. | 3 | – (auditoría #1) |
+| 9 | TS11 | Endpoint de salud y alertas de monitoreo | Como developer, deseo que todos los servicios expongan su estado de salud y que las caídas generen alertas, para detectar problemas en producción antes que los usuarios. | 3 | – (7.4) |
+
+Total de Story Points del To-Be Product Backlog: **34**. Sumados a los 123 de la versión v1.0.0, el backlog acumulado del producto llega a **157 Story Points**.
 
 <hr class="page-break">
 
