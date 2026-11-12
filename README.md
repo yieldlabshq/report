@@ -3992,7 +3992,71 @@ Antes de fusionar un Pull Request, se verifica:
 
 ## 6.3. Validation Interviews
 
+Las entrevistas de validación tienen como objetivo comprobar, con usuarios de cada segmento objetivo, que las funcionalidades implementadas en la aplicación web de la MYPE y en la aplicación móvil del inversionista resuelven las necesidades identificadas en el Capítulo II. A diferencia de las entrevistas de descubrimiento (2.2), estas sesiones se centran en el uso del producto desplegado: el participante ejecuta tareas concretas, ligadas a las User Stories, mientras el entrevistador observa y registra el resultado.
+
 ### 6.3.1. Diseño de Entrevistas
+
+**Objetivos**
+
+1. Verificar que el participante completa sin ayuda los flujos principales de su segmento.
+2. Medir la facilidad percibida de cada tarea.
+3. Identificar problemas de usabilidad y de comprensión que alimenten la evaluación heurística (6.3.3) y la auditoría (6.4).
+4. Validar la propuesta de valor: si el participante usaría Vankoo y qué lo haría dudar.
+
+**Participantes y modalidad**
+
+| Aspecto | Detalle |
+|---|---|
+| Participantes | 3 por segmento (6 en total), que cumplen el perfil de la sección 1.3 |
+| Modalidad | Remota por Google Meet, con pantalla compartida y grabación |
+| Duración | Entre 12 y 18 minutos por sesión |
+| Producto evaluado | Segmento MYPE: aplicación web (React). Segmento Inversionista: aplicación móvil Android (APK distribuido a testers) |
+| Datos de prueba | Facturas PDF de ejemplo y tarjeta de prueba de Stripe; no se usan datos reales del participante |
+| Protocolo | *Think aloud*: el participante expresa en voz alta lo que piensa mientras realiza cada tarea |
+
+**Métricas registradas por tarea**
+
+* **Éxito:** Completa (sin ayuda), Con ayuda (requirió una pista) o No completa.
+* **Tiempo:** desde que se lee la tarea hasta que el participante indica que terminó.
+* **SEQ (Single Ease Question):** "En general, ¿qué tan fácil o difícil fue esta tarea?", en una escala de 1 (muy difícil) a 7 (muy fácil).
+
+**Guion – Segmento 1: Empresarios MYPE (aplicación web)**
+
+*Introducción (1 min):* presentación del entrevistador, propósito de la sesión y consentimiento para grabar. Se aclara que se evalúa el producto, no al participante.
+
+| Tarea | Enunciado leído al participante | User Stories |
+|---|---|---|
+| T1 | "Crea una cuenta para tu empresa e inicia sesión." | US05, US06 |
+| T2 | "Sube la factura electrónica que te enviamos en PDF." | US11 |
+| T3 | "Encuentra la factura que acabas de subir y dime en qué paso del proceso está." | US12, US13 |
+| T4 | "Revisa la oferta de financiamiento de la factura aprobada. ¿Cuánto dinero recibirías?" | US14 |
+| T5 | "Acepta la oferta para publicar la factura en subasta." | US15 |
+
+*Preguntas de cierre:*
+
+1. ¿Qué fue lo más fácil y lo más difícil de lo que hiciste hoy?
+2. ¿Entendiste cuánto te cuesta el adelanto? ¿Qué dato te faltó?
+3. ¿Usarías Vankoo en lugar de tu alternativa actual de financiamiento? ¿Por qué?
+4. ¿Qué cambiarías antes de recomendarlo a otro empresario?
+
+**Guion – Segmento 2: Inversionistas (aplicación móvil)**
+
+*Introducción (1 min):* igual que en el segmento 1.
+
+| Tarea | Enunciado leído al participante | User Stories |
+|---|---|---|
+| T1 | "Crea una cuenta de inversionista e inicia sesión." | US08, US09 |
+| T2 | "Recarga S/ 1,000 en tu billetera con la tarjeta de prueba." | US17 |
+| T3 | "Revisa tu saldo disponible y el último movimiento." | US16 |
+| T4 | "Encuentra una factura verde en el mercado y revisa su detalle." | US18, US19 |
+| T5 | "Invierte S/ 500 en esa factura." | US20 |
+
+*Preguntas de cierre:*
+
+1. ¿Qué información miraste para decidir en qué factura invertir?
+2. ¿Te sentiste seguro al recargar dinero y al invertir? ¿Qué te daría más confianza?
+3. ¿El rendimiento esperado te pareció claro?
+4. ¿Invertirías dinero real en Vankoo? ¿Con qué monto empezarías?
 
 ### 6.3.2. Registro de Entrevistas
 
