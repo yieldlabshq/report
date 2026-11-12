@@ -52,6 +52,11 @@
 | 2.6     | 07/10/26 | Amaro Villar, Anjali | Student Outcome del TB1 y Registro de Versiones |
 | 2.7     | 07/10/26 | Amaro Villar, Anjali | Collaboration Insights del TB1, se retiran Acuerdo de Servicio SaaS y RESTful API documentation y se actualiza la carátula |
 | 2.8     | 07/10/26 | Amaro Villar, Anjali | Conclusiones del TB1, se retiran las secciones pendientes (Mobile Applications Prototyping y 4.10.2), se renumera el Capítulo IV y se corrigen carátula, perfiles e imágenes |
+| 3.0     | 10/11/26 | Amaro Villar, Anjali | Estructura del AV2: secciones 6.2, 6.3, 6.4.1, 7.4 y Capítulo VIII (8.1 a 8.3.2) en el índice y el cuerpo |
+| 3.1     | 11/11/26 | Amaro Villar, Anjali | Static testing & Verification (6.2) con resultados de ESLint y pnpm audit, y Reviews sobre los Pull Requests de yieldlabshq |
+| 3.2     | 11/11/26 | Amaro Villar, Anjali | Validation Interviews (6.3), evaluación según heurísticas (6.3.3) y Auditoría de Experiencias de Usuario (6.4.1) |
+| 3.3     | 11/11/26 | Amaro Villar, Anjali | Continuous Monitoring (7.4) |
+| 3.4     | 11/11/26 | Amaro Villar, Anjali | Experiment Planning (8.1), Experiment Design (8.2), To-Be User Stories (8.3.1), To-Be Product Backlog (8.3.2) y conclusiones del AV2 |
 
 <hr class="page-break">
 
@@ -94,6 +99,10 @@ Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `featu
 ![Contribuidores del repositorio del informe](assets/github-insights/report-contributors-tb1.png)
 
 *Figura. Insights > Contributors del repositorio `yieldlabshq/report`: commits por integrante en los últimos tres meses (Luis Angel Pillaca Vidal 53, Daniela García Bernal 16, Mathias Joaquin Acuache Lucas 11 y Anjali Amaro Villar 11).*
+
+**AV2**
+
+Durante el AV2, las secciones nuevas del informe (6.2, 6.3, 6.4.1, 7.4 y Capítulo VIII) se desarrollaron en ramas `feature/av2-*` y se integraron a `develop` mediante Pull Requests, siguiendo Conventional Commits (`docs: ...`). El detalle de cada versión se encuentra en el Registro de Versiones del Informe.
 
 <hr class="page-break">
 
@@ -260,8 +269,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |:--------------------|:--------------------|:-------------|
-| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del Information Architecture e Implemented Frontend-Web Application Evidence.<br><br>**TB1**<br>Implementé el API Gateway, cuyo filtro de autorización valida el token JWT y rechaza con 401 toda petición sin credenciales válidas, y elaboré las pruebas de ese filtro (6.1.2), asumiendo la responsabilidad de proteger los datos financieros de MYPEs e inversionistas. En el informe definí las prácticas de Continuous Delivery (7.2), que exigen revisión y aprobación antes de llevar un cambio a producción.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Me enfoqué en garantizar que el diseño de nuestra solución respete la privacidad de la información, promoviendo la transparencia y el cumplimiento de estándares éticos durante el desarrollo._<br><br>**TB1**<br>Implementé el pipeline de CI/CD de los repositorios del API Gateway y del Invoicing Service sin exponer credenciales: en CI solo se usan valores de prueba y los secretos de producción quedan en el entorno protegido `production` de GitHub. Me aseguré de que el informe documente únicamente evidencia verificable, como las ejecuciones reales del pipeline y las pruebas que existen en los repositorios, y corregí las afirmaciones que no coincidían con el código. Documenté la suite BDD (6.1.3) y las prácticas de Continuous Deployment (7.3.1).<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**TB1**<br>Elaboré la sección Production Deployment Pipeline Components (7.3.2), en la que definí un proceso de despliegue controlado y reproducible que mantiene la trazabilidad de las versiones publicadas, para que el equipo pueda responder por cada cambio que llega a los usuarios.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Participé en la definición de buenas prácticas de desarrollo y el uso correcto de herramientas, asegurando el trabajo honesto y la ética profesional en el equipo._<br><br>**TB1**<br>Implementé el Investment Service, el Discovery Server y el Invoicing Service, junto con sus pruebas unitarias, de integración y BDD, que validan reglas como el dígito verificador del RUC y la consistencia de los montos de cada factura, de modo que la plataforma no publique información errónea a los inversionistas. En el informe elaboré las pruebas unitarias (6.1.1) y la integración continua (7.1). | **AV1**<br>_Se logró identificar la importancia de la ética profesional en esta etapa inicial del proyecto._<br><br>**TB1**<br>En una plataforma que gestiona dinero de terceros, verificar el software es una responsabilidad profesional: cada cambio pasa por pruebas automatizadas y por revisión antes de integrarse, y el informe se sustenta en evidencia verificable de los repositorios y del pipeline. |
-| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del To-Be Scenario Mapping, General and Web style guidelines, Landing Page Design,Web Application Prototyping, siguiendo los diversos lineamientos para el proyecto.<br><br>**TB1**<br>Al implementar la aplicación web de la MYPE con soporte en español e inglés, consideré el impacto social de que empresarios con distinto nivel de familiaridad digital puedan gestionar sus facturas sin barreras de idioma.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Investigué cómo YieldLabs puede mejorar la accesibilidad tecnológica en la comunidad, analizando su viabilidad económica y asegurando que el producto final sea socialmente inclusivo._<br><br>**TB1**<br>Evalué el impacto económico que tendría una caída del servicio sobre las MYPEs que esperan liquidez y los inversionistas con fondos comprometidos, y por ello incorporé al despliegue la verificación de salud y el rollback automático. Elegí herramientas sin costo para repositorios públicos (GitHub Actions y GitHub Container Registry), lo que hace sostenible el pipeline para una startup en etapa temprana.<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**TB1**<br>Incorporé la verificación posterior al despliegue como etapa del pipeline de producción, considerando que una falla no detectada afectaría directamente a las MYPEs e inversionistas que dependen de la plataforma para su liquidez y sus ahorros.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Evalué el impacto de YieldLabs, considerando cómo nuestra plataforma puede optimizar recursos y promover beneficios económicos y sociales para nuestros futuros usuarios._<br><br>**TB1**<br>Las validaciones automáticas de facturas que implementé (facturas vencidas, totales que no cuadran o emisor igual al pagador) reducen el riesgo de fraude y de pérdidas para los inversionistas minoristas, lo que contribuye a la confianza en el financiamiento alternativo para las MYPEs en el Perú. | **AV1**<br>_Se reconoció el impacto socioeconómico y ambiental positivo de nuestra solución de software._<br><br>**TB1**<br>Automatizar la validación de facturas y el despliegue con verificación y rollback reduce los riesgos económicos para MYPEs e inversionistas, y el uso de herramientas sin costo hace viable sostener estas prácticas en una startup, lo que favorece la inclusión financiera de las MYPEs. |
+| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del Information Architecture e Implemented Frontend-Web Application Evidence.<br><br>**TB1**<br>Implementé el API Gateway, cuyo filtro de autorización valida el token JWT y rechaza con 401 toda petición sin credenciales válidas, y elaboré las pruebas de ese filtro (6.1.2), asumiendo la responsabilidad de proteger los datos financieros de MYPEs e inversionistas. En el informe definí las prácticas de Continuous Delivery (7.2), que exigen revisión y aprobación antes de llevar un cambio a producción.<br><br>**AV2**<br>En la auditoría de experiencias de usuario (6.4.1) evalué el módulo móvil de registro, billetera y recarga, verificando que el saldo y los movimientos se muestren con claridad, ya que de esa información depende que el inversionista confíe su dinero a la plataforma. En el monitoreo continuo (7.4) documenté que en producción solo se exponen los endpoints de salud e información, para no publicar datos internos de los servicios.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Me enfoqué en garantizar que el diseño de nuestra solución respete la privacidad de la información, promoviendo la transparencia y el cumplimiento de estándares éticos durante el desarrollo._<br><br>**TB1**<br>Implementé el pipeline de CI/CD de los repositorios del API Gateway y del Invoicing Service sin exponer credenciales: en CI solo se usan valores de prueba y los secretos de producción quedan en el entorno protegido `production` de GitHub. Me aseguré de que el informe documente únicamente evidencia verificable, como las ejecuciones reales del pipeline y las pruebas que existen en los repositorios, y corregí las afirmaciones que no coincidían con el código. Documenté la suite BDD (6.1.3) y las prácticas de Continuous Deployment (7.3.1).<br><br>**AV2**<br>En el análisis estático (6.2) reporté los hallazgos de ESLint y las vulnerabilidades de dependencias tal como resultaron de la ejecución real, e indiqué que los Pull Requests no tenían una aprobación formal registrada, en lugar de presentar un resultado más favorable. En el tracking plan (8.2.8) establecí que los eventos de analítica usen identificadores seudonimizados y no registren datos personales ni montos asociados a la identidad del usuario.<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**TB1**<br>Elaboré la sección Production Deployment Pipeline Components (7.3.2), en la que definí un proceso de despliegue controlado y reproducible que mantiene la trazabilidad de las versiones publicadas, para que el equipo pueda responder por cada cambio que llega a los usuarios.<br><br>**AV2**<br>Diseñé las entrevistas de validación (6.3.1) con datos de prueba (facturas de ejemplo y la tarjeta de prueba de Stripe), de modo que ningún participante expusiera su información financiera real, y con consentimiento previo para grabar cada sesión.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Participé en la definición de buenas prácticas de desarrollo y el uso correcto de herramientas, asegurando el trabajo honesto y la ética profesional en el equipo._<br><br>**TB1**<br>Implementé el Investment Service, el Discovery Server y el Invoicing Service, junto con sus pruebas unitarias, de integración y BDD, que validan reglas como el dígito verificador del RUC y la consistencia de los montos de cada factura, de modo que la plataforma no publique información errónea a los inversionistas. En el informe elaboré las pruebas unitarias (6.1.1) y la integración continua (7.1).<br><br>**AV2**<br>Al planificar los experimentos (8.1) definí métricas de control, como los pagos duplicados y las ofertas vencidas sin respuesta, para detener un experimento si perjudica a los usuarios, y establecí que los resultados no se evalúen antes de alcanzar el tamaño de muestra. | **AV1**<br>_Se logró identificar la importancia de la ética profesional en esta etapa inicial del proyecto._<br><br>**TB1**<br>En una plataforma que gestiona dinero de terceros, verificar el software es una responsabilidad profesional: cada cambio pasa por pruebas automatizadas y por revisión antes de integrarse, y el informe se sustenta en evidencia verificable de los repositorios y del pipeline.<br><br>**AV2**<br>Experimentar sobre un producto que gestiona dinero de terceros exige proteger a los usuarios: los experimentos usan datos seudonimizados, incluyen métricas de control que permiten detenerlos y fijan sus criterios de decisión antes de conocer los resultados. |
+| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del To-Be Scenario Mapping, General and Web style guidelines, Landing Page Design,Web Application Prototyping, siguiendo los diversos lineamientos para el proyecto.<br><br>**TB1**<br>Al implementar la aplicación web de la MYPE con soporte en español e inglés, consideré el impacto social de que empresarios con distinto nivel de familiaridad digital puedan gestionar sus facturas sin barreras de idioma.<br><br>**AV2**<br>Al definir las alertas de monitoreo (7.4.3) consideré el impacto económico de una caída sobre las MYPEs que esperan su desembolso y los inversionistas con fondos comprometidos, por lo que clasifiqué como críticas las alertas de disponibilidad.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Investigué cómo YieldLabs puede mejorar la accesibilidad tecnológica en la comunidad, analizando su viabilidad económica y asegurando que el producto final sea socialmente inclusivo._<br><br>**TB1**<br>Evalué el impacto económico que tendría una caída del servicio sobre las MYPEs que esperan liquidez y los inversionistas con fondos comprometidos, y por ello incorporé al despliegue la verificación de salud y el rollback automático. Elegí herramientas sin costo para repositorios públicos (GitHub Actions y GitHub Container Registry), lo que hace sostenible el pipeline para una startup en etapa temprana.<br><br>**AV2**<br>En el cálculo de escala (8.2.5) elegí una potencia estadística de 80 % considerando el volumen limitado de usuarios de una startup en etapa temprana, equilibrando el rigor de los resultados con el tiempo que los usuarios esperan una mejora.<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**TB1**<br>Incorporé la verificación posterior al despliegue como etapa del pipeline de producción, considerando que una falla no detectada afectaría directamente a las MYPEs e inversionistas que dependen de la plataforma para su liquidez y sus ahorros.<br><br>**AV2**<br>En las entrevistas de validación identifiqué que las MYPEs sin experiencia en factoring no comprenden la TCEA, lo que llevó a priorizar la explicación del costo del financiamiento en lenguaje simple (US21), para que cada empresario tome una decisión informada.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Evalué el impacto de YieldLabs, considerando cómo nuestra plataforma puede optimizar recursos y promover beneficios económicos y sociales para nuestros futuros usuarios._<br><br>**TB1**<br>Las validaciones automáticas de facturas que implementé (facturas vencidas, totales que no cuadran o emisor igual al pagador) reducen el riesgo de fraude y de pérdidas para los inversionistas minoristas, lo que contribuye a la confianza en el financiamiento alternativo para las MYPEs en el Perú.<br><br>**AV2**<br>En el To-Be Product Backlog (8.3.2) prioricé las historias que reducen barreras para los usuarios con menos experiencia financiera, como la explicación de la oferta y el monto mínimo de inversión visible, favoreciendo la inclusión de MYPEs e inversionistas minoristas. | **AV1**<br>_Se reconoció el impacto socioeconómico y ambiental positivo de nuestra solución de software._<br><br>**TB1**<br>Automatizar la validación de facturas y el despliegue con verificación y rollback reduce los riesgos económicos para MYPEs e inversionistas, y el uso de herramientas sin costo hace viable sostener estas prácticas en una startup, lo que favorece la inclusión financiera de las MYPEs.<br><br>**AV2**<br>Las decisiones de esta entrega se basaron en evidencia de los usuarios: hacer transparente el costo del financiamiento y claros los montos mínimos favorece decisiones financieras informadas de MYPEs e inversionistas minoristas, y el monitoreo reduce el impacto económico de una falla del servicio. |
 
 <hr class="page-break">
 
@@ -4029,7 +4038,7 @@ Las entrevistas de validación tienen como objetivo comprobar, con usuarios de c
 
 | Aspecto | Detalle |
 |---|---|
-| Participantes | 3 por segmento (6 en total), que cumplen el perfil de la sección 1.3 |
+| Participantes | 3 por segmento (6 en total): los mismos participantes de las entrevistas de descubrimiento (2.2.2), lo que permite contrastar sus necesidades iniciales con el uso real del producto |
 | Modalidad | Remota por Google Meet, con pantalla compartida y grabación |
 | Duración | Entre 12 y 18 minutos por sesión |
 | Producto evaluado | Segmento MYPE: aplicación web (React). Segmento Inversionista: aplicación móvil Android (APK distribuido a testers) |
@@ -4082,7 +4091,136 @@ Las entrevistas de validación tienen como objetivo comprobar, con usuarios de c
 
 ### 6.3.2. Registro de Entrevistas
 
+#### Segmento 1: Empresarios de Micro y Pequeñas Empresas (MYPES)
+
+**Entrevista 1**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Irving Vergara |
+| Edad | 22 |
+| Distrito | San Juan de Lurigancho |
+| Ocupación | Dueño de Metalmecanica |
+| Fecha de entrevista | 06/11/2026 |
+| Timing de inicio | 00:00 – 15:40 |
+| Duración | 15:40 minutos |
+| Resumen | Completó el registro, la carga de la factura y la consulta de su estado sin ayuda, y valoró no tener que digitar los datos de la factura, que hoy registra a mano. Durante la lectura automática preguntó si debía quedarse en la pantalla, porque el estado "Leyendo datos" no indicaba cuánto tardaría; para él, saber en qué paso está su factura es tan importante como el desembolso. En la oferta identificó el neto a recibir, pero no supo qué significaba la TCEA y pidió ayuda para interpretarla, lo que confirma lo que señaló en la primera entrevista: necesita claridad absoluta sobre el costo total antes de aceptar. Indicó que usaría Vankoo para los contratos de su taller que le pagan a 60 días, porque le permitiría comprar materia prima sin esperar el cobro. |
+
+**Entrevista 2**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Diego Melendez |
+| Edad | 26 |
+| Distrito | San Miguel |
+| Ocupación | Dueño de TechnoRed |
+| Fecha de entrevista | 07/11/2026 |
+| Timing de inicio | 15:40 – 28:55 |
+| Duración | 13:15 minutos |
+| Resumen | Completó las cinco tareas sin ayuda y fue el participante más rápido del segmento, por su familiaridad con herramientas digitales. Comparó la oferta con lo que le cuesta financiarse con tarjeta de crédito y la consideró más conveniente, porque ve el neto a recibir antes de aceptar. Su principal observación fue que, cuando la factura quedó en "Requiere revisión", el mensaje no explicaba qué dato debía corregir. Coherente con su pedido de seguimiento en tiempo real, solicitó recibir un correo cuando la factura sea aprobada, para no tener que entrar a revisar. |
+
+**Entrevista 3**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Thomas Bernardo |
+| Edad | 20 |
+| Distrito | Chorrillos |
+| Ocupación | Socio de empresa de servicio tecnico |
+| Fecha de entrevista | 07/11/2026 |
+| Timing de inicio | 28:55 – 45:10 |
+| Duración | 16:15 minutos |
+| Resumen | Navegó con soltura por la aplicación, pero tardó en la tarea T4 porque buscó la oferta en el listado de facturas y no en el detalle. Al encontrarla, entendió el monto neto, aunque pidió que el descuento y la comisión se expliquen con un ejemplo en soles, ya que hoy lleva sus cuentas en Excel y quiere poder comparar. Al aceptar la oferta no notó la fecha de validez y comentó que habría querido un aviso cuando la oferta está por vencer. Afirmó que la propuesta le resulta más atractiva que los microcréditos digitales que usa, con intereses cercanos al 20 %, porque "no suma deuda". |
+
+#### Segmento 2: Inversionistas Minoristas
+
+**Entrevista 4**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Alessandro Hesse |
+| Edad | 22 |
+| Distrito | Surquillo |
+| Ocupación | Estudiante |
+| Fecha de entrevista | 08/11/2026 |
+| Timing de inicio | 45:10 – 58:30 |
+| Duración | 13:20 minutos |
+| Resumen | Completó las cinco tareas sin ayuda. Usó los filtros del mercado de inmediato, pero pidió poder ordenar las subastas por TEA y por plazo, porque compara cada oportunidad con el rendimiento de su depósito a plazo fijo y busca superar el 8 % anual. Valoró ver cómo se reparte el importe de la factura y el grado de riesgo, que responden a su pedido de reglas claras sobre el riesgo de cobro. Comentó que empezaría con un monto pequeño para probar la plataforma antes de invertir tickets similares a los que hoy coloca en depósitos. |
+
+**Entrevista 5**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Leicy Cahuana |
+| Edad | 22 |
+| Distrito | San Juan de Lurigancho |
+| Ocupación | Estudiante |
+| Fecha de entrevista | 08/11/2026 |
+| Timing de inicio | 58:30 – 1:15:05 |
+| Duración | 16:35 minutos |
+| Resumen | Necesitó ayuda en la recarga: al volver a la aplicación desde la página de pago, vio el estado "pendiente" y no supo si el pago se había procesado, por lo que intentó pagar de nuevo. Por su experiencia evaluando préstamos a conocidos, revisó con detalle los datos de la factura y del pagador antes de invertir, y los consideró suficientes para una primera inversión. Indicó que lo que más confianza le daría es ver el historial de pagos del adquirente, porque es la evidencia que hoy busca de forma manual con las personas a quienes presta. |
+
+**Entrevista 6**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Kalet Esteban |
+| Edad | 20 |
+| Distrito | Ate |
+| Ocupación | Estudiante |
+| Fecha de entrevista | 09/11/2026 |
+| Timing de inicio | 1:15:05 – 1:27:50 |
+| Duración | 12:45 minutos |
+| Resumen | Completó las tareas sin ayuda, aunque en T5 intentó invertir S/ 30 y solo al confirmar descubrió que el mínimo por factura es S/ 50. Sugirió mostrar el mínimo junto al campo de monto, porque está empezando a invertir con montos pequeños. Le resultó claro que el rendimiento se muestre en soles y no solo como tasa, ya que el lenguaje financiero técnico es lo que más le cuesta. Le atrajo el filtro de facturas verdes y comentó que eso lo diferencia de los fondos mutuos que usa hoy. |
+
+#### Resultados consolidados
+
+**Segmento MYPE (aplicación web)**
+
+| Tarea | Éxito sin ayuda | Tiempo promedio | SEQ promedio (1–7) |
+|---|---|---|---|
+| T1 – Registro e inicio de sesión | 3 / 3 | 1:50 min | 6.7 |
+| T2 – Subir factura | 3 / 3 | 1:20 min | 6.3 |
+| T3 – Consultar estado y detalle | 3 / 3 | 1:05 min | 6.0 |
+| T4 – Revisar la oferta | 2 / 3 | 2:40 min | 4.7 |
+| T5 – Aceptar y publicar | 3 / 3 | 0:45 min | 6.3 |
+
+**Segmento Inversionista (aplicación móvil)**
+
+| Tarea | Éxito sin ayuda | Tiempo promedio | SEQ promedio (1–7) |
+|---|---|---|---|
+| T1 – Registro e inicio de sesión | 3 / 3 | 1:35 min | 6.7 |
+| T2 – Recargar saldo | 2 / 3 | 2:25 min | 5.0 |
+| T3 – Revisar saldo y movimientos | 3 / 3 | 0:30 min | 6.7 |
+| T4 – Encontrar y revisar una factura verde | 3 / 3 | 1:10 min | 6.3 |
+| T5 – Invertir S/ 500 | 3 / 3 | 1:00 min | 5.7 |
+
+**Hallazgos principales**
+
+1. **Los flujos principales funcionan:** 28 de las 30 tareas se completaron sin ayuda (93 %), y ningún participante abandonó una tarea.
+2. **La oferta de financiamiento es el punto más débil de la web (T4, SEQ 4.7):** los participantes sin experiencia en factoring no interpretan la TCEA ni el descuento, y uno buscó la oferta fuera del detalle de la factura.
+3. **El retorno desde el pago genera incertidumbre (T2, SEQ 5.0):** el estado "pendiente" tras volver de Stripe llevó a una participante a intentar pagar dos veces.
+4. **Faltan estados más explicativos:** "Leyendo datos" no indica cuánto falta y "Requiere revisión" no dice qué corregir.
+5. **La propuesta de valor se valida en ambos segmentos:** las MYPEs prefieren Vankoo frente a sus alternativas actuales (tarjeta de crédito y microcréditos digitales) porque ven el neto a recibir y "no suma deuda", y los inversionistas empezarían con montos pequeños para probar la plataforma antes de aumentar su inversión.
+
 ### 6.3.3. Evaluaciones según heurísticas
+
+A partir de lo observado en las entrevistas, el equipo evaluó cada aplicación frente a las 10 heurísticas de usabilidad de Nielsen. Cada heurística se califica como **Cumple**, **Cumple parcialmente** o **No cumple**. Los problemas concretos, con su severidad y su recomendación, se detallan en la auditoría (6.4.1.3).
+
+| # | Heurística | Web MYPE | Móvil Inversionista | Evidencia |
+|---|---|---|---|---|
+| 1 | Visibilidad del estado del sistema | Cumple parcialmente | Cumple parcialmente | El riel de progreso de la factura muestra los cinco hitos, pero "Leyendo datos" no indica tiempo estimado. En móvil, el estado "pendiente" tras la recarga no confirma si el pago llegó. |
+| 2 | Relación entre el sistema y el mundo real | Cumple parcialmente | Cumple | La web muestra TCEA, descuento y comisión sin explicarlos. En móvil, el rendimiento se expresa en soles y en TEA, que los inversionistas entendieron. |
+| 3 | Control y libertad del usuario | Cumple | Cumple | Ambas aplicaciones permiten volver atrás y cancelar los diálogos de aceptación y de inversión antes de confirmar. |
+| 4 | Consistencia y estándares | Cumple | Cumple | Los estados usan los mismos nombres y colores en el listado y en el detalle; ambas aplicaciones respetan la guía de estilos (4.1). |
+| 5 | Prevención de errores | Cumple parcialmente | Cumple parcialmente | La validez de la oferta se muestra como texto y pasa desapercibida. En móvil, el mínimo de S/ 50 solo aparece al confirmar. |
+| 6 | Reconocer antes que recordar | Cumple parcialmente | Cumple | La oferta está dentro del detalle de la factura y no se anuncia desde el listado. |
+| 7 | Flexibilidad y eficiencia de uso | Cumple | Cumple parcialmente | El mercado tiene filtros (Todas, Verdes, Vencen pronto), pero no permite ordenar por TEA ni por plazo. |
+| 8 | Diseño estético y minimalista | Cumple | Cumple | Las pantallas muestran solo la información necesaria para cada tarea. |
+| 9 | Ayudar a reconocer, diagnosticar y recuperarse de errores | No cumple | Cumple parcialmente | "Requiere revisión" y "No elegible" no indican la causa ni la acción a seguir. En móvil, el error de pago informa el motivo cuando Stripe lo devuelve. |
+| 10 | Ayuda y documentación | Cumple parcialmente | Cumple parcialmente | No hay ayuda contextual dentro de las aplicaciones; las preguntas frecuentes solo están en la Landing Page. |
+
+**Resultado:** de 20 evaluaciones, 11 cumplen, 8 cumplen parcialmente y 1 no cumple. Las heurísticas 1, 5 y 9 concentran los problemas de ambas aplicaciones, lo que coincide con las tareas de menor SEQ en las entrevistas.
 
 ## 6.4. Auditoría de Experiencias de Usuario
 
@@ -4090,9 +4228,158 @@ Las entrevistas de validación tienen como objetivo comprobar, con usuarios de c
 
 #### 6.4.1.1. Información del grupo auditado
 
+La auditoría se realizó sobre el propio producto del equipo, como **auditoría interna cruzada**: cada integrante evaluó un módulo que no había implementado, para reducir el sesgo de quien conoce el flujo de memoria.
+
+| Atributo | Detalle |
+|---|---|
+| Startup | Yieldlabs |
+| Producto | Vankoo – plataforma de crowdfactoring para MYPES e inversionistas |
+| Aplicaciones auditadas | Aplicación web de la MYPE (React) y aplicación móvil del inversionista (Android, Kotlin Multiplatform) |
+| Integrantes | Acuache Lucas, Mathias Joaquin · Amaro Villar, Anjali · García Bernal, Daniela · Pillaca Vidal, Luis Angel |
+| Curso | Diseño de Experimentos de Ingeniería de Software (1ASI0732) |
+
+| Auditor | Módulo auditado |
+|---|---|
+| Amaro Villar, Anjali | Móvil: Mercado, detalle de subasta e inversión (US18, US19, US20) |
+| García Bernal, Daniela | Web: Oferta de financiamiento y publicación (US14, US15) |
+| Pillaca Vidal, Luis Angel | Web: Registro, inicio de sesión y carga de factura (US05, US06, US11) |
+| Acuache Lucas, Mathias Joaquin | Móvil: Registro, billetera y recarga (US08, US09, US16, US17) |
+
 #### 6.4.1.2. Cronograma de auditoría realizada
 
+| Fecha | Actividad | Responsables |
+|---|---|---|
+| 06/11/2026 – 09/11/2026 | Entrevistas de validación (6.3.2) | Todo el equipo |
+| 09/11/2026 | Definición de tareas, escala de severidad y asignación de módulos | Todo el equipo |
+| 10/11/2026 | Evaluación individual de cada módulo | Cada auditor |
+| 10/11/2026 | Consolidación de hallazgos y asignación de severidad | Todo el equipo |
+| 11/11/2026 | Registro de los hallazgos como tareas del siguiente sprint | Todo el equipo |
+
 #### 6.4.1.3. Contenido de auditoría realizada
+
+**UX Heuristics & Principles Evaluation – Usability, Inclusive Design & Information Architecture**
+
+| Atributo | Detalle |
+|---|---|
+| Carrera | Ingeniería de Software |
+| Curso | Diseño de Experimentos de Ingeniería de Software |
+| Sitio o app evaluada | Vankoo – aplicación web de la MYPE y aplicación móvil del inversionista |
+| Auditores | Equipo Yieldlabs (auditoría interna cruzada) |
+
+**Tareas evaluadas**
+
+1. Registro e inicio de sesión (web y móvil).
+2. Carga de una factura electrónica y consulta de su estado (web).
+3. Revisión y aceptación de la oferta de financiamiento (web).
+4. Recarga de la billetera con tarjeta (móvil).
+5. Exploración del mercado, revisión de una subasta e inversión (móvil).
+
+**Escala de severidad**
+
+| Nivel | Descripción |
+|---|---|
+| 1 | Problema superficial: puede ser fácilmente superado por el usuario o ocurre con muy poca frecuencia. No requiere arreglo inmediato. |
+| 2 | Problema menor: ocurre con alguna frecuencia o es difícil de superar. Debe corregirse en el siguiente release. |
+| 3 | Problema mayor: ocurre con frecuencia o los usuarios no saben resolverlo. Es importante corregirlo con alta prioridad. |
+| 4 | Problema muy grave: impide que el usuario continúe usando la herramienta. Es imperativo corregirlo antes del lanzamiento. |
+
+**Tabla resumen**
+
+| # | Problema | Escala de severidad | Heurística / Principio violado(a) |
+|---|---|---|---|
+| 1 | Los estados "Requiere revisión" y "No elegible" no explican la causa ni la acción a seguir | 3 | Usability: Ayudar a reconocer, diagnosticar y recuperarse de errores |
+| 2 | La TCEA, el descuento y la comisión de la oferta no se explican | 3 | Usability: Relación entre el sistema y el mundo real |
+| 3 | El estado "Leyendo datos" no indica el tiempo estimado ni si el usuario puede salir de la pantalla | 2 | Usability: Visibilidad del estado del sistema |
+| 4 | El monto mínimo de inversión (S/ 50) solo se informa al confirmar | 2 | Usability: Prevención de errores |
+| 5 | La fecha de validez de la oferta pasa desapercibida | 2 | Usability: Prevención de errores |
+| 6 | La oferta de financiamiento no se anuncia desde el listado de facturas | 2 | Information Architecture: Navegabilidad |
+| 7 | El mercado no permite ordenar las subastas por TEA ni por plazo | 1 | Usability: Flexibilidad y eficiencia de uso |
+
+**Descripción de problemas**
+
+**Problema #1:** Los estados "Requiere revisión" y "No elegible" no explican la causa ni la acción a seguir
+
+* **Severidad:** 3
+* **Heurística violada:** Usability – Ayudar a reconocer, diagnosticar y recuperarse de errores
+* **Problema:** cuando la validación de consistencia detecta una diferencia en los datos de la factura, el riel de progreso muestra la alerta "Requiere revisión", pero no indica qué campo falló ni qué debe hacer la MYPE. En "No elegible" tampoco se informa el motivo. En la entrevista 2 (6.3.2), el entrevistado no supo cómo continuar.
+
+![Alerta "Requiere revisión" en el detalle de la factura (problema #1).](./assets/cap6-verification-validation/audit/auditoria-01-requiere-revision.png)
+
+*Figura. Alerta "Requiere revisión" en el detalle de la factura (problema #1).*
+
+* **Recomendación:** mostrar en la alerta el motivo devuelto por el Invoicing Service (por ejemplo, "El total no coincide con la suma de los ítems") y una acción concreta: "Subir una nueva versión" o "Contactar a soporte".
+
+**Problema #2:** La TCEA, el descuento y la comisión de la oferta no se explican
+
+* **Severidad:** 3
+* **Heurística violada:** Usability – Relación entre el sistema y el mundo real
+* **Problema:** el panel de la oferta presenta "Descuento (x %)" y "TCEA x % · n días" sin explicar qué significan. En la entrevista 1 se necesitó ayuda para interpretar la TCEA y en la entrevista 3 se pidió explicar el descuento y la comisión con un ejemplo; la TCEA es el dato que permite comparar la oferta con un préstamo bancario.
+
+![Panel de la oferta de financiamiento con TCEA y descuento sin explicación (problema #2).](./assets/cap6-verification-validation/audit/auditoria-02-panel-oferta.png)
+
+*Figura. Panel de la oferta de financiamiento con TCEA y descuento sin explicación (problema #2).*
+
+* **Recomendación:** agregar un ícono de información junto a cada concepto con una explicación breve en lenguaje simple, y un ejemplo: "Por cada S/ 1,000 de factura recibes S/ 970 hoy".
+
+**Problema #3:** El estado "Leyendo datos" no indica el tiempo estimado ni si el usuario puede salir de la pantalla
+
+* **Severidad:** 2
+* **Heurística violada:** Usability – Visibilidad del estado del sistema
+* **Problema:** mientras el OCR procesa la factura, la aplicación muestra "Leyendo datos" sin indicar cuánto tardará. En la entrevista 1 se preguntó si había que quedarse esperando.
+
+![Carga de factura en estado "Leyendo datos" (problema #3).](./assets/cap6-verification-validation/audit/auditoria-04-leyendo-datos.png)
+
+*Figura. Carga de factura en estado "Leyendo datos" (problema #3).*
+
+* **Recomendación:** indicar el tiempo habitual ("suele tardar menos de un minuto") y aclarar que el usuario puede seguir navegando, porque el estado se actualizará en "Mis facturas".
+
+**Problema #4:** El monto mínimo de inversión (S/ 50) solo se informa al confirmar
+
+* **Severidad:** 2
+* **Heurística violada:** Usability – Prevención de errores
+* **Problema:** en la pantalla de confirmación, el mensaje sobre el mínimo por factura aparece recién cuando el inversionista intenta confirmar un monto menor. En la entrevista 6 se ingresó S/ 30 antes de conocer el mínimo.
+
+![Pantalla de confirmación de inversión con el mensaje del mínimo (problema #4).](./assets/cap6-verification-validation/audit/auditoria-05-confirmar-inversion.png)
+
+*Figura. Pantalla de confirmación de inversión con el mensaje del mínimo (problema #4).*
+
+* **Recomendación:** mostrar el mínimo y el monto restante por fondear como texto de ayuda debajo del campo, y deshabilitar el botón de confirmar mientras el monto no sea válido.
+
+**Problema #5:** La fecha de validez de la oferta pasa desapercibida
+
+* **Severidad:** 2
+* **Heurística violada:** Usability – Prevención de errores
+* **Problema:** la validez de la oferta aparece al final de una línea de texto junto con la TCEA y el plazo. Si vence, la MYPE debe obtener una nueva cotización, y en la entrevista 3 no se notó la fecha.
+
+![Línea de condiciones de la oferta con la fecha de validez (problema #5).](./assets/cap6-verification-validation/audit/auditoria-06-validez-oferta.png)
+
+*Figura. Línea de condiciones de la oferta con la fecha de validez (problema #5).*
+
+* **Recomendación:** mostrar la validez como un indicador destacado ("Válida por 2 días más") y cambiar su color cuando falten menos de 24 horas.
+
+**Problema #6:** La oferta de financiamiento no se anuncia desde el listado de facturas
+
+* **Severidad:** 2
+* **Principio violado:** Information Architecture – Navegabilidad
+* **Problema:** cuando una factura es aprobada, el listado solo cambia su estado; la oferta está dentro del detalle. En la entrevista 3 se buscó en el listado y la tarea tomó más de tres minutos.
+
+![Listado Mis facturas con una factura validada (problema #6).](./assets/cap6-verification-validation/audit/auditoria-07-mis-facturas.png)
+
+*Figura. Listado Mis facturas con una factura validada (problema #6).*
+
+* **Recomendación:** mostrar en la fila de la factura aprobada un botón "Ver oferta" que lleve directamente al panel de la oferta.
+
+**Problema #7:** El mercado no permite ordenar las subastas por TEA ni por plazo
+
+* **Severidad:** 1
+* **Heurística violada:** Usability – Flexibilidad y eficiencia de uso
+* **Problema:** el mercado ofrece los filtros Todas, Verdes y Vencen pronto, pero no permite ordenar por rentabilidad o plazo, que es como se comparan las oportunidades en la entrevista 4.
+
+![Pantalla Mercado con filtros y sin selector de orden (problema #7).](./assets/cap6-verification-validation/audit/auditoria-08-mercado.png)
+
+*Figura. Pantalla Mercado con filtros y sin selector de orden (problema #7).*
+
+* **Recomendación:** agregar un selector "Ordenar por" con TEA (mayor a menor), plazo (menor a mayor) y porcentaje fondeado.
 
 <hr class="page-break">
 
@@ -4618,7 +4905,7 @@ Al cierre del Avance 2, Vankoo cuenta con la versión **v1.0.0** desplegada:
 | Backend | Microservicios IAM, Profile, Invoicing, Investment y Finance, detrás de un API Gateway y un Discovery Server, desplegados en Azure (TS01 – TS08). |
 | Calidad y DevOps | Pruebas unitarias, de integración, BDD y de sistema (6.1); análisis estático (6.2); pipelines de CI/CD (7.1 – 7.3) y monitoreo (7.4). |
 
-**Lo que se sabe hoy.** Las entrevistas de validación (6.3) muestran que los flujos principales funcionan: 28 de 30 tareas se completaron sin ayuda. Las tareas con menor facilidad percibida fueron la revisión de la oferta en la web (SEQ 4.7) y la recarga en el móvil (SEQ 5.0). La auditoría (6.4.1) registró 8 problemas, 3 de ellos de severidad 3.
+**Lo que se sabe hoy.** Las entrevistas de validación (6.3) muestran que los flujos principales funcionan: 28 de 30 tareas se completaron sin ayuda. Las tareas con menor facilidad percibida fueron la revisión de la oferta en la web (SEQ 4.7) y la recarga en el móvil (SEQ 5.0). La auditoría (6.4.1) registró 7 problemas, 2 de ellos de severidad 3.
 
 **Lo que no se sabe todavía.** Ninguna de las hipótesis del Lean UX Process (1.2.2.3) se ha medido con usuarios reales en producción. El producto no registra eventos de uso, por lo que hoy no se puede saber cuántas MYPEs aceptan la oferta, cuánto tardan en hacerlo ni cuántos inversionistas pasan de ver una subasta a invertir.
 
@@ -4630,7 +4917,7 @@ Al cierre del Avance 2, Vankoo cuenta con la versión **v1.0.0** desplegada:
 |---|---|---|
 | A1 | La MYPE acepta la oferta si entiende cuánto le cuesta el adelanto. | Lean UX Business Assumption 4; entrevistas 6.3 |
 | A2 | El inversionista invierte con más frecuencia si puede comparar oportunidades por rentabilidad. | Lean UX User Assumption 3; entrevista 4 |
-| A3 | La incertidumbre al volver de la página de pago provoca reintentos y abandono de la recarga. | Entrevista 5; auditoría, problema #3 |
+| A3 | La incertidumbre al volver de la página de pago provoca reintentos y abandono de la recarga. | Entrevista 5 (6.3.2) |
 | A4 | Las facturas verdes se fondean más rápido que las convencionales. | Lean UX Hypothesis 05 |
 
 **Knowledge Gaps** (lo que el equipo no sabe y necesita saber)
@@ -4647,9 +4934,9 @@ Al cierre del Avance 2, Vankoo cuenta con la versión **v1.0.0** desplegada:
 | ID | Idea | Problema que atiende |
 |---|---|---|
 | I1 | Explicar la TCEA, el descuento y la comisión con ayuda contextual y un ejemplo en soles. | Auditoría #2 |
-| I2 | Enviar un correo a la MYPE cuando su factura es aprobada, con un enlace directo a la oferta. | Entrevista 2; auditoría #7 |
-| I3 | Mostrar un estado "Confirmando tu pago" con actualización automática al volver de Stripe. | Auditoría #3 |
-| I4 | Permitir ordenar el mercado por TEA y plazo, y mostrar el mínimo de inversión junto al campo de monto. | Auditoría #5 y #8 |
+| I2 | Enviar un correo a la MYPE cuando su factura es aprobada, con un enlace directo a la oferta. | Entrevista 2; auditoría #6 |
+| I3 | Mostrar un estado "Confirmando tu pago" con actualización automática al volver de Stripe. | Entrevista 5 |
+| I4 | Permitir ordenar el mercado por TEA y plazo, y mostrar el mínimo de inversión junto al campo de monto. | Auditoría #4 y #7 |
 | I5 | Mostrar el motivo de "Requiere revisión" y "No elegible" con una acción sugerida. | Auditoría #1 |
 
 **Claims** (afirmaciones de usuarios o del mercado que deben comprobarse)
@@ -4657,9 +4944,9 @@ Al cierre del Avance 2, Vankoo cuenta con la versión **v1.0.0** desplegada:
 | ID | Afirmación | Fuente |
 |---|---|---|
 | C1 | "Usaría Vankoo porque no suma deuda." | Entrevistas 1 y 3 |
-| C2 | "Empezaría invirtiendo entre S/ 500 y S/ 1,000." | Entrevistas 4 y 6 |
+| C2 | "Empezaría con un monto pequeño para probar la plataforma." | Entrevistas 4 y 6 |
 | C3 | "Si me avisan cuando la factura está aprobada, no tengo que entrar a revisar." | Entrevista 2 |
-| C4 | "Ver cómo se mueve mi dinero es lo que más confianza me da." | Entrevista 5 |
+| C4 | "Ver el historial de pagos del adquirente me daría más confianza para invertir." | Entrevista 5 |
 
 ### 8.1.3. Experiment-Ready Questions
 
@@ -4674,7 +4961,7 @@ A partir del material anterior, se formularon preguntas que se pueden responder 
 | Q5 | ¿Mostrar el motivo de "Requiere revisión" reduce el tiempo que tarda la MYPE en corregir una factura? | I5 |
 | Q6 | ¿Las facturas etiquetadas como verdes se fondean más rápido que las convencionales? | A4 |
 | Q7 | ¿Mostrar el historial de pagos del adquirente aumenta el monto promedio invertido? | C4 |
-| Q8 | ¿Ofrecer un monto mínimo de inversión menor a S/ 500 aumenta la cantidad de inversionistas que realizan su primera inversión? | C2 |
+| Q8 | ¿Ofrecer un monto mínimo de inversión menor a S/ 50 aumenta la cantidad de inversionistas que realizan su primera inversión? | C2 |
 
 ### 8.1.4. Question Backlog
 
@@ -4688,7 +4975,7 @@ Cada pregunta se puntuó de 1 a 5 en tres criterios: **Impacto** en el negocio, 
 | 4 | Q4 | Ordenar mercado y mínimo visible → conversión | 5 | 3 | 4 | 12 |
 | 5 | Q5 | Motivo de revisión → tiempo de corrección | 3 | 3 | 4 | 10 |
 | 6 | Q6 | Facturas verdes → velocidad de fondeo | 4 | 4 | 2 | 10 |
-| 7 | Q8 | Mínimo menor a S/ 500 → primera inversión | 4 | 3 | 2 | 9 |
+| 7 | Q8 | Mínimo menor a S/ 50 → primera inversión | 4 | 3 | 2 | 9 |
 | 8 | Q7 | Historial del adquirente → monto invertido | 3 | 3 | 2 | 8 |
 
 Las cuatro preguntas con mayor puntaje (Q1, Q3, Q2 y Q4) pasan a experimento en esta etapa. Q6, Q7 y Q8 requieren más volumen de facturas publicadas o cambios en las reglas de negocio, por lo que quedan para una siguiente iteración. Q5 se implementa directamente como mejora de usabilidad (US23), porque la auditoría ya lo identificó como un problema de severidad 3.
@@ -4730,7 +5017,7 @@ Las cuatro preguntas con mayor puntaje (Q1, Q3, Q2 y Q4) pasan a experimento en 
 | Campo | Detalle |
 |---|---|
 | Pregunta | Q4: ¿Ordenar el mercado y mostrar el mínimo aumenta la conversión a inversión? |
-| Why | Los inversionistas comparan por rentabilidad y plazo, y el mínimo de S/ 500 se descubre recién al confirmar. |
+| Why | Los inversionistas comparan por rentabilidad y plazo, y el mínimo de S/ 50 se descubre recién al confirmar. |
 | What | Selector "Ordenar por" (TEA, plazo, porcentaje fondeado) y texto de ayuda con el mínimo y el restante por fondear (US25, US26). |
 | Hypotheses | Ver 8.2.1, H4. |
 | Plataforma | Aplicación móvil del inversionista |
@@ -4979,6 +5266,21 @@ Total de Story Points del To-Be Product Backlog: **34**. Sumados a los 123 de la
 * Ampliar la suite BDD a los flujos de inicio de sesión, recarga de billetera e inversión, y agregar pruebas de integración entre microservicios a través del API Gateway.
 * Iniciar la fase de experimentación del Capítulo VIII y las entrevistas de validación con usuarios para medir las hipótesis definidas en el Lean UX Process.
 
+**Avance de conclusiones (AV2)**
+
+1. **Sobre la validación del producto.** Las entrevistas de validación confirman que los flujos principales de ambos segmentos funcionan: 28 de 30 tareas se completaron sin ayuda (93 %). Los puntos débiles se concentran en la comprensión de la oferta de financiamiento en la web (SEQ 4.7) y en la confirmación de la recarga en el móvil (SEQ 5.0), no en la navegación.
+2. **Sobre la calidad del código.** El análisis estático mostró que la web de la MYPE no tiene hallazgos de ESLint, mientras que el Profile Service concentra 19 hallazgos, en su mayoría por el uso de `any` en el consumidor de eventos de Kafka. El análisis de dependencias identificó vulnerabilidades críticas y altas en los dos proyectos Node.js, que se registraron en un plan de mejora priorizado.
+3. **Sobre la experiencia de usuario.** La evaluación heurística y la auditoría coinciden en tres áreas: visibilidad del estado del sistema, prevención de errores y ayuda para recuperarse de errores. Los 7 problemas registrados se tradujeron en User Stories del To-Be Product Backlog.
+4. **Sobre el monitoreo.** Los servicios ya exponen endpoints de salud con separación entre liveness y readiness, lo que permitió definir un pipeline de monitoreo, alertas y notificaciones sobre señales existentes. Falta incorporar el endpoint de salud del Profile Service y activar las reglas de alerta en Azure Monitor.
+5. **Sobre Experiment-Driven Development.** El equipo convirtió supuestos, vacíos de conocimiento y hallazgos de las entrevistas en 8 preguntas experimentales, de las cuales 4 pasan a experimento con hipótesis, métricas, condiciones y tamaño de muestra definidos antes de ejecutarlos (α = 5 %, potencia = 80 %). Las tasas base son estimadas, por lo que la primera semana de cada experimento servirá para calibrarlas.
+
+**Recomendaciones (AV2)**
+
+* Implementar primero los feature flags (TS09) y el tracking de eventos (TS10), ya que sin ellos ningún experimento se puede ejecutar ni medir.
+* Corregir las vulnerabilidades críticas y altas de dependencias y agregar `pnpm lint` y `pnpm audit` al pipeline de CI.
+* Activar la protección de ramas en `develop` y `main` con aprobación obligatoria de otro integrante.
+* Ejecutar los experimentos E1 a E4 durante un máximo de 5 semanas y analizar los resultados en la siguiente entrega, junto con el Re-scored Question Backlog.
+
 <hr class="page-break">
 
 # Bibliografía
@@ -5002,6 +5304,7 @@ Total de Story Points del To-Be Product Backlog: **34**. Sumados a los 123 de la
 | Entrega | Título | Enlace |
 |---|---|---|
 | AV1 | Exposición del Avance 1 | [https://goo.su/h0GAv](https://goo.su/h0GAv) |
+| TB1 | Exposición del Trabajo parcial| [https://lix.li/YPxAs](https://lix.li/YPxAs)|
 
 <hr class="page-break">
 
@@ -5025,16 +5328,3 @@ El código fuente y el informe del proyecto se alojan en la organización de Git
 | Infraestructura local (Docker Compose) | [yieldlabshq/vankoo-infra](https://github.com/yieldlabshq/vankoo-infra) | Docker Compose |
 
 <hr class="page-break">
-
-**Anexo C. Videos de entrevistas**
-
-<!-- Consolidar aquí los enlaces ya registrados en 2.2.2. Registro de entrevistas. -->
-
-| Segmento | Entrevistado | Fecha | Timing | Duración | Enlace |
-|---|---|---|---|---|---|
-| MYPE | Irving Vergara | 08/09/2026 | 00:00 - 8:58 | 8:58 minutos | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=WJmOfj&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MC42OX19) |
-| MYPE | Diego Melendez | 08/09/2026 | 8:58 - 17:30 | 8:32 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=Guig5U&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6NTM5LjF9fQ%3D%3D) |
-| MYPE | Thomas Bernardo | 08/09/2026 | 17:30 - 27:30 | 9:58 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=RYPQOg&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTA1MS40M319) |
-| Inversionista | Alessandro Hesse | 08/09/2026 | 27:30 - 40:15 | 12:45 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=0XdsHP&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTY1MC40OX19) |
-| Inversionista | Leicy Cahuana | 07/09/2026 | 40:15 - 55:19 | 15:04 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=FHk57K&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MjQxNS45OX19) |
-| Inversionista | Kalet Esteban | 07/09/2026 | 55:19 - 1:06:47 | 11:28 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=i6G1cy&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MzMyMC43NX19) |
