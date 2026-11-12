@@ -10,9 +10,9 @@
 
 <h4 style="text-align: center"> 1ASI0732 | Diseño de Experimentos de Ingeniería de Software </h4>
 
-<h4 style="text-align: center"> NRC: &lt;9108&gt; </h4>
+<h4 style="text-align: center"> NRC: 9108 </h4>
 
-<h4 style="text-align: center"> Docente: &lt;Noriega Meléndez, Julio Manuel&gt; </h4>
+<h4 style="text-align: center"> Docente: Noriega Meléndez, Julio Manuel </h4>
 
 <br>
 
@@ -25,10 +25,10 @@
 <h4 style="text-align: center">Integrantes:</h4>
 
 <div style="text-align:center; margin-top: 10px; font-size: 90%; line-height: 1.6;">
-  <p>&lt;U202314898&gt; — Acuache Lucas, Mathias Joaquin</p>
-  <p>&lt;U20221g044&gt; — Amaro Villar, Anjali</p>
-  <p>&lt;U202212994&gt; — García Bernal, Daniela</p>
-  <p>&lt;U202315654&gt; — Pillaca Vidal, Luis Angel</p>
+  <p>U202314898 — Acuache Lucas, Mathias Joaquin</p>
+  <p>U20221g044 — Amaro Villar, Anjali</p>
+  <p>U202212994 — García Bernal, Daniela</p>
+  <p>U202315654 — Pillaca Vidal, Luis Angel</p>
 </div>
 
 <br>
@@ -51,6 +51,12 @@
 | 2.5     | 07/10/26 | Amaro Villar, Anjali | Alineación de los Capítulos V, VI y VII con el pipeline CI/CD implementado y evidencias de ejecución |
 | 2.6     | 07/10/26 | Amaro Villar, Anjali | Student Outcome del TB1 y Registro de Versiones |
 | 2.7     | 07/10/26 | Amaro Villar, Anjali | Collaboration Insights del TB1, se retiran Acuerdo de Servicio SaaS y RESTful API documentation y se actualiza la carátula |
+| 2.8     | 07/10/26 | Amaro Villar, Anjali | Conclusiones del TB1, se retiran las secciones pendientes (Mobile Applications Prototyping y 4.10.2), se renumera el Capítulo IV y se corrigen carátula, perfiles e imágenes |
+| 3.0     | 10/11/26 | Amaro Villar, Anjali | Estructura del AV2: secciones 6.2, 6.3, 6.4.1, 7.4 y Capítulo VIII (8.1 a 8.3.2) en el índice y el cuerpo |
+| 3.1     | 11/11/26 | Amaro Villar, Anjali | Static testing & Verification (6.2) con resultados de ESLint y pnpm audit, y Reviews sobre los Pull Requests de yieldlabshq |
+| 3.2     | 11/11/26 | Amaro Villar, Anjali | Validation Interviews (6.3), evaluación según heurísticas (6.3.3) y Auditoría de Experiencias de Usuario (6.4.1) |
+| 3.3     | 11/11/26 | Amaro Villar, Anjali | Continuous Monitoring (7.4) |
+| 3.4     | 11/11/26 | Amaro Villar, Anjali | Experiment Planning (8.1), Experiment Design (8.2), To-Be User Stories (8.3.1), To-Be Product Backlog (8.3.2) y conclusiones del AV2 |
 
 <hr class="page-break">
 
@@ -84,9 +90,7 @@ Las principales ramas del repositorio, gestionadas bajo **GitFlow Workflow**, **
 
 **AV1**
 
-<!-- Assets: ./assets/github-insights/ — capturas de Insights > Contributors e Insights > Network. -->
-
-_Pendiente: capturas de los analíticos de colaboración y commits en GitHub._
+La red de ramas del repositorio (*Network graph*) correspondiente a la AV1 se muestra al inicio de esta sección.
 
 **TB1**
 
@@ -95,6 +99,10 @@ Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `featu
 ![Contribuidores del repositorio del informe](assets/github-insights/report-contributors-tb1.png)
 
 *Figura. Insights > Contributors del repositorio `yieldlabshq/report`: commits por integrante en los últimos tres meses (Luis Angel Pillaca Vidal 53, Daniela García Bernal 16, Mathias Joaquin Acuache Lucas 11 y Anjali Amaro Villar 11).*
+
+**AV2**
+
+Durante el AV2, las secciones nuevas del informe (6.2, 6.3, 6.4.1, 7.4 y Capítulo VIII) se desarrollaron en ramas `feature/av2-*` y se integraron a `develop` mediante Pull Requests, siguiendo Conventional Commits (`docs: ...`). El detalle de cada versión se encuentra en el Registro de Versiones del Informe.
 
 <hr class="page-break">
 
@@ -157,24 +165,21 @@ Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `featu
     - [4.4.2. Mobile Applications Wireflow Diagrams](#442-mobile-applications-wireflow-diagrams)
     - [4.4.3. Mobile Applications Mock-ups](#443-mobile-applications-mock-ups)
     - [4.4.4. Mobile Applications User Flow Diagrams](#444-mobile-applications-user-flow-diagrams)
-  - [4.5. Mobile Applications Prototyping](#45-mobile-applications-prototyping)
-    - [4.5.1. Android Mobile Applications Prototyping](#451-android-mobile-applications-prototyping)
-    - [4.5.2. iOS Mobile Applications Prototyping](#452-ios-mobile-applications-prototyping)
-  - [4.6. Web Applications UX/UI Design](#46-web-applications-uxui-design)
-    - [4.6.1. Web Applications Wireframes](#461-web-applications-wireframes)
-    - [4.6.2. Web Applications Wireflow Diagrams](#462-web-applications-wireflow-diagrams)
-    - [4.6.3. Web Applications Mock-ups](#463-web-applications-mock-ups)
-    - [4.6.4. Web Applications User Flow Diagrams](#464-web-applications-user-flow-diagrams)
-  - [4.7. Web Applications Prototyping](#47-web-applications-prototyping)
-  - [4.8. Domain-Driven Software Architecture](#48-domain-driven-software-architecture)
-    - [4.8.1. Software Architecture Context Diagram](#481-software-architecture-context-diagram)
-    - [4.8.2. Software Architecture Container Diagrams](#482-software-architecture-container-diagrams)
-    - [4.8.3. Software Architecture Components Diagrams](#483-software-architecture-components-diagrams)
-  - [4.9. Software Object-Oriented Design](#49-software-object-oriented-design)
-    - [4.9.1. Class Diagrams](#491-class-diagrams)
-    - [4.9.2. Class Dictionary](#492-class-dictionary)
-  - [4.10. Database Design](#410-database-design)
-    - [4.10.1. Relational/Non-Relational Database Diagram](#4101-relationalnon-relational-database-diagram)
+  - [4.5. Web Applications UX/UI Design](#45-web-applications-uxui-design)
+    - [4.5.1. Web Applications Wireframes](#451-web-applications-wireframes)
+    - [4.5.2. Web Applications Wireflow Diagrams](#452-web-applications-wireflow-diagrams)
+    - [4.5.3. Web Applications Mock-ups](#453-web-applications-mock-ups)
+    - [4.5.4. Web Applications User Flow Diagrams](#454-web-applications-user-flow-diagrams)
+  - [4.6. Web Applications Prototyping](#46-web-applications-prototyping)
+  - [4.7. Domain-Driven Software Architecture](#47-domain-driven-software-architecture)
+    - [4.7.1. Software Architecture Context Diagram](#471-software-architecture-context-diagram)
+    - [4.7.2. Software Architecture Container Diagrams](#472-software-architecture-container-diagrams)
+    - [4.7.3. Software Architecture Components Diagrams](#473-software-architecture-components-diagrams)
+  - [4.8. Software Object-Oriented Design](#48-software-object-oriented-design)
+    - [4.8.1. Class Diagrams](#481-class-diagrams)
+    - [4.8.2. Class Dictionary](#482-class-dictionary)
+  - [4.9. Database Design](#49-database-design)
+    - [4.9.1. Relational/Non-Relational Database Diagram](#491-relationalnon-relational-database-diagram)
 - [Capítulo V: Product Implementation](#capítulo-v-product-implementation)
   - [5.1. Software Configuration Management](#51-software-configuration-management)
     - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
@@ -195,6 +200,20 @@ Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `featu
     - [6.1.2. Core Integration Tests](#612-core-integration-tests)
     - [6.1.3. Core Behavior-Driven Development](#613-core-behavior-driven-development)
     - [6.1.4. Core System Tests](#614-core-system-tests)
+  - [6.2. Static testing \& Verification](#62-static-testing--verification)
+    - [6.2.1. Static Code Analysis](#621-static-code-analysis)
+      - [6.2.1.1. Coding standard \& Code conventions](#6211-coding-standard--code-conventions)
+      - [6.2.1.2. Code Quality \& Code Security](#6212-code-quality--code-security)
+    - [6.2.2. Reviews](#622-reviews)
+  - [6.3. Validation Interviews](#63-validation-interviews)
+    - [6.3.1. Diseño de Entrevistas](#631-diseño-de-entrevistas)
+    - [6.3.2. Registro de Entrevistas](#632-registro-de-entrevistas)
+    - [6.3.3. Evaluaciones según heurísticas](#633-evaluaciones-según-heurísticas)
+  - [6.4. Auditoría de Experiencias de Usuario](#64-auditoría-de-experiencias-de-usuario)
+    - [6.4.1. Auditoría realizada](#641-auditoría-realizada)
+      - [6.4.1.1. Información del grupo auditado](#6411-información-del-grupo-auditado)
+      - [6.4.1.2. Cronograma de auditoría realizada](#6412-cronograma-de-auditoría-realizada)
+      - [6.4.1.3. Contenido de auditoría realizada](#6413-contenido-de-auditoría-realizada)
 - [Capítulo VII: DevOps Practices](#capítulo-vii-devops-practices)
   - [7.1. Continuous Integration](#71-continuous-integration)
     - [7.1.1. Tools and Practices](#711-tools-and-practices)
@@ -205,6 +224,30 @@ Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `featu
   - [7.3. Continuous Deployment](#73-continuous-deployment)
     - [7.3.1. Tools and Practices](#731-tools-and-practices)
     - [7.3.2. Production Deployment Pipeline Components](#732-production-deployment-pipeline-components)
+  - [7.4. Continuous Monitoring](#74-continuous-monitoring)
+    - [7.4.1. Tools and Practices](#741-tools-and-practices)
+    - [7.4.2. Monitoring Pipeline Components](#742-monitoring-pipeline-components)
+    - [7.4.3. Alerting Pipeline Components](#743-alerting-pipeline-components)
+    - [7.4.4. Notification Pipeline Components](#744-notification-pipeline-components)
+- [Capítulo VIII: Experiment-Driven Development](#capítulo-viii-experiment-driven-development)
+  - [8.1. Experiment Planning](#81-experiment-planning)
+    - [8.1.1. As-Is Summary](#811-as-is-summary)
+    - [8.1.2. Raw Material: Assumptions, Knowledge Gaps, Ideas, Claims](#812-raw-material-assumptions-knowledge-gaps-ideas-claims)
+    - [8.1.3. Experiment-Ready Questions](#813-experiment-ready-questions)
+    - [8.1.4. Question Backlog](#814-question-backlog)
+    - [8.1.5. Experiment Cards](#815-experiment-cards)
+  - [8.2. Experiment Design](#82-experiment-design)
+    - [8.2.1. Hypotheses](#821-hypotheses)
+    - [8.2.2. Domain Business Metrics](#822-domain-business-metrics)
+    - [8.2.3. Measures](#823-measures)
+    - [8.2.4. Conditions](#824-conditions)
+    - [8.2.5. Scale Calculations and Decisions](#825-scale-calculations-and-decisions)
+    - [8.2.6. Methods Selection](#826-methods-selection)
+    - [8.2.7. Data Analytics: Goals, KPIs and Metrics Selection](#827-data-analytics-goals-kpis-and-metrics-selection)
+    - [8.2.8. Web and Mobile Tracking Plan](#828-web-and-mobile-tracking-plan)
+  - [8.3. Experimentation](#83-experimentation)
+    - [8.3.1. To-Be User Stories](#831-to-be-user-stories)
+    - [8.3.2. To-Be Product Backlog](#832-to-be-product-backlog)
 - [Conclusiones](#conclusiones)
 - [Bibliografía](#bibliografía)
 - [Anexos](#anexos)
@@ -226,8 +269,8 @@ En el siguiente cuadro se describe las acciones realizadas y enunciados de concl
 
 | Criterio específico | Acciones realizadas | Conclusiones |
 |:--------------------|:--------------------|:-------------|
-| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del Information Architecture e Implemented Frontend-Web Application Evidence.<br><br>**TB1**<br>Implementé el API Gateway, cuyo filtro de autorización valida el token JWT y rechaza con 401 toda petición sin credenciales válidas, y elaboré las pruebas de ese filtro (6.1.2), asumiendo la responsabilidad de proteger los datos financieros de MYPEs e inversionistas. En el informe definí las prácticas de Continuous Delivery (7.2), que exigen revisión y aprobación antes de llevar un cambio a producción.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Me enfoqué en garantizar que el diseño de nuestra solución respete la privacidad de la información, promoviendo la transparencia y el cumplimiento de estándares éticos durante el desarrollo._<br><br>**TB1**<br>Implementé el pipeline de CI/CD de los repositorios del API Gateway y del Invoicing Service sin exponer credenciales: en CI solo se usan valores de prueba y los secretos de producción quedan en el entorno protegido `production` de GitHub. Me aseguré de que el informe documente únicamente evidencia verificable, como las ejecuciones reales del pipeline y las pruebas que existen en los repositorios, y corregí las afirmaciones que no coincidían con el código. Documenté la suite BDD (6.1.3) y las prácticas de Continuous Deployment (7.3.1).<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**TB1**<br>Elaboré la sección Production Deployment Pipeline Components (7.3.2), en la que definí un proceso de despliegue controlado y reproducible que mantiene la trazabilidad de las versiones publicadas, para que el equipo pueda responder por cada cambio que llega a los usuarios.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Participé en la definición de buenas prácticas de desarrollo y el uso correcto de herramientas, asegurando el trabajo honesto y la ética profesional en el equipo._<br><br>**TB1**<br>Implementé el Investment Service, el Discovery Server y el Invoicing Service, junto con sus pruebas unitarias, de integración y BDD, que validan reglas como el dígito verificador del RUC y la consistencia de los montos de cada factura, de modo que la plataforma no publique información errónea a los inversionistas. En el informe elaboré las pruebas unitarias (6.1.1) y la integración continua (7.1). | **AV1**<br>_Se logró identificar la importancia de la ética profesional en esta etapa inicial del proyecto._<br><br>**TB1**<br>En una plataforma que gestiona dinero de terceros, verificar el software es una responsabilidad profesional: cada cambio pasa por pruebas automatizadas y por revisión antes de integrarse, y el informe se sustenta en evidencia verificable de los repositorios y del pipeline. |
-| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del To-Be Scenario Mapping, General and Web style guidelines, Landing Page Design,Web Application Prototyping, siguiendo los diversos lineamientos para el proyecto.<br><br>**TB1**<br>Al implementar la aplicación web de la MYPE con soporte en español e inglés, consideré el impacto social de que empresarios con distinto nivel de familiaridad digital puedan gestionar sus facturas sin barreras de idioma.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Investigué cómo YieldLabs puede mejorar la accesibilidad tecnológica en la comunidad, analizando su viabilidad económica y asegurando que el producto final sea socialmente inclusivo._<br><br>**TB1**<br>Evalué el impacto económico que tendría una caída del servicio sobre las MYPEs que esperan liquidez y los inversionistas con fondos comprometidos, y por ello incorporé al despliegue la verificación de salud y el rollback automático. Elegí herramientas sin costo para repositorios públicos (GitHub Actions y GitHub Container Registry), lo que hace sostenible el pipeline para una startup en etapa temprana.<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**TB1**<br>Incorporé la verificación posterior al despliegue como etapa del pipeline de producción, considerando que una falla no detectada afectaría directamente a las MYPEs e inversionistas que dependen de la plataforma para su liquidez y sus ahorros.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Evalué el impacto de YieldLabs, considerando cómo nuestra plataforma puede optimizar recursos y promover beneficios económicos y sociales para nuestros futuros usuarios._<br><br>**TB1**<br>Las validaciones automáticas de facturas que implementé (facturas vencidas, totales que no cuadran o emisor igual al pagador) reducen el riesgo de fraude y de pérdidas para los inversionistas minoristas, lo que contribuye a la confianza en el financiamiento alternativo para las MYPEs en el Perú. | **AV1**<br>_Se reconoció el impacto socioeconómico y ambiental positivo de nuestra solución de software._<br><br>**TB1**<br>Automatizar la validación de facturas y el despliegue con verificación y rollback reduce los riesgos económicos para MYPEs e inversionistas, y el uso de herramientas sin costo hace viable sostener estas prácticas en una startup, lo que favorece la inclusión financiera de las MYPEs. |
+| **4.c.1** Reconoce responsabilidad ética y profesional en situaciones de ingeniería de software | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del Information Architecture e Implemented Frontend-Web Application Evidence.<br><br>**TB1**<br>Implementé el API Gateway, cuyo filtro de autorización valida el token JWT y rechaza con 401 toda petición sin credenciales válidas, y elaboré las pruebas de ese filtro (6.1.2), asumiendo la responsabilidad de proteger los datos financieros de MYPEs e inversionistas. En el informe definí las prácticas de Continuous Delivery (7.2), que exigen revisión y aprobación antes de llevar un cambio a producción.<br><br>**AV2**<br>En la auditoría de experiencias de usuario (6.4.1) evalué el módulo móvil de registro, billetera y recarga, verificando que el saldo y los movimientos se muestren con claridad, ya que de esa información depende que el inversionista confíe su dinero a la plataforma. En el monitoreo continuo (7.4) documenté que en producción solo se exponen los endpoints de salud e información, para no publicar datos internos de los servicios.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Me enfoqué en garantizar que el diseño de nuestra solución respete la privacidad de la información, promoviendo la transparencia y el cumplimiento de estándares éticos durante el desarrollo._<br><br>**TB1**<br>Implementé el pipeline de CI/CD de los repositorios del API Gateway y del Invoicing Service sin exponer credenciales: en CI solo se usan valores de prueba y los secretos de producción quedan en el entorno protegido `production` de GitHub. Me aseguré de que el informe documente únicamente evidencia verificable, como las ejecuciones reales del pipeline y las pruebas que existen en los repositorios, y corregí las afirmaciones que no coincidían con el código. Documenté la suite BDD (6.1.3) y las prácticas de Continuous Deployment (7.3.1).<br><br>**AV2**<br>En el análisis estático (6.2) reporté los hallazgos de ESLint y las vulnerabilidades de dependencias tal como resultaron de la ejecución real, e indiqué que los Pull Requests no tenían una aprobación formal registrada, en lugar de presentar un resultado más favorable. En el tracking plan (8.2.8) establecí que los eventos de analítica usen identificadores seudonimizados y no registren datos personales ni montos asociados a la identidad del usuario.<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de usuarios y necesidades del proyecto, incluyendo las entrevistas de Needfinding, User Personas, User Journey Maps, Empathy Maps y As-Is Scenario Mapping.<br><br>**TB1**<br>Elaboré la sección Production Deployment Pipeline Components (7.3.2), en la que definí un proceso de despliegue controlado y reproducible que mantiene la trazabilidad de las versiones publicadas, para que el equipo pueda responder por cada cambio que llega a los usuarios.<br><br>**AV2**<br>Diseñé las entrevistas de validación (6.3.1) con datos de prueba (facturas de ejemplo y la tarjeta de prueba de Stripe), de modo que ningún participante expusiera su información financiera real, y con consentimiento previo para grabar cada sesión.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Participé en la definición de buenas prácticas de desarrollo y el uso correcto de herramientas, asegurando el trabajo honesto y la ética profesional en el equipo._<br><br>**TB1**<br>Implementé el Investment Service, el Discovery Server y el Invoicing Service, junto con sus pruebas unitarias, de integración y BDD, que validan reglas como el dígito verificador del RUC y la consistencia de los montos de cada factura, de modo que la plataforma no publique información errónea a los inversionistas. En el informe elaboré las pruebas unitarias (6.1.1) y la integración continua (7.1).<br><br>**AV2**<br>Al planificar los experimentos (8.1) definí métricas de control, como los pagos duplicados y las ofertas vencidas sin respuesta, para detener un experimento si perjudica a los usuarios, y establecí que los resultados no se evalúen antes de alcanzar el tamaño de muestra. | **AV1**<br>_Se logró identificar la importancia de la ética profesional en esta etapa inicial del proyecto._<br><br>**TB1**<br>En una plataforma que gestiona dinero de terceros, verificar el software es una responsabilidad profesional: cada cambio pasa por pruebas automatizadas y por revisión antes de integrarse, y el informe se sustenta en evidencia verificable de los repositorios y del pipeline.<br><br>**AV2**<br>Experimentar sobre un producto que gestiona dinero de terceros exige proteger a los usuarios: los experimentos usan datos seudonimizados, incluyen métricas de control que permiten detenerlos y fijan sus criterios de decisión antes de conocer los resultados. |
+| **4.c.2** Emite juicios informados considerando el impacto de las soluciones de ingeniería de software en contextos globales, económicos, ambientales y sociales | **Acuache Lucas, Mathias Joaquin**<br>**AV1**<br>Participe en la elaboración del To-Be Scenario Mapping, General and Web style guidelines, Landing Page Design,Web Application Prototyping, siguiendo los diversos lineamientos para el proyecto.<br><br>**TB1**<br>Al implementar la aplicación web de la MYPE con soporte en español e inglés, consideré el impacto social de que empresarios con distinto nivel de familiaridad digital puedan gestionar sus facturas sin barreras de idioma.<br><br>**AV2**<br>Al definir las alertas de monitoreo (7.4.3) consideré el impacto económico de una caída sobre las MYPEs que esperan su desembolso y los inversionistas con fondos comprometidos, por lo que clasifiqué como críticas las alertas de disponibilidad.<br><br>**Amaro Villar, Anjali**<br>**AV1**<br>_Investigué cómo YieldLabs puede mejorar la accesibilidad tecnológica en la comunidad, analizando su viabilidad económica y asegurando que el producto final sea socialmente inclusivo._<br><br>**TB1**<br>Evalué el impacto económico que tendría una caída del servicio sobre las MYPEs que esperan liquidez y los inversionistas con fondos comprometidos, y por ello incorporé al despliegue la verificación de salud y el rollback automático. Elegí herramientas sin costo para repositorios públicos (GitHub Actions y GitHub Container Registry), lo que hace sostenible el pipeline para una startup en etapa temprana.<br><br>**AV2**<br>En el cálculo de escala (8.2.5) elegí una potencia estadística de 80 % considerando el volumen limitado de usuarios de una startup en etapa temprana, equilibrando el rigor de los resultados con el tiempo que los usuarios esperan una mejora.<br><br>**García Bernal, Daniela**<br>**AV1**<br>Participé en la elaboración del análisis de competidores, las estrategias de diferenciación y la definición del Ubiquitous Language.<br><br>**TB1**<br>Incorporé la verificación posterior al despliegue como etapa del pipeline de producción, considerando que una falla no detectada afectaría directamente a las MYPEs e inversionistas que dependen de la plataforma para su liquidez y sus ahorros.<br><br>**AV2**<br>En las entrevistas de validación identifiqué que las MYPEs sin experiencia en factoring no comprenden la TCEA, lo que llevó a priorizar la explicación del costo del financiamiento en lenguaje simple (US21), para que cada empresario tome una decisión informada.<br><br>**Pillaca Vidal, Luis Angel**<br>**AV1**<br>_Evalué el impacto de YieldLabs, considerando cómo nuestra plataforma puede optimizar recursos y promover beneficios económicos y sociales para nuestros futuros usuarios._<br><br>**TB1**<br>Las validaciones automáticas de facturas que implementé (facturas vencidas, totales que no cuadran o emisor igual al pagador) reducen el riesgo de fraude y de pérdidas para los inversionistas minoristas, lo que contribuye a la confianza en el financiamiento alternativo para las MYPEs en el Perú.<br><br>**AV2**<br>En el To-Be Product Backlog (8.3.2) prioricé las historias que reducen barreras para los usuarios con menos experiencia financiera, como la explicación de la oferta y el monto mínimo de inversión visible, favoreciendo la inclusión de MYPEs e inversionistas minoristas. | **AV1**<br>_Se reconoció el impacto socioeconómico y ambiental positivo de nuestra solución de software._<br><br>**TB1**<br>Automatizar la validación de facturas y el despliegue con verificación y rollback reduce los riesgos económicos para MYPEs e inversionistas, y el uso de herramientas sin costo hace viable sostener estas prácticas en una startup, lo que favorece la inclusión financiera de las MYPEs.<br><br>**AV2**<br>Las decisiones de esta entrega se basaron en evidencia de los usuarios: hacer transparente el costo del financiamiento y claros los montos mínimos favorece decisiones financieras informadas de MYPEs e inversionistas minoristas, y el monitoreo reduce el impacto económico de una falla del servicio. |
 
 <hr class="page-break">
 
@@ -248,16 +291,16 @@ Yieldlabs es una startup Fintech de base tecnológica creada por estudiantes de 
 <!-- Por integrante: foto, nombres y apellidos, código de estudiante, carrera y párrafo de resumen con los principales conocimientos técnicos y habilidades que aporta al equipo. -->
 <!-- Assets: ./assets/profiles/ -->
 
-| <img src="./assets/profiles/mathias.png" width="1500"> | **Acuache Lucas, Mathias Joaquin**<br>Código: &lt;u202314898&gt;<br>Carrera: Ingeniería de Software<br><br>Soy Mathias Joaquin Acuache Lucas, me encuentro en el septimo ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB,tambien poder crear un Frontend y Backend basico, en vue.js, java,etc.Además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos.Asimismo me considero una persona que le gusta aprender nuevas cosas, aportar las ideas que tenga en mente y apartir de ello presentar buenos trabajos._ |
+| <img src="./assets/profiles/mathias.png" width="1500"> | **Acuache Lucas, Mathias Joaquin**<br>Código: u202314898<br>Carrera: Ingeniería de Software<br><br>Soy Mathias Joaquin Acuache Lucas, me encuentro en el septimo ciclo de la carrera de Ingeniería de Software. Tengo experiencia en C++, SQL y MongoDB,tambien poder crear un Frontend y Backend basico, en vue.js, java,etc.Además de utilizar GitHub de manera correcta. Asimismo, tengo conocimiento en Domain Driven Design y algunos patrones de software los cuales he aplicado en diversos proyectos.Asimismo me considero una persona que le gusta aprender nuevas cosas, aportar las ideas que tenga en mente y apartir de ello presentar buenos trabajos._ |
 |---|---|
 
-| <img src="./assets/profiles/perfil-amaro-anjali.jpg" width="140"/> | **Amaro Villar, Anjali**<br>Código: &lt;Código&gt;<br>Carrera: Ingeniería de Software<br><br> Soy estudiante de séptimo ciclo de Ingeniería de Software con sólidas competencias en el diseño e implementación de arquitecturas backend utilizando Java y el ecosistema Spring Boot. Destaco por mi comunicación asertiva, adaptabilidad y trabajo colaborativo, buscando siempre aportar valor técnico continuo y garantizar entregables de calidad dentro del equipo.  |
+| <img src="./assets/profiles/perfil-amaro-anjali.jpg" width="140"/> | **Amaro Villar, Anjali**<br>Código: U20221g044<br>Carrera: Ingeniería de Software<br><br> Soy estudiante de séptimo ciclo de Ingeniería de Software con sólidas competencias en el diseño e implementación de arquitecturas backend utilizando Java y el ecosistema Spring Boot. Destaco por mi comunicación asertiva, adaptabilidad y trabajo colaborativo, buscando siempre aportar valor técnico continuo y garantizar entregables de calidad dentro del equipo.  |
 |--------------------------------------------------------------------|------------------------------------------------------------------------------------------------|
 
-| <img src="./assets/profiles/daniela.jpeg" width="500"> | **García Bernal, Daniela**<br>Código: &lt;U202212994&gt;<br>Carrera: Ingeniería de Software<br><br>Soy estudiante de Ingeniería de Software con conocimientos en C++, programación orientada a objetos, estructuras de datos, UML y Diseño de Interfaces. Tengo conocimiento de desarrollo frontend y backend así como de  metodologías ágiles y Scrum. Me interesa aprender nuevas tecnologías y me caracterizo por prestar atención a los detalles al desarrollar mis proyectos. |
+| <img src="./assets/profiles/daniela.jpeg" width="500"> | **García Bernal, Daniela**<br>Código: U202212994<br>Carrera: Ingeniería de Software<br><br>Soy estudiante de Ingeniería de Software con conocimientos en C++, programación orientada a objetos, estructuras de datos, UML y Diseño de Interfaces. Tengo conocimiento de desarrollo frontend y backend así como de  metodologías ágiles y Scrum. Me interesa aprender nuevas tecnologías y me caracterizo por prestar atención a los detalles al desarrollar mis proyectos. |
 |---|---|
 
-| <img src="./assets/profiles/AngelFoto.jpg" width="140"> | **Pillaca Vidal, Luis Angel**<br>Código: &lt;u202315654&gt;<br>Carrera: Ingeniería de Software<br><br> Estudiante de séptimo ciclo de Ingeniería de Software enfocado en el desarrollo con buenas prácticas, ética profesional y uso eficiente de herramientas de software. Apasionado por el aprendizaje continuo y la colaboración activa en proyectos tecnológicos de impacto. |
+| <img src="./assets/profiles/AngelFoto.jpg" width="140"> | **Pillaca Vidal, Luis Angel**<br>Código: u202315654<br>Carrera: Ingeniería de Software<br><br> Estudiante de séptimo ciclo de Ingeniería de Software enfocado en el desarrollo con buenas prácticas, ética profesional y uso eficiente de herramientas de software. Apasionado por el aprendizaje continuo y la colaboración activa en proyectos tecnológicos de impacto. |
 |---|---|
 
 <hr class="page-break">
@@ -1150,7 +1193,7 @@ A partir de los segmentos objetivo, los User Personas (Carlos, el empresario MYP
 
 El Product Backlog ordena las User Stories según su valor para el negocio. Se priorizan primero las historias que completan el flujo mínimo de la MYPE (iniciar sesión, subir factura, revisar su detalle y publicarla) y del inversionista (iniciar sesión, recargar saldo, explorar el mercado e invertir), seguidas de las Technical Stories que las soportan y, finalmente, las historias de la Landing Page y las de soporte (recuperación de contraseña, documentación, infraestructura). La estimación se realizó en Story Points con la escala 1 / 2 / 3 / 5 / 8, considerando complejidad técnica, incertidumbre y esfuerzo relativo.
 
-El backlog se gestiona en Trello: _Pendiente: enlace público y captura del tablero._
+El backlog se gestiona en Trello.
 
 
 | # Orden | User Story Id | Título | Descripción | Story Points (1 / 2 / 3 / 5 / 8) |
@@ -1853,74 +1896,74 @@ Esta sección presenta las pantallas de la aplicación móvil de Vankoo organiza
 
 ##### Autenticación e Inicios de Sesión (Login)
 
-![Login 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login0.png)
+![Login 0](assets/cap4-product-design/mobile-app/mockups/Login0.png)
 *Figura 4.4.3.1. Pantalla de inicio / bienvenida.*
 
-![Login 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login1.png)
+![Login 1](assets/cap4-product-design/mobile-app/mockups/Login1.png)
 *Figura 4.4.3.2. Formulario de inicio de sesión.*
 
-![Login 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login2.png)
+![Login 2](assets/cap4-product-design/mobile-app/mockups/Login2.png)
 *Figura 4.4.3.3. Selección de tipo de perfil / credenciales.*
 
-![Login 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login3.png)
+![Login 3](assets/cap4-product-design/mobile-app/mockups/Login3.png)
 *Figura 4.4.3.4. Confirmación de acceso / verificación.*
 
-![Login 4](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Login4.png)
+![Login 4](assets/cap4-product-design/mobile-app/mockups/Login4.png)
 *Figura 4.4.3.5. Recuperación y validación de seguridad.*
 
 ---
 
 ##### Pantalla Principal (Home) y Mercado (Marketplace)
 
-![Home 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Home0.png)
+![Home 0](assets/cap4-product-design/mobile-app/mockups/Home0.png)
 *Figura 4.4.3.6. Dashboard principal de la aplicación.*
 
-![Market 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market0.png)
+![Market 0](assets/cap4-product-design/mobile-app/mockups/Market0.png)
 *Figura 4.4.3.7. Vista general del Mercado de Oportunidades.*
 
-![Market 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Market1.png)
+![Market 1](assets/cap4-product-design/mobile-app/mockups/Market1.png)
 *Figura 4.4.3.8. Detalle de subasta e inversión.*
 
 ---
 
 ##### Mis Inversiones y Billetera (Wallet)
 
-![My Investments](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/MyInvestments.png)
+![My Investments](assets/cap4-product-design/mobile-app/mockups/MyInvestments.png)
 *Figura 4.4.3.9. Portafolio de inversiones activas y rendimiento.*
 
-![Wallet 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet0.png)
+![Wallet 0](assets/cap4-product-design/mobile-app/mockups/Wallet0.png)
 *Figura 4.4.3.10. Saldo de la billetera y resumen transaccional.*
 
-![Wallet 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Wallet1.png)
+![Wallet 1](assets/cap4-product-design/mobile-app/mockups/Wallet1.png)
 *Figura 4.4.3.11. Opciones de depósito y retiro de fondos.*
 
 ---
 
 ##### Perfil de Usuario y Deltas
 
-![Profile 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile0.png)
+![Profile 0](assets/cap4-product-design/mobile-app/mockups/Profile0.png)
 *Figura 4.4.3.12. Información general del perfil de usuario.*
 
-![Profile 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Profile1.png)
+![Profile 1](assets/cap4-product-design/mobile-app/mockups/Profile1.png)
 *Figura 4.4.3.13. Ajustes de la cuenta y preferencias.*
 
-![Deltas](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/Deltas.png)
+![Deltas](assets/cap4-product-design/mobile-app/mockups/Deltas.png)
 *Figura 4.4.3.14. Comparativa de variaciones y métricas del sistema (Deltas).*
 
 ---
 
 ##### Mantenimiento y Tema Oscuro (Night Mode)
 
-![Night Mode 0](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode0.png)
+![Night Mode 0](assets/cap4-product-design/mobile-app/mockups/NightMode0.png)
 *Figura 4.4.3.15. Vista principal en Modo Oscuro.*
 
-![Night Mode 1](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode1.png)
+![Night Mode 1](assets/cap4-product-design/mobile-app/mockups/NightMode1.png)
 *Figura 4.4.3.16. Mercado de Oportunidades en Modo Oscuro.*
 
-![Night Mode 2](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode2.png)
+![Night Mode 2](assets/cap4-product-design/mobile-app/mockups/NightMode2.png)
 *Figura 4.4.3.17. Vista del portafolio/billetera en Modo Oscuro.*
 
-![Night Mode 3](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/mockups/NightMode3.png)
+![Night Mode 3](assets/cap4-product-design/mobile-app/mockups/NightMode3.png)
 *Figura 4.4.3.18. Ajustes y perfil en Modo Oscuro.*
 
 ### 4.4.4. Mobile Applications User Flow Diagrams
@@ -1929,65 +1972,49 @@ Esta sección presenta los diagramas de flujo de usuario (User Flows) para la ap
 
 ##### Flujo de Portada e Inicio (Front Page)
 
-![Front Page User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/FrontPage.png)
+![Front Page User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/FrontPage.png)
 *Figura 4.4.4.1. Diagrama de flujo de la pantalla de bienvenida e inicio de la aplicación.*
 
 ---
 
 ##### Flujo de Autenticación y Acceso (Access)
 
-![Access User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Access.png)
+![Access User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/Access.png)
 *Figura 4.4.4.2. Diagrama de flujo para el registro, inicio de sesión y recuperación de credenciales.*
 
 ---
 
 ##### Flujo de Registro de Perfil y Verificación KYC (Profile KYC)
 
-![Profile KYC User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/ProfileKYC.png)
+![Profile KYC User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/ProfileKYC.png)
 *Figura 4.4.4.3. Diagrama de flujo para el completado de perfil y el proceso de validación de identidad KYC.*
 
 ---
 
 ##### Flujo de Recarga de Billetera (Recharge Wallet)
 
-![Recharge Wallet User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/RechargeWallet.png)
+![Recharge Wallet User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/RechargeWallet.png)
 *Figura 4.4.4.4. Diagrama de flujo para la recarga de fondos y gestión del saldo en la billetera.*
 
 ---
 
 ##### Flujo de Exploración del Mercado (Marketplace)
 
-![Marketplace User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Marketplace.png)
+![Marketplace User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/Marketplace.png)
 *Figura 4.4.4.5. Diagrama de flujo para la navegación y búsqueda de subastas en el mercado de oportunidades.*
 
 ---
 
 ##### Flujo de Gestión de Inversiones (Investments)
 
-![Investments User Flow](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/mobile-app/user-flow-diagrams/Investments.png)
+![Investments User Flow](assets/cap4-product-design/mobile-app/user-flow-diagrams/Investments.png)
 *Figura 4.4.4.6. Diagrama de flujo para la ejecución de inversiones y seguimiento del portafolio.*
 
-## 4.5. Mobile Applications Prototyping
-
-<!-- Assets: ./assets/cap4-product-design/mobile-app/prototyping/ — incluir enlace público al prototipo en Figma. -->
-
-_Pendiente de elaboración._
-
-### 4.5.1. Android Mobile Applications Prototyping
-
-_Pendiente de elaboración._
-
-### 4.5.2. iOS Mobile Applications Prototyping
-
-_Pendiente de elaboración._
-
-<hr class="page-break">
-
-## 4.6. Web Applications UX/UI Design
+## 4.5. Web Applications UX/UI Design
 
 En este segmento se exponen los esquemas visuales y prototipos interactivos correspondientes a los módulos operativos de la plataforma Vankoo. Asimismo, se detallan las interfaces principales, sus capacidades dinámicas y los componentes estéticos que conforman el sistema.
 
-### 4.6.1. Web Applications Wireframes
+### 4.5.1. Web Applications Wireframes
 
 **IAM**
 
@@ -2120,7 +2147,7 @@ Muestra un mensaje al usuario indicando que la página solicitada no se encuentr
 ![404-Wireframe](assets/cap4-product-design/web-app/wireframes/404-wireframe.png)
 
 
-### 4.6.2. Web Applications Wireflow Diagrams
+### 4.5.2. Web Applications Wireflow Diagrams
 
 **Acceso y Recuperación**
 
@@ -2162,7 +2189,7 @@ El retiro es el último tramo del recorrido de la MYPE y el único que saca dine
 
 ![Wallet-Wireflow](assets/cap4-product-design/web-app/wireflow-diagrams/wallet-withdraw-wireflow.png)
 
-### 4.6.3. Web Applications Mock-ups
+### 4.5.3. Web Applications Mock-ups
 
 **IAM**
 
@@ -2349,7 +2376,7 @@ Pantalla que indica al usuario que la página solicitada no se encuentra disponi
 
 ![404-Mockup](assets/cap4-product-design/web-app/mockups/404-mockup.png)
 
-### 4.6.4. Web Applications User Flow Diagrams
+### 4.5.4. Web Applications User Flow Diagrams
 
 **Acceso y Recuperación**
 
@@ -2391,7 +2418,7 @@ El retiro es la última milla del producto para la MYPE: el dinero ya cobrado sa
 
 ![Wallet-Withdraw-User-Flow](assets/cap4-product-design/web-app/user-flow-diagrams/wallet-withdraw-user-flow.png)
 
-## 4.7. Web Applications Prototyping
+## 4.6. Web Applications Prototyping
 
 En esta sección se presentan los prototipos de alta fidelidad de las aplicaciones web de la plataforma Vankoo, junto con enlaces a los videos demostrativos y capturas de pantalla representativas.
 
@@ -2399,11 +2426,11 @@ En esta sección se presentan los prototipos de alta fidelidad de las aplicacion
 
 <hr class="page-break">
 
-## 4.8. Domain-Driven Software Architecture
+## 4.7. Domain-Driven Software Architecture
 
 En esta sección se presenta el modelo físico de datos correspondiente a cada microservicio mediante sus respectivos diagramas entidad-relación (ERD). Se contemplan cuatro contextos relacionales (IAM y Profile en PostgreSQL, Finance mediante un read model en PostgreSQL sobre Axon Server Event Store, e Investment en Oracle) y un esquema de documentos NoSQL en MongoDB para el contexto de Invoicing. Cada diagrama refleja de forma fidedigna el estado real de la base de datos a partir de sus entidades (JPA/TypeORM/EF-Mongo) y scripts de migración. Destaca el caso particular de Finance, el cual aplica el patrón Axon Event Sourcing: los agregados de dominio no se mapean en tablas dedicadas, limitando el esquema de PostgreSQL a las tablas del modelo de lectura y a las estructuras de soporte operativo (idempotencia, inbox de webhooks y el token/saga store de Axon)
 
-### 4.8.1. Software Architecture Context Diagram
+### 4.7.1. Software Architecture Context Diagram
 
 En esta sección se presenta el **Diagrama de Contexto del Sistema (System Context View)** para **Vankoo**, el cual delimita las fronteras de la plataforma, identifica los tipos de usuarios principales y detalla sus interacciones con los servicios externos que complementan la arquitectura del software.
 
@@ -2429,7 +2456,7 @@ En esta sección se presenta el **Diagrama de Contexto del Sistema (System Conte
    * **Firebase (FCM):** Servicio de notificaciones Push para el envío en tiempo real de alertas sobre el estado de subastas, recargas y operaciones.
    * **Cloud OCR API:** Servicio externo de reconocimiento óptico de caracteres para la extracción e intepretación automática de datos relevantes a partir de la imagen de las facturas.
 
-### 4.8.2. Software Architecture Container Diagrams
+### 4.7.2. Software Architecture Container Diagrams
 
 En esta sección se presenta el **Diagrama de Contenedores (Container View)** bajo el modelo C4 para la plataforma **Vankoo**. Este nivel muestra la distribución de las aplicaciones ejecutables, los servicios de backend y los almacenes de datos que conforman el ecosistema técnico, detallando sus responsabilidades principales y los protocolos de comunicación utilizados.
 
@@ -2466,7 +2493,7 @@ En esta sección se presenta el **Diagrama de Contenedores (Container View)** ba
    * **Firebase FCM:** Envío de notificaciones Push en tiempo real a los dispositivos móviles.
    * **Cloud OCR API:** Servicio de lectura e interpretación inteligente de documentos.
 
-### 4.8.3. Software Architecture Components Diagrams
+### 4.7.3. Software Architecture Components Diagrams
 
 Los diagramas de componentes (C4 Nivel 3) profundizan en la organización interna y la estructura de módulos de cada *bounded context* de **Vankoo**. Fueron elaborados en **Structurizr** tomando como referencia el código fuente y la arquitectura de capas de cada microservicio. 
 
@@ -2550,9 +2577,9 @@ El diagrama de componentes del **Profile Service** (TypeScript / NestJS) se divi
 
 
 
-## 4.9. Software Object-Oriented Design
+## 4.8. Software Object-Oriented Design
 
-### 4.9.1. Class Diagrams
+### 4.8.1. Class Diagrams
 
 Se presentan a continuación los cinco diagramas de clases de la capa de dominio, uno por cada *Bounded Context*, bajo la paleta de estereotipos DDD acordada para el proyecto: **`«AggregateRoot»`** (`#1168BD`), **`«Entity»`** (`#438DD5`), **`«ValueObject»`** (`#85BBF0`), **`«DomainEvent»`** (`#F28FAD`), **`«DomainService»`** (`#6BA3DC`) y **`«Exception»`** (`#CDA1A1`).
 
@@ -2572,7 +2599,7 @@ Las líneas continuas marcan composición y las punteadas, dependencias semánti
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/iam-domain-class-diagram.png" alt="IAM Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.1. Diagrama de clases del dominio del Bounded Context IAM.</b>
+  <b>Figura 4.8.1.1. Diagrama de clases del dominio del Bounded Context IAM.</b>
 </p>
 
 ---
@@ -2588,7 +2615,7 @@ Las líneas continuas marcan la composición de cada agregado con sus Value Obje
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/profile-domain-class-diagram.png" alt="Profile Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.2. Diagrama de clases del dominio del Bounded Context Profile.</b>
+  <b>Figura 4.8.1.2. Diagrama de clases del dominio del Bounded Context Profile.</b>
 </p>
 
 ---
@@ -2605,7 +2632,7 @@ Las líneas punteadas marcan eventos y excepciones; los Domain Services despacha
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/finance-domain-class-diagram.png" alt="Finance Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.3. Diagrama de clases del dominio del Bounded Context Finance.</b>
+  <b>Figura 4.8.1.3. Diagrama de clases del dominio del Bounded Context Finance.</b>
 </p>
 
 ---
@@ -2621,7 +2648,7 @@ Las líneas continuas marcan la composición de `Auction` con sus particiones; l
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/investment-domain-class-diagram.png" alt="Investment Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.4. Diagrama de clases del dominio del Bounded Context Investment.</b>
+  <b>Figura 4.8.1.4. Diagrama de clases del dominio del Bounded Context Investment.</b>
 </p>
 
 ---
@@ -2638,11 +2665,11 @@ De los seis Domain Events declarados en el código, solo dos están realmente ca
 
 <p align="center">
   <img src="./assets/cap4-product-design/class-diagrams/out/invoicing-domain-class-diagram.png" alt="Invoicing Bounded Context Domain Class Diagram" width="850" /><br />
-  <b>Figura 4.9.1.5. Diagrama de clases del dominio del Bounded Context Invoicing.</b>
+  <b>Figura 4.8.1.5. Diagrama de clases del dominio del Bounded Context Invoicing.</b>
 </p>
 
 
-### 4.9.2. Class Dictionary
+### 4.8.2. Class Dictionary
 
 Se presenta a continuación el diccionario de clases de la capa de dominio organizado por *Bounded Context*, el cual especifica la responsabilidad, estereotipo DDD, atributos y métodos de negocio clave de cada elemento.
 
@@ -2803,19 +2830,19 @@ Se presenta a continuación el diccionario de clases de la capa de dominio organ
 
 > **Nota de fidelidad:** De los 6 eventos de dominio declarados en el código de Invoicing, solo `InvoiceCreatedEvent` e `InvoiceEligibleForFundingDomainEvent` implementan `INotification` y tienen un manejador asociado.
 
-## 4.10. Database Design
+## 4.9. Database Design
 
 Esta sección documenta el modelo físico de datos de cada microservicio: modelos entidad-relación (ERD) para los cuatro contextos relacionales (IAM y Profile sobre PostgreSQL, Finance sobre PostgreSQL como read model de un Event Store en Axon Server, Investment sobre Oracle) y un modelo de documentos en MongoDB para el contexto NoSQL (Invoicing). Los diagramas se construyeron a partir de las entidades JPA/TypeORM/EF-Mongo y las migraciones o configuraciones de persistencia realmente presentes en cada repositorio, no de un diseño ideal; en particular, Finance despliega un modelo poco convencional (Axon Event Sourcing) en el que los agregados de dominio no poseen tabla propia y el esquema PostgreSQL solo contiene el read model de consulta y las tablas operativas de soporte (idempotencia, inbox de webhooks, token/saga store de Axon).
 
-#### 4.10.1. Database Diagram
+### 4.9.1. Relational/Non-Relational Database Diagram
 
 ##### IAM
 
 El esquema físico del Bounded Context IAM (PostgreSQL) consta de la tabla `users` (credenciales y auditoría), la tabla de catálogo `roles` y la tabla de unión `user_roles` que materializa la relación N:M entre ambas. El único índice adicional es la restricción de unicidad sobre `email`; el esquema se genera automáticamente vía Hibernate, sin migraciones versionadas. IAM es el Bounded Context raíz de identidad: no declara referencias hacia otros contextos, sino que su clave `users.id` es la que Profile e Investment referencian lógicamente a través del evento `UserCreatedEvent`.
 
-![Vankoo — IAM Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/iam-database-diagram.png)
+![Vankoo — IAM Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/iam-database-diagram.png)
 
-*Figura 4.10.1.1. Diagrama entidad-relación del Bounded Context IAM.*
+*Figura 4.9.1.1. Diagrama entidad-relación del Bounded Context IAM.*
 
 ---
 
@@ -2823,9 +2850,9 @@ El esquema físico del Bounded Context IAM (PostgreSQL) consta de la tabla `user
 
 El esquema físico del Bounded Context Profile (PostgreSQL) consta de las tablas `companies` e `investors` —con sus Value Objects de dirección y sostenibilidad aplanados como columnas con prefijo— y de `bank_accounts`, en relación 1 a 1 con `investors` mediante una foreign key con `ON DELETE CASCADE`. Ambas tablas principales declaran unicidad sobre su identificador fiscal (`ruc_number`, `dni_number`) y una referencia lógica, sin FK física, hacia `users.id` de IAM. El esquema se sincroniza automáticamente desde las entidades TypeORM, sin carpeta de migraciones.
 
-![Vankoo — Profile Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/profile-database-diagram.png)
+![Vankoo — Profile Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/profile-database-diagram.png)
 
-*Figura 4.10.1.2. Diagrama entidad-relación del Bounded Context Profile.*
+*Figura 4.9.1.2. Diagrama entidad-relación del Bounded Context Profile.*
 
 ---
 
@@ -2833,9 +2860,9 @@ El esquema físico del Bounded Context Profile (PostgreSQL) consta de las tablas
 
 El esquema físico del Bounded Context Finance (PostgreSQL) no almacena los agregados `Deposit` y `Wallet` como tablas: al ser event-sourced con Axon Framework, el Event Store real reside en Axon Server, un producto externo. PostgreSQL solo contiene el read model de consulta (`finance_read_model`), las tablas operativas de idempotencia y borde (`finance_ops`) y las tablas de soporte propias de Axon (token store, saga store y dead-letter queue). Todas las referencias a cuentas son lógicas hacia el `UserId` de IAM propagado a través de Profile, ya que Finance no mantiene una tabla local de cuentas.
 
-![Vankoo — Finance Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/finance-database-diagram.png)
+![Vankoo — Finance Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/finance-database-diagram.png)
 
-*Figura 4.10.1.3. Diagrama entidad-relación del Bounded Context Finance.*
+*Figura 4.9.1.3. Diagrama entidad-relación del Bounded Context Finance.*
 
 ---
 
@@ -2843,9 +2870,9 @@ El esquema físico del Bounded Context Finance (PostgreSQL) no almacena los agre
 
 El esquema físico del Bounded Context Investment reside en Oracle (no PostgreSQL) y consta de las tablas `auctions` y `partitions` —en relación 1 a N mediante una foreign key gestionada desde el lado padre— más la vista de lectura `auction_marketplace_view_entities`, poblada de forma asíncrona por el evento `AuctionCreatedEvent` para servir el marketplace bajo CQRS sin tocar el agregado transaccional. El esquema se genera vía Hibernate, sin migraciones ni índices adicionales; `mype_id`, `investor_id` e `invoice_id` son referencias lógicas hacia Profile e Invoicing.
 
-![Vankoo — Investment Bounded Context Database Diagram](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/investment-database-diagram.png)
+![Vankoo — Investment Bounded Context Database Diagram](assets/cap4-product-design/database-design/out/investment-database-diagram.png)
 
-*Figura 4.10.1.4. Diagrama entidad-relación del Bounded Context Investment.*
+*Figura 4.9.1.4. Diagrama entidad-relación del Bounded Context Investment.*
 
 ---
 
@@ -2853,16 +2880,9 @@ El esquema físico del Bounded Context Investment reside en Oracle (no PostgreSQ
 
 El modelo de datos del Bounded Context Invoicing es documental (MongoDB) y consta de dos colecciones: `Invoices`, donde el propio agregado de dominio se persiste como documento —sin un modelo de persistencia separado— con sus Value Objects embebidos; y `OcrTasks`, la cola de reintentos de OCR, que la referencia por un identificador simple (`InvoiceId`), sin unión física entre colecciones. Ninguna de las dos define Shard Key ni índices TTL; `Invoices` no tiene ningún índice secundario declarado, mientras que `OcrTasks` sí declara tres, incluido el que soporta su patrón de cola con lease.
 
-![Vankoo — Invoicing Bounded Context Document Data Model](https://raw.githubusercontent.com/yieldlabshq/report/feature/Luis-report/assets/cap4-product-design/database-design/out/invoicing-database-diagram.png)
+![Vankoo — Invoicing Bounded Context Document Data Model](assets/cap4-product-design/database-design/out/invoicing-database-diagram.png)
 
-*Figura 4.10.1.5. Diagrama del modelo de datos documental del Bounded Context Invoicing.*
-
-### 4.10.2. Relational/Non-Relational Database Diagram
-
-<!-- Herramienta: LucidChart / Vertabelo. -->
-<!-- Assets: ./assets/cap4-product-design/database-design/ -->
-
-_Pendiente de elaboración._
+*Figura 4.9.1.5. Diagrama del modelo de datos documental del Bounded Context Invoicing.*
 
 <hr class="page-break">
 
@@ -3132,9 +3152,6 @@ Para esta entrega el equipo ejecutó un único Sprint orientado a tener usable, 
 | Sprint # | Sprint 1 |
 |----------|----------|
 | **Sprint Planning Background** | |
-| Date | _Pendiente_ |
-| Time | _Pendiente_ |
-| Location | _Pendiente_ |
 | Prepared By | Amaro Villar, Anjali |
 | Attendees (to planning meeting) | Acuache Lucas, Mathias Joaquin / Amaro Villar, Anjali / García Bernal, Daniela / Pillaca Vidal, Luis Angel |
 | Sprint n - 1 Review Summary | No aplica: es el primer Sprint del proyecto. |
@@ -3496,7 +3513,7 @@ Para esta entrega, la suite BDD cubre el flujo de **carga inteligente de factura
 El escenario se define como un *Scenario Outline*: los mismos pasos se ejecutan una vez por cada fila de la tabla `Examples`, lo que permite cubrir las cuatro reglas de validación inicial con una única especificación legible.
 
 ```gherkin
-@US01
+@US11
 Feature: Smart invoice upload
   As a MYPE business owner
   I want to register my invoice in the MYPE Web
@@ -3845,6 +3862,524 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
     </td>
   </tr>
 </table>
+
+## 6.2. Static testing & Verification
+
+En esta sección se presentan las actividades de verificación estática aplicadas sobre el código fuente de Vankoo, es decir, aquellas que evalúan el código sin ejecutarlo. El objetivo es comprobar que cada repositorio de la organización **yieldlabshq** respeta las convenciones definidas en la sección 5.1.3, detectar defectos de calidad antes de que lleguen a producción e identificar riesgos de seguridad en el código y en sus dependencias.
+
+### 6.2.1. Static Code Analysis
+
+El análisis estático se aplica por lenguaje, aprovechando las herramientas nativas de cada stack. La siguiente tabla resume la cobertura actual:
+
+| Repositorio | Stack | Herramienta de análisis estático | Estado |
+|---|---|---|---|
+| `vankoo-mype-web` | React + TypeScript (Vite) | ESLint 9 (`@eslint/js`, `typescript-eslint`, `react-hooks`, `react-refresh`) + compilador `tsc` | Configurado |
+| `vankoo-profile-service` | NestJS + TypeScript | ESLint 9 (`recommendedTypeChecked`) + Prettier | Configurado |
+| `vankoo-iam-service`, `vankoo-finance-service`, `vankoo-investment-service`, `vankoo-api-gateway`, `vankoo-discovery-server` | Java 25 + Spring Boot | Compilador `javac` (Maven) e inspecciones de IntelliJ IDEA | Sin linter dedicado |
+| `vankoo-invoicing-service` | C# + .NET 10 | Analizadores Roslyn del SDK + *Nullable reference types* (`<Nullable>enable</Nullable>`) | Configurado en compilación |
+| `vankoo-investor-mobile` | Kotlin Multiplatform + Compose | Compilador Kotlin e inspecciones de Android Studio | Sin linter dedicado |
+
+#### 6.2.1.1. Coding standard & Code conventions
+
+Las convenciones de la sección 5.1.3 se verifican de forma automática en los proyectos TypeScript y de forma manual, durante la revisión de Pull Requests, en el resto.
+
+**Configuración aplicada**
+
+* **Web SPA de la Mype (`vankoo-mype-web`):** `eslint.config.js` extiende las reglas recomendadas de JavaScript, `typescript-eslint`, `react-hooks` (uso correcto de hooks y dependencias de efectos) y `react-refresh`. Se excluyen `dist` y el material de referencia que no es código de la aplicación, y la regla `react-refresh/only-export-components` se desactiva solo en `src/components/ui/**`, porque esos componentes los genera shadcn/ui. Además, `tsconfig.app.json` activa `noUnusedLocals` y `noUnusedParameters`, de modo que `pnpm build` (`tsc -b && vite build`) falla ante variables o parámetros sin uso.
+* **Profile Service (`vankoo-profile-service`):** `eslint.config.mjs` usa `tseslint.configs.recommendedTypeChecked`, que analiza el código con información de tipos, e integra Prettier mediante `eslint-plugin-prettier`. El formato queda fijado en `.prettierrc` (comillas simples y coma final) y la regla `prettier/prettier` trata como error cualquier desviación. Las reglas `no-floating-promises` y `no-unsafe-argument` se mantienen como advertencia.
+* **Java, C# y Kotlin:** la nomenclatura (camelCase / PascalCase), la organización por capas DDD y el uso de `record` / `sealed record` para Value Objects se verifican en la revisión de cada Pull Request (sección 6.2.2). En .NET, el compilador emite advertencias de nulabilidad gracias a `<Nullable>enable</Nullable>`.
+
+**Resultados de la ejecución**
+
+Comandos ejecutados sobre la rama principal de cada repositorio:
+
+```bash
+# vankoo-mype-web
+pnpm exec eslint .
+
+# vankoo-profile-service (sin --fix, solo verificación)
+pnpm exec eslint "{src,test}/**/*.ts"
+```
+
+| Repositorio | Archivos analizados | Errores | Advertencias | Resultado |
+|---|---|---|---|---|
+| `vankoo-mype-web` | 108 | 0 | 0 | Sin hallazgos |
+| `vankoo-profile-service` | 104 | 13 | 6 | 19 hallazgos en 5 archivos |
+
+![ESLint en vankoo-mype-web](./assets/cap6-verification-validation/static-testing/eslint-mype-web.png)
+
+*Figura. Ejecución de ESLint en `vankoo-mype-web`, sin hallazgos.*
+
+![ESLint en vankoo-profile-service](./assets/cap6-verification-validation/static-testing/eslint-profile-service.png)
+
+*Figura. Ejecución de ESLint en `vankoo-profile-service`, con 19 hallazgos (13 errores y 6 advertencias).*
+
+Detalle de los hallazgos de `vankoo-profile-service` por regla:
+
+| Regla | Severidad | Ocurrencias | Descripción |
+|---|---|---|---|
+| `@typescript-eslint/no-unsafe-assignment` | Error | 5 | Asignación de un valor de tipo `any` a una variable tipada. |
+| `@typescript-eslint/no-unsafe-member-access` | Error | 4 | Acceso a propiedades (`.includes`, `.message`) de un valor `any`. |
+| `@typescript-eslint/no-unsafe-call` | Error | 2 | Invocación de un valor de tipo `any`. |
+| `prettier/prettier` | Error | 2 | Formato que no coincide con `.prettierrc`; se corrige con `--fix`. |
+| `@typescript-eslint/no-unsafe-argument` | Advertencia | 5 | Paso de un valor `any` como argumento de tipo `string`. |
+| `@typescript-eslint/no-floating-promises` | Advertencia | 1 | Promesa sin `await` ni manejo de error. |
+
+Distribución por archivo: `user-registered.subscriber.ts` (12), `main.ts` (2), `company.repository.impl.ts` (2), `minio-file-storage.service.ts` (2) e `investor.repository.impl.ts` (1).
+
+El 63 % de los hallazgos se concentra en `user-registered.subscriber.ts`, el consumidor del tópico de Kafka `vankoo.iam.events`, donde el IAM Service publica el registro de un nuevo usuario. La causa es que el payload del mensaje se recibe como `any` (`@Payload() message: any`) y se accede a sus campos sin validarlo. La corrección planificada es tipar el evento con una interfaz `UserRegisteredEvent` y validar el payload antes de crear el inversionista o la empresa.
+
+#### 6.2.1.2. Code Quality & Code Security
+
+**Calidad de código**
+
+* **Tipado estricto:** la web y el Profile Service compilan con TypeScript en modo verificado; el Invoicing Service activa *nullable reference types* y los servicios Java compilan con Java 25.
+* **Validación de entradas en el borde:** los servicios IAM, Finance e Investment usan `spring-boot-starter-validation` (Bean Validation con `@Valid`) en sus DTOs, y el Invoicing Service usa validadores de FluentValidation sobre sus comandos (`UploadInvoiceCommandValidator`, `ProcessOcrSynchronouslyValidator`).
+* **Manejo centralizado de errores:** `@ControllerAdvice` en los servicios IAM, Finance e Investment, y `GlobalExceptionHandler` (`IExceptionHandler` con `ProblemDetails`) en el Invoicing Service, de modo que los errores llegan al cliente con un formato uniforme.
+* **Contratos documentados:** cada API expone su especificación OpenAPI (springdoc-openapi en Java y OpenAPI nativo en .NET) con Scalar como interfaz.
+
+**Seguridad en el código**
+
+| Control | Implementación | Repositorio |
+|---|---|---|
+| Hash de contraseñas | `BCryptHashingService` (BCrypt) | `vankoo-iam-service` |
+| Autenticación y autorización | Spring Security + JWT (jjwt) | `vankoo-iam-service`, `vankoo-api-gateway`, `vankoo-investment-service` |
+| Validación de JWT en .NET | `Microsoft.AspNetCore.Authentication.JwtBearer` | `vankoo-invoicing-service` |
+| Punto único de entrada | API Gateway con filtro de autorización (ver 6.1.2) | `vankoo-api-gateway` |
+| Secretos fuera del repositorio | `.env` en `.gitignore`, solo `.env.example` versionado; ningún `.env` real está bajo control de versiones | `vankoo-mype-web`, `vankoo-profile-service`, `vankoo-infra` |
+| Secretos en el pipeline | Credenciales de Azure como *secrets* del entorno `production` de GitHub Actions (ver 7.3.2) | Servicios desplegados |
+
+**Seguridad en dependencias (Software Composition Analysis)**
+
+Se ejecutó `pnpm audit --prod` sobre los dos proyectos Node.js para identificar vulnerabilidades conocidas en dependencias directas y transitivas:
+
+| Repositorio | Críticas | Altas | Moderadas | Bajas | Total |
+|---|---|---|---|---|---|
+| `vankoo-mype-web` | 1 | 23 | 36 | 8 | 68 |
+| `vankoo-profile-service` | 2 | 28 | 30 | 3 | 63 |
+
+![pnpm audit en vankoo-mype-web](./assets/cap6-verification-validation/static-testing/audit-mype-web.png)
+
+*Figura. Resumen de `pnpm audit --prod` en `vankoo-mype-web`.*
+
+![Detalle de pnpm audit en vankoo-mype-web](./assets/cap6-verification-validation/static-testing/audit-mype-web-detalle.png)
+
+*Figura. Detalle de la vulnerabilidad crítica (`proxy-addr`) y de las primeras altas en `vankoo-mype-web`; la columna Paths muestra que llegan a través de `shadcn`.*
+
+![pnpm audit en vankoo-profile-service](./assets/cap6-verification-validation/static-testing/audit-profile-service.png)
+
+*Figura. Resumen de `pnpm audit --prod` en `vankoo-profile-service`.*
+
+Las vulnerabilidades críticas corresponden a `proxy-addr` (suplantación de IP mediante direcciones IPv4 mapeadas) en ambos proyectos y a `form-data` (función aleatoria insegura) en el Profile Service. Entre las altas destacan `multer`, `path-to-regexp` y `lodash` en el Profile Service, y `undici`, `fast-uri` y `follow-redirects` en la web. La mayoría llega como dependencia transitiva, por lo que se resuelve actualizando el paquete directo que la incluye o fijando una versión segura con `pnpm.overrides`.
+
+En la web, la columna *Paths* del reporte muestra que la vulnerabilidad crítica y varias altas (`proxy-addr`, `js-yaml`, `fast-uri`) llegan a través de `shadcn`, cuyo CLI arrastra `@modelcontextprotocol/sdk`, `express` y `@dotenvx/dotenvx`. Este paquete está declarado en `dependencies`, aunque la aplicación solo lo usa para importar su hoja de estilos (`@import "shadcn/tailwind.css"`), que Vite incorpora al compilar. Moverlo a `devDependencies` retira esas dependencias del árbol de producción sin cambiar el comportamiento de la aplicación. En el Profile Service, en cambio, las vulnerabilidades provienen de dependencias de ejecución (`@nestjs/platform-express`, `multer`, `minio`), por lo que requieren actualizar esos paquetes.
+
+**Plan de mejora derivado del análisis**
+
+| # | Acción | Prioridad |
+|---|---|---|
+| 1 | Mover `shadcn` a `devDependencies` en la web y actualizar las dependencias con vulnerabilidades críticas y altas del Profile Service (`pnpm update` y `pnpm.overrides` para las transitivas). | Alta |
+| 2 | Tipar el payload de `user-registered.subscriber.ts` y corregir los 19 hallazgos de ESLint del Profile Service. | Alta |
+| 3 | Agregar `pnpm lint` y `pnpm audit --audit-level=high` como pasos del job *Build & Test* (7.1.2), para que el pipeline falle ante nuevos hallazgos. | Media |
+| 4 | Incorporar SonarQube Cloud sobre los repositorios Java, .NET y Kotlin, que hoy no tienen un analizador dedicado. | Media |
+| 5 | Activar Dependabot en la organización yieldlabshq para recibir Pull Requests automáticos de actualización de seguridad. | Baja |
+
+### 6.2.2. Reviews
+
+La revisión de código se realiza sobre Pull Requests siguiendo GitFlow: cada cambio se desarrolla en una rama `feature/*` o `fix/*`, se integra a `develop` mediante Pull Request y llega a `main` a través de una rama `release/*`. En la organización yieldlabshq se registran **29 Pull Requests** en los 10 repositorios del producto.
+
+**Checklist de revisión**
+
+Antes de fusionar un Pull Request, se verifica:
+
+1. El nombre de la rama sigue GitFlow (`feature/*`, `fix/*`, `release/*`) y los commits siguen Conventional Commits.
+2. El código respeta las convenciones de la sección 5.1.3 para su lenguaje.
+3. El check de CI (*Build & Test*) termina en verde, en los repositorios que ya lo tienen (7.1).
+4. Los cambios de dominio incluyen sus pruebas unitarias o escenarios BDD (6.1).
+5. No se versionan secretos ni archivos `.env`.
+6. La descripción del Pull Request indica qué User Story o tarea atiende.
+
+**Pull Requests revisados**
+
+| Repositorio | Pull Requests | Ramas integradas |
+|---|---|---|
+| `vankoo-api-gateway` | #1 – #4 | `feature/gateway-baseline`, `feature/gateway-unit-tests`, `feature/ci-cd-pipeline`, `release/v1.0.0` |
+| `vankoo-invoicing-service` | #1 – #6 | `feature/invoicing-baseline`, `feature/ci-cd-pipeline`, `fix/smoke-test-environment`, `fix/smoke-test-eureka-instance`, `fix/bdd-feature-user-story-tag`, `release/v1.0.0` |
+| `vankoo-mype-web` | #1 – #3 | `feature/web-baseline`, `feature/web-unit-tests`, `release/v1.0.0` |
+| `vankoo-iam-service` | #1 – #3 | `feature/iam-baseline`, `release/v1.0.0`, `develop` |
+| `vankoo-profile-service` | #1 – #3 | `feature/profile-baseline`, `release/v1.0.0`, `develop` |
+| `vankoo-finance-service` | #1 – #2 | `feature/finance-baseline`, `release/v1.0.0` |
+| `vankoo-investment-service` | #1 – #2 | `feature/investment-baseline`, `release/v1.0.0` |
+| `vankoo-investor-mobile` | #1 – #2 | `feature/mobile-baseline`, `release/v1.0.0` |
+| `vankoo-discovery-server` | #1 – #2 | `feature/discovery-baseline`, `release/v1.0.0` |
+| `vankoo-infra` | #1 – #2 | `feature/infra-baseline`, `release/v1.0.0` |
+
+**Hallazgos de la revisión**
+
+* Los tres Pull Requests `fix/*` del Invoicing Service (#4, #5 y #6) se originaron en problemas detectados al revisar la ejecución del pipeline: la configuración del entorno del smoke test, el registro de la instancia en Eureka y la etiqueta de User Story en los feature files de BDD.
+* La revisión estática de esta entrega (6.2.1) identificó los hallazgos de ESLint y las vulnerabilidades de dependencias del Profile Service y de la web, que se registran como tareas en el plan de mejora.
+
+**Oportunidad de mejora:** en esta versión, cada Pull Request fue fusionado por su autor, y la revisión se apoyó en el checklist y en el check de CI, sin una aprobación formal registrada en GitHub. Para el siguiente sprint se activará una regla de protección en `develop` y `main` que exija al menos una aprobación de otro integrante y el check de CI en verde antes de fusionar.
+
+## 6.3. Validation Interviews
+
+Las entrevistas de validación tienen como objetivo comprobar, con usuarios de cada segmento objetivo, que las funcionalidades implementadas en la aplicación web de la MYPE y en la aplicación móvil del inversionista resuelven las necesidades identificadas en el Capítulo II. A diferencia de las entrevistas de descubrimiento (2.2), estas sesiones se centran en el uso del producto desplegado: el participante ejecuta tareas concretas, ligadas a las User Stories, mientras el entrevistador observa y registra el resultado.
+
+### 6.3.1. Diseño de Entrevistas
+
+**Objetivos**
+
+1. Verificar que el participante completa sin ayuda los flujos principales de su segmento.
+2. Medir la facilidad percibida de cada tarea.
+3. Identificar problemas de usabilidad y de comprensión que alimenten la evaluación heurística (6.3.3) y la auditoría (6.4).
+4. Validar la propuesta de valor: si el participante usaría Vankoo y qué lo haría dudar.
+
+**Participantes y modalidad**
+
+| Aspecto | Detalle |
+|---|---|
+| Participantes | 3 por segmento (6 en total): los mismos participantes de las entrevistas de descubrimiento (2.2.2), lo que permite contrastar sus necesidades iniciales con el uso real del producto |
+| Modalidad | Remota por Google Meet, con pantalla compartida y grabación |
+| Duración | Entre 12 y 18 minutos por sesión |
+| Producto evaluado | Segmento MYPE: aplicación web (React). Segmento Inversionista: aplicación móvil Android (APK distribuido a testers) |
+| Datos de prueba | Facturas PDF de ejemplo y tarjeta de prueba de Stripe; no se usan datos reales del participante |
+| Protocolo | *Think aloud*: el participante expresa en voz alta lo que piensa mientras realiza cada tarea |
+
+**Métricas registradas por tarea**
+
+* **Éxito:** Completa (sin ayuda), Con ayuda (requirió una pista) o No completa.
+* **Tiempo:** desde que se lee la tarea hasta que el participante indica que terminó.
+* **SEQ (Single Ease Question):** "En general, ¿qué tan fácil o difícil fue esta tarea?", en una escala de 1 (muy difícil) a 7 (muy fácil).
+
+**Guion – Segmento 1: Empresarios MYPE (aplicación web)**
+
+*Introducción (1 min):* presentación del entrevistador, propósito de la sesión y consentimiento para grabar. Se aclara que se evalúa el producto, no al participante.
+
+| Tarea | Enunciado leído al participante | User Stories |
+|---|---|---|
+| T1 | "Crea una cuenta para tu empresa e inicia sesión." | US05, US06 |
+| T2 | "Sube la factura electrónica que te enviamos en PDF." | US11 |
+| T3 | "Encuentra la factura que acabas de subir y dime en qué paso del proceso está." | US12, US13 |
+| T4 | "Revisa la oferta de financiamiento de la factura aprobada. ¿Cuánto dinero recibirías?" | US14 |
+| T5 | "Acepta la oferta para publicar la factura en subasta." | US15 |
+
+*Preguntas de cierre:*
+
+1. ¿Qué fue lo más fácil y lo más difícil de lo que hiciste hoy?
+2. ¿Entendiste cuánto te cuesta el adelanto? ¿Qué dato te faltó?
+3. ¿Usarías Vankoo en lugar de tu alternativa actual de financiamiento? ¿Por qué?
+4. ¿Qué cambiarías antes de recomendarlo a otro empresario?
+
+**Guion – Segmento 2: Inversionistas (aplicación móvil)**
+
+*Introducción (1 min):* igual que en el segmento 1.
+
+| Tarea | Enunciado leído al participante | User Stories |
+|---|---|---|
+| T1 | "Crea una cuenta de inversionista e inicia sesión." | US08, US09 |
+| T2 | "Recarga S/ 1,000 en tu billetera con la tarjeta de prueba." | US17 |
+| T3 | "Revisa tu saldo disponible y el último movimiento." | US16 |
+| T4 | "Encuentra una factura verde en el mercado y revisa su detalle." | US18, US19 |
+| T5 | "Invierte S/ 500 en esa factura." | US20 |
+
+*Preguntas de cierre:*
+
+1. ¿Qué información miraste para decidir en qué factura invertir?
+2. ¿Te sentiste seguro al recargar dinero y al invertir? ¿Qué te daría más confianza?
+3. ¿El rendimiento esperado te pareció claro?
+4. ¿Invertirías dinero real en Vankoo? ¿Con qué monto empezarías?
+
+### 6.3.2. Registro de Entrevistas
+
+#### Segmento 1: Empresarios de Micro y Pequeñas Empresas (MYPES)
+
+**Entrevista 1**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Irving Vergara |
+| Edad | 22 |
+| Distrito | San Juan de Lurigancho |
+| Ocupación | Dueño de Metalmecanica |
+| Fecha de entrevista | 06/11/2026 |
+| Timing de inicio | 00:00 – 15:40 |
+| Duración | 15:40 minutos |
+| Resumen | Completó el registro, la carga de la factura y la consulta de su estado sin ayuda, y valoró no tener que digitar los datos de la factura, que hoy registra a mano. Durante la lectura automática preguntó si debía quedarse en la pantalla, porque el estado "Leyendo datos" no indicaba cuánto tardaría; para él, saber en qué paso está su factura es tan importante como el desembolso. En la oferta identificó el neto a recibir, pero no supo qué significaba la TCEA y pidió ayuda para interpretarla, lo que confirma lo que señaló en la primera entrevista: necesita claridad absoluta sobre el costo total antes de aceptar. Indicó que usaría Vankoo para los contratos de su taller que le pagan a 60 días, porque le permitiría comprar materia prima sin esperar el cobro. |
+
+**Entrevista 2**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Diego Melendez |
+| Edad | 26 |
+| Distrito | San Miguel |
+| Ocupación | Dueño de TechnoRed |
+| Fecha de entrevista | 07/11/2026 |
+| Timing de inicio | 15:40 – 28:55 |
+| Duración | 13:15 minutos |
+| Resumen | Completó las cinco tareas sin ayuda y fue el participante más rápido del segmento, por su familiaridad con herramientas digitales. Comparó la oferta con lo que le cuesta financiarse con tarjeta de crédito y la consideró más conveniente, porque ve el neto a recibir antes de aceptar. Su principal observación fue que, cuando la factura quedó en "Requiere revisión", el mensaje no explicaba qué dato debía corregir. Coherente con su pedido de seguimiento en tiempo real, solicitó recibir un correo cuando la factura sea aprobada, para no tener que entrar a revisar. |
+
+**Entrevista 3**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Thomas Bernardo |
+| Edad | 20 |
+| Distrito | Chorrillos |
+| Ocupación | Socio de empresa de servicio tecnico |
+| Fecha de entrevista | 07/11/2026 |
+| Timing de inicio | 28:55 – 45:10 |
+| Duración | 16:15 minutos |
+| Resumen | Navegó con soltura por la aplicación, pero tardó en la tarea T4 porque buscó la oferta en el listado de facturas y no en el detalle. Al encontrarla, entendió el monto neto, aunque pidió que el descuento y la comisión se expliquen con un ejemplo en soles, ya que hoy lleva sus cuentas en Excel y quiere poder comparar. Al aceptar la oferta no notó la fecha de validez y comentó que habría querido un aviso cuando la oferta está por vencer. Afirmó que la propuesta le resulta más atractiva que los microcréditos digitales que usa, con intereses cercanos al 20 %, porque "no suma deuda". |
+
+#### Segmento 2: Inversionistas Minoristas
+
+**Entrevista 4**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Alessandro Hesse |
+| Edad | 22 |
+| Distrito | Surquillo |
+| Ocupación | Estudiante |
+| Fecha de entrevista | 08/11/2026 |
+| Timing de inicio | 45:10 – 58:30 |
+| Duración | 13:20 minutos |
+| Resumen | Completó las cinco tareas sin ayuda. Usó los filtros del mercado de inmediato, pero pidió poder ordenar las subastas por TEA y por plazo, porque compara cada oportunidad con el rendimiento de su depósito a plazo fijo y busca superar el 8 % anual. Valoró ver cómo se reparte el importe de la factura y el grado de riesgo, que responden a su pedido de reglas claras sobre el riesgo de cobro. Comentó que empezaría con un monto pequeño para probar la plataforma antes de invertir tickets similares a los que hoy coloca en depósitos. |
+
+**Entrevista 5**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Leicy Cahuana |
+| Edad | 22 |
+| Distrito | San Juan de Lurigancho |
+| Ocupación | Estudiante |
+| Fecha de entrevista | 08/11/2026 |
+| Timing de inicio | 58:30 – 1:15:05 |
+| Duración | 16:35 minutos |
+| Resumen | Necesitó ayuda en la recarga: al volver a la aplicación desde la página de pago, vio el estado "pendiente" y no supo si el pago se había procesado, por lo que intentó pagar de nuevo. Por su experiencia evaluando préstamos a conocidos, revisó con detalle los datos de la factura y del pagador antes de invertir, y los consideró suficientes para una primera inversión. Indicó que lo que más confianza le daría es ver el historial de pagos del adquirente, porque es la evidencia que hoy busca de forma manual con las personas a quienes presta. |
+
+**Entrevista 6**
+
+| Atributo | Detalle |
+| :---: |:---|
+| Nombre | Kalet Esteban |
+| Edad | 20 |
+| Distrito | Ate |
+| Ocupación | Estudiante |
+| Fecha de entrevista | 09/11/2026 |
+| Timing de inicio | 1:15:05 – 1:27:50 |
+| Duración | 12:45 minutos |
+| Resumen | Completó las tareas sin ayuda, aunque en T5 intentó invertir S/ 30 y solo al confirmar descubrió que el mínimo por factura es S/ 50. Sugirió mostrar el mínimo junto al campo de monto, porque está empezando a invertir con montos pequeños. Le resultó claro que el rendimiento se muestre en soles y no solo como tasa, ya que el lenguaje financiero técnico es lo que más le cuesta. Le atrajo el filtro de facturas verdes y comentó que eso lo diferencia de los fondos mutuos que usa hoy. |
+
+#### Resultados consolidados
+
+**Segmento MYPE (aplicación web)**
+
+| Tarea | Éxito sin ayuda | Tiempo promedio | SEQ promedio (1–7) |
+|---|---|---|---|
+| T1 – Registro e inicio de sesión | 3 / 3 | 1:50 min | 6.7 |
+| T2 – Subir factura | 3 / 3 | 1:20 min | 6.3 |
+| T3 – Consultar estado y detalle | 3 / 3 | 1:05 min | 6.0 |
+| T4 – Revisar la oferta | 2 / 3 | 2:40 min | 4.7 |
+| T5 – Aceptar y publicar | 3 / 3 | 0:45 min | 6.3 |
+
+**Segmento Inversionista (aplicación móvil)**
+
+| Tarea | Éxito sin ayuda | Tiempo promedio | SEQ promedio (1–7) |
+|---|---|---|---|
+| T1 – Registro e inicio de sesión | 3 / 3 | 1:35 min | 6.7 |
+| T2 – Recargar saldo | 2 / 3 | 2:25 min | 5.0 |
+| T3 – Revisar saldo y movimientos | 3 / 3 | 0:30 min | 6.7 |
+| T4 – Encontrar y revisar una factura verde | 3 / 3 | 1:10 min | 6.3 |
+| T5 – Invertir S/ 500 | 3 / 3 | 1:00 min | 5.7 |
+
+**Hallazgos principales**
+
+1. **Los flujos principales funcionan:** 28 de las 30 tareas se completaron sin ayuda (93 %), y ningún participante abandonó una tarea.
+2. **La oferta de financiamiento es el punto más débil de la web (T4, SEQ 4.7):** los participantes sin experiencia en factoring no interpretan la TCEA ni el descuento, y uno buscó la oferta fuera del detalle de la factura.
+3. **El retorno desde el pago genera incertidumbre (T2, SEQ 5.0):** el estado "pendiente" tras volver de Stripe llevó a una participante a intentar pagar dos veces.
+4. **Faltan estados más explicativos:** "Leyendo datos" no indica cuánto falta y "Requiere revisión" no dice qué corregir.
+5. **La propuesta de valor se valida en ambos segmentos:** las MYPEs prefieren Vankoo frente a sus alternativas actuales (tarjeta de crédito y microcréditos digitales) porque ven el neto a recibir y "no suma deuda", y los inversionistas empezarían con montos pequeños para probar la plataforma antes de aumentar su inversión.
+
+### 6.3.3. Evaluaciones según heurísticas
+
+A partir de lo observado en las entrevistas, el equipo evaluó cada aplicación frente a las 10 heurísticas de usabilidad de Nielsen. Cada heurística se califica como **Cumple**, **Cumple parcialmente** o **No cumple**. Los problemas concretos, con su severidad y su recomendación, se detallan en la auditoría (6.4.1.3).
+
+| # | Heurística | Web MYPE | Móvil Inversionista | Evidencia |
+|---|---|---|---|---|
+| 1 | Visibilidad del estado del sistema | Cumple parcialmente | Cumple parcialmente | El riel de progreso de la factura muestra los cinco hitos, pero "Leyendo datos" no indica tiempo estimado. En móvil, el estado "pendiente" tras la recarga no confirma si el pago llegó. |
+| 2 | Relación entre el sistema y el mundo real | Cumple parcialmente | Cumple | La web muestra TCEA, descuento y comisión sin explicarlos. En móvil, el rendimiento se expresa en soles y en TEA, que los inversionistas entendieron. |
+| 3 | Control y libertad del usuario | Cumple | Cumple | Ambas aplicaciones permiten volver atrás y cancelar los diálogos de aceptación y de inversión antes de confirmar. |
+| 4 | Consistencia y estándares | Cumple | Cumple | Los estados usan los mismos nombres y colores en el listado y en el detalle; ambas aplicaciones respetan la guía de estilos (4.1). |
+| 5 | Prevención de errores | Cumple parcialmente | Cumple parcialmente | La validez de la oferta se muestra como texto y pasa desapercibida. En móvil, el mínimo de S/ 50 solo aparece al confirmar. |
+| 6 | Reconocer antes que recordar | Cumple parcialmente | Cumple | La oferta está dentro del detalle de la factura y no se anuncia desde el listado. |
+| 7 | Flexibilidad y eficiencia de uso | Cumple | Cumple parcialmente | El mercado tiene filtros (Todas, Verdes, Vencen pronto), pero no permite ordenar por TEA ni por plazo. |
+| 8 | Diseño estético y minimalista | Cumple | Cumple | Las pantallas muestran solo la información necesaria para cada tarea. |
+| 9 | Ayudar a reconocer, diagnosticar y recuperarse de errores | No cumple | Cumple parcialmente | "Requiere revisión" y "No elegible" no indican la causa ni la acción a seguir. En móvil, el error de pago informa el motivo cuando Stripe lo devuelve. |
+| 10 | Ayuda y documentación | Cumple parcialmente | Cumple parcialmente | No hay ayuda contextual dentro de las aplicaciones; las preguntas frecuentes solo están en la Landing Page. |
+
+**Resultado:** de 20 evaluaciones, 11 cumplen, 8 cumplen parcialmente y 1 no cumple. Las heurísticas 1, 5 y 9 concentran los problemas de ambas aplicaciones, lo que coincide con las tareas de menor SEQ en las entrevistas.
+
+## 6.4. Auditoría de Experiencias de Usuario
+
+### 6.4.1. Auditoría realizada
+
+#### 6.4.1.1. Información del grupo auditado
+
+La auditoría se realizó sobre el propio producto del equipo, como **auditoría interna cruzada**: cada integrante evaluó un módulo que no había implementado, para reducir el sesgo de quien conoce el flujo de memoria.
+
+| Atributo | Detalle |
+|---|---|
+| Startup | Yieldlabs |
+| Producto | Vankoo – plataforma de crowdfactoring para MYPES e inversionistas |
+| Aplicaciones auditadas | Aplicación web de la MYPE (React) y aplicación móvil del inversionista (Android, Kotlin Multiplatform) |
+| Integrantes | Acuache Lucas, Mathias Joaquin · Amaro Villar, Anjali · García Bernal, Daniela · Pillaca Vidal, Luis Angel |
+| Curso | Diseño de Experimentos de Ingeniería de Software (1ASI0732) |
+
+| Auditor | Módulo auditado |
+|---|---|
+| Amaro Villar, Anjali | Móvil: Mercado, detalle de subasta e inversión (US18, US19, US20) |
+| García Bernal, Daniela | Web: Oferta de financiamiento y publicación (US14, US15) |
+| Pillaca Vidal, Luis Angel | Web: Registro, inicio de sesión y carga de factura (US05, US06, US11) |
+| Acuache Lucas, Mathias Joaquin | Móvil: Registro, billetera y recarga (US08, US09, US16, US17) |
+
+#### 6.4.1.2. Cronograma de auditoría realizada
+
+| Fecha | Actividad | Responsables |
+|---|---|---|
+| 06/11/2026 – 09/11/2026 | Entrevistas de validación (6.3.2) | Todo el equipo |
+| 09/11/2026 | Definición de tareas, escala de severidad y asignación de módulos | Todo el equipo |
+| 10/11/2026 | Evaluación individual de cada módulo | Cada auditor |
+| 10/11/2026 | Consolidación de hallazgos y asignación de severidad | Todo el equipo |
+| 11/11/2026 | Registro de los hallazgos como tareas del siguiente sprint | Todo el equipo |
+
+#### 6.4.1.3. Contenido de auditoría realizada
+
+**UX Heuristics & Principles Evaluation – Usability, Inclusive Design & Information Architecture**
+
+| Atributo | Detalle |
+|---|---|
+| Carrera | Ingeniería de Software |
+| Curso | Diseño de Experimentos de Ingeniería de Software |
+| Sitio o app evaluada | Vankoo – aplicación web de la MYPE y aplicación móvil del inversionista |
+| Auditores | Equipo Yieldlabs (auditoría interna cruzada) |
+
+**Tareas evaluadas**
+
+1. Registro e inicio de sesión (web y móvil).
+2. Carga de una factura electrónica y consulta de su estado (web).
+3. Revisión y aceptación de la oferta de financiamiento (web).
+4. Recarga de la billetera con tarjeta (móvil).
+5. Exploración del mercado, revisión de una subasta e inversión (móvil).
+
+**Escala de severidad**
+
+| Nivel | Descripción |
+|---|---|
+| 1 | Problema superficial: puede ser fácilmente superado por el usuario o ocurre con muy poca frecuencia. No requiere arreglo inmediato. |
+| 2 | Problema menor: ocurre con alguna frecuencia o es difícil de superar. Debe corregirse en el siguiente release. |
+| 3 | Problema mayor: ocurre con frecuencia o los usuarios no saben resolverlo. Es importante corregirlo con alta prioridad. |
+| 4 | Problema muy grave: impide que el usuario continúe usando la herramienta. Es imperativo corregirlo antes del lanzamiento. |
+
+**Tabla resumen**
+
+| # | Problema | Escala de severidad | Heurística / Principio violado(a) |
+|---|---|---|---|
+| 1 | Los estados "Requiere revisión" y "No elegible" no explican la causa ni la acción a seguir | 3 | Usability: Ayudar a reconocer, diagnosticar y recuperarse de errores |
+| 2 | La TCEA, el descuento y la comisión de la oferta no se explican | 3 | Usability: Relación entre el sistema y el mundo real |
+| 3 | El estado "Leyendo datos" no indica el tiempo estimado ni si el usuario puede salir de la pantalla | 2 | Usability: Visibilidad del estado del sistema |
+| 4 | El monto mínimo de inversión (S/ 50) solo se informa al confirmar | 2 | Usability: Prevención de errores |
+| 5 | La fecha de validez de la oferta pasa desapercibida | 2 | Usability: Prevención de errores |
+| 6 | La oferta de financiamiento no se anuncia desde el listado de facturas | 2 | Information Architecture: Navegabilidad |
+| 7 | El mercado no permite ordenar las subastas por TEA ni por plazo | 1 | Usability: Flexibilidad y eficiencia de uso |
+
+**Descripción de problemas**
+
+**Problema #1:** Los estados "Requiere revisión" y "No elegible" no explican la causa ni la acción a seguir
+
+* **Severidad:** 3
+* **Heurística violada:** Usability – Ayudar a reconocer, diagnosticar y recuperarse de errores
+* **Problema:** cuando la validación de consistencia detecta una diferencia en los datos de la factura, el riel de progreso muestra la alerta "Requiere revisión", pero no indica qué campo falló ni qué debe hacer la MYPE. En "No elegible" tampoco se informa el motivo. En la entrevista 2 (6.3.2), el entrevistado no supo cómo continuar.
+
+![Alerta "Requiere revisión" en el detalle de la factura (problema #1).](./assets/cap6-verification-validation/audit/auditoria-01-requiere-revision.png)
+
+*Figura. Alerta "Requiere revisión" en el detalle de la factura (problema #1).*
+
+* **Recomendación:** mostrar en la alerta el motivo devuelto por el Invoicing Service (por ejemplo, "El total no coincide con la suma de los ítems") y una acción concreta: "Subir una nueva versión" o "Contactar a soporte".
+
+**Problema #2:** La TCEA, el descuento y la comisión de la oferta no se explican
+
+* **Severidad:** 3
+* **Heurística violada:** Usability – Relación entre el sistema y el mundo real
+* **Problema:** el panel de la oferta presenta "Descuento (x %)" y "TCEA x % · n días" sin explicar qué significan. En la entrevista 1 se necesitó ayuda para interpretar la TCEA y en la entrevista 3 se pidió explicar el descuento y la comisión con un ejemplo; la TCEA es el dato que permite comparar la oferta con un préstamo bancario.
+
+![Panel de la oferta de financiamiento con TCEA y descuento sin explicación (problema #2).](./assets/cap6-verification-validation/audit/auditoria-02-panel-oferta.png)
+
+*Figura. Panel de la oferta de financiamiento con TCEA y descuento sin explicación (problema #2).*
+
+* **Recomendación:** agregar un ícono de información junto a cada concepto con una explicación breve en lenguaje simple, y un ejemplo: "Por cada S/ 1,000 de factura recibes S/ 970 hoy".
+
+**Problema #3:** El estado "Leyendo datos" no indica el tiempo estimado ni si el usuario puede salir de la pantalla
+
+* **Severidad:** 2
+* **Heurística violada:** Usability – Visibilidad del estado del sistema
+* **Problema:** mientras el OCR procesa la factura, la aplicación muestra "Leyendo datos" sin indicar cuánto tardará. En la entrevista 1 se preguntó si había que quedarse esperando.
+
+![Carga de factura en estado "Leyendo datos" (problema #3).](./assets/cap6-verification-validation/audit/auditoria-04-leyendo-datos.png)
+
+*Figura. Carga de factura en estado "Leyendo datos" (problema #3).*
+
+* **Recomendación:** indicar el tiempo habitual ("suele tardar menos de un minuto") y aclarar que el usuario puede seguir navegando, porque el estado se actualizará en "Mis facturas".
+
+**Problema #4:** El monto mínimo de inversión (S/ 50) solo se informa al confirmar
+
+* **Severidad:** 2
+* **Heurística violada:** Usability – Prevención de errores
+* **Problema:** en la pantalla de confirmación, el mensaje sobre el mínimo por factura aparece recién cuando el inversionista intenta confirmar un monto menor. En la entrevista 6 se ingresó S/ 30 antes de conocer el mínimo.
+
+![Pantalla de confirmación de inversión con el mensaje del mínimo (problema #4).](./assets/cap6-verification-validation/audit/auditoria-05-confirmar-inversion.png)
+
+*Figura. Pantalla de confirmación de inversión con el mensaje del mínimo (problema #4).*
+
+* **Recomendación:** mostrar el mínimo y el monto restante por fondear como texto de ayuda debajo del campo, y deshabilitar el botón de confirmar mientras el monto no sea válido.
+
+**Problema #5:** La fecha de validez de la oferta pasa desapercibida
+
+* **Severidad:** 2
+* **Heurística violada:** Usability – Prevención de errores
+* **Problema:** la validez de la oferta aparece al final de una línea de texto junto con la TCEA y el plazo. Si vence, la MYPE debe obtener una nueva cotización, y en la entrevista 3 no se notó la fecha.
+
+![Línea de condiciones de la oferta con la fecha de validez (problema #5).](./assets/cap6-verification-validation/audit/auditoria-06-validez-oferta.png)
+
+*Figura. Línea de condiciones de la oferta con la fecha de validez (problema #5).*
+
+* **Recomendación:** mostrar la validez como un indicador destacado ("Válida por 2 días más") y cambiar su color cuando falten menos de 24 horas.
+
+**Problema #6:** La oferta de financiamiento no se anuncia desde el listado de facturas
+
+* **Severidad:** 2
+* **Principio violado:** Information Architecture – Navegabilidad
+* **Problema:** cuando una factura es aprobada, el listado solo cambia su estado; la oferta está dentro del detalle. En la entrevista 3 se buscó en el listado y la tarea tomó más de tres minutos.
+
+![Listado Mis facturas con una factura validada (problema #6).](./assets/cap6-verification-validation/audit/auditoria-07-mis-facturas.png)
+
+*Figura. Listado Mis facturas con una factura validada (problema #6).*
+
+* **Recomendación:** mostrar en la fila de la factura aprobada un botón "Ver oferta" que lleve directamente al panel de la oferta.
+
+**Problema #7:** El mercado no permite ordenar las subastas por TEA ni por plazo
+
+* **Severidad:** 1
+* **Heurística violada:** Usability – Flexibilidad y eficiencia de uso
+* **Problema:** el mercado ofrece los filtros Todas, Verdes y Vencen pronto, pero no permite ordenar por rentabilidad o plazo, que es como se comparan las oportunidades en la entrevista 4.
+
+![Pantalla Mercado con filtros y sin selector de orden (problema #7).](./assets/cap6-verification-validation/audit/auditoria-08-mercado.png)
+
+*Figura. Pantalla Mercado con filtros y sin selector de orden (problema #7).*
+
+* **Recomendación:** agregar un selector "Ordenar por" con TEA (mayor a menor), plazo (menor a mayor) y porcentaje fondeado.
 
 <hr class="page-break">
 
@@ -4276,13 +4811,423 @@ Configuración del job en el API Gateway (el Invoicing Service usa la misma estr
 
 El primer paso del job comprueba que el entorno `production` tenga configuradas las credenciales de Azure. Mientras no lo estén, el job termina sin desplegar y deja un aviso en el resumen de la ejecución, de modo que la integración y la entrega siguen funcionando aunque el ambiente de producción aún no exista.
 
+## 7.4. Continuous Monitoring
+
+El monitoreo continuo cierra el ciclo DevOps de Vankoo: una vez desplegado cada componente (7.3), el equipo necesita saber si sigue disponible, si sus dependencias responden y si su comportamiento cambia después de una nueva versión. Además, como el Capítulo VIII plantea experimentos sobre el producto en producción, el monitoreo técnico se complementa con la recolección de métricas de uso definida en el tracking plan (8.2.8).
+
+### 7.4.1. Tools and Practices
+
+| Herramienta | Uso en Continuous Monitoring | Estado |
+|---|---|---|
+| **Spring Boot Actuator** | Expone `/actuator/health` e `/actuator/info` en IAM, Finance, Investment, API Gateway y Discovery Server. En el perfil de Azure solo se publican `health` e `info`, para no exponer `env`, `heapdump` ni `loggers`. | Implementado |
+| **ASP.NET Core Health Checks** | El Invoicing Service expone `/health/live` (el proceso está vivo) y `/health/ready` (dependencias disponibles), con chequeos de MongoDB, Kafka y almacenamiento de objetos. | Implementado |
+| **Docker Compose healthchecks** | Cada contenedor del entorno local define su `healthcheck`, y los servicios dependientes esperan a que sus dependencias estén sanas antes de iniciar. | Implementado |
+| **Eureka Dashboard** | Muestra qué instancias de cada microservicio están registradas y activas. | Implementado |
+| **Azure Monitor (métricas de ACI)** | Métricas nativas de CPU, memoria y red de cada contenedor desplegado en Azure Container Instances. | Disponible por defecto |
+| **GitHub Actions** | Verificación post-despliegue contra el endpoint de readiness (7.3.2) y notificación por correo cuando un workflow falla. | Implementado |
+| **Netlify** | Estado de cada despliegue de la Landing Page y de la web de la MYPE, con historial para restaurar versiones. | Implementado |
+| **Azure Monitor Alerts + Action Groups** | Reglas de alerta sobre métricas y disponibilidad, con envío de notificaciones. | Planificado |
+| **Firebase Crashlytics** | Reporte de fallos de la aplicación móvil del inversionista en los dispositivos de los testers. | Planificado |
+
+Prácticas aplicadas:
+
+* **Liveness y readiness separados:** el endpoint de liveness no consulta dependencias externas, para que una caída de la base de datos no provoque reinicios en cadena; el de readiness sí lo hace y responde 503 cuando el servicio no puede atender.
+* **Severidad por dependencia:** en el Invoicing Service, MongoDB es crítica (`Unhealthy`), mientras que Kafka y el almacenamiento de objetos son degradantes (`Degraded`): la factura se guarda aunque la publicación del evento falle.
+* **Mínima exposición:** en producción solo se publican los endpoints de salud e información.
+* **Verificación después de cada despliegue:** ningún despliegue a producción se da por terminado sin que el endpoint de readiness responda correctamente.
+
+### 7.4.2. Monitoring Pipeline Components
+
+El pipeline de monitoreo recoge señales en tres niveles:
+
+| Nivel | Señal | Fuente | Frecuencia |
+|---|---|---|---|
+| Infraestructura | CPU, memoria, red y reinicios de contenedor | Azure Monitor (ACI) | Cada minuto |
+| Servicio | Estado de salud (`UP` / `DOWN`, `Healthy` / `Degraded` / `Unhealthy`) | `/actuator/health`, `/health/ready` | Cada minuto (sonda de disponibilidad) |
+| Servicio | Instancias registradas en el Discovery Server | Eureka | Cada 30 segundos (heartbeat de Eureka) |
+| Entrega | Resultado de build, pruebas y despliegue | GitHub Actions, Netlify | En cada ejecución del pipeline |
+| Producto | Eventos de uso definidos en el tracking plan | Google Analytics 4 / Firebase Analytics (8.2.8) | En tiempo real |
+
+**Flujo del pipeline de monitoreo**
+
+1. Cada servicio publica su estado en su endpoint de salud.
+2. Una sonda de disponibilidad consulta los endpoints de readiness de los servicios expuestos detrás del API Gateway.
+3. Azure Monitor registra las métricas de los contenedores y el resultado de la sonda.
+4. Las métricas se visualizan en un dashboard de Azure que agrupa los servicios por bounded context.
+5. Los resultados de cada despliegue quedan en el historial de GitHub Actions y Netlify.
+
+**Limitación actual:** el Profile Service (NestJS) se registra en Eureka pero todavía no expone un endpoint de salud propio. Se agregará con `@nestjs/terminus` para alinearlo con el resto de los servicios.
+
+### 7.4.3. Alerting Pipeline Components
+
+Las alertas se definen sobre las señales anteriores, con umbrales que evitan falsos positivos:
+
+| Alerta | Condición | Severidad | Ventana de evaluación |
+|---|---|---|---|
+| Servicio no disponible | El endpoint de readiness responde distinto de 200 en 3 sondeos consecutivos | Crítica | 3 minutos |
+| Servicio degradado | El Invoicing Service reporta `Degraded` (Kafka o almacenamiento de objetos) | Alta | 5 minutos |
+| Reinicios repetidos | Un contenedor se reinicia más de 2 veces | Alta | 15 minutos |
+| Consumo de recursos | CPU o memoria por encima del 85 % | Media | 10 minutos |
+| Instancia no registrada | Un microservicio desaparece del Discovery Server | Alta | 2 minutos |
+| Pipeline fallido | Un workflow de CI/CD termina en error en `develop` o `main` | Media | Inmediata |
+
+Las alertas críticas y altas se configuran como reglas de Azure Monitor sobre las métricas de ACI y sobre la sonda de disponibilidad; la alerta de pipeline fallido la emite GitHub Actions de forma nativa.
+
+### 7.4.4. Notification Pipeline Components
+
+| Canal | Alertas que recibe | Destinatarios |
+|---|---|---|
+| Correo electrónico (Action Group de Azure Monitor) | Críticas y altas | Todos los integrantes del equipo |
+| Canal de Discord del equipo (webhook) | Todas las alertas | Equipo de desarrollo |
+| Correo de GitHub | Pipeline fallido | Autor del commit que disparó el workflow |
+
+**Contenido de cada notificación:** servicio afectado, condición que disparó la alerta, hora de inicio, enlace al recurso en Azure o a la ejecución en GitHub Actions y acción sugerida (por ejemplo, revisar los logs del contenedor o redesplegar la imagen `production`).
+
+**Gestión de la respuesta:** el integrante responsable del bounded context afectado confirma la alerta en el canal del equipo, la atiende y comunica cuando se resuelve. Si la causa es un despliegue reciente, se aplica el rollback definido en 7.3.1.
+
+<hr class="page-break">
+
+# Capítulo VIII: Experiment-Driven Development
+
+En este capítulo se aplica Experiment-Driven Development sobre Vankoo: en lugar de decidir las siguientes funcionalidades por intuición, el equipo parte de lo que aún no sabe sobre sus usuarios, lo convierte en preguntas que un experimento puede responder y diseña cada experimento con hipótesis, métricas, condiciones y tamaño de muestra definidos antes de ejecutarlo.
+
+## 8.1. Experiment Planning
+
+### 8.1.1. As-Is Summary
+
+Al cierre del Avance 2, Vankoo cuenta con la versión **v1.0.0** desplegada:
+
+| Componente | Estado actual |
+|---|---|
+| Landing Page | Publicada en Netlify, en español e inglés, con calculadora de adelanto (US01 – US04). |
+| Aplicación web de la MYPE | Registro, inicio de sesión, carga de facturas con OCR, seguimiento de estados, revisión y aceptación de la oferta (US05, US06, US11 – US15). |
+| Aplicación móvil del inversionista | Registro, inicio de sesión, billetera, recarga con Stripe, mercado con filtros, detalle de subasta e inversión (US08, US09, US16 – US20). |
+| Backend | Microservicios IAM, Profile, Invoicing, Investment y Finance, detrás de un API Gateway y un Discovery Server, desplegados en Azure (TS01 – TS08). |
+| Calidad y DevOps | Pruebas unitarias, de integración, BDD y de sistema (6.1); análisis estático (6.2); pipelines de CI/CD (7.1 – 7.3) y monitoreo (7.4). |
+
+**Lo que se sabe hoy.** Las entrevistas de validación (6.3) muestran que los flujos principales funcionan: 28 de 30 tareas se completaron sin ayuda. Las tareas con menor facilidad percibida fueron la revisión de la oferta en la web (SEQ 4.7) y la recarga en el móvil (SEQ 5.0). La auditoría (6.4.1) registró 7 problemas, 2 de ellos de severidad 3.
+
+**Lo que no se sabe todavía.** Ninguna de las hipótesis del Lean UX Process (1.2.2.3) se ha medido con usuarios reales en producción. El producto no registra eventos de uso, por lo que hoy no se puede saber cuántas MYPEs aceptan la oferta, cuánto tardan en hacerlo ni cuántos inversionistas pasan de ver una subasta a invertir.
+
+### 8.1.2. Raw Material: Assumptions, Knowledge Gaps, Ideas, Claims
+
+**Assumptions** (lo que el equipo cree, sin evidencia suficiente)
+
+| ID | Supuesto | Origen |
+|---|---|---|
+| A1 | La MYPE acepta la oferta si entiende cuánto le cuesta el adelanto. | Lean UX Business Assumption 4; entrevistas 6.3 |
+| A2 | El inversionista invierte con más frecuencia si puede comparar oportunidades por rentabilidad. | Lean UX User Assumption 3; entrevista 4 |
+| A3 | La incertidumbre al volver de la página de pago provoca reintentos y abandono de la recarga. | Entrevista 5 (6.3.2) |
+| A4 | Las facturas verdes se fondean más rápido que las convencionales. | Lean UX Hypothesis 05 |
+
+**Knowledge Gaps** (lo que el equipo no sabe y necesita saber)
+
+| ID | Vacío de conocimiento |
+|---|---|
+| K1 | Qué porcentaje de las ofertas mostradas termina aceptado. |
+| K2 | Cuánto tiempo pasa entre que una factura es aprobada y la MYPE revisa su oferta. |
+| K3 | Qué porcentaje de las recargas iniciadas se completa sin reintentos. |
+| K4 | Qué porcentaje de los inversionistas que abren el detalle de una subasta termina invirtiendo. |
+
+**Ideas** (posibles cambios en el producto)
+
+| ID | Idea | Problema que atiende |
+|---|---|---|
+| I1 | Explicar la TCEA, el descuento y la comisión con ayuda contextual y un ejemplo en soles. | Auditoría #2 |
+| I2 | Enviar un correo a la MYPE cuando su factura es aprobada, con un enlace directo a la oferta. | Entrevista 2; auditoría #6 |
+| I3 | Mostrar un estado "Confirmando tu pago" con actualización automática al volver de Stripe. | Entrevista 5 |
+| I4 | Permitir ordenar el mercado por TEA y plazo, y mostrar el mínimo de inversión junto al campo de monto. | Auditoría #4 y #7 |
+| I5 | Mostrar el motivo de "Requiere revisión" y "No elegible" con una acción sugerida. | Auditoría #1 |
+
+**Claims** (afirmaciones de usuarios o del mercado que deben comprobarse)
+
+| ID | Afirmación | Fuente |
+|---|---|---|
+| C1 | "Usaría Vankoo porque no suma deuda." | Entrevistas 1 y 3 |
+| C2 | "Empezaría con un monto pequeño para probar la plataforma." | Entrevistas 4 y 6 |
+| C3 | "Si me avisan cuando la factura está aprobada, no tengo que entrar a revisar." | Entrevista 2 |
+| C4 | "Ver el historial de pagos del adquirente me daría más confianza para invertir." | Entrevista 5 |
+
+### 8.1.3. Experiment-Ready Questions
+
+A partir del material anterior, se formularon preguntas que se pueden responder con un experimento medible:
+
+| ID | Pregunta | Relación |
+|---|---|---|
+| Q1 | ¿Explicar los conceptos de la oferta con ayuda contextual y un ejemplo en soles aumenta la tasa de aceptación de ofertas de las MYPEs? | A1, K1, I1 |
+| Q2 | ¿Notificar por correo la aprobación de la factura aumenta la proporción de ofertas aceptadas en las primeras 48 horas? | K2, I2, C3 |
+| Q3 | ¿Mostrar un estado de confirmación del pago aumenta la proporción de recargas completadas sin reintento? | A3, K3, I3 |
+| Q4 | ¿Permitir ordenar el mercado y mostrar el mínimo de inversión aumenta la conversión de detalle de subasta a inversión? | A2, K4, I4 |
+| Q5 | ¿Mostrar el motivo de "Requiere revisión" reduce el tiempo que tarda la MYPE en corregir una factura? | I5 |
+| Q6 | ¿Las facturas etiquetadas como verdes se fondean más rápido que las convencionales? | A4 |
+| Q7 | ¿Mostrar el historial de pagos del adquirente aumenta el monto promedio invertido? | C4 |
+| Q8 | ¿Ofrecer un monto mínimo de inversión menor a S/ 50 aumenta la cantidad de inversionistas que realizan su primera inversión? | C2 |
+
+### 8.1.4. Question Backlog
+
+Cada pregunta se puntuó de 1 a 5 en tres criterios: **Impacto** en el negocio, **Incertidumbre** (cuánto se desconoce la respuesta) y **Facilidad** de ejecución con el producto actual. La prioridad es la suma de los tres.
+
+| Prioridad | ID | Pregunta (resumen) | Impacto | Incertidumbre | Facilidad | Puntaje |
+|---|---|---|---|---|---|---|
+| 1 | Q1 | Explicación de la oferta → aceptación | 5 | 4 | 5 | 14 |
+| 2 | Q3 | Confirmación del pago → recargas completadas | 4 | 4 | 5 | 13 |
+| 3 | Q2 | Correo de aprobación → aceptación en 48 h | 4 | 4 | 4 | 12 |
+| 4 | Q4 | Ordenar mercado y mínimo visible → conversión | 5 | 3 | 4 | 12 |
+| 5 | Q5 | Motivo de revisión → tiempo de corrección | 3 | 3 | 4 | 10 |
+| 6 | Q6 | Facturas verdes → velocidad de fondeo | 4 | 4 | 2 | 10 |
+| 7 | Q8 | Mínimo menor a S/ 50 → primera inversión | 4 | 3 | 2 | 9 |
+| 8 | Q7 | Historial del adquirente → monto invertido | 3 | 3 | 2 | 8 |
+
+Las cuatro preguntas con mayor puntaje (Q1, Q3, Q2 y Q4) pasan a experimento en esta etapa. Q6, Q7 y Q8 requieren más volumen de facturas publicadas o cambios en las reglas de negocio, por lo que quedan para una siguiente iteración. Q5 se implementa directamente como mejora de usabilidad (US23), porque la auditoría ya lo identificó como un problema de severidad 3.
+
+### 8.1.5. Experiment Cards
+
+**Experiment Card E1 – Oferta explicada**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q1: ¿Explicar los conceptos de la oferta aumenta la tasa de aceptación? |
+| Why | Dos de tres MYPEs no entendieron la TCEA; si no entienden el costo, no aceptan la oferta. |
+| What | Ayuda contextual en TCEA, descuento y comisión, más un ejemplo en soles en el panel de la oferta (US21). |
+| Hypotheses | Ver 8.2.1, H1. |
+| Plataforma | Aplicación web de la MYPE |
+
+**Experiment Card E2 – Confirmación del pago**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q3: ¿Un estado de confirmación del pago aumenta las recargas completadas sin reintento? |
+| Why | El estado "pendiente" sin explicación provocó un reintento de pago en las entrevistas. |
+| What | Pantalla "Confirmando tu pago" con actualización automática y bloqueo de una segunda recarga mientras la anterior está pendiente (US24). |
+| Hypotheses | Ver 8.2.1, H2. |
+| Plataforma | Aplicación móvil del inversionista |
+
+**Experiment Card E3 – Aviso de aprobación**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q2: ¿Notificar la aprobación por correo aumenta las ofertas aceptadas en 48 horas? |
+| Why | La oferta tiene fecha de validez; si la MYPE no entra a revisarla a tiempo, se vence. |
+| What | Correo automático al aprobarse la factura, con el neto a recibir y un enlace directo a la oferta (US22). |
+| Hypotheses | Ver 8.2.1, H3. |
+| Plataforma | Aplicación web de la MYPE (correo) |
+
+**Experiment Card E4 – Mercado comparable**
+
+| Campo | Detalle |
+|---|---|
+| Pregunta | Q4: ¿Ordenar el mercado y mostrar el mínimo aumenta la conversión a inversión? |
+| Why | Los inversionistas comparan por rentabilidad y plazo, y el mínimo de S/ 50 se descubre recién al confirmar. |
+| What | Selector "Ordenar por" (TEA, plazo, porcentaje fondeado) y texto de ayuda con el mínimo y el restante por fondear (US25, US26). |
+| Hypotheses | Ver 8.2.1, H4. |
+| Plataforma | Aplicación móvil del inversionista |
+
+## 8.2. Experiment Design
+
+### 8.2.1. Hypotheses
+
+| ID | Experimento | Hipótesis | H0 (nula) | H1 (alternativa) |
+|---|---|---|---|---|
+| H1 | E1 – Oferta explicada | Creemos que explicar los conceptos de la oferta aumentará la aceptación de ofertas. Sabremos que tuvimos éxito cuando la tasa de aceptación suba de 40 % a 50 % o más. | La tasa de aceptación del grupo tratamiento es igual a la del grupo control. | La tasa de aceptación del grupo tratamiento es distinta a la del grupo control. |
+| H2 | E2 – Confirmación del pago | Creemos que mostrar el estado de confirmación del pago aumentará las recargas completadas sin reintento. Sabremos que tuvimos éxito cuando pasen de 80 % a 90 % o más. | La proporción de recargas completadas sin reintento es igual en ambos grupos. | La proporción es distinta entre ambos grupos. |
+| H3 | E3 – Aviso de aprobación | Creemos que notificar por correo la aprobación aumentará las ofertas aceptadas en las primeras 48 horas. Sabremos que tuvimos éxito cuando pasen de 35 % a 50 % o más. | La proporción de ofertas aceptadas en 48 horas es igual en ambos grupos. | La proporción es distinta entre ambos grupos. |
+| H4 | E4 – Mercado comparable | Creemos que ordenar el mercado y mostrar el mínimo aumentará la conversión de detalle de subasta a inversión. Sabremos que tuvimos éxito cuando pase de 15 % a 20 % o más. | La conversión es igual en ambos grupos. | La conversión es distinta entre ambos grupos. |
+
+Las pruebas son bilaterales: se rechaza H0 tanto si el cambio mejora la métrica como si la empeora.
+
+### 8.2.2. Domain Business Metrics
+
+Métricas del negocio de crowdfactoring que los experimentos buscan mover:
+
+| Métrica de negocio | Definición | Segmento |
+|---|---|---|
+| Tasa de aceptación de ofertas | Ofertas aceptadas / ofertas mostradas | MYPE |
+| Tiempo a la aceptación | Horas entre la aprobación de la factura y la aceptación de la oferta | MYPE |
+| Volumen publicado | Suma del importe de las facturas publicadas en subasta por mes | MYPE |
+| Tasa de recarga exitosa | Recargas acreditadas / recargas iniciadas | Inversionista |
+| Conversión a inversión | Inversiones confirmadas / detalles de subasta abiertos | Inversionista |
+| Tiempo de fondeo | Horas entre la publicación de la subasta y su fondeo al 100 % | Marketplace |
+| Ingreso por comisión | Comisión cobrada sobre el importe de las facturas fondeadas | Negocio |
+
+### 8.2.3. Measures
+
+| Experimento | Métrica principal | Fórmula | Métricas secundarias | Métrica de control (guardrail) |
+|---|---|---|---|---|
+| E1 | Tasa de aceptación de ofertas | MYPEs que aceptan / MYPEs que ven la oferta | Tiempo en el panel de la oferta; clics en la ayuda contextual | Ofertas vencidas sin respuesta |
+| E2 | Recargas completadas sin reintento | Recargas acreditadas en el primer intento / recargas iniciadas | Tiempo hasta la acreditación; contactos a soporte | Pagos duplicados |
+| E3 | Ofertas aceptadas en 48 h | Ofertas aceptadas dentro de 48 h desde la aprobación / facturas aprobadas | Tasa de apertura del correo; clics en el enlace | Bajas de la lista de correo |
+| E4 | Conversión de detalle a inversión | Inversiones confirmadas / detalles de subasta abiertos | Monto promedio invertido; uso del selector de orden | Errores de validación de monto |
+
+### 8.2.4. Conditions
+
+| Experimento | Control (A) | Tratamiento (B) | Unidad de asignación | Distribución |
+|---|---|---|---|---|
+| E1 | Panel de la oferta actual | Panel con ayuda contextual y ejemplo en soles | Usuario MYPE | 50 % / 50 % |
+| E2 | Pantalla de recarga pendiente actual | Pantalla "Confirmando tu pago" con actualización automática | Usuario inversionista | 50 % / 50 % |
+| E3 | Sin correo de aprobación | Correo de aprobación con enlace a la oferta | Usuario MYPE | 50 % / 50 % |
+| E4 | Mercado y confirmación actuales | Selector de orden y mínimo visible | Usuario inversionista | 50 % / 50 % |
+
+**Reglas comunes:**
+
+* La asignación es aleatoria y estable: un usuario permanece en el mismo grupo durante todo el experimento (hash del identificador de usuario).
+* E1 y E3 se ejecutan sobre la misma población de MYPEs con asignaciones independientes (diseño factorial 2×2), de modo que el efecto de cada cambio se puede analizar por separado.
+* Solo participan usuarios nuevos o activos durante el periodo del experimento; se excluyen las cuentas del equipo y de prueba.
+* No se modifica ningún otro elemento de las pantallas involucradas mientras el experimento está activo.
+
+### 8.2.5. Scale Calculations and Decisions
+
+Para cada experimento se calculó el tamaño de muestra de una prueba de diferencia de proporciones bilateral, con:
+
+* **Nivel de significancia (α):** 5 % (z = 1.96)
+* **Potencia estadística (1 − β):** 80 % (z = 0.8416)
+* **Efecto mínimo detectable (MDE):** la mejora mínima que justifica implementar el cambio para todos los usuarios.
+
+Fórmula utilizada, por grupo:
+
+```
+n = [ z(1−α/2) · √(2·p̄·(1−p̄)) + z(1−β) · √(p1·(1−p1) + p2·(1−p2)) ]² / (p2 − p1)²
+
+donde p1 = tasa base, p2 = p1 + MDE, p̄ = (p1 + p2) / 2
+```
+
+| Experimento | Tasa base (p1) | MDE | p2 | n por grupo | n total | Volumen diario estimado | Duración estimada |
+|---|---|---|---|---|---|---|---|
+| E1 | 40 % | +10 pp | 50 % | 388 | 776 MYPEs que ven una oferta | 25 | 32 días |
+| E2 | 80 % | +10 pp | 90 % | 199 | 398 recargas iniciadas | 20 | 20 días |
+| E3 | 35 % | +15 pp | 50 % | 170 | 340 facturas aprobadas | 15 | 23 días |
+| E4 | 15 % | +5 pp | 20 % | 906 | 1,812 detalles de subasta abiertos | 60 | 31 días |
+
+**Origen de las tasas base:** como el producto aún no registra eventos de uso, las tasas base se estimaron a partir de las entrevistas de validación y de referencias del mercado de factoring. Durante la primera semana de cada experimento se medirá la tasa real del grupo control y, si difiere en más de 5 puntos de la estimada, se recalculará el tamaño de muestra.
+
+**Decisiones:**
+
+1. **Potencia de 80 %:** se eligió el extremo inferior del rango recomendado (80 % – 95 %) porque el volumen de usuarios en la etapa inicial es limitado; con 95 % de potencia, E4 necesitaría unos 1,500 detalles de subasta por grupo en lugar de 906, lo que extendería el experimento a más de 7 semanas.
+2. **MDE diferenciado:** E4 usa un MDE de 5 puntos porque parte de una tasa base baja, donde un aumento de 5 puntos representa un 33 % de mejora relativa. E3 usa 15 puntos porque un correo solo justifica su costo si el efecto es grande.
+3. **Duración máxima de 5 semanas:** si un experimento no alcanza su muestra en ese plazo, se analiza con la muestra obtenida y se reporta la potencia real alcanzada.
+4. **Sin detener antes de tiempo:** los resultados no se evalúan para tomar decisiones antes de alcanzar el tamaño de muestra, para no inflar la tasa de falsos positivos.
+
+### 8.2.6. Methods Selection
+
+| Método | Uso en Vankoo | Experimentos |
+|---|---|---|
+| **A/B testing (diseño entre sujetos)** | Cada usuario ve una sola variante, asignada al azar. Permite atribuir la diferencia en la métrica al cambio. | E1, E2, E3, E4 |
+| **Diseño factorial 2×2** | Combina E1 y E3 sobre la misma población sin que un experimento contamine al otro. | E1, E3 |
+| **Feature flags** | Activan la variante B por usuario sin desplegar una versión distinta: configuración remota en la web y Firebase Remote Config en el móvil (TS09). | E1, E2, E4 |
+| **Prueba z de diferencia de proporciones** | Contrasta H0 frente a H1 para las métricas principales, que son proporciones. | E1, E2, E3, E4 |
+| **Intervalo de confianza del 95 %** | Reporta el tamaño del efecto, no solo si es significativo. | E1, E2, E3, E4 |
+| **Entrevistas de seguimiento** | 2 o 3 entrevistas cortas por experimento para entender el porqué del resultado. | E1, E4 |
+
+**Criterio de decisión:** si p < 0.05 y el límite inferior del intervalo de confianza supera cero, la variante B se implementa para todos los usuarios. Si el resultado no es significativo, se mantiene la versión A y el aprendizaje se registra en el Question Backlog. Si la métrica de control empeora de forma significativa, el experimento se detiene.
+
+### 8.2.7. Data Analytics: Goals, KPIs and Metrics Selection
+
+| Objetivo | KPI | Métricas que lo componen | Meta |
+|---|---|---|---|
+| Que más MYPEs conviertan sus facturas en liquidez | Tasa de aceptación de ofertas | Ofertas mostradas, ofertas aceptadas, ofertas vencidas | ≥ 50 % |
+| Que la MYPE reciba su dinero más rápido | Tiempo a la aceptación | Hora de aprobación, hora de apertura de la oferta, hora de aceptación | ≤ 48 h para el 50 % de las facturas |
+| Que el inversionista recargue sin fricción | Tasa de recarga exitosa | Recargas iniciadas, acreditadas, fallidas y duplicadas | ≥ 90 % |
+| Que más inversionistas inviertan | Conversión a inversión | Detalles de subasta abiertos, inversiones iniciadas y confirmadas | ≥ 20 % |
+| Que las facturas se fondeen rápido | Tiempo de fondeo | Hora de publicación, hora de fondeo al 100 % | ≤ 24 h para el 90 % de las subastas (Lean UX H03) |
+| Que la plataforma esté disponible | Disponibilidad mensual | Resultado de las sondas de readiness (7.4) | ≥ 99 % |
+
+### 8.2.8. Web and Mobile Tracking Plan
+
+Los eventos de la web se envían a **Google Analytics 4** y los de la aplicación móvil a **Firebase Analytics**. Todos los eventos incluyen `user_id` (seudonimizado), `experiment_id` y `variant` (`A` o `B`) cuando el usuario participa en un experimento. No se registran datos personales ni montos de facturas individuales asociados a la identidad del usuario.
+
+**Aplicación web de la MYPE**
+
+| Evento | Se dispara cuando | Propiedades | Experimento |
+|---|---|---|---|
+| `invoice_uploaded` | La carga del PDF termina correctamente | `invoice_id` | – |
+| `invoice_approved` | El backend aprueba la factura (evento de servidor) | `invoice_id`, `approved_at` | E3 |
+| `approval_email_clicked` | La MYPE abre la oferta desde el enlace del correo | `invoice_id` | E3 |
+| `offer_viewed` | Se muestra el panel de la oferta | `invoice_id`, `tcea`, `days` | E1, E3 |
+| `offer_help_opened` | La MYPE abre la ayuda de un concepto | `concept` (`tcea`, `discount`, `fee`) | E1 |
+| `offer_accepted` | La MYPE confirma la aceptación | `invoice_id`, `hours_since_approval` | E1, E3 |
+| `offer_expired` | La oferta vence sin respuesta | `invoice_id` | E1 (guardrail) |
+
+**Aplicación móvil del inversionista**
+
+| Evento | Se dispara cuando | Propiedades | Experimento |
+|---|---|---|---|
+| `topup_started` | El inversionista confirma el monto y se abre Stripe Checkout | `amount_range` | E2 |
+| `topup_returned` | La app recibe el deep link `vankoo://` de retorno | `status` (`pending`, `failed`) | E2 |
+| `topup_credited` | El saldo se acredita | `attempt_number` | E2 |
+| `market_sorted` | El inversionista cambia el orden del mercado | `sort_by` (`tea`, `term`, `funded`) | E4 |
+| `auction_detail_viewed` | Se abre el detalle de una subasta | `auction_id`, `is_green` | E4 |
+| `investment_started` | Se abre la pantalla de confirmación | `auction_id` | E4 |
+| `investment_validation_error` | El monto ingresado no es válido | `reason` (`below_minimum`, `exceeds_remaining`, `insufficient_balance`) | E4 (guardrail) |
+| `investment_confirmed` | La inversión queda registrada | `auction_id`, `amount_range` | E4 |
+
+## 8.3. Experimentation
+
+### 8.3.1. To-Be User Stories
+
+Las siguientes User Stories y Technical Stories implementan las variantes B de los experimentos (8.1.5) y las mejoras de usabilidad de la auditoría (6.4.1). Continúan la numeración de la sección 3.2 y se asocian a las Epics existentes.
+
+| Story ID | User | Priority | Epic |
+|----------|------|----------|------|
+| **US21** | Empresario MYPE | Alta | EP04 – Publicación en subasta (Investment) |
+| **Title** | Entender los conceptos de la oferta de financiamiento | | |
+| **Description** | Como empresario MYPE, deseo ver qué significan la TCEA, el descuento y la comisión con un ejemplo en soles, para entender cuánto me cuesta el adelanto antes de aceptar la oferta. | | |
+| **Acceptance Criteria** | **Escenario 1: Ayuda contextual**<br>Given la MYPE se encuentra en el panel de la oferta y pertenece a la variante B del experimento E1<br>When selecciona el ícono de información junto a TCEA, descuento o comisión<br>Then el sistema muestra una explicación breve del concepto en lenguaje simple<br><br>**Escenario 2: Ejemplo en soles**<br>Given la MYPE pertenece a la variante B<br>When se muestra el panel de la oferta<br>Then el sistema presenta un ejemplo con el importe de la factura, el monto que recibe hoy y el costo total en soles<br><br>**Escenario 3: Variante de control**<br>Given la MYPE pertenece a la variante A<br>When se muestra el panel de la oferta<br>Then el sistema muestra el panel actual sin ayuda contextual | | |
+| **US22** | Empresario MYPE | Alta | EP03 – Gestión de facturas (Invoicing) |
+| **Title** | Recibir un aviso cuando mi factura sea aprobada | | |
+| **Description** | Como empresario MYPE, deseo recibir un correo cuando mi factura sea aprobada, para revisar la oferta a tiempo sin tener que entrar a la aplicación a verificar. | | |
+| **Acceptance Criteria** | **Escenario 1: Envío del aviso**<br>Given la MYPE pertenece a la variante B del experimento E3<br>When su factura cambia al estado Aprobada<br>Then el sistema envía un correo con el número de factura, el neto a recibir, la validez de la oferta y un enlace a la oferta<br><br>**Escenario 2: Acceso desde el correo**<br>Given la MYPE recibió el correo de aprobación<br>When selecciona el enlace e inicia sesión<br>Then el sistema la lleva directamente al panel de la oferta de esa factura<br><br>**Escenario 3: Variante de control**<br>Given la MYPE pertenece a la variante A<br>When su factura es aprobada<br>Then el sistema no envía el correo y solo actualiza el estado en Mis facturas | | |
+| **US23** | Empresario MYPE | Alta | EP03 – Gestión de facturas (Invoicing) |
+| **Title** | Conocer el motivo de una factura observada | | |
+| **Description** | Como empresario MYPE, deseo ver por qué mi factura quedó en Requiere revisión o No elegible y qué puedo hacer, para corregirla o entender por qué no se puede financiar. | | |
+| **Acceptance Criteria** | **Escenario 1: Factura que requiere revisión**<br>Given la validación de consistencia detectó una diferencia en la factura<br>When la MYPE abre el detalle de la factura<br>Then el sistema muestra el motivo de la observación y la opción de subir una nueva versión<br><br>**Escenario 2: Factura no elegible**<br>Given la factura no cumple las condiciones para ser financiada<br>When la MYPE abre el detalle de la factura<br>Then el sistema muestra el motivo y la opción de contactar a soporte | | |
+| **US24** | Inversionista | Alta | EP05 – Billetera (Finance) |
+| **Title** | Saber que mi pago se está confirmando | | |
+| **Description** | Como inversionista, deseo ver que mi pago se está confirmando al volver de la página de pago, para no pagar dos veces y saber cuándo tendré el saldo disponible. | | |
+| **Acceptance Criteria** | **Escenario 1: Pago en confirmación**<br>Given el inversionista pertenece a la variante B del experimento E2 y vuelve a la app desde Stripe<br>When el pago todavía no ha sido confirmado por el proveedor<br>Then el sistema muestra "Confirmando tu pago" y actualiza el estado automáticamente<br><br>**Escenario 2: Pago acreditado**<br>Given el pago está en confirmación<br>When el proveedor confirma el pago<br>Then el sistema muestra el nuevo saldo y el movimiento de recarga<br><br>**Escenario 3: Recarga duplicada**<br>Given existe una recarga en confirmación<br>When el inversionista intenta iniciar otra recarga<br>Then el sistema le informa que hay un pago en curso y le pide esperar su confirmación | | |
+| **US25** | Inversionista | Media | EP06 – Mercado e inversión (Investment) |
+| **Title** | Ordenar el mercado por rentabilidad y plazo | | |
+| **Description** | Como inversionista, deseo ordenar las subastas del mercado por TEA, plazo o porcentaje fondeado, para comparar oportunidades rápidamente. | | |
+| **Acceptance Criteria** | **Escenario 1: Ordenar por TEA**<br>Given el inversionista pertenece a la variante B del experimento E4 y se encuentra en el mercado<br>When selecciona Ordenar por TEA<br>Then el sistema muestra las subastas de mayor a menor TEA<br><br>**Escenario 2: Orden combinado con filtro**<br>Given el inversionista aplicó el filtro Verdes<br>When selecciona Ordenar por plazo<br>Then el sistema muestra solo las subastas verdes, de menor a mayor plazo | | |
+| **US26** | Inversionista | Media | EP06 – Mercado e inversión (Investment) |
+| **Title** | Conocer el monto mínimo antes de invertir | | |
+| **Description** | Como inversionista, deseo ver el monto mínimo y el restante por fondear antes de ingresar mi monto, para no cometer errores al confirmar la inversión. | | |
+| **Acceptance Criteria** | **Escenario 1: Ayuda en el campo de monto**<br>Given el inversionista pertenece a la variante B y abre la confirmación de inversión<br>When se muestra el campo de monto<br>Then el sistema indica debajo del campo el mínimo por factura y el monto restante por fondear<br><br>**Escenario 2: Monto inválido**<br>Given el inversionista ingresó un monto menor al mínimo o mayor al restante<br>When revisa el formulario<br>Then el sistema muestra el motivo junto al campo y mantiene deshabilitado el botón Confirmar | | |
+| **TS09** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Feature flags para experimentos | | |
+| **Description** | Como developer, deseo asignar a cada usuario una variante estable por experimento y activar funcionalidades según esa variante, para ejecutar experimentos A/B sin desplegar versiones distintas. | | |
+| **Acceptance Criteria** | **Escenario 1: Asignación estable**<br>Given un experimento activo con distribución 50 / 50<br>When un usuario inicia sesión en distintas ocasiones<br>Then el sistema le asigna siempre la misma variante, calculada a partir del hash de su identificador<br><br>**Escenario 2: Desactivación**<br>Given un experimento se detiene<br>When se desactiva su flag en la configuración remota<br>Then todos los usuarios ven la variante A sin necesidad de un nuevo despliegue | | |
+| **TS10** | Developer | Alta | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Registro de eventos de analítica | | |
+| **Description** | Como developer, deseo registrar los eventos del tracking plan en Google Analytics 4 y Firebase Analytics, para medir las métricas de los experimentos. | | |
+| **Acceptance Criteria** | **Escenario 1: Evento con variante**<br>Given un usuario participa en un experimento<br>When realiza una acción definida en el tracking plan (8.2.8)<br>Then el sistema envía el evento con `experiment_id` y `variant`<br><br>**Escenario 2: Sin datos personales**<br>Given se envía cualquier evento de analítica<br>When se revisan sus propiedades<br>Then no contienen nombre, correo, documento de identidad ni montos asociados a la identidad del usuario | | |
+| **TS11** | Developer | Media | EP07 – Plataforma y servicios (Technical Stories) |
+| **Title** | Endpoint de salud y alertas de monitoreo | | |
+| **Description** | Como developer, deseo que todos los servicios expongan su estado de salud y que las caídas generen alertas, para detectar problemas en producción antes que los usuarios. | | |
+| **Acceptance Criteria** | **Escenario 1: Salud del Profile Service**<br>Given el Profile Service está desplegado<br>When se consulta su endpoint de salud<br>Then responde el estado del servicio y de su base de datos<br><br>**Escenario 2: Alerta por caída**<br>Given un servicio no responde en 3 sondeos consecutivos<br>When se evalúa la regla de alerta<br>Then el equipo recibe una notificación por correo y en el canal del equipo | | |
+
+### 8.3.2. To-Be Product Backlog
+
+El To-Be Product Backlog agrega las historias anteriores a las ya implementadas en la versión v1.0.0 (3.3). El orden sigue la prioridad del Question Backlog (8.1.4): primero las bases técnicas que permiten ejecutar y medir cualquier experimento, luego las variantes de los experimentos con mayor puntaje y, al final, las mejoras de soporte.
+
+| # Orden | User Story Id | Título | Descripción | Story Points (1 / 2 / 3 / 5 / 8) | Experimento |
+|---------|---------------|--------|-------------|----------------------------------|-------------|
+| 1 | TS09 | Feature flags para experimentos | Como developer, deseo asignar a cada usuario una variante estable por experimento y activar funcionalidades según esa variante, para ejecutar experimentos A/B sin desplegar versiones distintas. | 5 | Todos |
+| 2 | TS10 | Registro de eventos de analítica | Como developer, deseo registrar los eventos del tracking plan en Google Analytics 4 y Firebase Analytics, para medir las métricas de los experimentos. | 5 | Todos |
+| 3 | US21 | Entender los conceptos de la oferta de financiamiento | Como empresario MYPE, deseo ver qué significan la TCEA, el descuento y la comisión con un ejemplo en soles, para entender cuánto me cuesta el adelanto antes de aceptar la oferta. | 3 | E1 |
+| 4 | US24 | Saber que mi pago se está confirmando | Como inversionista, deseo ver que mi pago se está confirmando al volver de la página de pago, para no pagar dos veces y saber cuándo tendré el saldo disponible. | 5 | E2 |
+| 5 | US22 | Recibir un aviso cuando mi factura sea aprobada | Como empresario MYPE, deseo recibir un correo cuando mi factura sea aprobada, para revisar la oferta a tiempo sin tener que entrar a la aplicación a verificar. | 5 | E3 |
+| 6 | US25 | Ordenar el mercado por rentabilidad y plazo | Como inversionista, deseo ordenar las subastas del mercado por TEA, plazo o porcentaje fondeado, para comparar oportunidades rápidamente. | 3 | E4 |
+| 7 | US26 | Conocer el monto mínimo antes de invertir | Como inversionista, deseo ver el monto mínimo y el restante por fondear antes de ingresar mi monto, para no cometer errores al confirmar la inversión. | 2 | E4 |
+| 8 | US23 | Conocer el motivo de una factura observada | Como empresario MYPE, deseo ver por qué mi factura quedó en Requiere revisión o No elegible y qué puedo hacer, para corregirla o entender por qué no se puede financiar. | 3 | – (auditoría #1) |
+| 9 | TS11 | Endpoint de salud y alertas de monitoreo | Como developer, deseo que todos los servicios expongan su estado de salud y que las caídas generen alertas, para detectar problemas en producción antes que los usuarios. | 3 | – (7.4) |
+
+Total de Story Points del To-Be Product Backlog: **34**. Sumados a los 123 de la versión v1.0.0, el backlog acumulado del producto llega a **157 Story Points**.
+
 <hr class="page-break">
 
 # Conclusiones
 
 **Conclusiones y recomendaciones**
 
-<!-- Avance de conclusiones para AV1. Se expande en cada entrega. -->
 
 **Avance de conclusiones (AV1)**
 
@@ -4296,11 +5241,45 @@ El primer paso del job comprueba que el entorno `production` tenga configuradas 
 
 5. **Sobre la implementación.** La arquitectura de microservicios por bounded context (IAM, Invoicing, Investment, Finance) con API Gateway y Discovery Server permitió que el equipo trabajara en paralelo con bajo acoplamiento, y la documentación OpenAPI agregada en Scalar facilitó la integración de las aplicaciones web y móvil contra un único punto de entrada.
 
-**Recomendaciones**
+**Recomendaciones (AV1)**
 
 * Ejecutar las entrevistas de validación con usuarios reales sobre las aplicaciones implementadas, para obtener las primeras mediciones de las hipótesis 01 (tiempo de carga de factura) y 03 (velocidad de fondeo).
 * Priorizar en el roadmap el despliegue en la nube de los servicios y la publicación de la documentación de la API, de modo que la validación no dependa de un entorno local.
 * Completar el flujo end-to-end (factura → subasta → inversión → débito de billetera) e incorporar el scoring de riesgo, que es el diferenciador central de la propuesta de valor.
+
+**Avance de conclusiones (TB1)**
+
+1. **Sobre la verificación del producto.** El TB1 incorporó pruebas automatizadas en cuatro niveles. En los repositorios del API Gateway y del Invoicing Service, 39 pruebas unitarias, de integración y BDD se ejecutan en cada push y Pull Request, y la última ejecución terminó sin fallas. Las pruebas de sistema validaron nueve User Stories en el Landing Page, la aplicación web de la MYPE y la aplicación móvil del inversionista.
+
+2. **Sobre los criterios de aceptación.** Los criterios de US11 y US13 dejaron de ser solo texto: el escenario BDD `SmartInvoiceUpload.feature` los ejecuta y comprueba que una factura con totales que no cuadran, baja confianza de lectura, fecha vencida o emisor igual al pagador no llega a la subasta. Esto respalda, a nivel técnico, la transparencia y la confianza que ambos segmentos señalaron como condición para usar la plataforma.
+
+3. **Sobre las prácticas DevOps.** Se implementó un pipeline de GitHub Actions con tres etapas encadenadas (integración, entrega y despliegue) en dos repositorios. Cada cambio integrado en `develop` o `main` genera una imagen Docker validada y versionada en GitHub Container Registry. El despliegue a producción en Azure, con verificación de salud y rollback, está configurado y queda listo para activarse al registrar las credenciales del entorno `production`.
+
+4. **Sobre las Hypothesis Statements.** En esta entrega todavía no se dispone de mediciones con usuarios reales: la validación de las hipótesis corresponde a las siguientes etapas del proyecto. La verificación automatizada asegura que los flujos sobre los que se realizarán esas mediciones (carga de facturas, publicación en subasta, recarga e inversión) funcionan de forma consistente.
+
+5. **Sobre el trabajo en equipo.** La adopción de GitFlow y Pull Requests permitió integrar los aportes de los cuatro integrantes en el informe y en los once repositorios de código, cada uno con una primera versión estable publicada en `main`.
+
+**Recomendaciones (TB1)**
+
+* Extender el pipeline de CI/CD a los repositorios restantes (IAM, Profile, Investment, Finance, Discovery Server, aplicación web, aplicación móvil y Landing Page).
+* Registrar las credenciales de Azure y de Netlify para activar el despliegue continuo y contar con un ambiente de producción accesible para las validaciones.
+* Ampliar la suite BDD a los flujos de inicio de sesión, recarga de billetera e inversión, y agregar pruebas de integración entre microservicios a través del API Gateway.
+* Iniciar la fase de experimentación del Capítulo VIII y las entrevistas de validación con usuarios para medir las hipótesis definidas en el Lean UX Process.
+
+**Avance de conclusiones (AV2)**
+
+1. **Sobre la validación del producto.** Las entrevistas de validación confirman que los flujos principales de ambos segmentos funcionan: 28 de 30 tareas se completaron sin ayuda (93 %). Los puntos débiles se concentran en la comprensión de la oferta de financiamiento en la web (SEQ 4.7) y en la confirmación de la recarga en el móvil (SEQ 5.0), no en la navegación.
+2. **Sobre la calidad del código.** El análisis estático mostró que la web de la MYPE no tiene hallazgos de ESLint, mientras que el Profile Service concentra 19 hallazgos, en su mayoría por el uso de `any` en el consumidor de eventos de Kafka. El análisis de dependencias identificó vulnerabilidades críticas y altas en los dos proyectos Node.js, que se registraron en un plan de mejora priorizado.
+3. **Sobre la experiencia de usuario.** La evaluación heurística y la auditoría coinciden en tres áreas: visibilidad del estado del sistema, prevención de errores y ayuda para recuperarse de errores. Los 7 problemas registrados se tradujeron en User Stories del To-Be Product Backlog.
+4. **Sobre el monitoreo.** Los servicios ya exponen endpoints de salud con separación entre liveness y readiness, lo que permitió definir un pipeline de monitoreo, alertas y notificaciones sobre señales existentes. Falta incorporar el endpoint de salud del Profile Service y activar las reglas de alerta en Azure Monitor.
+5. **Sobre Experiment-Driven Development.** El equipo convirtió supuestos, vacíos de conocimiento y hallazgos de las entrevistas en 8 preguntas experimentales, de las cuales 4 pasan a experimento con hipótesis, métricas, condiciones y tamaño de muestra definidos antes de ejecutarlos (α = 5 %, potencia = 80 %). Las tasas base son estimadas, por lo que la primera semana de cada experimento servirá para calibrarlas.
+
+**Recomendaciones (AV2)**
+
+* Implementar primero los feature flags (TS09) y el tracking de eventos (TS10), ya que sin ellos ningún experimento se puede ejecutar ni medir.
+* Corregir las vulnerabilidades críticas y altas de dependencias y agregar `pnpm lint` y `pnpm audit` al pipeline de CI.
+* Activar la protección de ramas en `develop` y `main` con aprobación obligatoria de otro integrante.
+* Ejecutar los experimentos E1 a E4 durante un máximo de 5 semanas y analizar los resultados en la siguiente entrega, junto con el Re-scored Question Backlog.
 
 <hr class="page-break">
 
@@ -4325,6 +5304,7 @@ El primer paso del job comprueba que el entorno `production` tenga configuradas 
 | Entrega | Título | Enlace |
 |---|---|---|
 | AV1 | Exposición del Avance 1 | [https://goo.su/h0GAv](https://goo.su/h0GAv) |
+| TB1 | Exposición del Trabajo parcial| [https://lix.li/YPxAs](https://lix.li/YPxAs)|
 
 <hr class="page-break">
 
@@ -4348,16 +5328,3 @@ El código fuente y el informe del proyecto se alojan en la organización de Git
 | Infraestructura local (Docker Compose) | [yieldlabshq/vankoo-infra](https://github.com/yieldlabshq/vankoo-infra) | Docker Compose |
 
 <hr class="page-break">
-
-**Anexo C. Videos de entrevistas**
-
-<!-- Consolidar aquí los enlaces ya registrados en 2.2.2. Registro de entrevistas. -->
-
-| Segmento | Entrevistado | Fecha | Timing | Duración | Enlace |
-|---|---|---|---|---|---|
-| MYPE | Irving Vergara | 08/09/2026 | 00:00 - 8:58 | 8:58 minutos | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=WJmOfj&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MC42OX19) |
-| MYPE | Diego Melendez | 08/09/2026 | 8:58 - 17:30 | 8:32 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=Guig5U&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6NTM5LjF9fQ%3D%3D) |
-| MYPE | Thomas Bernardo | 08/09/2026 | 17:30 - 27:30 | 9:58 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=RYPQOg&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTA1MS40M319) |
-| Inversionista | Alessandro Hesse | 08/09/2026 | 27:30 - 40:15 | 12:45 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=0XdsHP&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MTY1MC40OX19) |
-| Inversionista | Leicy Cahuana | 07/09/2026 | 40:15 - 55:19 | 15:04 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=FHk57K&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MjQxNS45OX19) |
-| Inversionista | Kalet Esteban | 07/09/2026 | 55:19 - 1:06:47 | 11:28 | [Ver en Microsoft Stream](https://upcedupe-my.sharepoint.com/:v:/g/personal/u20221g044_upc_edu_pe/IQBH1rA-DTogSZAoQrPM1UIOAWCjy1cb2NoZaTQaVktAxrk?e=i6G1cy&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifSwicGxheWJhY2tPcHRpb25zIjp7InN0YXJ0VGltZUluU2Vjb25kcyI6MzMyMC43NX19) |
