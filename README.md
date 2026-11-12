@@ -3856,13 +3856,139 @@ En esta sección se presentan las pruebas funcionales realizadas sobre las princ
 
 ## 6.2. Static testing & Verification
 
+En esta sección se presentan las actividades de verificación estática aplicadas sobre el código fuente de Vankoo, es decir, aquellas que evalúan el código sin ejecutarlo. El objetivo es comprobar que cada repositorio de la organización **yieldlabshq** respeta las convenciones definidas en la sección 5.1.3, detectar defectos de calidad antes de que lleguen a producción e identificar riesgos de seguridad en el código y en sus dependencias.
+
 ### 6.2.1. Static Code Analysis
+
+El análisis estático se aplica por lenguaje, aprovechando las herramientas nativas de cada stack. La siguiente tabla resume la cobertura actual:
+
+| Repositorio | Stack | Herramienta de análisis estático | Estado |
+|---|---|---|---|
+| `vankoo-mype-web` | React + TypeScript (Vite) | ESLint 9 (`@eslint/js`, `typescript-eslint`, `react-hooks`, `react-refresh`) + compilador `tsc` | Configurado |
+| `vankoo-profile-service` | NestJS + TypeScript | ESLint 9 (`recommendedTypeChecked`) + Prettier | Configurado |
+| `vankoo-iam-service`, `vankoo-finance-service`, `vankoo-investment-service`, `vankoo-api-gateway`, `vankoo-discovery-server` | Java 25 + Spring Boot | Compilador `javac` (Maven) e inspecciones de IntelliJ IDEA | Sin linter dedicado |
+| `vankoo-invoicing-service` | C# + .NET 10 | Analizadores Roslyn del SDK + *Nullable reference types* (`<Nullable>enable</Nullable>`) | Configurado en compilación |
+| `vankoo-investor-mobile` | Kotlin Multiplatform + Compose | Compilador Kotlin e inspecciones de Android Studio | Sin linter dedicado |
 
 #### 6.2.1.1. Coding standard & Code conventions
 
+Las convenciones de la sección 5.1.3 se verifican de forma automática en los proyectos TypeScript y de forma manual, durante la revisión de Pull Requests, en el resto.
+
+**Configuración aplicada**
+
+* **Web SPA de la Mype (`vankoo-mype-web`):** `eslint.config.js` extiende las reglas recomendadas de JavaScript, `typescript-eslint`, `react-hooks` (uso correcto de hooks y dependencias de efectos) y `react-refresh`. Se excluyen `dist` y el material de referencia que no es código de la aplicación, y la regla `react-refresh/only-export-components` se desactiva solo en `src/components/ui/**`, porque esos componentes los genera shadcn/ui. Además, `tsconfig.app.json` activa `noUnusedLocals` y `noUnusedParameters`, de modo que `pnpm build` (`tsc -b && vite build`) falla ante variables o parámetros sin uso.
+* **Profile Service (`vankoo-profile-service`):** `eslint.config.mjs` usa `tseslint.configs.recommendedTypeChecked`, que analiza el código con información de tipos, e integra Prettier mediante `eslint-plugin-prettier`. El formato queda fijado en `.prettierrc` (comillas simples y coma final) y la regla `prettier/prettier` trata como error cualquier desviación. Las reglas `no-floating-promises` y `no-unsafe-argument` se mantienen como advertencia.
+* **Java, C# y Kotlin:** la nomenclatura (camelCase / PascalCase), la organización por capas DDD y el uso de `record` / `sealed record` para Value Objects se verifican en la revisión de cada Pull Request (sección 6.2.2). En .NET, el compilador emite advertencias de nulabilidad gracias a `<Nullable>enable</Nullable>`.
+
+**Resultados de la ejecución**
+
+Comandos ejecutados sobre la rama principal de cada repositorio:
+
+```bash
+# vankoo-mype-web
+pnpm exec eslint .
+
+# vankoo-profile-service (sin --fix, solo verificación)
+pnpm exec eslint "{src,test}/**/*.ts"
+```
+
+| Repositorio | Archivos analizados | Errores | Advertencias | Resultado |
+|---|---|---|---|---|
+| `vankoo-mype-web` | 108 | 0 | 0 | Sin hallazgos |
+| `vankoo-profile-service` | 104 | 13 | 6 | 19 hallazgos en 5 archivos |
+
+Detalle de los hallazgos de `vankoo-profile-service` por regla:
+
+| Regla | Severidad | Ocurrencias | Descripción |
+|---|---|---|---|
+| `@typescript-eslint/no-unsafe-assignment` | Error | 5 | Asignación de un valor de tipo `any` a una variable tipada. |
+| `@typescript-eslint/no-unsafe-member-access` | Error | 4 | Acceso a propiedades (`.includes`, `.message`) de un valor `any`. |
+| `@typescript-eslint/no-unsafe-call` | Error | 2 | Invocación de un valor de tipo `any`. |
+| `prettier/prettier` | Error | 2 | Formato que no coincide con `.prettierrc`; se corrige con `--fix`. |
+| `@typescript-eslint/no-unsafe-argument` | Advertencia | 5 | Paso de un valor `any` como argumento de tipo `string`. |
+| `@typescript-eslint/no-floating-promises` | Advertencia | 1 | Promesa sin `await` ni manejo de error. |
+
+Distribución por archivo: `user-registered.subscriber.ts` (12), `main.ts` (2), `company.repository.impl.ts` (2), `minio-file-storage.service.ts` (2) e `investor.repository.impl.ts` (1).
+
+El 63 % de los hallazgos se concentra en `user-registered.subscriber.ts`, el consumidor del tópico de Kafka `vankoo.iam.events`, donde el IAM Service publica el registro de un nuevo usuario. La causa es que el payload del mensaje se recibe como `any` (`@Payload() message: any`) y se accede a sus campos sin validarlo. La corrección planificada es tipar el evento con una interfaz `UserRegisteredEvent` y validar el payload antes de crear el inversionista o la empresa.
+
 #### 6.2.1.2. Code Quality & Code Security
 
+**Calidad de código**
+
+* **Tipado estricto:** la web y el Profile Service compilan con TypeScript en modo verificado; el Invoicing Service activa *nullable reference types* y los servicios Java compilan con Java 25.
+* **Validación de entradas en el borde:** los servicios IAM, Finance e Investment usan `spring-boot-starter-validation` (Bean Validation con `@Valid`) en sus DTOs, y el Invoicing Service usa validadores de FluentValidation sobre sus comandos (`UploadInvoiceCommandValidator`, `ProcessOcrSynchronouslyValidator`).
+* **Manejo centralizado de errores:** `@ControllerAdvice` en los servicios IAM, Finance e Investment, y `GlobalExceptionHandler` (`IExceptionHandler` con `ProblemDetails`) en el Invoicing Service, de modo que los errores llegan al cliente con un formato uniforme.
+* **Contratos documentados:** cada API expone su especificación OpenAPI (springdoc-openapi en Java y OpenAPI nativo en .NET) con Scalar como interfaz.
+
+**Seguridad en el código**
+
+| Control | Implementación | Repositorio |
+|---|---|---|
+| Hash de contraseñas | `BCryptHashingService` (BCrypt) | `vankoo-iam-service` |
+| Autenticación y autorización | Spring Security + JWT (jjwt) | `vankoo-iam-service`, `vankoo-api-gateway`, `vankoo-investment-service` |
+| Validación de JWT en .NET | `Microsoft.AspNetCore.Authentication.JwtBearer` | `vankoo-invoicing-service` |
+| Punto único de entrada | API Gateway con filtro de autorización (ver 6.1.2) | `vankoo-api-gateway` |
+| Secretos fuera del repositorio | `.env` en `.gitignore`, solo `.env.example` versionado; ningún `.env` real está bajo control de versiones | `vankoo-mype-web`, `vankoo-profile-service`, `vankoo-infra` |
+| Secretos en el pipeline | Credenciales de Azure como *secrets* del entorno `production` de GitHub Actions (ver 7.3.2) | Servicios desplegados |
+
+**Seguridad en dependencias (Software Composition Analysis)**
+
+Se ejecutó `pnpm audit --prod` sobre los dos proyectos Node.js para identificar vulnerabilidades conocidas en dependencias directas y transitivas:
+
+| Repositorio | Críticas | Altas | Moderadas | Bajas | Total |
+|---|---|---|---|---|---|
+| `vankoo-mype-web` | 1 | 23 | 36 | 8 | 68 |
+| `vankoo-profile-service` | 2 | 28 | 30 | 3 | 63 |
+
+Las vulnerabilidades críticas corresponden a `proxy-addr` (suplantación de IP mediante direcciones IPv4 mapeadas) en ambos proyectos y a `form-data` (función aleatoria insegura) en el Profile Service. Entre las altas destacan `multer`, `path-to-regexp` y `lodash` en el Profile Service, y `undici`, `fast-uri` y `follow-redirects` en la web. La mayoría llega como dependencia transitiva, por lo que se resuelve actualizando el paquete directo que la incluye o fijando una versión segura con `pnpm.overrides`.
+
+**Plan de mejora derivado del análisis**
+
+| # | Acción | Prioridad |
+|---|---|---|
+| 1 | Actualizar las dependencias con vulnerabilidades críticas y altas (`pnpm update` y `pnpm.overrides` para las transitivas). | Alta |
+| 2 | Tipar el payload de `user-registered.subscriber.ts` y corregir los 19 hallazgos de ESLint del Profile Service. | Alta |
+| 3 | Agregar `pnpm lint` y `pnpm audit --audit-level=high` como pasos del job *Build & Test* (7.1.2), para que el pipeline falle ante nuevos hallazgos. | Media |
+| 4 | Incorporar SonarQube Cloud sobre los repositorios Java, .NET y Kotlin, que hoy no tienen un analizador dedicado. | Media |
+| 5 | Activar Dependabot en la organización yieldlabshq para recibir Pull Requests automáticos de actualización de seguridad. | Baja |
+
 ### 6.2.2. Reviews
+
+La revisión de código se realiza sobre Pull Requests siguiendo GitFlow: cada cambio se desarrolla en una rama `feature/*` o `fix/*`, se integra a `develop` mediante Pull Request y llega a `main` a través de una rama `release/*`. En la organización yieldlabshq se registran **29 Pull Requests** en los 10 repositorios del producto.
+
+**Checklist de revisión**
+
+Antes de fusionar un Pull Request, se verifica:
+
+1. El nombre de la rama sigue GitFlow (`feature/*`, `fix/*`, `release/*`) y los commits siguen Conventional Commits.
+2. El código respeta las convenciones de la sección 5.1.3 para su lenguaje.
+3. El check de CI (*Build & Test*) termina en verde, en los repositorios que ya lo tienen (7.1).
+4. Los cambios de dominio incluyen sus pruebas unitarias o escenarios BDD (6.1).
+5. No se versionan secretos ni archivos `.env`.
+6. La descripción del Pull Request indica qué User Story o tarea atiende.
+
+**Pull Requests revisados**
+
+| Repositorio | Pull Requests | Ramas integradas |
+|---|---|---|
+| `vankoo-api-gateway` | #1 – #4 | `feature/gateway-baseline`, `feature/gateway-unit-tests`, `feature/ci-cd-pipeline`, `release/v1.0.0` |
+| `vankoo-invoicing-service` | #1 – #6 | `feature/invoicing-baseline`, `feature/ci-cd-pipeline`, `fix/smoke-test-environment`, `fix/smoke-test-eureka-instance`, `fix/bdd-feature-user-story-tag`, `release/v1.0.0` |
+| `vankoo-mype-web` | #1 – #3 | `feature/web-baseline`, `feature/web-unit-tests`, `release/v1.0.0` |
+| `vankoo-iam-service` | #1 – #3 | `feature/iam-baseline`, `release/v1.0.0`, `develop` |
+| `vankoo-profile-service` | #1 – #3 | `feature/profile-baseline`, `release/v1.0.0`, `develop` |
+| `vankoo-finance-service` | #1 – #2 | `feature/finance-baseline`, `release/v1.0.0` |
+| `vankoo-investment-service` | #1 – #2 | `feature/investment-baseline`, `release/v1.0.0` |
+| `vankoo-investor-mobile` | #1 – #2 | `feature/mobile-baseline`, `release/v1.0.0` |
+| `vankoo-discovery-server` | #1 – #2 | `feature/discovery-baseline`, `release/v1.0.0` |
+| `vankoo-infra` | #1 – #2 | `feature/infra-baseline`, `release/v1.0.0` |
+
+**Hallazgos de la revisión**
+
+* Los tres Pull Requests `fix/*` del Invoicing Service (#4, #5 y #6) se originaron en problemas detectados al revisar la ejecución del pipeline: la configuración del entorno del smoke test, el registro de la instancia en Eureka y la etiqueta de User Story en los feature files de BDD.
+* La revisión estática de esta entrega (6.2.1) identificó los hallazgos de ESLint y las vulnerabilidades de dependencias del Profile Service y de la web, que se registran como tareas en el plan de mejora.
+
+**Oportunidad de mejora:** en esta versión, cada Pull Request fue fusionado por su autor, y la revisión se apoyó en el checklist y en el check de CI, sin una aprobación formal registrada en GitHub. Para el siguiente sprint se activará una regla de protección en `develop` y `main` que exija al menos una aprobación de otro integrante y el check de CI en verde antes de fusionar.
 
 ## 6.3. Validation Interviews
 
