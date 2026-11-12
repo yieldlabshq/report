@@ -104,6 +104,8 @@ Durante el TB1, los cuatro integrantes trabajaron el informe en sus ramas `featu
 
 Durante el AV2, las secciones nuevas del informe (6.2, 6.3, 6.4.1, 7.4 y Capítulo VIII) se desarrollaron en ramas `feature/av2-*` y se integraron a `develop` mediante Pull Requests, siguiendo Conventional Commits (`docs: ...`). El detalle de cada versión se encuentra en el Registro de Versiones del Informe.
 
+![img_6.png](img_6.png)
+
 <hr class="page-break">
 
 # Contenido
